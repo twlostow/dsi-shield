@@ -1,0 +1,12 @@
+Comment,Description,Designator,Footprint,Quantity,Value
+
+"100n","Capacitor","C1","CAPC1608X87N","1","100n"
+"100n","Capacitor","C2","CAPC1608X87N","1","100n"
+"100n","Capacitor","C3","CAPC1608X87N","1","100n"
+"DSI","Header, 15-Pin, Dual row","CN1","CONN_2x15_2mm_side","1","Header 2x15mm (Male), 2mm pitch"
+"DF30-30p-0.4mm","Header, 15-Pin, Dual row","CN2","DF30_30p_04mm","1",""
+"BAS170W","Diode","D1","SOD323","1",""
+"10","Resistor","R1","RESC1608X55N","1","10"
+"10","Resistor","R2","RESC1608X55N","1","10"
+"46k","Resistor","R3","RESC1608X55N","1","46k"
+"130","Resistor","R4","RESC1608X55N","1","130"

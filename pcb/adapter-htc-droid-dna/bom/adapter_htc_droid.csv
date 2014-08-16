@@ -1,0 +1,12 @@
+Comment,Description,Designator,Footprint,LibRef,Quantity,Value
+
+"100n","Capacitor","C1","CAPC1608X87N","Cap","1","100n"
+"100n","Capacitor","C2","CAPC1608X87N","Cap","1","100n"
+"100n","Capacitor","C3","CAPC1608X87N","Cap","1","100n"
+"DSI","Header, 15-Pin, Dual row","CN1","CONN_2x15_2mm_side","Header 15X2","1",""
+"HTC Droid DNA screen","","CN2","FPC_HIROSE_FH35_31p_0.3mm","CONN_FPC_FH35_31_03mm","1","FH35W-31S-03SHW"
+"46k","Resistor","R3","RESC1608X55N","Res1","1","46k"
+"10","Resistor","R4","RESC1608X55N","Res1","1","10"
+"100","Resistor","R5","RESC1608X55N","Res1","1","100"
+"10","Resistor","R6","RESC1608X55N","Res1","1","10"
+"3.3k","Resistor","R7","RESC1608X55N","Res1","1","3.3k"

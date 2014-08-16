@@ -1,0 +1,187 @@
+*************************************************************
+FileName = adapter_htc_droid.GBR
+AutoAperture = True
+*************************************************************
+Generating : Top Layer
+      File : adapter_htc_droid.GTL
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
+*************************************************************
+
+*************************************************************
+Generating : PWR
+      File : adapter_htc_droid.GP1
+
+    Adding Layer      : PWR
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D19
+    D20
+    D21
+*************************************************************
+
+*************************************************************
+Generating : GND
+      File : adapter_htc_droid.GP2
+
+    Adding Layer      : GND
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D19
+    D21
+*************************************************************
+
+*************************************************************
+Generating : Bottom Layer
+      File : adapter_htc_droid.GBL
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D13
+    D14
+    D15
+    D16
+    D17
+    D18
+    D22
+    D23
+    D24
+    D25
+*************************************************************
+
+*************************************************************
+Generating : Top Overlay
+      File : adapter_htc_droid.GTO
+
+    Adding Layer      : Top Overlay
+
+
+Used DCodes :
+    D14
+    D26
+    D27
+    D28
+*************************************************************
+
+*************************************************************
+Generating : Bottom Overlay
+      File : adapter_htc_droid.GBO
+
+    Adding Layer      : Bottom Overlay
+
+
+Used DCodes :
+    D14
+    D27
+*************************************************************
+
+*************************************************************
+Generating : Top Paste
+      File : adapter_htc_droid.GTP
+
+    Adding Layer      : Top Paste
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D11
+    D12
+    D13
+*************************************************************
+
+*************************************************************
+Generating : Bottom Paste
+      File : adapter_htc_droid.GBP
+
+    Adding Layer      : Bottom Paste
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D10
+    D13
+    D22
+    D23
+    D24
+*************************************************************
+
+*************************************************************
+Generating : Top Solder
+      File : adapter_htc_droid.GTS
+
+    Adding Layer      : Top Solder
+
+    Adding Layer      : Top Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D29
+    D30
+    D31
+    D32
+*************************************************************
+
+*************************************************************
+Generating : Bottom Solder
+      File : adapter_htc_droid.GBS
+
+    Adding Layer      : Bottom Solder
+
+    Adding Layer      : Bottom Layer
+
+    Adding Layer      : Multi-Layer
+
+
+Used DCodes :
+    D29
+    D32
+    D33
+    D34
+    D35
+*************************************************************
+
+*************************************************************
+Generating : Mechanical 1
+      File : adapter_htc_droid.GM1
+
+    Adding Layer      : Mechanical 1
+
+
+Used DCodes :
+    D27
+*************************************************************
+

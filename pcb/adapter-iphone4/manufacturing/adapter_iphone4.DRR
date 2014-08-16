@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: adapter_iphone4.PcbDoc   2014-08-15  18:37:25
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : adapter_iphone4.TXT
+EIA File   : adapter_iphone4.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        12mil (0.3048mm)         Round          49               292.22 Inch (7422.40 mm)
+---------------------------------------------------------------------------
+Totals                                            49               292.22 Inch (7422.40 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00

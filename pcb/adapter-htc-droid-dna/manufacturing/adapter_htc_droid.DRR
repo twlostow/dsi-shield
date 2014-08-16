@@ -1,0 +1,15 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: adapter_htc_droid.PcbDoc   2014-08-15  18:40:47
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : adapter_htc_droid.TXT
+EIA File   : adapter_htc_droid.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        12mil (0.3048mm)         Round          56               293.27 Inch (7448.95 mm)
+---------------------------------------------------------------------------
+Totals                                            56               293.27 Inch (7448.95 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00
