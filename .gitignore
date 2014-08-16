@@ -1,0 +1,11 @@
+*.*~
+*.*#
+*.*Preview
+transcript
+*.bin
+*.elf
+*.o
+*.wlf
+syn/
+*.bak
+*.vstf

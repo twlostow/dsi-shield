@@ -1,0 +1,303 @@
+/*
+ * Milkymist SoC
+ * Copyright (C) 2007, 2008, 2009 Sebastien Bourdeauducq
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3 of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+module hpdmc_idelay16(
+	input [15:0] IDATAIN,
+	output [15:0] DATAOUT,
+	input INC,
+	input CE,
+	input RST,
+	input CAL,
+	input CLK,
+	input IOCLK0,
+	input IOCLK1
+);
+
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay0 (
+	.IDATAIN(IDATAIN[0]),
+	.DATAOUT(DATAOUT[0]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay1 (
+	.IDATAIN(IDATAIN[1]),
+	.DATAOUT(DATAOUT[1]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay2 (
+	.IDATAIN(IDATAIN[2]),
+	.DATAOUT(DATAOUT[2]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay3 (
+	.IDATAIN(IDATAIN[3]),
+	.DATAOUT(DATAOUT[3]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay4 (
+	.IDATAIN(IDATAIN[4]),
+	.DATAOUT(DATAOUT[4]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay5 (
+	.IDATAIN(IDATAIN[5]),
+	.DATAOUT(DATAOUT[5]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay6 (
+	.IDATAIN(IDATAIN[6]),
+	.DATAOUT(DATAOUT[6]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay7 (
+	.IDATAIN(IDATAIN[7]),
+	.DATAOUT(DATAOUT[7]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay8 (
+	.IDATAIN(IDATAIN[8]),
+	.DATAOUT(DATAOUT[8]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay9 (
+	.IDATAIN(IDATAIN[9]),
+	.DATAOUT(DATAOUT[9]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay10 (
+	.IDATAIN(IDATAIN[10]),
+	.DATAOUT(DATAOUT[10]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay11 (
+	.IDATAIN(IDATAIN[11]),
+	.DATAOUT(DATAOUT[11]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay12 (
+	.IDATAIN(IDATAIN[12]),
+	.DATAOUT(DATAOUT[12]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay13 (
+	.IDATAIN(IDATAIN[13]),
+	.DATAOUT(DATAOUT[13]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay14 (
+	.IDATAIN(IDATAIN[14]),
+	.DATAOUT(DATAOUT[14]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+IODELAY2 #(
+	.DELAY_SRC("IDATAIN"),
+	.IDELAY_TYPE("VARIABLE_FROM_ZERO"),
+	.DATA_RATE("DDR")
+) idelay15 (
+	.IDATAIN(IDATAIN[15]),
+	.DATAOUT(DATAOUT[15]),
+	.INC(INC),
+	.CE(CE),
+	.RST(RST),
+	.CLK(CLK),
+	.IOCLK0(IOCLK0),
+	.IOCLK1(IOCLK1),
+	.ODATAIN(1'b0),
+	.CAL(CAL),
+	.T(1'b1)
+);
+
+endmodule

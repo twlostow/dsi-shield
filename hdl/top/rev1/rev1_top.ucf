@@ -1,0 +1,227 @@
+NET "clk_25m_i" LOC = P14;
+NET "clk_25m_i" IOSTANDARD = LVCMOS18;
+
+NET "uart_rxd_i" LOC = P1;
+NET "uart_rxd_i" IOSTANDARD = LVCMOS18;
+
+NET "uart_txd_o" LOC = P39;
+NET "uart_txd_o" IOSTANDARD = LVCMOS25;
+
+NET "clk_25m_i" TNM_NET = "clk_25m_i";
+TIMESPEC TS_clk_25m_i = PERIOD "clk_25m_i" 25 MHz HIGH 50 %;
+
+NET "dsi_clk_p_o" LOC = P17;
+#15_p
+NET "dsi_clk_n_o" LOC = P16;
+#15_n
+NET "dsi_hs_p_o[0]" LOC = P30;
+#30_p
+NET "dsi_hs_n_o[0]" LOC = P29;
+#30_n
+NET "dsi_hs_p_o[1]" LOC = P24;
+#24_p
+NET "dsi_hs_n_o[1]" LOC = P23;
+#24_n
+NET "dsi_hs_p_o[2]" LOC = P10;
+#07p
+NET "dsi_hs_n_o[2]" LOC = P9;
+#07n
+NET "dsi_hs_p_o[3]" LOC = P6;
+#07p
+NET "dsi_hs_n_o[3]" LOC = P5;
+#07n
+NET "dsi_lp_p_o[0]" LOC = P32;
+#28_n
+NET "dsi_lp_p_o[0]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_n_o[0]" LOC = P27;
+#32_p
+NET "dsi_lp_n_o[0]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_p_o[1]" LOC = P26;
+#21_n
+NET "dsi_lp_p_o[1]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_n_o[1]" LOC = P22;
+#28_p
+NET "dsi_lp_n_o[1]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_p_o[2]" LOC = P11;
+#4_n
+NET "dsi_lp_p_o[2]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_n_o[2]" LOC = P8;
+#11_p
+NET "dsi_lp_n_o[2]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_p_o[3]" LOC = P7;
+#4_n
+NET "dsi_lp_p_o[3]" IOSTANDARD = LVCMOS18;
+
+NET "dsi_lp_n_o[3]" LOC = P2;
+#11_p
+NET "dsi_lp_n_o[3]" IOSTANDARD = LVCMOS18;
+
+
+NET "dsi_clk_lp_p_o" LOC = P21;
+#11_n
+NET "dsi_clk_lp_p_o" IOSTANDARD = LVCMOS18;
+
+NET "dsi_clk_lp_n_o" LOC = P15;
+#19_p
+NET "dsi_clk_lp_n_o" IOSTANDARD = LVCMOS18;
+
+NET "dsi_resetb_o" LOC = P35;
+#04_p
+NET "dsi_resetb_o" IOSTANDARD = LVCMOS18;
+
+
+NET "dsi_gpio1_o" LOC = P34;
+#02_n
+NET "dsi_gpio1_o" IOSTANDARD = LVCMOS18;
+
+NET "dsi_gpio0_o" LOC = P33;
+#02_p
+NET "dsi_gpio0_o" IOSTANDARD = LVCMOS18;
+
+NET "lcd_pwren_o" LOC = P12;
+NET "lcd_pwren_o" IOSTANDARD = LVCMOS18;
+
+
+NET "dsi_clk_lp_n_o" DRIVE = 24;
+NET "dsi_clk_lp_p_o" DRIVE = 24;
+NET "dsi_lp_n_o[0]" DRIVE = 24;
+NET "dsi_lp_n_o[1]" DRIVE = 24;
+NET "dsi_lp_n_o[2]" DRIVE = 24;
+NET "dsi_lp_n_o[3]" DRIVE = 24;
+NET "dsi_lp_p_o[0]" DRIVE = 24;
+NET "dsi_lp_p_o[1]" DRIVE = 24;
+NET "dsi_lp_p_o[2]" DRIVE = 24;
+NET "dsi_lp_p_o[3]" DRIVE = 24;
+
+
+
+NET "rst_n_a_i" LOC = P38;
+NET "rst_n_a_i" IOSTANDARD = LVCMOS25;
+
+
+NET "sdram_adr[0]" LOC = P61;
+NET "sdram_adr[1]" LOC = P62;
+NET "sdram_adr[2]" LOC = P66;
+NET "sdram_adr[3]" LOC = P67;
+NET "sdram_adr[4]" LOC = P40;
+NET "sdram_adr[5]" LOC = P41;
+NET "sdram_adr[6]" LOC = P43;
+NET "sdram_adr[7]" LOC = P45;
+NET "sdram_adr[8]" LOC = P44;
+NET "sdram_adr[9]" LOC = P46;
+NET "sdram_adr[10]" LOC = P59;
+NET "sdram_adr[11]" LOC = P48;
+NET "sdram_adr[12]" LOC = P50;
+NET "sdram_ba[0]" LOC = P57;
+NET "sdram_ba[1]" LOC = P58;
+NET "sdram_cas_n" LOC = P51;
+NET "sdram_cke" LOC = P126;
+NET "sdram_clk_n" LOC = P133;
+NET "sdram_clk_p" LOC = P134;
+NET "sdram_cs_n" LOC = P56;
+NET "sdram_dm[0]" LOC = P124;
+NET "sdram_dm[1]" LOC = P127;
+NET "sdram_dq[0]" LOC = P114;
+NET "sdram_dq[1]" LOC = P112;
+NET "sdram_dq[2]" LOC = P115;
+NET "sdram_dq[3]" LOC = P111;
+NET "sdram_dq[4]" LOC = P119;
+NET "sdram_dq[5]" LOC = P116;
+NET "sdram_dq[6]" LOC = P117;
+NET "sdram_dq[7]" LOC = P118;
+NET "sdram_dq[8]" LOC = P132;
+NET "sdram_dq[9]" LOC = P141;
+NET "sdram_dq[10]" LOC = P140;
+NET "sdram_dq[11]" LOC = P139;
+NET "sdram_dq[12]" LOC = P144;
+NET "sdram_dq[13]" LOC = P142;
+NET "sdram_dq[14]" LOC = P137;
+NET "sdram_dq[15]" LOC = P138;
+NET "sdram_dqs[0]" LOC = P121;
+NET "sdram_dqs[1]" LOC = P131;
+NET "sdram_ras_n" LOC = P55;
+NET "sdram_we_n" LOC = P123;
+
+
+NET "sdram_adr[0]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[1]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[2]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[3]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[4]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[5]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[6]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[7]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[8]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[9]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[10]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[11]" IOSTANDARD = SSTL2_II;
+NET "sdram_adr[12]" IOSTANDARD = SSTL2_II;
+NET "sdram_ba[0]" IOSTANDARD = SSTL2_II;
+NET "sdram_ba[1]" IOSTANDARD = SSTL2_II;
+NET "sdram_cas_n" IOSTANDARD = SSTL2_II;
+NET "sdram_cke" IOSTANDARD = SSTL2_II;
+NET "sdram_clk_n" IOSTANDARD = DIFF_SSTL2_II;
+NET "sdram_clk_p" IOSTANDARD = DIFF_SSTL2_II;
+NET "sdram_cs_n" IOSTANDARD = SSTL2_II;
+NET "sdram_dm[0]" IOSTANDARD = SSTL2_II;
+NET "sdram_dm[1]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[0]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[1]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[2]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[3]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[4]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[5]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[6]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[7]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[8]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[9]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[10]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[11]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[12]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[13]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[14]" IOSTANDARD = SSTL2_II;
+NET "sdram_dq[15]" IOSTANDARD = SSTL2_II;
+NET "sdram_dqs[0]" IOSTANDARD = SSTL2_II;
+NET "sdram_dqs[1]" IOSTANDARD = SSTL2_II;
+NET "sdram_ras_n" IOSTANDARD = SSTL2_II;
+NET "sdram_we_n" IOSTANDARD = SSTL2_II;
+
+TIMESPEC ts_ignore_xclock1 = FROM "U_PLL_clkout1" TO "U_PLL_clkout2" 4 ns DATAPATHONLY;
+TIMESPEC ts_ignore_xclock2 = FROM "U_PLL_clkout2" TO "U_PLL_clkout1" 4 ns DATAPATHONLY;
+
+NET "hdmi_rx_p_i[0]" LOC=P81;
+NET "hdmi_rx_p_i[1]" LOC=P93;
+NET "hdmi_rx_p_i[2]" LOC=P100;
+NET "hdmi_rx_p_i[3]" LOC=P85;
+NET "hdmi_rx_p_i[0]" IOSTANDARD=TMDS_33;
+NET "hdmi_rx_p_i[1]" IOSTANDARD=TMDS_33;
+NET "hdmi_rx_p_i[2]" IOSTANDARD=TMDS_33;
+NET "hdmi_rx_p_i[3]" IOSTANDARD=TMDS_33;
+ 
+NET "hdmi_scl_b" LOC=P74;
+NET "hdmi_sda_b" LOC=P75;
+NET "hdmi_hpd_o" LOC=P60;
+NET "hdmi_p5v_notif_i" LOC=P87;
+NET "hdmi_scl_b" IOSTANDARD = LVCMOS33;
+NET "hdmi_sda_b" IOSTANDARD = LVCMOS33;
+NET "hdmi_hpd_o" IOSTANDARD = LVCMOS25;	
+NET "hdmi_p5v_notif_i" IOSTANDARD = LVCMOS33;
+
+CONFIG VCCAUX=3.3;
+#Created by Constraints Editor (xc6slx9-tqg144-2) - 2014/07/31
+NET "hdmi_rx_p_i<3>" TNM_NET = hdmi_rx_p_i<3>;
+TIMESPEC TS_hdmi_rx_p_i_3_ = PERIOD "hdmi_rx_p_i<3>" 12 ns HIGH 50%;
+NET "hdmi_rx_n_i<3>" TNM_NET = hdmi_rx_n_i<3>;
+TIMESPEC TS_hdmi_rx_n_i_3_ = PERIOD "hdmi_rx_n_i<3>" 12 ns HIGH 50%;
+TIMESPEC ts_ignore_xclock3 = FROM "hdmi_rx_p_i<3>" TO "U_PLL_clkout2" 4 ns DATAPATHONLY;
+TIMESPEC ts_ignore_xlock4 = FROM "U_PLL_clkout2" TO "hdmi_rx_p_i<3>" 4 ns DATAPATHONLY;
+
+NET "*/gc_sync_register_in[*]" MAXDELAY=4ns;
+#INST "hdmi_scl_b" IOB=FALSE;
+#INST "hdmi_sda_b" IOB=FALSE;

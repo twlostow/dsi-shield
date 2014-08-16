@@ -1,0 +1,9 @@
+Comment,Description,Designator,Footprint,Quantity,Value
+
+"100n","Capacitor","C1","CAPC1608X87N","1","100n"
+"100n","Capacitor","C2","CAPC1608X87N","1","100n"
+"DSI","Header, 15-Pin, Dual row","CN1","CONN_2x15_2mm_side","1","Header 2x15mm (Male), 2mm pitch"
+"Iphone 4 LCD","Header, 13-Pin, Dual row","CN2","iphone4_lcd_conn","1",""
+"160R","Resistor","R1","RESC1608X55N","1","160R"
+"3.3k","Resistor","R2","RESC1608X55N","1","3.3k"
+"39k","Resistor","R3","RESC1608X55N","1","39k"

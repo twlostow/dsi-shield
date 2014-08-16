@@ -1,0 +1,20 @@
+---------------------------------------------------------------------------
+NCDrill File Report For: hdmi-dsi-top.PcbDoc   2014-08-14  13:21:03
+---------------------------------------------------------------------------
+
+Layer Pair : Top Layer to Bottom Layer
+ASCII RoundHoles File : hdmi-dsi-top.TXT
+EIA File   : hdmi-dsi-top.DRL
+
+Tool         Hole Size           Hole Type     Hole Count Plated       Tool Travel
+---------------------------------------------------------------------------
+T1        12mil (0.3048mm)         Round          388              324.16 Inch (8233.64 mm)
+T2        30mil (0.762mm)          Round          32               293.71 Inch (7460.35 mm)
+T3        35.43mil (0.89992mm)     Round          6                287.53 Inch (7303.16 mm)
+T4        80mil (2.032mm)          Round          4                287.11 Inch (7292.69 mm)
+T5        125.98mil (3.19989mm)    Round          3                291.19 Inch (7396.34 mm)
+T6        35.43mil (0.89992mm)     Round          2         NPTH   285.87 Inch (7261.13 mm)
+---------------------------------------------------------------------------
+Totals                                            435              1769.58 Inch (44947.32 mm)
+
+Total Processing Time (hh:mm:ss) : 00:00:00
