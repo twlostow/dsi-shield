@@ -92,10 +92,196 @@ void dsi_send_lp_short(uint8_t ptype, uint8_t w0, uint8_t w1)
 	dsi_write(REG_DSI_CTL, dsi_ctl);
 }	
 
+void dsi_dcs_long_write(const unsigned char *data, int length)
+{
+  uint8_t w0  = 0;
+  uint8_t w1 = length;
+
+  //pp_printf("pp_long write: %d bytes\n", length);  
+
+  dsi_lp_write_byte(0xe1);
+  dsi_lp_write_byte(reverse_bits(0x39));
+  dsi_lp_write_byte(reverse_bits(w0));
+  dsi_lp_write_byte(reverse_bits(w1));
+  int i;
+  for(i=0;i<length;i++)
+    dsi_lp_write_byte(reverse_bits(data[i]));
+  dsi_lp_write_byte(reverse_bits(0xff));
+  dsi_lp_write_byte(reverse_bits(0xff));
+  dsi_write(REG_DSI_CTL, dsi_ctl);
+
+}
+
 void dsi_delay()
 {
 	delay (100000);
 }
+
+static void s6e8ax0_apply_level2_key()
+{
+  static const unsigned char data_to_send[] = {
+    0xf0, 0x5a, 0x5a
+  };
+   dsi_dcs_long_write ( data_to_send, 3 );
+}
+
+static void s6e8ax0_sleep_out()
+{
+   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
+   delay(300000);
+}
+
+
+static void s6e8ax0_panel_cond()
+{
+  
+  static const unsigned char data_to_send[] = {
+    0xf8, 0x3d, 0x35, 0x00, 0x00, 0x00, 0x93, 0x00, 0x3c, 0x7d,
+    0x08, 0x27, 0x7d, 0x3f, 0x00, 0x00, 0x00, 0x20, 0x04, 0x08,
+    0x6e, 0x00, 0x00, 0x00, 0x02, 0x08, 0x08, 0x23, 0x23, 0xc0,
+    0xc8, 0x08, 0x48, 0xc1, 0x00, 0xc1, 0xff, 0xff, 0xc8
+  };
+
+ dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_display_cond()
+{
+  static const unsigned char data_to_send[] = {
+    0xf2, 0x80, 0x03, 0x0d
+  };
+
+ dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static const unsigned char s6e8ax0_22_gamma_300[] = {
+  0xfa, 0x01, 0x60, 0x10, 0x60, 0xb5, 0xd3, 0xbd, 0xb1, 0xd2,
+  0xb0, 0xc0, 0xdc, 0xc0, 0x94, 0xba, 0x91, 0xac, 0xc5, 0xa9,
+  0x00, 0xc2, 0x00, 0xb7, 0x00, 0xed,
+};
+ 
+static void s6e8ax0_gamma_cond()
+{
+   dsi_dcs_long_write ( s6e8ax0_22_gamma_300, sizeof(s6e8ax0_22_gamma_300) );
+
+}
+
+static void s6e8ax0_gamma_update()
+{
+  static const unsigned char data_to_send[] = {
+    0xf7, 0x03
+  };
+
+ dsi_send_lp_short(0x15, data_to_send[0], data_to_send[1]);
+
+}
+
+static void s6e8ax0_etc_cond1()
+{
+  static const unsigned char data_to_send[] = {
+    0xd1, 0xfe, 0x80, 0x00, 0x01, 0x0b, 0x00, 0x00, 0x40,
+    0x0d, 0x00, 0x00
+  };
+   dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_etc_cond2()
+{
+  static const unsigned char data_to_send[] = {
+    0xb6, 0x0c, 0x02, 0x03, 0x32, 0xff, 0x44, 0x44, 0xc0,
+    0x00
+  };
+ dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+  
+}
+
+static void s6e8ax0_etc_cond3()
+{
+  static const unsigned char data_to_send[] = {
+    0xe1, 0x10, 0x1c, 0x17, 0x08, 0x1d
+  };
+   dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_etc_cond4()
+{
+  static const unsigned char data_to_send[] = {
+    0xe2, 0xed, 0x07, 0xc3, 0x13, 0x0d, 0x03
+  };
+ dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+  
+}
+
+static void s6e8ax0_etc_cond5()
+{
+  static const unsigned char data_to_send[] = {
+    0xf4, 0xcf, 0x0a, 0x12, 0x10, 0x19, 0x33, 0x02
+  };
+ dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_etc_cond6()
+{
+  static const unsigned char data_to_send[] = {
+    0xe3, 0x40
+  };
+
+   dsi_send_lp_short(0x15, data_to_send[0], data_to_send[1]);
+}
+
+static void s6e8ax0_etc_cond7()
+{
+  static const unsigned char data_to_send[] = {
+    0xe4, 0x00, 0x00, 0x14, 0x80, 0x00, 0x00, 0x00
+  };
+dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_elvss_nvm_set()
+{
+  static const unsigned char data_to_send[] = {
+    0xd9, 0x5c, 0x20, 0x0c, 0x0f, 0x41, 0x00, 0x10, 0x11,
+    0x12, 0xd1, 0x00, 0x00, 0x00, 0x00, 0x80, 0xcb, 0xed,
+    0x64, 0xaf
+  };
+  dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+static void s6e8ax0_elvss_set()
+{
+  static const unsigned char data_to_send[] = {
+    0xb1, 0x04, 0x00
+  };
+  dsi_dcs_long_write ( data_to_send, sizeof(data_to_send) );
+}
+
+void samsung_init()
+{
+  s6e8ax0_apply_level2_key();
+  s6e8ax0_sleep_out();
+  dsi_delay();
+  s6e8ax0_panel_cond();
+  s6e8ax0_display_cond();
+  s6e8ax0_gamma_cond();
+  s6e8ax0_gamma_update();
+
+  s6e8ax0_etc_cond1();
+  s6e8ax0_etc_cond2();
+  s6e8ax0_etc_cond3();
+  s6e8ax0_etc_cond4();
+  s6e8ax0_etc_cond5();
+  s6e8ax0_etc_cond6();
+  s6e8ax0_etc_cond7();
+
+  s6e8ax0_elvss_nvm_set();
+  s6e8ax0_elvss_set();
+
+  
+   dsi_send_lp_short(0x15, 0xc0, 0x00);
+
+  
+}
+
 
 
 void dsi_init( struct dsi_panel_config *panel )
@@ -127,14 +313,20 @@ void dsi_init( struct dsi_panel_config *panel )
   dsi_delay();
   delay(300000);
 
-  dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
-  delay(300000);
+  samsung_init();
+
+#if 1
+  //dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
+  //delay(300000);
  
   dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
   delay(300000);
  
   dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
   delay(300000);
+#endif
+
+
  
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );

@@ -10,66 +10,120 @@ NET "uart_txd_o" IOSTANDARD = LVCMOS25;
 NET "clk_25m_i" TNM_NET = "clk_25m_i";
 TIMESPEC TS_clk_25m_i = PERIOD "clk_25m_i" 25 MHz HIGH 50 %;
 
-NET "dsi_clk_p_o" LOC = P17;
-#15_p
-NET "dsi_clk_n_o" LOC = P16;
-#15_n
-NET "dsi_hs_p_o[0]" LOC = P30;
-#30_p
-NET "dsi_hs_n_o[0]" LOC = P29;
-#30_n
+#Orsons's Galaxy S4 adapter (lanes swapped)
+
+
+
+NET "dsi_clk_p_o" LOC = P30; 
+NET "dsi_clk_n_o" LOC = P29;
+
+NET "dsi_hs_p_o[0]" LOC = P6;
+NET "dsi_hs_n_o[0]" LOC = P5;
+
 NET "dsi_hs_p_o[1]" LOC = P24;
-#24_p
 NET "dsi_hs_n_o[1]" LOC = P23;
-#24_n
-NET "dsi_hs_p_o[2]" LOC = P10;
-#07p
-NET "dsi_hs_n_o[2]" LOC = P9;
-#07n
-NET "dsi_hs_p_o[3]" LOC = P6;
-#07p
-NET "dsi_hs_n_o[3]" LOC = P5;
-#07n
-NET "dsi_lp_p_o[0]" LOC = P32;
-#28_n
+
+NET "dsi_hs_p_o[2]" LOC = P17;
+NET "dsi_hs_n_o[2]" LOC = P16;
+
+NET "dsi_hs_p_o[3]" LOC = P10;
+NET "dsi_hs_n_o[3]" LOC = P9;
+
+
+
+NET "dsi_lp_p_o[0]" LOC = P7;
 NET "dsi_lp_p_o[0]" IOSTANDARD = LVCMOS18;
 
-NET "dsi_lp_n_o[0]" LOC = P27;
-#32_p
+NET "dsi_lp_n_o[0]" LOC = P2;
 NET "dsi_lp_n_o[0]" IOSTANDARD = LVCMOS18;
 
 NET "dsi_lp_p_o[1]" LOC = P26;
-#21_n
 NET "dsi_lp_p_o[1]" IOSTANDARD = LVCMOS18;
 
 NET "dsi_lp_n_o[1]" LOC = P22;
-#28_p
 NET "dsi_lp_n_o[1]" IOSTANDARD = LVCMOS18;
 
-NET "dsi_lp_p_o[2]" LOC = P11;
-#4_n
+NET "dsi_lp_p_o[2]" LOC = P21;
 NET "dsi_lp_p_o[2]" IOSTANDARD = LVCMOS18;
 
-NET "dsi_lp_n_o[2]" LOC = P8;
-#11_p
+NET "dsi_lp_n_o[2]" LOC = P15;
 NET "dsi_lp_n_o[2]" IOSTANDARD = LVCMOS18;
 
-NET "dsi_lp_p_o[3]" LOC = P7;
-#4_n
+NET "dsi_lp_p_o[3]" LOC = P11;
 NET "dsi_lp_p_o[3]" IOSTANDARD = LVCMOS18;
 
-NET "dsi_lp_n_o[3]" LOC = P2;
-#11_p
+NET "dsi_lp_n_o[3]" LOC = P8;
 NET "dsi_lp_n_o[3]" IOSTANDARD = LVCMOS18;
 
-
-NET "dsi_clk_lp_p_o" LOC = P21;
-#11_n
+NET "dsi_clk_lp_p_o" LOC = P32;
 NET "dsi_clk_lp_p_o" IOSTANDARD = LVCMOS18;
 
-NET "dsi_clk_lp_n_o" LOC = P15;
-#19_p
+NET "dsi_clk_lp_n_o" LOC = P27;
 NET "dsi_clk_lp_n_o" IOSTANDARD = LVCMOS18;
+
+
+#original definitions (for DNA, Iphone, P880 adapters)
+
+#NET "dsi_clk_p_o" LOC = P17;
+#15_p
+#NET "dsi_clk_n_o" LOC = P16;
+#15_n
+#NET "dsi_hs_p_o[0]" LOC = P30;
+#30_p
+#NET "dsi_hs_n_o[0]" LOC = P29;
+#30_n
+#NET "dsi_hs_p_o[1]" LOC = P24;
+#24_p
+#NET "dsi_hs_n_o[1]" LOC = P23;
+#24_n
+#NET "dsi_hs_p_o[2]" LOC = P10;
+#07p
+#NET "dsi_hs_n_o[2]" LOC = P9;
+#07n
+#NET "dsi_hs_p_o[3]" LOC = P6;
+#07p
+#NET "dsi_hs_n_o[3]" LOC = P5;
+#07n
+#NET "dsi_lp_p_o[0]" LOC = P32;
+#28_n
+#NET "dsi_lp_p_o[0]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_n_o[0]" LOC = P27;
+#32_p
+#NET "dsi_lp_n_o[0]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_p_o[1]" LOC = P26;
+#21_n
+#NET "dsi_lp_p_o[1]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_n_o[1]" LOC = P22;
+#28_p
+#NET "dsi_lp_n_o[1]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_p_o[2]" LOC = P11;
+#4_n
+#NET "dsi_lp_p_o[2]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_n_o[2]" LOC = P8;
+#11_p
+#NET "dsi_lp_n_o[2]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_p_o[3]" LOC = P7;
+#4_n
+#NET "dsi_lp_p_o[3]" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_lp_n_o[3]" LOC = P2;
+#11_p
+#NET "dsi_lp_n_o[3]" IOSTANDARD = LVCMOS18;
+
+
+#NET "dsi_clk_lp_p_o" LOC = P21;
+#11_n
+#NET "dsi_clk_lp_p_o" IOSTANDARD = LVCMOS18;
+
+#NET "dsi_clk_lp_n_o" LOC = P15;
+#19_p
+#NET "dsi_clk_lp_n_o" IOSTANDARD = LVCMOS18;
 
 NET "dsi_resetb_o" LOC = P35;
 #04_p

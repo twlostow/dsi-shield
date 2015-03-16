@@ -38,13 +38,13 @@ static const uint8_t edid_dna[] =
 struct dsi_panel_config panel_p880 = {
   "LG Optimus P880",
   4,    /* num_lanes */
-  2,    /* lp_divider */
+  1,    /* lp_divider */
   720,  /* width */
   1280, /* height */
 
-  192 + 12 ,  /* h_front_porch */
-  192 + 12,  /* h_back_porch */
-  59,   /* v_front_porch */
+  192 + 96 + 48 + 24 + 12,  /* h_front_porch */
+  192 + 2*192,  /* h_back_porch */
+  4,   /* v_front_porch */
   4,    /* v_back_porch */
   200,  /* frame_gap */
   edid_p880 /* EDID */

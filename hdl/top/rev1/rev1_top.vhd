@@ -35,6 +35,7 @@ use unisim.vcomponents.all;
 -- Display Type           Refresh  Mul  Sys_Div  Phy_Div    PHY_Freq    Clock period
 -- Droid DNA               48 Hz   26      7        1        650 MHz      1538 ps
 -- Optimus P880            60 Hz   30      8        2        375 MHz      2666 ps
+-- Optimus P880            60 Hz   35      10       2        437.5 MHz      179 ps
 -- Iphone 4                60 Hz   31      8        2        387.5 MHz    2580 ps
 
 entity rev1_top is
@@ -51,13 +52,13 @@ entity rev1_top is
     -- Fphy = 25 MHz * g_pll_mul / g_pll_phy_div
 
     -- PLL multiplier
-    g_pll_mul       : integer := 31;
+    g_pll_mul       : integer := 26;
     -- System clock PLL divider
-    g_pll_sys_div   : integer := 8;
+    g_pll_sys_div   : integer := 7;
     -- DSI PHY clock PLL divider
-    g_pll_phy_div   : integer := 2;
+    g_pll_phy_div   : integer := 1;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 2580
+    g_clock_period_ps : integer := 1538
     );
   port (
     clk_25m_i : in std_logic;
@@ -129,8 +130,8 @@ architecture rtl of rev1_top is
       g_pixels_per_clock : integer := 2;
       g_lanes            : integer := 4;
       g_fifo_size        : integer := 4096;
-      g_invert_lanes     : integer := 0;
-      g_invert_clock     : integer := 0;
+      g_invert_lanes     : integer := 15;
+      g_invert_clock     : integer := 1;
       g_clock_period_ps : integer := 2000
       );
     port(
