@@ -72,7 +72,7 @@ struct saneDescriptor {
   int vSizemm;
   int hborder;
   int vborder;
-  
+
   int syncCode; // sorry, too lazy to implement this in fields
 };
 
@@ -160,7 +160,7 @@ struct edid_ {
   struct displayDataString dataString;
   struct displayName name;
   struct displayLimits limits;
-  
+
   byte extensionBlockCount;
   byte checksum;
 };
@@ -170,7 +170,7 @@ struct videoDataBlock {
 };
 // a variable number of these follow the videodatablock
 struct videoDataBlockDescriptor{
-  byte shortDescriptor; 
+  byte shortDescriptor;
 };
 
 struct audioDataBlock {
@@ -191,7 +191,7 @@ struct hdmi_top_ {
   byte tag;  // value: 02
   byte revision; // value: 03
   byte offset; // where detail timing descriptors begin
-  byte numDescrips; 
+  byte numDescrips;
   struct videoDataBlock video;
   // video codes, one byte at a time, inserted here
 };
@@ -222,7 +222,7 @@ byte calcsum(unsigned char *block) {
 
 void make_insane(struct saneDescriptor *sane, struct detailDescriptors *insane) {
   u16 pixclk;
-  
+
   pixclk = (sane->pixelclock / 10000) & 0xFFFF;
   insane->pixelclockLSB = pixclk & 0xFF;
   insane->pixelclockMSB = (pixclk >> 8) & 0xFF;
@@ -245,12 +245,12 @@ void make_insane(struct saneDescriptor *sane, struct detailDescriptors *insane) 
   insane->hborder = sane->hborder;
   insane->vborder = sane->vborder;
   insane->syncdef = sane->syncCode;
-  
+
 }
 
 int modeSupportedByNetv(int mode, struct timing_range **timing) {
   int i = 0;
-  
+
   while(timings[i] != NULL) {
     if( mode == (timings[i])->number ) {
       if( timing != NULL ) {
@@ -271,7 +271,7 @@ unsigned char *make_edid(char *modelist) {
   int i;
   struct edid_ edid;
   byte *output_edid;
-  
+
   edid.header[0] = 0;
   edid.header[1] = 0xff;
   edid.header[2] = 0xff;
@@ -281,33 +281,32 @@ unsigned char *make_edid(char *modelist) {
   edid.header[6] = 0xff;
   edid.header[7] = 0;
 
-  edid.IDManufacturerName = 0x0d0d; //chm = 0x3 0x8 0xd -> 0 000 1101 0000 1101
-  edid.IDProductCode = 0x654e; // Ne
-  edid.IDSerialNumber = 0x1;
-  edid.WeekOfManufacture = 0xff;
-  edid.ModelYear = 0x15; // 2011
+  edid.IDManufacturerName = 0xd23e; //chm = 0x3 0x8 0xd -> 0 000 1101 0000 1101
+  edid.IDProductCode = 0x0003; // Ne
+  edid.IDSerialNumber = 0x0000;
+  edid.WeekOfManufacture = 0x0a;
+  edid.ModelYear = 0x18;
 
   edid.VersionNumber = 0x1;
   edid.RevisionNumber = 0x3;
 
   edid.VideoInputDefinition = 0x80;
-  edid.HorizontalSize = 16; // bravia does this hack
-  edid.VerticalSize = 9;
-  edid.DisplayGamma = 0x78; // 2.2 gamma
-  edid.FeatureSupport = 0x0a; // no low power modes, RGB & YCrCb, preferred mode is native
-  // may want to tweak above to 0x02 if there are compatibility issues.
-  
-  edid.ChromaRGLow = 0xd; // copied from sony bravia TV
-  edid.ChromaBWLow = 0xc9;
-  edid.RedXHigh = 0xa0;
-  edid.RedYHigh = 0x57;
-  edid.GreenXHigh = 0x47;
-  edid.GreenYHigh = 0x98;
-  edid.BlueXHigh = 0x27;
-  edid.BlueYHigh = 0x12;
-  edid.WhiteXHigh = 0x48;
-  edid.WhiteYHigh = 0x4c;
- 
+  edid.HorizontalSize = 0x00;
+  edid.VerticalSize = 0x00;
+  edid.DisplayGamma = 0x78;
+  edid.FeatureSupport = 0xe2;
+
+  edid.ChromaRGLow = 0x60; // copied from sony bravia TV
+  edid.ChromaBWLow = 0xb1;
+  edid.RedXHigh = 0xaa;
+  edid.RedYHigh = 0x55;
+  edid.GreenXHigh = 0x40;
+  edid.GreenYHigh = 0xb6;
+  edid.BlueXHigh = 0x23;
+  edid.BlueYHigh = 0x0c;
+  edid.WhiteXHigh = 0x50;
+  edid.WhiteYHigh = 0x54;
+
   edid.TimingsI = 0; // let's see if we can get off with supporting no standard timings
   edid.TimingsII = 0;
   edid.TimingsReserved = 0;
@@ -318,7 +317,7 @@ unsigned char *make_edid(char *modelist) {
     edid.timings[i].horizPixels = 0x81; // 1280
     edid.timings[i].AR_refresh = 0xc0; // 16:9, 60 hz
   } else {
-    edid.timings[i].horizPixels = 1; 
+    edid.timings[i].horizPixels = 1;
     edid.timings[i].AR_refresh = 1;
   }
 
@@ -328,10 +327,10 @@ unsigned char *make_edid(char *modelist) {
     edid.timings[i].horizPixels = 0x3b; // 720x480
     edid.timings[i].AR_refresh = 0x0; // 16:10, 60 hz
   } else {
-    edid.timings[i].horizPixels = 1; 
+    edid.timings[i].horizPixels = 1;
     edid.timings[i].AR_refresh = 1;
   }
-    
+
   for( i = 2; i < 8; i++ ) { // all bogus timings
     edid.timings[i].horizPixels = 1; // 1920 @ 24 hz not representable
     edid.timings[i].AR_refresh = 1;
@@ -396,7 +395,7 @@ unsigned char *make_edid(char *modelist) {
     sane.syncCode = 0x1e; // digital separate sync, vertical sync is positive; hsync is positive
 
   }else if( modelist[124] ) {
-
+            // DSI
 
     sane.pixelclock = 108333333; //26411290; //64583000;
     sane.hActive = 1080;
@@ -441,17 +440,17 @@ unsigned char *make_edid(char *modelist) {
   edid.dataString.tag[0] = 0x0;
   edid.dataString.tag[1] = 0x0;
   edid.dataString.tag[2] = 0x0;
-  edid.dataString.tag[3] = 0xfe;
+  edid.dataString.tag[3] = 0xfc;
   edid.dataString.tag[4] = 0x0;
-  strncpy(edid.dataString.name, "DSI Shield   ", 13);
+  strncpy(edid.dataString.name, "Rift DK2\x0a    ", 13);
 
   edid.name.tag[0] = 0;
   edid.name.tag[1] = 0;
   edid.name.tag[2] = 0;
-  edid.name.tag[3] = 0xfc;
+  edid.name.tag[3] = 0xff;
   edid.name.tag[4] = 0;
 
-  strncpy(edid.name.name, "DSI Shield   ", 13);
+  strncpy(edid.name.name, "MSCE47R6K9DAK", 13);
 
   edid.limits.tag[0] = 0x0;
   edid.limits.tag[1] = 0x0;
@@ -463,7 +462,7 @@ unsigned char *make_edid(char *modelist) {
   // a generic limits field that covers most modes
   edid.limits.minVert = 0x17;
   edid.limits.maxVert = 60; // 60 hz
-  edid.limits.minHoriz = 26; 
+  edid.limits.minHoriz = 26;
   edid.limits.maxHoriz = 46;
   edid.limits.maxPclk = 8; // 80 MHz max
 
@@ -510,7 +509,7 @@ unsigned char* make_hdmi(char *modelist) {
   byte videoShortDescriptor[128]; // lazy, allocating a max-sized buffer instead of mallocing
   struct detailDescriptors hdmiDetail[128];
   struct timing_range *modeTiming;
-  byte *hdmi; 
+  byte *hdmi;
 
   for( i = 0; i < 128; i++ ) {
     videoShortDescriptor[i] = 0;
@@ -527,7 +526,7 @@ unsigned char* make_hdmi(char *modelist) {
     if( !modeSupportedByNetv(i, NULL) ) {
       modelist[i] = 0;
     }
-    if( modelist[i] ) 
+    if( modelist[i] )
       num_modes++;
   }
 
@@ -536,9 +535,9 @@ unsigned char* make_hdmi(char *modelist) {
 
   hdmi_top.numDescrips = 0x40 | (num_modes & 0xF);
 
-  hdmi_top.offset = 4 + sizeof(struct videoDataBlock) + 
+  hdmi_top.offset = 4 + sizeof(struct videoDataBlock) +
     sizeof(struct videoDataBlockDescriptor) * num_modes +
-    sizeof(struct audioDataBlock) + 
+    sizeof(struct audioDataBlock) +
     sizeof(struct speakerDataBlock) +
     sizeof(struct hdmiBlock);
 
@@ -568,7 +567,7 @@ unsigned char* make_hdmi(char *modelist) {
   hdmi_mid.speaker.speaker[0] = 0x1;
   hdmi_mid.speaker.speaker[1] = 0x0;
   hdmi_mid.speaker.speaker[2] = 0x0;
-  
+
   hdmi_mid.hdmi.vendorTagCode = 0x66;
   hdmi_mid.hdmi.hdmi[0] = 0x3;
   hdmi_mid.hdmi.hdmi[1] = 0xc;
@@ -605,7 +604,7 @@ unsigned char* make_hdmi(char *modelist) {
       j++;
     }
   }
-  
+
   // now build the actual final HDMI record for write-out
   // first, zero out the array
   hdmi = calloc(128, sizeof(unsigned char));
