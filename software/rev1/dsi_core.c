@@ -128,13 +128,13 @@ void dsi_init( struct dsi_panel_config *panel )
   delay(300000);
 
   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
-  delay(300000);
+//  delay(300000);
  
   dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
-  delay(300000);
+//  delay(300000);
  
   dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-  delay(300000);
+//  delay(300000);
  
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );
