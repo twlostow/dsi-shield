@@ -51,13 +51,13 @@ entity rev1_top is
     -- Fphy = 25 MHz * g_pll_mul / g_pll_phy_div
 
     -- PLL multiplier
-    g_pll_mul       : integer := 31;
+    g_pll_mul         : integer := 26;
     -- System clock PLL divider
-    g_pll_sys_div   : integer := 8;
+    g_pll_sys_div     : integer := 7;
     -- DSI PHY clock PLL divider
-    g_pll_phy_div   : integer := 2;
+    g_pll_phy_div     : integer := 1;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 2580
+    g_clock_period_ps : integer := 1538
     );
   port (
     clk_25m_i : in std_logic;
@@ -131,7 +131,7 @@ architecture rtl of rev1_top is
       g_fifo_size        : integer := 4096;
       g_invert_lanes     : integer := 0;
       g_invert_clock     : integer := 0;
-      g_clock_period_ps : integer := 2000
+      g_clock_period_ps  : integer := 2000
       );
     port(
       clk_sys_i : in std_logic;
@@ -345,10 +345,10 @@ architecture rtl of rev1_top is
 
   component fml_framebuffer
     generic (
-      g_fml_depth : integer := 25;
+      g_fml_depth   : integer := 25;
       g_pll_phy_div : integer;
       g_pll_sys_div : integer;
-      g_pll_mul : integer 
+      g_pll_mul     : integer
       );
     port (
       clk_sys_i : in std_logic;
@@ -545,14 +545,14 @@ architecture rtl of rev1_top is
   signal dsi_gpio                    : std_logic_vector(2 downto 0);
 begin  -- rtl
 
-  rst_sys <= not rst_n_sys;
-  
+    rst_sys <= not rst_n_sys;
+
   U_Sync_DSI_Reset : gc_sync_ffs
     port map (
-    clk_i    => clk_dsi,
-    rst_n_i  => '1',
-    data_i   => rst_n_sys,
-    synced_o => rst_n_dsi);
+      clk_i    => clk_dsi,
+      rst_n_i  => '1',
+      data_i   => rst_n_sys,
+      synced_o => rst_n_dsi);
 
   U_PLL : dsi_pll_spartan6
     generic map (
@@ -766,10 +766,10 @@ begin  -- rtl
 
   U_Framebuffer : fml_framebuffer
     generic map (
-      g_fml_depth => 25,
+      g_fml_depth   => 25,
       g_pll_phy_div => g_pll_phy_div,
       g_pll_sys_div => g_pll_sys_div,
-      g_pll_mul => g_pll_mul
+      g_pll_mul     => g_pll_mul
       )
     port map (
       clk_sys_i => clk_sys,
