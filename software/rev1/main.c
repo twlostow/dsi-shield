@@ -43,7 +43,7 @@ void show_nosignal_screen()
     fb_clear(fb_makecolor(0,0,0));
 
     fb_rect(0, 0, fb_width-1, fb_height-1, fb_makecolor(255,255,255));
-    fb_draw_bitmap ( fb_width / 2 - bmp_logo.h / 2, fb_height / 2 - bmp_logo.w , &bmp_logo );
+//    fb_draw_bitmap ( fb_width / 2 - bmp_logo.h / 2, fb_height / 2 - bmp_logo.w , &bmp_logo );
 
     center_text(&font_helv17, fb_height / 2 + 40, 4, "No HDMI signal :-(", fb_makecolor(255,32,32));
 
@@ -66,6 +66,9 @@ void show_nosignal_screen()
 	int htotal = panel->h_front_porch + panel->width *3 + panel->h_back_porch + 6 + 6 + 6 + 4;
 
 	pp_printf("Full frame: %d\n", htotal * vtotal);
+	pp_printf("System clock: %d Hz\n", board_system_freq());
+	pp_printf("Data rate: %d lanes x %d MBps\n", panel->num_lanes, board_phy_freq() / 1000000);
+	pp_printf("Refresh rate: %d Hz\n", byte_clock / (htotal * vtotal));
 
 	pp_sprintf(str,"Refresh rate: %d Hz", byte_clock / (htotal * vtotal));
 	fb_text(&font_helv17, fb_width / 2 - 300, fb_height / 2 + 210,2, str, fb_makecolor(255,255,255));
@@ -73,6 +76,8 @@ void show_nosignal_screen()
 
 	pp_sprintf(str,"System clock: %d Hz", board_system_freq());
 	fb_text(&font_helv17, fb_width / 2 - 300, fb_height / 2 + 240,2, str, fb_makecolor(255,255,255));
+
+
 }
 
 #define ST_IDLE 0

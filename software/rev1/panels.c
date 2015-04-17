@@ -23,16 +23,24 @@
 
 #include "dsi_core.h"
 
-static const uint8_t edid_p880[] =  
+static const uint8_t edid_p880[] =
 #include "edid_p880.h"
 ;
 
-static const uint8_t edid_iphone4[] =  
+static const uint8_t edid_iphone4[] =
 #include "edid_ip4.h"
 ;
 
-static const uint8_t edid_dna[] =  
+static const uint8_t edid_dna[] =
 #include "edid_dna.h"
+;
+
+static const uint8_t edid_oculus_fake[] =
+#include "edid_oculus_fake.h"
+;
+
+static const uint8_t edid_oculus_orig[] =
+#include "edid_oculus_original.h"
 ;
 /* LG P880 display (1280x720) config */
 struct dsi_panel_config panel_p880 = {
@@ -66,7 +74,7 @@ struct dsi_panel_config panel_iphone4 = {
   edid_iphone4  /* EDID */
 };
 
-#if 0
+#if 1
 struct dsi_panel_config panel_dna_1080p60 = {
   "LS050T1SX01 (Droid DNA)",
   4,    /* num_lanes */
@@ -75,11 +83,11 @@ struct dsi_panel_config panel_dna_1080p60 = {
   1920, /* height */
 
   96+48-6,   /* h_front_porch */
-  96+48-12,   /* h_back_porch */ // Total = 3534
+  96+48-6,   /* h_back_porch */ // Total = 3534
   2,   /* v_front_porch */
   6,    /* v_back_porch */
   200,  /* frame_gap */
-  edid_dna  /* EDID */
+  edid_oculus_fake  /* EDID */
 };
 #endif
 
@@ -95,7 +103,7 @@ struct dsi_panel_config panel_dna = {
   2,   /* v_front_porch */
   6,    /* v_back_porch */
   200,  /* frame_gap */
-  edid_dna  /* EDID */
+  edid_oculus_fake /* EDID */
 };
 
 

@@ -35,7 +35,6 @@ use unisim.vcomponents.all;
 -- Display Type           Refresh  Mul  Sys_Div  Phy_Div    PHY_Freq    Clock period
 -- Droid DNA               48 Hz   26      7        1        650 MHz      1538 ps
 -- Optimus P880            60 Hz   30      8        2        375 MHz      2666 ps
--- Optimus P880            60 Hz   35      10       2        437.5 MHz      179 ps
 -- Iphone 4                60 Hz   31      8        2        387.5 MHz    2580 ps
 
 entity rev1_top is
@@ -58,8 +57,8 @@ entity rev1_top is
     -- DSI PHY clock PLL divider
     g_pll_phy_div   : integer := 1;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 1538
-    );
+    g_clock_period_ps : integer := 1538    
+	);
   port (
     clk_25m_i : in std_logic;
 
