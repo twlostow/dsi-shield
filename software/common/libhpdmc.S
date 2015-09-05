@@ -67,6 +67,10 @@ _sdram_init:
 	PRINT(nl)
 	PRINT(nl)
 
+	ori	r1, r1, lo(CSR_HPDMC_IODELAY)
+	mvu	r2, 0
+	sw	(r1+0), r2
+
 	/* send init sequence */
 	bi send_init
 
@@ -75,9 +79,8 @@ send_init_return:
 	/* simulation ONLY */
 	/*RETURN(LIBHPDMC_SUCCESS)*/
 
-	PRINT(seqcomplete)
-
 	/* calibrate and set IDELAY=0 */
+	
 	mvhi	r1, hi(CSR_HPDMC_IODELAY)
 	ori	r1, r1, lo(CSR_HPDMC_IODELAY)
 	mvu	r2, (HPDMC_IDELAY_CAL)
@@ -86,7 +89,7 @@ send_init_return:
 	 * make dummy memory transfers to keep them happy.
 	 */
 #ifndef SIMULATION
-	mvu	r3, 500
+	mvu	r3, 50000
 #else
 	mvu r3, 3
 #endif
@@ -94,49 +97,39 @@ send_init_return:
 	mvhi	r4, hi(0xffffffff)
 	ori	r4, r4, lo(0xffffffff)
 dummyxfer:
-	mvhi	r1, hi(0x50000000) /* L2 writeback/invalidate */
+	mvhi	r1, hi(0x80000000) /* L2 writeback/invalidate */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x40000000) /* L2 fetch/make dirty */
+	mvhi	r1, hi(0x90000000) /* L2 fetch/make dirty */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x50000000) /* L2 writeback/invalidate */
+	mvhi	r1, hi(0x80000000) /* L2 writeback/invalidate */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x40000000) /* L2 fetch/make dirty */
+	mvhi	r1, hi(0x90000000) /* L2 fetch/make dirty */
 	sw	(r1+0), r4
 	addi	r3, r3, -1
 	bne	r3, r0, dummyxfer
 	/* now reset IODELAYs */
+
 	mvhi	r1, hi(CSR_HPDMC_IODELAY)
 	ori	r1, r1, lo(CSR_HPDMC_IODELAY)
 	mvu	r2, (HPDMC_IDELAY_RST)
 	sw	(r1+0), r2
+
 	mvu	r1, 200
 	calli	delay
+
 	mvhi	r1, hi(CSR_HPDMC_IODELAY)
 	ori	r1, r1, lo(CSR_HPDMC_IODELAY)
-	sw	(r1+0), r2
+	xor	r24, r24, r24
+	sw	(r1+0), r24
+
 	mvu	r1, 200
 	calli	delay
 
-	xor	r24, r24, r24
 
-#ifdef FEAT_PBC_MANUAL_CALIBRATION
-	/* if BTN3 is pushed, go into debug/manual mode */
-	mvhi	r1, hi(CSR_GPIO_IN)
-	ori	r1, r1, lo(CSR_GPIO_IN)
-	lw	r2, (r1+0)
-	andi	r2, r2, (GPIO_BTN3)
-	bne	r2, r0, mancal
-#endif
 
 	bi	autocalibrate
+
 autocalibrate_fail_return:
-	PRINT(autocalfail)
-#ifdef FEAT_MANUAL_CALIBRATION
-	bi	mancal /* does not return */
-#endif
-#ifdef FEAT_RETURN_STATUS
-	RETURN(LIBHPDMC_CALIBRATION_FAILED)
-#endif
 	bi	autocalibrate_fail_return
 
 autocalibrate_success_return:
@@ -144,25 +137,6 @@ autocalibrate_success_return:
 	PRINT(autocalok)
   RETURN(LIBHPDMC_SUCCESS) 
 	
-	/* small memory test */
-	mvi	r1, 0
-	xor	r2, r2, r2
-	calli	memtest
-	be	r1, r0, memtest_fail
-	PRINT(continueboot)
-	
-	RETURN(LIBHPDMC_SUCCESS)
-
-memtest_fail:
-	PRINT(testfailmsg)
-#ifdef FEAT_MANUAL_CALIBRATION
-	bi	mancal /* does not return */
-#endif
-#ifdef FEAT_RETURN_STATUS
-	RETURN(LIBHPDMC_MEMTEST_FAILED)
-#endif
-memtest_fail_loop:
-	bi	memtest_fail_loop
 
 /* clobbers: r1, r2, r3 */
 send_init:
@@ -173,7 +147,11 @@ send_init:
 	sw 	(r2+0), r3
 	
 	ori	r1, r0, 2
+
+#ifndef SIMULATION
+	mvu	r1, 7000 // wait for the clock to stabilize
 	calli	delay
+#endif
 
 	mvhi	r2, hi(CSR_HPDMC_TIMING)
 	ori	r2, r2, lo(CSR_HPDMC_TIMING)
@@ -244,7 +222,7 @@ send_init:
 autocalibrate:
 	mvhi	r1, hi(CSR_HPDMC_IODELAY)
 	ori	r1, r1, lo(CSR_HPDMC_IODELAY)
-	mvu	r24, 50 /*  was 70, input delay, change this number for your board */
+	mvu	r24, 30 /*  was 70, input delay, change this number for your board */
 	xor	r2, r2, r2
 	mvu	r3, (HPDMC_IDELAY_CE|HPDMC_IDELAY_INC)
 	be	r2, r24, idelay_loop_end
@@ -252,6 +230,11 @@ idelay_loop:
 	sw	(r1+0), r3
 	addi	r2, r2, 1
 	bne	r2, r24, idelay_loop
+	nop
+	nop
+	nop
+	nop
+	nop
 idelay_loop_end:
 	bi	autocalibrate_success_return
 

@@ -26,30 +26,32 @@ module hpdmc #(
 	       /*
 	        * The number of column address bits of the SDRAM.
 	        */
-	       parameter sdram_columndepth = 9,
+	       parameter sdram_columndepth = 10,
 
                parameter data_delay = 0,
-               parameter dqs_delay = 0
+               parameter dqs_delay = 0,
+	       parameter clock_delay = 0,
+	       parameter addr_delay = 0
                ) (
-	input                   sys_clk,
-	input                   sys_clk_n,
-	input                   sys_rst,
+	input 			sys_clk,
+	input 			sys_clk_n,
+	input 			sys_rst,
 	
 	/* Control interface */
-	input [13:0]            csr_a,
-	input                   csr_we,
-	input [31:0]            csr_di,
-	output [31:0]           csr_do,
+	input [13:0] 		csr_a,
+	input 			csr_we,
+	input [31:0] 		csr_di,
+	output [31:0] 		csr_do,
 	
 	/* Simple FML 4x64 interface to the memory contents */
 	input [sdram_depth-1:0] fml_adr,
-	input                   fml_stb,
-	input                   fml_we,
-	output                  fml_eack,
-        output reg              fml_ack,
-	input [3:0]             fml_sel,
-	input [31:0]            fml_di,
-	output [31:0]           fml_do,
+	input 			fml_stb,
+	input 			fml_we,
+	output 			fml_eack,
+        output reg 		fml_ack,
+	input [3:0] 		fml_sel,
+	input [31:0] 		fml_di,
+	output [31:0] 		fml_do,
 	
 	/* SDRAM interface.
 	 * The SDRAM clock should be driven synchronously to the system clock.
@@ -58,39 +60,76 @@ module hpdmc #(
 	 * differential clock.
 	 */
 
-        output                  sdram_clk_p,
-        output                  sdram_clk_n,
-	output reg              sdram_cke,
-	output reg              sdram_cs_n,
-	output reg              sdram_we_n,
-	output reg              sdram_cas_n,
-	output reg              sdram_ras_n,
-	output reg [12:0]       sdram_adr,
-	output reg [1:0]        sdram_ba,
+	output 			sdram_clk_p,
+	output 			sdram_clk_n,
+	output 			sdram_cke,
+	output 			sdram_cs_n,
+	output 			sdram_we_n,
+	output 			sdram_cas_n,
+	output 			sdram_ras_n,
+	output [12:0] 		sdram_adr,
+	output [1:0] 		sdram_ba,
 	
-	output [1:0]            sdram_dm,
-	inout [15:0]            sdram_dq,
-	inout [1:0]             sdram_dqs
+	output [1:0] 		sdram_dm,
+	inout [15:0] 		sdram_dq,
+	inout [1:0] 		sdram_dqs
 );
 
 /* Register all control signals. */
-wire sdram_cke_r;
-wire sdram_cs_n_r;
-wire sdram_we_n_r;
-wire sdram_cas_n_r;
-wire sdram_ras_n_r;
-wire [12:0] sdram_adr_r;
-wire [1:0] sdram_ba_r;
+   wire 			sdram_cke_r;
+   wire 			sdram_cs_n_r;
+   wire 			sdram_we_n_r;
+   wire 			sdram_cas_n_r;
+   wire 			sdram_ras_n_r;
+   wire [12:0] 			sdram_adr_r;
+   wire [1:0] 			sdram_ba_r;
 
-always @(posedge sys_clk) begin
-	sdram_cke <= sdram_cke_r;
-	sdram_cs_n <= sdram_cs_n_r;
-	sdram_we_n <= sdram_we_n_r;
-	sdram_cas_n <= sdram_cas_n_r;
-	sdram_ras_n <= sdram_ras_n_r;
-	sdram_ba <= sdram_ba_r;
-	sdram_adr <= sdram_adr_r;
-end
+   reg 			sdram_cke_predelay;
+   reg 			sdram_cs_n_predelay;
+   reg 			sdram_we_n_predelay;
+   reg 			sdram_cas_n_predelay;
+   reg 			sdram_ras_n_predelay;
+   reg [12:0] 			sdram_adr_predelay;
+   reg [1:0] 			sdram_ba_predelay;
+
+/* -----\/----- EXCLUDED -----\/-----
+   always @(posedge sys_clk) begin
+      sdram_cke_predelay <= sdram_cke_r;
+      sdram_cs_n_predelay <= sdram_cs_n_r;
+      sdram_we_n_predelay <= sdram_we_n_r;
+      sdram_cas_n_predelay <= sdram_cas_n_r;
+      sdram_ras_n_predelay <= sdram_ras_n_r;
+      sdram_ba_predelay <= sdram_ba_r;
+      sdram_adr_predelay <= sdram_adr_r;
+   end
+ -----/\----- EXCLUDED -----/\----- */
+
+   hpdmc_ofd
+     #(
+       .g_width(20),
+       .g_delay(addr_delay)
+       )
+   delay_ctrl 
+     (
+      .clk_p_i(sys_clk),
+      .clk_n_i(sys_clk_n),
+      
+      .in_i( {sdram_cke_r, 
+	      sdram_cs_n_r,
+	      sdram_we_n_r,
+	      sdram_cas_n_r,
+	      sdram_ras_n_r,
+	      sdram_ba_r,
+	      sdram_adr_r } ),
+      .out_o( {sdram_cke, 
+	       sdram_cs_n,
+	       sdram_we_n,
+	       sdram_cas_n,
+	       sdram_ras_n,
+	       sdram_ba,
+	       sdram_adr } ) 
+      );
+       
 
 /* Mux the control signals according to the "bypass" selection.
  * CKE always comes from the control interface.
@@ -178,18 +217,17 @@ wire [3:0] precharge_safe;
 
   
    wire    eack;
-   reg [4:0] eack_d;
+   reg  eack_d, eack_d1;
+
+   always@(posedge sys_clk)
+     begin
+	eack_d <= eack;
+	eack_d1 <= eack_d;
+     end
    
-   assign fml_eack = eack;
+   
+   assign fml_eack = (fml_we ? eack : eack_d1 );
 
-   always@(posedge sys_clk)
-     eack_d <= {eack_d[3:0], eack};
-
-   always@(posedge sys_clk)
-     if(fml_we)
-       fml_ack <= eack_d[0];
-     else
-       fml_ack <= eack_d[4];
    
 
 hpdmc_mgmt #(
@@ -247,7 +285,8 @@ hpdmc_datactl datactl(
 /* Data path */
 hpdmc_ddrio #(
               .data_delay(data_delay),
-              .dqs_delay(dqs_delay)
+              .dqs_delay(dqs_delay),
+	      .clock_delay(clock_delay)
 ) drio (
 	.sys_clk(sys_clk),
 	.sys_clk_n(sys_clk_n),

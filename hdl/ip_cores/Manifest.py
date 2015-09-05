@@ -14,6 +14,7 @@ files = ["gc_glitch_filt.vhd",
 "inferred_async_fifo.vhd",
 "inferred_sync_fifo.vhd",
 "jtag_tap.v",
+"jtag_cores.v",
 "lm32_adder.v",
 "lm32_addsub.v",
 "lm32_allprofiles.v",
@@ -40,3 +41,5 @@ files = ["gc_glitch_filt.vhd",
 "generic_async_fifo.vhd",
 "wb_slave_adapter.vhd",
 "xwb_dpram.vhd"];
+
+modules = {"local":"urv"}

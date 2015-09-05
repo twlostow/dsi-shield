@@ -47,10 +47,7 @@
 `define REG_LP_TX 14
 `define REG_GPIO 15
 
-`define REG_DBG_WADDR 16
-`define REG_DBG_RADDR 17
-`define REG_DBG_DATA 19
-`define REG_DBG_CTL 20
+`define REG_LANE_CTRL 16
 
 `define DBG_CTL_SEND 1
 `define DBG_CTL_NEXT 2

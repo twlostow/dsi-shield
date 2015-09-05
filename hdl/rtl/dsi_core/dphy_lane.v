@@ -41,9 +41,9 @@ module dphy_lane
    // requests transition to HS mode
    input 	    hs_request_i,
    // indicates a valid HS byte to send
-   input 	    hs_valid_i,
-   // HS byte to send
-   input [7:0] 	    hs_data_i,
+   input [3:0]	    hs_valid_i,
+   // HS data to send (all lanes)
+   input [31:0]     hs_data_i,
    // HS mode data request
    output reg 	    hs_ready_o,
 
@@ -62,6 +62,9 @@ module dphy_lane
    output reg [7:0] serdes_data_o,
    output reg 	    serdes_oe_o,
 
+   input [1:0] 	    lane_sel_i,
+   input 	    lane_invert_i,
+   
    // LP buffer outputs	
    output 	    lp_txp_o,
    output 	    lp_txn_o,
@@ -69,7 +72,7 @@ module dphy_lane
    );
 
    // when true, the lane polarity (both HS and LP) is inverted. Useful for PCB design.
-   parameter integer g_invert = 0;
+//   parameter integer g_invert = 0;
    
 `define LP_ACTIVE 0
 `define LP_POWERUP 1
@@ -100,6 +103,30 @@ module dphy_lane
    reg               lp_hs_entered;
    reg               serdes_data_lastbit;
 
+   reg [7:0] 	     hs_data_muxed;
+   reg 		     hs_valid_muxed;
+   reg 		     hs_request_muxed;
+
+   
+   // software-controlled lane swap & invert
+   always@(posedge clk_i or negedge rst_n_i)
+     if (!rst_n_i) begin
+	hs_data_muxed <= 0;
+	hs_valid_muxed <= 0;
+	hs_request_muxed <= 0;
+	
+     end else begin
+	case (lane_sel_i)
+	  2'b00: begin hs_data_muxed <= hs_data_i[7:0]; hs_valid_muxed <= hs_valid_i[0]; end
+	  2'b01: begin hs_data_muxed <= hs_data_i[15:8]; hs_valid_muxed <= hs_valid_i[1]; end
+	  2'b10: begin hs_data_muxed <= hs_data_i[23:16]; hs_valid_muxed <= hs_valid_i[2]; end
+	  2'b11: begin hs_data_muxed <= hs_data_i[31:24]; hs_valid_muxed <= hs_valid_i[3]; end
+	endcase // case (lane_sel_i)
+	hs_request_muxed <= hs_request_i;
+     end
+   
+  
+   
 `define LP_TX(txp, txn, next_lp_state) \
    begin lp_oe_o <= 1;\
                     lp_txp_int <= txp;\
@@ -134,7 +161,7 @@ module dphy_lane
                    
                    if(lp_request_i)
 	             lp_state <= `LP_REQUEST_LPDT0;
-                   else if(hs_request_i)
+                   else if(hs_request_muxed)
                      lp_state <= `LP_REQUEST_HS0;
                    else
                      idle_o <= 1;
@@ -151,7 +178,7 @@ module dphy_lane
                 lp_oe_o <= 0;
                 lp_hs_entered <= 1;
                 
-                if(!hs_request_i)
+                if(!hs_request_muxed)
                   lp_state <= `LP_HS_EXIT0;
              end
 
@@ -244,31 +271,31 @@ module dphy_lane
 
 
    always@(posedge clk_i)
-     if(lp_state == `LP_HS_ACTIVE && hs_request_i && hs_valid_i)
-       serdes_data_lastbit <= (g_invert ? ~hs_data_i[7] : hs_data_i[7]);
+     if(lp_state == `LP_HS_ACTIVE && hs_request_muxed && hs_valid_muxed)
+       serdes_data_lastbit <= (lane_invert_i ? ~hs_data_muxed[7] : hs_data_muxed[7]);
    
-   always@(hs_data_i, hs_valid_i, lp_hs_entered, lp_state, serdes_data_lastbit)
+   always@(hs_data_muxed, hs_valid_muxed, lp_hs_entered, lp_state, serdes_data_lastbit)
      begin
         // trailing sequence when exiting HS (inverse of last transmitted bit)
         if(lp_state == `LP_HS_EXIT0 || lp_state == `LP_HS_EXIT1 || lp_state == `LP_HS_EXIT2)
           serdes_data_o <= {8{~serdes_data_lastbit}};
-        else if(hs_valid_i)
-          serdes_data_o <= (g_invert ? ~hs_data_i : hs_data_i);
+        else if(hs_valid_muxed)
+          serdes_data_o <= (lane_invert_i ? ~hs_data_muxed : hs_data_muxed);
         // leading sequence (all 0's)
         else
-          serdes_data_o <= (g_invert ? 8'hff:8'h00);
+          serdes_data_o <= (lane_invert_i ? 8'hff:8'h00);
         serdes_oe_o <= lp_hs_entered;
      end
    
-   assign lp_txp_o = (g_invert ? lp_txn_int : lp_txp_int);
-   assign lp_txn_o = (g_invert ? lp_txp_int : lp_txn_int);
+   assign lp_txp_o = (lane_invert_i ? lp_txn_int : lp_txp_int);
+   assign lp_txn_o = (lane_invert_i ? lp_txp_int : lp_txn_int);
    
    always@(posedge clk_i)
      if(!rst_n_i)
        hs_ready_o <= 0;
      else if(tick_i && lp_hs_entered) 
        hs_ready_o <= 1;
-     else if(!hs_request_i) 
+     else if(!hs_request_muxed) 
        hs_ready_o <= 0;
 
 endmodule

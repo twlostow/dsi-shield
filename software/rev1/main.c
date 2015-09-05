@@ -20,6 +20,7 @@
 /* main.c - main LM32 application */
 
 #include <stdint.h>
+#include <stdio.h>
 
 #include "board.h"
 #include "libhpdmc.h"
@@ -27,7 +28,7 @@
 #include "fb.h"
 #include "panels.h"
 
-#include "../bitmaps/logo.h"
+//#include "../bitmaps/logo.h"
 
 static struct dsi_panel_config *panel;
 
@@ -43,9 +44,10 @@ void show_nosignal_screen()
     fb_clear(fb_makecolor(0,0,0));
 
     fb_rect(0, 0, fb_width-1, fb_height-1, fb_makecolor(255,255,255));
-    fb_draw_bitmap ( fb_width / 2 - bmp_logo.h / 2, fb_height / 2 - bmp_logo.w , &bmp_logo );
+//    fb_draw_bitmap ( fb_width / 2 - bmp_logo.h / 2, fb_height / 2 - bmp_logo.w , &bmp_logo );
 
     center_text(&font_helv17, fb_height / 2 + 40, 4, "No HDMI signal :-(", fb_makecolor(255,32,32));
+
 
     char str[80];
 
@@ -102,6 +104,7 @@ void hdmi_fsm()
  			case ST_NO_HDMI:
  			  	if(fb_hdmi_check_link())
  			  	{
+					pp_printf("HDMI: link up\n");
 				 	fb_enable_overlay();
 				 	fb_clear(fb_makecolor(0xff,0xff,0xf8));
 				 	state = ST_ACTIVE_HDMI;
@@ -111,6 +114,7 @@ void hdmi_fsm()
 		  	case ST_ACTIVE_HDMI: 
 				if(!fb_hdmi_check_link())
  			  	{
+					pp_printf("HDMI: link down\n");
  			  		fb_disable_overlay();
  			  		show_nosignal_screen(); 
  			  		state = ST_NO_HDMI;
@@ -122,6 +126,10 @@ void hdmi_fsm()
 }
 
 
+void memtest_test(void *buffer, size_t megabytes, int passes);
+
+volatile uint32_t *buf = 0x80000000;
+
 main()
 {
 
@@ -130,6 +138,60 @@ main()
 	uart_init_hw();
 	_sdram_init();
 
+//	memtest_init();
+
+
+//	for(;;)
+//	    memtest_test((void *) 0x80000000, 16, 10);
+#if 0
+
+//	pll_init();
+
+	pp_printf("running memtest...\n");
+    int iter=0;
+	for(;;)
+	{
+	    pp_printf("iter %d!\n",iter++);
+
+	int n = 0x1000000;
+
+	for(i=0;i<n;i++)
+	    buf[i] = i;
+
+//	for(i=0;i<100;i++)
+//	    buf[i] = i;
+
+	
+	for(i=0;i<n;i++)
+	{
+	    int v1 = i&0xffff;
+	    int v2 = buf[i]&0xffff;
+	    if(v1 != v2)
+	    pp_printf("%x != %x\n", v1, v2 );
+	}
+	}
+//	for(;;);
+
+	*(volatile uint32_t *) 0x80000000 = 0xffff0000;
+
+#if 1
+	for(;;)
+	{
+	    int i;
+	    for(i=0;i<1000000;i++);
+	//    pp_printf("ping!\n");
+
+	    i = *(volatile uint32_t *) 0x80000000;
+
+//	    uint32_t v = *(volatile uint32_t *) 0x80000000;// = 0xffffffff;
+//	    v = *(volatile uint32_t *) 0x80001000;// = 0xffffffff;
+	}
+#endif
+
+#endif
+
+
+
 	panel =  panel_get_config(PANEL_TYPE);
 	dsi_init(panel);
 	if(panel->edid_data)
@@ -137,6 +199,13 @@ main()
 	fb_set_mode (panel->width, panel->height);
 
 	pp_printf("Panel : %d x %d\n", panel->width, panel->height) 	;
+
+	memtest_init();
+
+	//for(;;)
+	//    memtest_test((void *) 0x80000000, 16, 10);
+
+//	for(;;);
 
 	hdmi_fsm();
 

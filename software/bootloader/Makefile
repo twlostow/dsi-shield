@@ -7,7 +7,7 @@ OBJDUMP =	$(CROSS_COMPILE)objdump
 OBJCOPY =	$(CROSS_COMPILE)objcopy
 SIZE =		$(CROSS_COMPILE)size
 
-CFLAGS = -Os -I../common -I.  -mmultiply-enabled -mbarrel-shift-enabled -ffunction-sections -fdata-sections
+CFLAGS = -Os -I../common -I.  -mmultiply-enabled -mbarrel-shift-enabled -ffunction-sections -fdata-sections -Wl,--gc-sections
 OBJS = boot-crt0.o ../common/uart.o boot.o
 LDS = boot.ld
 LDFLAGS =  -mmultiply-enabled -mbarrel-shift-enabled -Wl,--gc-sections

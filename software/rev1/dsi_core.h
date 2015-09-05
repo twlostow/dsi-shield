@@ -40,7 +40,7 @@
 #define REG_TEST_CTL      0x34
 #define REG_LP_TX         0x38
 #define REG_DSI_GPIO      0x3c
-#define REG_DBG_DATA      0x4c
+#define REG_DSI_LANE_CTL      0x40
 
 struct dsi_panel_config {
   char *name;

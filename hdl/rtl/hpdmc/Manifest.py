@@ -14,5 +14,6 @@ files = [
 "spartan6/hpdmc_oddr2.v",
 "spartan6/hpdmc_oddr16.v",
 "spartan6/hpdmc_oddr4.v",
-"spartan6/hpdmc_iodelay.v"
+"spartan6/hpdmc_iodelay.v",
+"spartan6/hpdmc_odelay.v"
 ];

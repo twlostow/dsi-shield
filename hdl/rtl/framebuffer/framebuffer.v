@@ -29,6 +29,8 @@
 `define REG_MIXCTL 12
 `define REG_EDID_CTL 16
 `define REG_PLL_STATUS 20
+`define REG_PLL_CONFIG 24
+`define REG_PWM_CONFIG 28
 
 module fml_framebuffer  
   #(
@@ -70,7 +72,20 @@ module fml_framebuffer
 
 	output reg [7:0] 	 edid_addr_o,
 	output reg [7:0] 	 edid_data_o,
-	output reg 		 edid_wr_o
+	output reg 		 edid_wr_o,
+
+	output reg 		 pll_sys_clk_sel_o,
+
+	output reg 		 pll_rst_o,
+	output reg [15:0] 	 pll_do_o,
+	output reg 		 pll_den_o,
+	output reg 		 pll_dwe_o,
+	output reg [4:0] 	 pll_daddr_o,
+	input [15:0] 		 pll_di_i,
+	input 			 pll_drdy_i,
+	input 			 pll_locked_i,
+
+	output 			 backlight_pwm_o
 	);
 
    
@@ -84,9 +99,11 @@ module fml_framebuffer
    wire 			 xfer_valid;
    reg [7:0] 			 r_mixctl;
    
-   
-   
-   
+   reg [6:0] 			 pwm_prescaler;
+   reg [6:0] 			 pwm_count;
+   reg [6:0] 			 pwm_setting;
+
+   reg 				 pll_ready;
    
    always@(posedge clk_sys_i)
      if(!xfer_valid || !rst_n_i)
@@ -183,6 +200,14 @@ module fml_framebuffer
      end
 
    assign xfer_valid = ( (fml_ack & ~pix_almost_full_i ) | (state == `ST_XFER_DATA));
+//synthesis translate_off
+      
+   initial begin
+      pll_sys_clk_sel_o = 0;
+   end
+//synthesis translate_on
+
+   wire wb_stall;
    
    
    always@(posedge clk_sys_i)
@@ -191,9 +216,22 @@ module fml_framebuffer
           r_enable <= 0;
           r_pix32 <= 0;
 	  r_mixctl <= 0;
+	  pll_sys_clk_sel_o <= 0;
+	  pll_ready <= 0;
+	  pll_den_o <= 0;
+	  pll_rst_o <= 0;
+	  pll_dwe_o <= 0;
+	  
+	  
 	  edid_wr_o <= 0;
        end else begin
           edid_wr_o <= 0;
+	  if ( pll_drdy_i )
+	    pll_ready <= 1;
+
+	  pll_dwe_o <= 0;
+	  pll_den_o <= 0;
+	  
 	  
 	  if(wb_stb_i & wb_cyc_i) begin
              if(wb_we_i)
@@ -206,8 +244,22 @@ module fml_framebuffer
 		    edid_addr_o <= wb_dat_i[7:0];
 		    edid_data_o <= wb_dat_i[15:8];
 		    edid_wr_o <= 1;
-		    
 		 end
+		 
+		  `REG_PLL_CONFIG: begin
+
+		     pll_do_o <= wb_dat_i[15:0];
+		     pll_den_o <= wb_dat_i[16] & ~wb_stall ;
+		     pll_dwe_o <= wb_dat_i[17];
+		     pll_daddr_o <= wb_dat_i[22:18];
+		     pll_sys_clk_sel_o <= wb_dat_i[31];
+		     pll_rst_o <= wb_dat_i[30];
+		     
+		     pll_ready <= 0;
+		  end
+     
+		 `REG_PWM_CONFIG: 
+		   pwm_setting <= wb_dat_i[7:0];
 		 
 		 
                endcase // case (wb_adr_i)
@@ -223,6 +275,13 @@ module fml_framebuffer
 		      wb_dat_o[5:0] <= g_pll_mul;
 		      wb_dat_o[11:6] <= g_pll_sys_div;
 		      wb_dat_o[17:12] <= g_pll_phy_div;
+		   end
+
+		 `REG_PLL_CONFIG:
+		   begin
+		      wb_dat_o[15:0] <= pll_di_i;
+		      wb_dat_o[16] <= pll_ready;
+		      wb_dat_o[19] <= pll_locked_i;
 		   end
 		 
 		 
@@ -240,7 +299,9 @@ module fml_framebuffer
      else
        cyc_dly <= { cyc_dly[1:0], wb_cyc_i & wb_stb_i };
 
-   assign wb_stall_o = ~ (~cyc_dly[1] & cyc_dly[0]);
+   assign wb_stall = ~ (~cyc_dly[1] & cyc_dly[0]);
+   assign wb_stall_o  =wb_stall;
+   
    assign wb_ack_o = cyc_dly==3;
    
    assign pix_vsync_o = 1;

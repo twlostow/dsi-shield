@@ -427,7 +427,7 @@ package gencores_pkg is
     generic
       (
         -- Maximum value of watchdog timer in clk_i cycles
-        g_wdt_max : positive := 65535
+        g_wdt_max : integer := 65535
         );
     port
       (

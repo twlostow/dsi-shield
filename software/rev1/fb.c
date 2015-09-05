@@ -22,12 +22,12 @@
 #include "board.h"
 #include "fb.h"
 
-#define FB_CTL 0x40000
-#define FB_BASE 0x40004
-#define FB_SIZE 0x40008
-#define FB_MIXCTL 0x4000c
-#define FB_EDID 0x40010
-#define FB_PLL_STATUS 0x40014
+#define FB_CTL 		0xc0040000
+#define FB_BASE 	0xc0040004
+#define FB_SIZE 	0xc0040008
+#define FB_MIXCTL 	0xc004000c
+#define FB_EDID 	0xc0040010
+#define FB_PLL_STATUS 	0xc0040014
 
 
 #define MIXCTL_VSYNC 0x200
@@ -35,7 +35,7 @@
 #define MIXCTL_OVERLAY_EN 0x1
 #define MIXCTL_FBUF_PURGE 0x2
 
-void *framebuffer =(void *) 0x40000000;
+void *framebuffer =(void *) 0x80000000;
 int fb_width;
 int fb_height;
 

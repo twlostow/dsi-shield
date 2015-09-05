@@ -96,6 +96,7 @@
                  
                if(fml_ack) 
                  begin
+		    fml_do <= 0;
                     fml_sel <= is_write ? 0 : 4'hf;
                     fml_stb <= 0;
                     wb_dat_o <= fml_di;
@@ -111,13 +112,14 @@
                  wb_stall_o <= 1;
    
                  if(cnt == 2)
+		   
                    begin
                       fml_stb <= 0;
                       fml_we <= 0;
                       wb_ack_o <= 1;
                       state <= `ST_IDLE;
-                      fml_sel <= 4'hx;
-                      fml_do <= 32'hx;
+                      fml_sel <= 0;
+                      fml_do <= 0;
                    end
               end
           endcase // case (state)

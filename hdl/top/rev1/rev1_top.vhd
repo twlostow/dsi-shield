@@ -51,13 +51,13 @@ entity rev1_top is
     -- Fphy = 25 MHz * g_pll_mul / g_pll_phy_div
 
     -- PLL multiplier
-    g_pll_mul       : integer := 31;
+    g_pll_mul         : integer := 31;
     -- System clock PLL divider
-    g_pll_sys_div   : integer := 8;
+    g_pll_sys_div     : integer := 8;
     -- DSI PHY clock PLL divider
-    g_pll_phy_div   : integer := 2;
+    g_pll_phy_div     : integer := 2;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 2580
+    g_clock_period_ps : integer := 1538
     );
   port (
     clk_25m_i : in std_logic;
@@ -131,7 +131,7 @@ architecture rtl of rev1_top is
       g_fifo_size        : integer := 4096;
       g_invert_lanes     : integer := 0;
       g_invert_clock     : integer := 0;
-      g_clock_period_ps : integer := 2000
+      g_clock_period_ps  : integer := 2000
       );
     port(
       clk_sys_i : in std_logic;
@@ -345,10 +345,10 @@ architecture rtl of rev1_top is
 
   component fml_framebuffer
     generic (
-      g_fml_depth : integer := 25;
+      g_fml_depth   : integer := 25;
       g_pll_phy_div : integer;
       g_pll_sys_div : integer;
-      g_pll_mul : integer 
+      g_pll_mul     : integer
       );
     port (
       clk_sys_i : in std_logic;
@@ -387,34 +387,24 @@ architecture rtl of rev1_top is
       );
   end component;
 
-  component dvi_decoder
+  component hdmi_rx_wrapper
     port (
-      tmdsclk_p : in std_logic;
-      tmdsclk_n : in std_logic;
-
-      blue_p : in std_logic;
-      blue_n : in std_logic;
-
-      green_p : in std_logic;
-      green_n : in std_logic;
-
-      red_p : in std_logic;
-      red_n : in std_logic;
-      exrst : in std_logic;
-
-      pclk : out std_logic;
-
-      hsync : out std_logic;
-      vsync : out std_logic;
-      de    : out std_logic;
-
-      red         : out std_logic_vector(7 downto 0);
-      green       : out std_logic_vector(7 downto 0);
-      blue        : out std_logic_vector(7 downto 0);
-      green_vld   : out std_logic;
-      pixel       : out std_logic_vector(47 downto 0);
-      pixel_valid : out std_logic;
-      link_up     : out std_logic
+      rst_a_i : in std_logic;
+      tmds_clk_p_i : in std_logic;
+      tmds_clk_n_i  : in std_logic;
+      red_p_i : in std_logic;
+      red_n_i : in std_logic;
+      green_p_i : in std_logic;
+      green_n_i : in std_logic;
+      blue_p_i : in std_logic;
+      blue_n_i : in std_logic;
+      clk_pixel_o : out std_logic;
+      hsync_o : out std_logic;
+      vsync_o : out std_logic;
+      de_o    : out std_logic;
+      pixel_o       : out std_logic_vector(47 downto 0);
+      pixel_valid_o : out std_logic;
+      link_up_o     : out std_logic
       );
   end component;
 
@@ -514,6 +504,9 @@ architecture rtl of rev1_top is
   signal csr_we      : std_logic;
   signal dsi_wr_sync : std_logic_vector(7 downto 0);
 
+  signal pll_clk_in, pll_clk_fb, pll_clk_dsi: std_logic;
+  signal pll_clk_sys, pll_clk_sys_n : std_logic;
+
   signal dsif_almost_full : std_logic;
   signal dsif_wr          : std_logic;
   signal dsif_pix         : std_logic_vector(47 downto 0);
@@ -543,32 +536,81 @@ architecture rtl of rev1_top is
   signal edid_addr, edid_data        : std_logic_vector(7 downto 0);
   signal edid_wr                     : std_logic;
   signal dsi_gpio                    : std_logic_vector(2 downto 0);
+
+
+  
+  signal uart_txd_int : std_logic;
 begin  -- rtl
 
-  rst_sys <= not rst_n_sys;
   
+  uart_txd_o <= uart_txd_int;
+  
+  rst_sys <= not rst_n_sys;
+
   U_Sync_DSI_Reset : gc_sync_ffs
     port map (
-    clk_i    => clk_dsi,
-    rst_n_i  => '1',
-    data_i   => rst_n_sys,
-    synced_o => rst_n_dsi);
+      clk_i    => clk_dsi,
+      rst_n_i  => '1',
+      data_i   => rst_n_sys,
+      synced_o => rst_n_dsi);
 
-  U_PLL : dsi_pll_spartan6
-    generic map (
-      g_mul     => g_pll_mul,
-      g_sys_div => g_pll_sys_div,
-      g_phy_div => g_pll_phy_div)
+  U_IbufG_CLKIn: IBUFG
     port map (
-      clk_in_i    => clk_25m_i,
-      clk_sys_o   => clk_sys,
-      clk_sys_n_o => clk_sys_n,
-      clk_dsi_o   => clk_dsi,
-      clk_phy_o   => clk_phy,
-      locked_o    => pll_locked);
+      I => clk_25m_i,
+      O => pll_clk_in
+      );
+
+  
+  U_PLL : PLL_BASE
+    generic map (
+    BANDWIDTH          => "OPTIMIZED",
+    CLK_FEEDBACK       => "CLKFBOUT",
+    COMPENSATION       => "SYSTEM_SYNCHRONOUS",
+    DIVCLK_DIVIDE      => 1,
+    CLKFBOUT_MULT      => g_pll_mul,
+    CLKFBOUT_PHASE     => 0.000,
+    CLKOUT0_DIVIDE     => g_pll_phy_div,
+    CLKOUT0_PHASE      => 0.000,
+    CLKOUT0_DUTY_CYCLE => 0.500,
+    CLKOUT1_DIVIDE     => g_pll_phy_div * 8,
+    CLKOUT1_PHASE      => 0.000,
+    CLKOUT1_DUTY_CYCLE => 0.500,
+    CLKOUT2_DIVIDE     => g_pll_sys_div,
+    CLKOUT2_PHASE      => 0.000,
+    CLKOUT2_DUTY_CYCLE => 0.500,
+    CLKOUT3_DIVIDE     => g_pll_sys_div,
+    CLKOUT3_PHASE      => 180.000,
+    CLKOUT3_DUTY_CYCLE => 0.500,
+    CLKIN_PERIOD       => 40.000,
+    REF_JITTER         => 0.010)
+    port map (
+      CLKIN    => pll_clk_in,
+      CLKFBOUT => pll_clk_fb,
+      CLKOUT0  => clk_phy,
+      CLKOUT1  => pll_clk_dsi,
+      CLKOUT2  => pll_clk_sys,
+      CLKOUT3  => pll_clk_sys_n,
+      LOCKED   => pll_locked,
+      RST      => '0',
+      CLKFBIN  => pll_clk_fb);
 
   pll_locked_n <= not pll_locked;
 
+  U_BufG_CLK_DSI: BUFG
+    port map (
+      I => pll_clk_dsi,
+      O => clk_dsi);
+
+    U_BufG_CLK_SYS: BUFG
+    port map (
+      I => pll_clk_sys,
+      O => clk_sys);
+
+  U_BufG_CLK_SYS_N: BUFG
+    port map (
+      I => pll_clk_sys_n,
+      O => clk_sys_n);
+  
   U_Reset_Gen : reset_gen
     port map (
       clk_sys_i        => clk_sys,
@@ -631,7 +673,7 @@ begin  -- rtl
       slave_i    => cnx_master_out(c_slave_uart),
       slave_o    => cnx_master_in(c_slave_uart),
       uart_rxd_i => uart_rxd_i,
-      uart_txd_o => uart_txd_o);
+      uart_txd_o => uart_txd_int);
 
   csr_we <= cnx_master_out(c_slave_ddram_csr).cyc and cnx_master_out(c_slave_ddram_csr).stb and
             cnx_master_out(c_slave_ddram_csr).we;
@@ -766,10 +808,10 @@ begin  -- rtl
 
   U_Framebuffer : fml_framebuffer
     generic map (
-      g_fml_depth => 25,
+      g_fml_depth   => 25,
       g_pll_phy_div => g_pll_phy_div,
       g_pll_sys_div => g_pll_sys_div,
-      g_pll_mul => g_pll_mul
+      g_pll_mul     => g_pll_mul
       )
     port map (
       clk_sys_i => clk_sys,
@@ -809,32 +851,32 @@ begin  -- rtl
 
 
   gen_with_hdmi_sampler : if (g_with_hdmi = true) generate
-    U_HDMI_RX : dvi_decoder
+    U_HDMI_RX : hdmi_rx_wrapper
       port map
       (
-        tmdsclk_p => hdmi_rx_p_i(3),
-        tmdsclk_n => hdmi_rx_n_i(3),
+        rst_a_i => rst_sys,
+        
+        tmds_clk_p_i => hdmi_rx_p_i(3),
+        tmds_clk_n_i => hdmi_rx_n_i(3),
 
-        blue_p => hdmi_rx_p_i(0),
-        blue_n => hdmi_rx_n_i(0),
+        blue_p_i => hdmi_rx_p_i(0),
+        blue_n_i => hdmi_rx_n_i(0),
 
-        green_p => hdmi_rx_p_i(1),
-        green_n => hdmi_rx_n_i(1),
+        green_p_i => hdmi_rx_p_i(1),
+        green_n_i => hdmi_rx_n_i(1),
 
-        red_p => hdmi_rx_p_i(2),
-        red_n => hdmi_rx_n_i(2),
+        red_p_i => hdmi_rx_p_i(2),
+        red_n_i => hdmi_rx_n_i(2),
 
-        exrst => rst_sys,
+        clk_pixel_o => hdmi_pclk,
 
-        pclk => hdmi_pclk,
+        hsync_o => hdmi_hsync,
+        vsync_o => hdmi_vsync,
+        de_o    => hdmi_de,
 
-        hsync => hdmi_hsync,
-        vsync => hdmi_vsync,
-        de    => hdmi_de,
-
-        pixel       => hdmi_pixel,
-        link_up     => hdmi_link_up,
-        pixel_valid => hdmi_valid
+        link_up_o     => hdmi_link_up,
+        pixel_o       => hdmi_pixel,
+        pixel_valid_o => hdmi_valid
         );
 
     

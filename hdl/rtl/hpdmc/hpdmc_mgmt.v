@@ -58,9 +58,14 @@ parameter rowdepth = sdram_depth-2-1-(sdram_columndepth+2)+1;
 
 wire [sdram_depth-2-1:0] address32 = {address, 1'b0};
 
-wire [sdram_columndepth-1:0] col_address = address32[sdram_columndepth-1:0];
+/*wire [sdram_columndepth-1:0] col_address = address32[sdram_columndepth-1:0];
 wire [1:0] bank_address = address32[sdram_columndepth+1:sdram_columndepth];
-wire [rowdepth-1:0] row_address = address32[sdram_depth-2-1:sdram_columndepth+2];
+wire [rowdepth-1:0] row_address = address32[sdram_depth-2-1:sdram_columndepth+2];*/
+
+wire [sdram_columndepth-1:0] col_address = address32[sdram_columndepth-1:0];
+wire [rowdepth-1:0] row_address = address32[sdram_depth-4-1:sdram_columndepth];
+wire [1:0] bank_address = address32[sdram_depth-2-1:sdram_depth-4];
+   
 
 reg [3:0] bank_address_onehot;
 always @(*) begin

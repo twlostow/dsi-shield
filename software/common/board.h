@@ -26,15 +26,15 @@
 
 #define BASE_CLOCK 25000000 // Xtal frequency
 
-#define BASE_UART 0x10000
-#define BASE_DSI 0x20000
-#define BASE_FBCTL 0x40000
+#define BASE_UART  0xc0010000
+#define BASE_DSI   0xc0020000
+#define BASE_FBCTL 0xc0040000
 
-#define BASE_SDRAM 0x40000000
+#define BASE_SDRAM 0x80000000
 
 #define UART_BAUDRATE 115200
 
-#define FB_PLL_STATUS 0x40014
+#define FB_PLL_STATUS 0xc0040014
 
 static inline void writel ( uint32_t reg, uint32_t val)
 {
@@ -48,9 +48,7 @@ static inline uint32_t readl ( uint32_t reg )
 
 static inline unsigned int board_system_freq()
 {
-    unsigned int pll_mul = readl (FB_PLL_STATUS) & 0x3f;
-    unsigned int pll_div = (readl (FB_PLL_STATUS) >> 6) & 0x3f;
-    return (unsigned int)BASE_CLOCK * pll_mul / pll_div;
+    return 90000000;
 }
 
 static inline unsigned int board_phy_freq()

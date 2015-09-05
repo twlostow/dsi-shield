@@ -37,26 +37,22 @@ module fmlarb_dack(
 
 wire read = eack & ~we;
 wire write = eack & we;
-   
-reg ack_read3;
+
 reg ack_read2;
 reg ack_read1;
 reg ack_read0;
 
-   always @(posedge sys_clk) begin
-      if(sys_rst) begin
-	 ack_read3 <= 1'b0;
-	 ack_read2 <= 1'b0;
-	 ack_read1 <= 1'b0;
-	 ack_read0 <= 1'b0;
-      end else begin
-         ack_read3 <= read;
-         
-	 ack_read2 <= ack_read3;
-	 ack_read1 <= ack_read2;
-	 ack_read0 <= ack_read1;
-      end
-   end
+always @(posedge sys_clk) begin
+	if(sys_rst) begin
+		ack_read2 <= 1'b0;
+		ack_read1 <= 1'b0;
+		ack_read0 <= 1'b0;
+	end else begin
+		ack_read2 <= read;
+		ack_read1 <= ack_read2;
+		ack_read0 <= ack_read1;
+	end
+end
 
 reg ack0;
 always @(posedge sys_clk) begin
@@ -64,8 +60,9 @@ always @(posedge sys_clk) begin
 		ack0 <= 1'b0;
 		ack <= 1'b0;
 	end else begin
-	   ack0 <= ack_read0;//|write;
-	   ack <= ack0|write;
+//	   ack0 <= ack_read0;
+	   ack <= ack_read0|write;
+
 	end
 end
 

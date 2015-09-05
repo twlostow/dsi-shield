@@ -87,12 +87,12 @@ module hpdmc_ddrio (
       .RST                    (1'b0));
 
    ODDR2
-     #(.DDR_ALIGNMENT  ("C0"),
+     #(.DDR_ALIGNMENT  ("NONE"),
        .INIT           (1'b0),
        .SRTYPE         ("ASYNC"))
    oddr2_inst
-     (.D0             (1'b0),
-      .D1             (1'b1),
+     (.D0             (1'b1),
+      .D1             (1'b0),
       .C0             (sys_clk),
       .C1             (sys_clk_n),
       .CE             (1'b1),
@@ -139,6 +139,10 @@ hpdmc_oddr16 oddr_dq(
 	.S(1'b0)
 );
 
+   wire [31:0] di_int;
+   reg [31:0]  di_reg;
+   
+   
    hpdmc_iodelay #(
                    .ODELAY_VALUE(data_delay),
                    .size ( 16 ) )
@@ -160,8 +164,8 @@ hpdmc_oddr16 oddr_dq(
              );
 
 hpdmc_iddr16 iddr_dq(
-	.Q0(di[15:0]),
-	.Q1(di[31:16]),
+	.Q0(di_int[15:0]),
+	.Q1(di_int[31:16]),
 	.C0(sys_clk),
 	.C1(sys_clk_n),
 	.CE(1'b1),
@@ -170,6 +174,12 @@ hpdmc_iddr16 iddr_dq(
 	.S(1'b0)
 );
 
+   always@(posedge sys_clk)
+     di_reg <= di_int;
+   
+   assign di = {di_reg[15:0], di_int[31:16]};
+   
+   
 /*******/
 /* DM */
 /*******/

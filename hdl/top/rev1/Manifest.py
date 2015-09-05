@@ -1,7 +1,6 @@
 files = ["rev1_top.vhd", 
 	 "rev1_top.ucf",
-	 "reset_gen.vhd", 
-	 "dsi_pll_spartan6.v" ]
+	 "reset_gen.vhd" ]
 
 fetchto = "../../ip_cores"
 

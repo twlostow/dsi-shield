@@ -33,6 +33,11 @@ module dsi_core
 
    // DSI HS clock
    clk_phy_i,
+
+   // Shifted version of DSI/PHY clocks (for clock-data lane alignment)
+   clk_dsi_shifted_i,
+
+   clk_phy_shifted_i,
   
    rst_n_i,
 
@@ -100,6 +105,8 @@ module dsi_core
    // invert DSI clock when true
    parameter g_invert_clock = 0;
 
+   parameter g_use_external_dsi_clock = 0;
+
    // PHY clock period, in picoseconds. Used to set clock-to-data shift.
    parameter g_clock_period_ps = 3600;
    // picoseconds per ODELAY2 tap.  Used to set clock-to-data shift.
@@ -116,6 +123,7 @@ module dsi_core
    output        wb_ack_o, wb_stall_o;
    
    input 	 clk_sys_i, clk_phy_i, clk_dsi_i, rst_n_i;
+   input 	 clk_phy_shifted_i, clk_dsi_shifted_i;
    input 	 pll_locked_i;
    
    output 	 pix_next_frame_o;
@@ -140,6 +148,9 @@ module dsi_core
    wire [31:0] 			  host_d_out;
    wire 			  host_wr;
 
+   reg [7:0] 			  r_lane_mux;
+   reg [3:0]			  r_lane_invert;
+   reg 				  r_clock_invert;
 
    dsi_wishbone_async_bridge #(
 			       .g_csr_addr_bits(6)
@@ -199,9 +210,9 @@ module dsi_core
       for(i=0;i<g_lanes;i=i+1)
         begin
            dphy_lane
-            #(
-              .g_invert(g_invert_lanes&(1<<i)?1:0)
-              )  
+//            #(
+//              .g_invert(g_invert_lanes&(1<<i)?1:0)
+//              )  
            U_LaneX  
             (
              .clk_i(clk_dsi_i),
@@ -211,17 +222,20 @@ module dsi_core
              .tick_i(tick),
 
              .hs_request_i (phy_hs_request),
-             .hs_data_i    (phy_hs_data[ i*8 +: 8 ]),
+             .hs_data_i    (phy_hs_data),
              .hs_ready_o   (phy_hs_ready_lane[i]),
-             .hs_valid_i(phy_hs_valid[i]),
+             .hs_valid_i(phy_hs_valid),
 
              .lp_request_i (lp_request),
              .lp_data_i    (lp_data),
-             .lp_valid_i   (i ==0 ? lp_valid : 1'b0),
+             .lp_valid_i   (r_lane_mux[ i*2 +: 2] == 0 ? lp_valid : 1'b0),
              .lp_ready_o   (lp_ready_lane[i]),
 
              .serdes_data_o(serdes_data[ i*8 +: 8]),
 
+	     .lane_sel_i( r_lane_mux[ i*2 +: 2] ),
+	     .lane_invert_i( r_lane_invert[i] ), //g_invert_lanes&(1<<i)?1:0),
+	     
              .lp_txp_o(lp_txp[i]),
              .lp_txn_o(lp_txn[i]),
              .lp_oe_o(lp_oe[i])
@@ -234,14 +248,16 @@ module dsi_core
 
         end // for (i=0;i<g_lanes;i=i+1)
    endgenerate
+   
 
    wire clk_lane_ready;
    wire dsi_clk_lp_oe;
    
    dphy_lane
-     #(
-       .g_invert(g_invert_clock)
-       )  U_ClockLane  (
+//     #(
+//       .g_invert(g_invert_clock)
+//       )
+        U_ClockLane  (
                         .clk_i(clk_dsi_i),
                         .rst_n_i(rst_n_dsi),
 
@@ -249,7 +265,7 @@ module dsi_core
                         .tick_i(tick),
 
                         .hs_request_i (r_dsi_clk_en),
-                        .hs_data_i    (clk_lane_ready ? 8'haa : 8'h00),
+                        .hs_data_i    ({24'h000000, clk_lane_ready ? 8'haa : 8'h00}),
                         .hs_ready_o   (clk_lane_ready),
                         .hs_valid_i(1'b1),
 
@@ -260,6 +276,9 @@ module dsi_core
 
                         .serdes_data_o(serdes_data[g_lanes*8 +: 8]),
 
+			.lane_sel_i(2'b00),
+			.lane_invert_i( r_clock_invert ), //g_invert_clock ? 1'b1: 1'b0),
+			
                         .lp_txp_o(dsi_clk_lp_p_o),
                         .lp_txn_o(dsi_clk_lp_n_o),
                         .lp_oe_o(dsi_clk_lp_oe)
@@ -269,6 +288,7 @@ module dsi_core
    assign dsi_clk_lp_oe_o = dsi_clk_lp_oe;
 
    wire clk_serdes, serdes_strobe;
+   wire clk_serdes_shifted, serdes_strobe_shifted;
 
    dphy_serdes_pll U_BufPLL 
      (
@@ -279,15 +299,25 @@ module dsi_core
       .clk_serdes_o(clk_serdes),
       .serdes_strobe_o(serdes_strobe)
       );
+
+   dphy_serdes_pll U_BufPLL_Clk
+     (
+      .clk_phy_i(clk_phy_shifted_i),
+      .clk_dsi_i(clk_dsi_i),
+      .rst_n_a_i(rst_n_i),
+      .locked_i (pll_locked_i),
+      .clk_serdes_o(clk_serdes_shifted),
+      .serdes_strobe_o(serdes_strobe_shifted)
+      );
    
 
    wire [g_lanes:0] tx_p, tx_n;
 
    generate
-      for(i=0;i<=g_lanes;i=i+1)
+      for(i=0;i<g_lanes;i=i+1)
         begin
            dphy_serdes
-            #( .g_delay ( i == g_lanes ? 0 : g_data_delay ) )
+            #( .g_delay ( g_data_delay ) )
            U_Serdes_LaneX (
                            .clk_serdes_i(clk_serdes),
                            .clk_word_i(clk_dsi_i),
@@ -310,10 +340,23 @@ module dsi_core
       
    endgenerate
 
+   dphy_serdes
+     #( .g_delay ( 0 ) )
+   U_Serdes_ClkLane (
+                     .clk_serdes_i(clk_serdes_shifted),
+                     .clk_word_i(clk_dsi_i),
+                     .rst_n_a_i(rst_n_i),
+                     .strobe_i(serdes_strobe_shifted),
+                     .oe_i(serdes_oe_lane[g_lanes]),
+                     .d_i(serdes_data[g_lanes*8 +: 8]),
+                     .q_p_o(tx_p[g_lanes]),
+                     .q_n_o(tx_n[g_lanes])
+
+                     );
+
    assign dsi_clk_p_o = tx_p[g_lanes];
    assign dsi_clk_n_o = tx_n[g_lanes];
    
-
    ////////////////   
    // Packet layer
    ///////////////
@@ -461,6 +504,11 @@ module dsi_core
           host_d_self <= 0;
           dsi_reset_n_o <= 0;
 	  dsi_gpio_o <= 0;
+	  r_lane_mux <= 0;
+	  r_lane_invert <= 0;
+	  r_clock_invert <= 0;
+	  
+	  
 	  
        end else if(host_wr) begin
           case(host_a)
@@ -481,6 +529,13 @@ module dsi_core
                dsi_reset_n_o <= host_d_in[0];
                dsi_gpio_o <= host_d_in[3:1];
             end
+
+	    `REG_LANE_CTRL: begin
+	       r_lane_mux <= host_d_in[7:0];
+	       r_lane_invert <= host_d_in[11:8];
+	       r_clock_invert <= host_d_in[12];
+	    end
+	    
             
           endcase // case (host_a_i)
        end else begin

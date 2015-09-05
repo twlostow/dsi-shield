@@ -4,3 +4,5 @@ Please download them from Xilinx website (free registration required). The link 
 
 http://www.xilinx.com/support/documentation/application_notes/xapp495_S6TMDS_Video_Interface.pdf
 
+Afterwards put the 'xapp495 file' in the rtl/ subdirectory of this project and run 'unpack-xilinx-core.sh' script.
+

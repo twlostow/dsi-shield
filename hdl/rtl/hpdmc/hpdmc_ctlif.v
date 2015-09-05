@@ -75,6 +75,8 @@ always @(posedge sys_clk) begin
 		tim_refi <= 11'd620;
 		tim_rfc <= 4'd6;
 		tim_wr <= 2'd2;
+	   idelay_cal <= 0;
+	   
 	end else begin
 		sdram_cs_n <= 1'b1;
 		sdram_we_n <= 1'b1;
