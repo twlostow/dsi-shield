@@ -90,8 +90,8 @@ struct dsi_panel_config panel_dna = {
   1080,  /* width */
   1920, /* height */
 
-  192+48-12,   /* h_front_porch */
-  192+48-12,   /* h_back_porch */ // Total = 3534
+  96+48-12,   /* h_front_porch */
+  96+48-12,   /* h_back_porch */ // Total = 3534
   2,   /* v_front_porch */
   6,    /* v_back_porch */
   200,  /* frame_gap */

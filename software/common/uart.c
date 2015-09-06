@@ -41,18 +41,20 @@ void uart_init_hw()
 #ifndef SIMULATION
 	uart->BCR = CALC_BAUD(UART_BAUDRATE);
 #else
-	uart->BCR = CALC_BAUD((CPU_CLOCK/10));
+//	uart->BCR = CALC_BAUD((CPU_CLOCK/10));
 #endif
 
 }
 
 void uart_write_byte(int b)
 {
+#ifndef SIMULATION
 	if (b == '\n')
 		uart_write_byte('\r');
 	while (uart->SR & UART_SR_TX_BUSY)
 		;
 	uart->TDR = b;
+#endif
 }
 
 int uart_poll()

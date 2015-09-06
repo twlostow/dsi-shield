@@ -214,6 +214,7 @@ void dsi_init( struct dsi_panel_config *panel )
      
 
   dsi_send_lp_short(0x05, 0x00, 0x00); /* send DCS NOP */
+  dsi_delay();
 
   dsi_ctl |= 1;
 

@@ -30,7 +30,7 @@
 #define PANEL_DNA 	2  /* HTC Droid DNA (1080x1920) */
 
 /* Select your panel type here */
-#define PANEL_TYPE	PANEL_P880
+#define PANEL_TYPE	PANEL_DNA
 
 int panel_count();
 struct dsi_panel_config *panel_get_config (int i);
