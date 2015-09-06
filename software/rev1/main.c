@@ -95,6 +95,7 @@ void hdmi_fsm()
 			case ST_IDLE:
  			  	if(!fb_hdmi_check_link())
  			  		{
+					    pp_printf("no sg\n");
  			  			show_nosignal_screen(); 
  			  			state = ST_NO_HDMI;
  			  		} else 
@@ -200,7 +201,7 @@ main()
 
 	pp_printf("Panel : %d x %d\n", panel->width, panel->height) 	;
 
-	memtest_init();
+//	memtest_init();
 
 	//for(;;)
 	//    memtest_test((void *) 0x80000000, 16, 10);

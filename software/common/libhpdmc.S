@@ -97,13 +97,13 @@ send_init_return:
 	mvhi	r4, hi(0xffffffff)
 	ori	r4, r4, lo(0xffffffff)
 dummyxfer:
-	mvhi	r1, hi(0x80000000) /* L2 writeback/invalidate */
+	mvhi	r1, hi(BASE_SDRAM+0x10000000) /* L2 writeback/invalidate */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x90000000) /* L2 fetch/make dirty */
+	mvhi	r1, hi(BASE_SDRAM+0x00000000) /* L2 fetch/make dirty */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x80000000) /* L2 writeback/invalidate */
+	mvhi	r1, hi(BASE_SDRAM+0x10000000) /* L2 writeback/invalidate */
 	sw	(r1+0), r0
-	mvhi	r1, hi(0x90000000) /* L2 fetch/make dirty */
+	mvhi	r1, hi(BASE_SDRAM+0x00000000) /* L2 fetch/make dirty */
 	sw	(r1+0), r4
 	addi	r3, r3, -1
 	bne	r3, r0, dummyxfer
