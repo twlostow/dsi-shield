@@ -122,7 +122,7 @@ void dsi_dcs_long_write(const unsigned char *data, int length)
   uint8_t w1  = 0;
   uint8_t w0 = length;
 
-  pp_printf("pp_long write: %d bytes\n", length);  
+//  pp_printf("pp_long write: %d bytes\n", length);  
 
   uint8_t ptype = 0x39;
   dsi_lp_write_byte(0xe1);
@@ -142,6 +142,7 @@ void dsi_dcs_long_write(const unsigned char *data, int length)
   dsi_lp_write_byte(reverse_bits(crc & 0xff));
   dsi_lp_write_byte(reverse_bits(crc >> 8));
   dsi_write(REG_DSI_CTL, dsi_ctl);
+
   dsi_delay();
 }
 
@@ -193,13 +194,16 @@ dsi_dcs_long_write(init17, sizeof(init17));
 void dsi_init( struct dsi_panel_config *panel )
 {
     
-    dsi_write(REG_DSI_LANE_CTL, 0 | (1<<2) | (2<<4) | (3<<6)  ); // configure lane assignment
-//    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | (1<<12)); // disable core
+//    dsi_write(REG_DSI_LANE_CTL, 0 | (1<<2) | (2<<4) | (3<<6) | (1<<8) | (1<<10) ); // configure lane assignment -> IP4
+
+//    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 )); // -> E980
+    dsi_write(REG_DSI_LANE_CTL, (3<<0) | (0<<2) | (2<<4) | (1<<6) | (1<<8) | (1<<9) | (1<<11) ); // -> DNA
+
     dsi_write(REG_DSI_CTL, 0); // disable core
     dsi_write(REG_DSI_TICKDIV, panel->lp_divider);
 
     dsi_ctl = (panel->num_lanes << 8);
-     dsi_write(REG_DSI_CTL, dsi_ctl);  /* disable DSI clock, set lane count */
+    dsi_write(REG_DSI_CTL, dsi_ctl);  /* disable DSI clock, set lane count */
 
   int i;
 
@@ -211,28 +215,24 @@ void dsi_init( struct dsi_panel_config *panel )
   
   dsi_write(REG_DSI_GPIO, 0x3);  /* un-reset */
   for(i=0;i<10;i++)  dsi_delay();
-     
+
 
   dsi_send_lp_short(0x05, 0x00, 0x00); /* send DCS NOP */
   dsi_delay();
-
+  
   dsi_ctl |= 1;
 
   dsi_write(REG_DSI_CTL, dsi_ctl); /* enable DSI clock */
   dsi_delay();
   delay(300000);
 
-//    e980_init(panel);
- 
+
   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
-//  delay(300000);
-
-  dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
-//  delay(300000);
-
-  dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-//  delay(300000);
  
+  dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
+ 
+  dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
+
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );
   dsi_write(REG_H_BACK_PORCH, panel->h_back_porch );
@@ -242,6 +242,10 @@ void dsi_init( struct dsi_panel_config *panel )
   dsi_write(REG_V_FRONT_PORCH, panel->v_back_porch + panel->height );
   dsi_write(REG_V_ACTIVE, panel->v_back_porch + panel->height + panel->v_front_porch );
   dsi_write(REG_V_TOTAL, panel->v_back_porch + panel->height + panel->v_front_porch );
+
+
+//  delay(300000);
+ 
  
   dsi_write(REG_TIMING_CTL, 1); /* start display refresh */
 }

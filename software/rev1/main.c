@@ -57,7 +57,7 @@ void show_nosignal_screen()
 	pp_sprintf(str,"Data rate: %d lanes x %d MBps", panel->num_lanes, board_phy_freq() / 1000000);
 
 	fb_text(&font_helv17, fb_width / 2 - 300, fb_height / 2 + 150,2, str, fb_makecolor(255,255,255));
-
+	pp_printf("%s\n", str);
 
 	int byte_clock = board_phy_freq() / 8 * panel->num_lanes;
 	pp_sprintf(str,"Pixel clock: %d MHz", byte_clock / 3 / 1000000);
@@ -203,8 +203,10 @@ main()
 
 //	memtest_init();
 
-	//for(;;)
-	//    memtest_test((void *) 0x80000000, 16, 10);
+ 			  			show_nosignal_screen(); 
+
+//	for(;;)
+//	    memtest_test((void *) 0x80000000, 1, 10);
 
 //	for(;;);
 

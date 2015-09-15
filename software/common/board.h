@@ -53,7 +53,7 @@ static inline uint32_t readl ( uint32_t reg )
 
 static inline unsigned int board_system_freq()
 {
-    return 90000000;
+//    return 90000000;
 
     unsigned int pll_mul = readl (FB_PLL_STATUS) & 0x3f;
     unsigned int pll_div = (readl (FB_PLL_STATUS) >> 6) & 0x3f;

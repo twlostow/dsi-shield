@@ -86,7 +86,7 @@ struct dsi_panel_config panel_dna_1080p60 = {
 struct dsi_panel_config panel_dna = {
   "LS050T1SX01 (Droid DNA)",
   4,    /* num_lanes */
-  5,    /* lp_divider */
+  2,    /* lp_divider */
   1080,  /* width */
   1920, /* height */
 

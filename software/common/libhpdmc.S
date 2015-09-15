@@ -158,8 +158,14 @@ send_init:
 
 /* configure Timing register */
 	
+//	mvhi r3, 0xa1
+//	ori r3,r3, 0x7252
+
+
+	xor r3,r3,r3
 	mvhi r3, 0xa1
 	ori r3,r3, 0x7252
+
 	sw (r2+0), r3 
 	
 	mvhi	r2, hi(CSR_HPDMC_BYPASS)
