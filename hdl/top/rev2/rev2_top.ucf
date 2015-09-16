@@ -243,13 +243,13 @@ TIMESPEC TS_hdmi_rx_n_i_3_ = PERIOD "hdmi_rx_n_i<3>" 12 ns HIGH 50%;
 #>DISABLED<#TIMESPEC ts_ignore_xclock3 = FROM "hdmi_rx_p_i<3>" TO "U_PLL_clkout2" 4 ns DATAPATHONLY;
 #>DISABLED<#TIMESPEC ts_ignore_xlock4 = FROM "U_PLL_clkout2" TO "hdmi_rx_p_i<3>" 4 ns DATAPATHONLY;
 
-#>DISABLED<#TIMESPEC ts_ignore_xclock5 = FROM "clk_sys" TO "clk_dsi" 4 ns DATAPATHONLY;
-#>DISABLED<#TIMESPEC ts_ignore_xclock6 = FROM "clk_dsi" TO "clk_sys" 4 ns DATAPATHONLY;
+TIMESPEC ts_ignore_xclock5 = FROM "clk_sys" TO "clk_dsi" 8 ns DATAPATHONLY;
+TIMESPEC ts_ignore_xclock6 = FROM "clk_dsi" TO "clk_sys" 8 ns DATAPATHONLY;
 
 NET "*/gc_sync_register_in[*]" MAXDELAY=4ns;
 #INST "hdmi_scl_b" IOB=FALSE;
 #INST "hdmi_sda_b" IOB=FALSE;
 #Created by Constraints Editor (xc6slx9-tqg144-2) - 2015/08/26
-TIMESPEC TS_ignore_xclock1 = FROM "dcm_clk_sys" TO "pll_clk_dsi" 4 ns DATAPATHONLY;
-TIMESPEC TS_ignore_xclock2 = FROM "pll_clk_dsi" TO "dcm_clk_sys" 4 ns DATAPATHONLY;
-TIMESPEC TS_ignore_xclock3 = FROM "hdmi_rx_p_i<3>" TO "pll_clk_dsi" 4 ns DATAPATHONLY;
+TIMESPEC TS_ignore_xclock1 = FROM "dcm_clk_sys" TO "pll_clk_dsi" 8 ns DATAPATHONLY;
+TIMESPEC TS_ignore_xclock2 = FROM "pll_clk_dsi" TO "dcm_clk_sys" 8 ns DATAPATHONLY;
+TIMESPEC TS_ignore_xclock3 = FROM "hdmi_rx_p_i<3>" TO "pll_clk_dsi" 8 ns DATAPATHONLY;

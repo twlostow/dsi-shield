@@ -56,13 +56,13 @@ entity rev2_top is
     -- Fphy = 25 MHz * g_pll_mul / g_pll_phy_div
 
     -- PLL multiplier
-    g_pll_mul         : integer := 26;
+    g_pll_mul         : integer := 34;
     -- System clock PLL divider
-    g_pll_sys_div     : integer := 7;
+    g_pll_sys_div     : integer := 8;
     -- DSI PHY clock PLL divider
     g_pll_phy_div     : integer := 1;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 2580;
+    g_clock_period_ps : integer := 1176;
 
     g_simulation : boolean := false
     );

@@ -90,11 +90,11 @@ struct dsi_panel_config panel_dna = {
   1080,  /* width */
   1920, /* height */
 
-  96+96+48-12,   /* h_front_porch */
-  96+96+48-12,   /* h_back_porch */ // Total = 3534
+  96+96+96+48,   /* h_front_porch */
+  96+96+96+48,   /* h_back_porch */ // Total = 3534
   2,   /* v_front_porch */
   6,    /* v_back_porch */
-  2000,  /* frame_gap */
+  200,  /* frame_gap */
   edid_dna  /* EDID */
 };
 
