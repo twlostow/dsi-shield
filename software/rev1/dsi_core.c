@@ -117,14 +117,14 @@ uint8_t current_data;
 }
 
 
-void dsi_dcs_long_write(const unsigned char *data, int length)
+void dsi_long_write(int is_dcs, const unsigned char *data, int length)
 {
   uint8_t w1  = 0;
   uint8_t w0 = length;
 
 //  pp_printf("pp_long write: %d bytes\n", length);  
 
-  uint8_t ptype = 0x39;
+  uint8_t ptype = is_dcs ? 0x39 : 0x29;
   dsi_lp_write_byte(0xe1);
   dsi_lp_write_byte(reverse_bits(ptype));
   dsi_lp_write_byte(reverse_bits(w0));
@@ -154,41 +154,41 @@ void dsi_delay()
 void e980_init( struct dsi_panel_config *panel )
 {
 const unsigned char init0[] = {0xB0,0x04};
-dsi_dcs_long_write(init0, sizeof(init0));
-const unsigned char init1[] = {0x00};
-dsi_dcs_long_write(init1, sizeof(init1));
-const unsigned char init2[] = {0x00};
-dsi_dcs_long_write(init2, sizeof(init2));
+dsi_long_write(0, init0, sizeof(init0));
+const unsigned char init1[] = {0x00, 0x00};
+dsi_long_write(1, init1, sizeof(init1));
+const unsigned char init2[] = {0x00, 0x00};
+dsi_long_write(1, init2, sizeof(init2));
 const unsigned char init3[] = {0xB3,0x14,0x00,0x00,0x00,0x00,0x00};
-dsi_dcs_long_write(init3, sizeof(init3));
+dsi_long_write(0, init3, sizeof(init3));
 const unsigned char init4[] = {0xB6,0x3A,0xD3};
-dsi_dcs_long_write(init4, sizeof(init4));
+dsi_long_write(0, init4, sizeof(init4));
 const unsigned char init5[] = {0xC1,0x84,0x60,0x50,0x00,0x00,0x00,0x00,0x00,0x00,0x0C,0x01,0x58,0x73,0xAE,0x31,0x20,0x06,0x00,0x00,0x00,0x00,0x00,0x00,0x10,0x10,0x10,0x10,0x00,0x00,0x00,0x22,0x02,0x02,0x00};
-dsi_dcs_long_write(init5, sizeof(init5));
+dsi_long_write(0, init5, sizeof(init5));
 const unsigned char init6[] = {0xC2,0x30,0xF7,0x80,0x0A,0x08,0x00,0x00};
-dsi_dcs_long_write(init6, sizeof(init6));
+dsi_long_write(0, init6, sizeof(init6));
 const unsigned char init7[] = {0xC3,0x01,0x00,0x00};
-dsi_dcs_long_write(init7, sizeof(init7));
+dsi_long_write(0, init7, sizeof(init7));
 const unsigned char init8[] = {0xC4,0x70,0x00,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x11,0x06,0x00,0x00,0x00,0x00,0x00,0x04,0x00,0x00,0x00,0x11,0x06};
-dsi_dcs_long_write(init8, sizeof(init8));
+dsi_long_write(0, init8, sizeof(init8));
 const unsigned char init9[] = {0xC6,0x06,0x6D,0x06,0x6D,0x06,0x6D,0x00,0x00,0x00,0x00,0x06,0x6D,0x06,0x6D,0x06,0x6D,0x15,0x19,0x07,0x00,0x01,0x06,0x6D,0x06,0x6D,0x06,0x6D,0x00,0x00,0x00,0x00,0x06,0x6D,0x06,0x6D,0x06,0x6D,0x15,0x19,0x07};
-dsi_dcs_long_write(init9, sizeof(init9));
+dsi_long_write(0, init9, sizeof(init9));
 const unsigned char init10[] = {0xC7,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70};
-dsi_dcs_long_write(init10, sizeof(init10));
+dsi_long_write(0, init10, sizeof(init10));
 const unsigned char init11[] = {0xC8,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70};
-dsi_dcs_long_write(init11, sizeof(init11));
+dsi_long_write(0, init11, sizeof(init11));
 const unsigned char init12[] ={0xC9,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70,0x00,0x09,0x14,0x23,0x30,0x48,0x3D,0x52,0x5F,0x67,0x6B,0x70};
-dsi_dcs_long_write(init12, sizeof(init12));
+dsi_long_write(0, init12, sizeof(init12));
 const unsigned char init13[] = {0xCC,0X09};
-dsi_dcs_long_write(init13, sizeof(init13));
+dsi_long_write(0, init13, sizeof(init13));
 const unsigned char init14[] = {0xD0,0x00,0x00,0x19,0x18,0x99,0x99,0x19,0x01,0x89,0x00,0x55,0x19,0x99,0x01};
-dsi_dcs_long_write(init14, sizeof(init14));
+dsi_long_write(0, init14, sizeof(init14));
 const unsigned char init15[] = {0xD3,0x1B,0x33,0xBB,0xCC,0xC4,0x33,0x33,0x33,0x00,0x01,0x00,0xA0,0xD8,0xA0,0x0D,0x39,0x33,0x44,0x22,0x70,0x02,0x39,0x03,0x3D,0xBF,0x00};
-dsi_dcs_long_write(init15, sizeof(init15));
+dsi_long_write(0, init15, sizeof(init15));
 const unsigned char init16[] = {0xD5,0x06,0x00,0x00,0x01,0x2C,0x01,0x2C};
-dsi_dcs_long_write(init16, sizeof(init16));
+dsi_long_write(0, init16, sizeof(init16));
 const unsigned char init17[] = {0xD5,0x06,0x00,0x00,0x01,0x2C,0x01,0x2C};
-dsi_dcs_long_write(init17, sizeof(init17));
+dsi_long_write(0, init17, sizeof(init17));
 }
 
 void dsi_init( struct dsi_panel_config *panel )
@@ -196,8 +196,8 @@ void dsi_init( struct dsi_panel_config *panel )
     
 //    dsi_write(REG_DSI_LANE_CTL, 0 | (1<<2) | (2<<4) | (3<<6) | (1<<8) | (1<<10) ); // configure lane assignment -> IP4
 
-//    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 )); // -> E980
-    dsi_write(REG_DSI_LANE_CTL, (3<<0) | (0<<2) | (2<<4) | (1<<6) | (1<<8) | (1<<9) | (1<<11) ); // -> DNA
+    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 ) ); // -> E980
+//    dsi_write(REG_DSI_LANE_CTL, (3<<0) | (0<<2) | (2<<4) | (1<<6) | (1<<8) | (1<<9) | (1<<11) ); // -> DNA
 
     dsi_write(REG_DSI_CTL, 0); // disable core
     dsi_write(REG_DSI_TICKDIV, panel->lp_divider);
@@ -207,11 +207,14 @@ void dsi_init( struct dsi_panel_config *panel )
 
   int i;
 
-  dsi_write(REG_DSI_GPIO, 0); /* reset the display */
+
+
+  dsi_write(REG_DSI_GPIO, 0x1); /* reset the display */
   for(i=0;i<10;i++)  dsi_delay();
-  
+
   dsi_write(REG_DSI_GPIO, 0x2);  /* Avdd on */
   for(i=0;i<10;i++)  dsi_delay();
+  
   
   dsi_write(REG_DSI_GPIO, 0x3);  /* un-reset */
   for(i=0;i<10;i++)  dsi_delay();
@@ -224,15 +227,18 @@ void dsi_init( struct dsi_panel_config *panel )
 
   dsi_write(REG_DSI_CTL, dsi_ctl); /* enable DSI clock */
   dsi_delay();
-  delay(300000);
 
+  e980_init(panel);
+//  dsi_delay();
 
   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
+//  dsi_delay();
  
   dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
+//  dsi_delay();
  
   dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-
+//  dsi_delay();
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );
   dsi_write(REG_H_BACK_PORCH, panel->h_back_porch );
