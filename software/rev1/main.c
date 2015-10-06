@@ -27,6 +27,7 @@
 #include "dsi_core.h"
 #include "fb.h"
 #include "panels.h"
+#include "sysctl.h"
 
 //#include "../bitmaps/logo.h"
 
@@ -192,6 +193,8 @@ main()
 #endif
 
 
+	writel(SYS_GPIO_OUT, SYS_GPIO_OUT_EDID_EN);
+
 
 	panel =  panel_get_config(PANEL_TYPE);
 	dsi_init(panel);
@@ -200,6 +203,8 @@ main()
 	fb_set_mode (panel->width, panel->height);
 
 	pp_printf("Panel : %d x %d\n", panel->width, panel->height) 	;
+
+	writel(SYS_PWM_CTL, 16);
 
 //	memtest_init();
 
@@ -210,6 +215,9 @@ main()
 
 //	for(;;);
 
+
+	//mi2c_scan(0);
+	
 	hdmi_fsm();
 
 	return 0;

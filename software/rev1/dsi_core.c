@@ -452,9 +452,9 @@ dsi_long_write(0, init17, sizeof(init17));
 void dsi_init( struct dsi_panel_config *panel )
 {
     
-//    dsi_write(REG_DSI_LANE_CTL, 0 | (1<<2) | (2<<4) | (3<<6) | (1<<8) | (1<<10) ); // configure lane assignment -> IP4
+    dsi_write(REG_DSI_LANE_CTL, 0 | (1<<2) | (2<<4) | (3<<6) | (1<<8) | (1<<10) ); // configure lane assignment -> IP4
 
-    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 ) ); // -> E980
+//    dsi_write(REG_DSI_LANE_CTL, (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 ) ); // -> E980
 //    dsi_write(REG_DSI_LANE_CTL, (3<<0) | (0<<2) | (2<<4) | (1<<6) | (1<<8) | (1<<9) | (1<<11) ); // -> DNA
 
     dsi_write(REG_DSI_CTL, 0); // disable core
@@ -465,15 +465,11 @@ void dsi_init( struct dsi_panel_config *panel )
 
   int i;
 
-
-
+  dsi_write(REG_DSI_GPIO, 0); /* reset the display */
+  for(i=0;i<10;i++)  dsi_delay();
+  
   dsi_write(REG_DSI_GPIO, 0x2);  /* Avdd on */
   for(i=0;i<10;i++)  dsi_delay();
-
-  dsi_write(REG_DSI_GPIO, 0x1); /* reset the display */
-  for(i=0;i<10;i++)  dsi_delay();
-
-  
   
   dsi_write(REG_DSI_GPIO, 0x3);  /* un-reset */
   for(i=0;i<10;i++)  dsi_delay();
@@ -486,18 +482,16 @@ void dsi_init( struct dsi_panel_config *panel )
 
   dsi_write(REG_DSI_CTL, dsi_ctl); /* enable DSI clock */
   dsi_delay();
-
-  e980_init(panel);
-//  dsi_delay();
+  delay(300000);
 
   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
- // dsi_delay();
+  delay(300000);
  
   dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
-//  dsi_delay();
+  delay(300000);
  
   dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-  dsi_delay();
+  delay(300000);
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );
   dsi_write(REG_H_BACK_PORCH, panel->h_back_porch );

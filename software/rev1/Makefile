@@ -7,7 +7,7 @@ OBJCOPY =	$(CROSS_COMPILE)objcopy
 SIZE =		$(CROSS_COMPILE)size
 
 CFLAGS = -Os -I../common -I. -I../testscreen -mmultiply-enabled -mbarrel-shift-enabled  -ffunction-sections -fdata-sections -Wl,--gc-sections
-OBJS = ../common/crt0.o ../common/libhpdmc.o ../common/uart.o  main.o  ../common/vsprintf-xint.o ../common/printf.o memtest.o dsi_core.o fonts/font_helv17.o panels.o  fb.o pll.o
+OBJS = ../common/crt0.o ../common/libhpdmc.o ../common/uart.o  main.o  ../common/vsprintf-xint.o ../common/printf.o memtest.o dsi_core.o fonts/font_helv17.o panels.o  fb.o i2c.o
 LDS = ../common/cpu.ld
 OUTPUT=rev1
 

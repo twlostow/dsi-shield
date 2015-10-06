@@ -1,4 +1,4 @@
-# and don't touch the rest unless you know what you're doing.
+# and don't touch the res unless you know what you're doing.
 CROSS_COMPILE ?= lm32-elf-
 
 CC =		$(CROSS_COMPILE)gcc
@@ -15,11 +15,12 @@ OUTPUT=boot
 
 $(OUTPUT): $(LDS) $(OBJS)
 	gcc -o ../common/genraminit ../common/genraminit.c
-	${CC} -o $(OUTPUT).elf -nostartfiles $(OBJS) -T $(LDS) -lgcc -lc
-	${OBJCOPY} -O binary $(OUTPUT).elf $(OUTPUT).bin
-#	${OBJDUMP} -D $(OUTPUT).elf  > disasm.S
-	$(SIZE) $(OUTPUT).elf
-	../common/genraminit $(OUTPUT).bin 512 > boot.ram
+	${CC} -o bootldr.elf -nostartfiles $(OBJS) -T $(LDS) -lgcc -lc
+	${OBJCOPY} -O binary bootldr.elf bootldr.bin
+	dd if=/dev/zero of=$(OUTPUT).bin bs=2048 count=1
+	dd if=bootldr.bin of=$(OUTPUT).bin seek=0 conv=notrunc
+	dd if=../rev1/rev1.bin of=$(OUTPUT).bin bs=1 seek=2048 conv=notrunc
+	../common/genraminit $(OUTPUT).bin 4096 > boot.ram
 
 clean:
 	rm -f $(OBJS) $(OUTPUT).bin
