@@ -20,18 +20,24 @@
 `timescale 1ns/1ns
 
   module edid_eeprom (
-		      input  clk_sys_i,
-		      input  rst_n_i,
+		      input 	  clk_sys_i,
+		      input 	  rst_n_i,
 
-		      inout  scl_b,
-		      inout  sda_b,
+		      inout 	  scl_b,
+		      inout 	  sda_b,
 
-		      input  hdmi_p5v_notif_i,
-		      output hdmi_hpd_en_o,
+		      input 	  edid_en_i,
+		      input 	  scl_master_i,
+		      input 	  sda_master_i,
+		      output 	  sda_master_o,
+		      
+
+		      input 	  hdmi_p5v_notif_i,
+		      output 	  hdmi_hpd_en_o,
 
 		      input [7:0] addr_i,
 		      input [7:0] data_i,
-		      input wr_i);
+		      input 	  wr_i);
       
 
    parameter g_size = 128;
@@ -40,23 +46,26 @@
 
    reg [7:0] 		    tx_byte='haa;
    wire [7:0] 		    rx_byte;
+
+   wire 		    scl_edid_en, scl_edid_in, scl_edid_out;
+   wire 		    sda_edid_en, sda_edid_in, sda_edid_out;
    
    assign hdmi_hpd_en_o = 1'b1;
    
    gc_i2c_slave #(
-			      .g_gf_len(1))
+		  .g_gf_len(1))
    
-		U_I2C_Slave 	      
+   U_I2C_Slave 	      
      (
       .clk_i(clk_sys_i),
       .rst_n_i(rst_n_i),
 
-      .scl_i(scl_b),
-      .scl_o(scl_out),
-      .scl_en_o(scl_en),
-      .sda_i(sda_b),
-      .sda_o(sda_out),
-      .sda_en_o(sda_en),
+      .scl_i(scl_edid_in),
+      .scl_o(scl_edid_out),
+      .scl_en_o(scl_edid_en),
+      .sda_i(sda_edid_in),
+      .sda_o(sda_edid_out),
+      .sda_en_o(sda_edid_en),
 
       .i2c_addr_i(g_address),
       .ack_i(ack),
@@ -79,9 +88,16 @@
    
    assign tx_byte_i = 0;
 
-   assign scl_b = scl_en?scl_out :1'bz;
-   assign sda_b = sda_en?sda_out :1'bz;
 
+   assign scl_edid_in = edid_en_i ? scl_b : 1'b1;
+   assign sda_edid_in = edid_en_i ? sda_b : 1'b1;
+   
+   
+   assign scl_b = edid_en_i ? (scl_edid_en ? scl_edid_out : 1'bz) : ( scl_master_i ? 1'b0 : 1'bz );
+   assign sda_b = edid_en_i ? (sda_edid_en ? sda_edid_out : 1'bz) : ( sda_master_i ? 1'b0 : 1'bz );
+
+   assign sda_master_o = sda_b;
+   
    reg [7:0] 		    addr=0;
 
    
