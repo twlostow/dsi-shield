@@ -290,7 +290,7 @@ module dsi_core
    wire clk_serdes, serdes_strobe;
    wire clk_serdes_shifted, serdes_strobe_shifted;
 
-   dphy_serdes_pll U_BufPLL 
+   dphy_serdes_plla U_BufPLL 
      (
       .clk_phy_i(clk_phy_i),
       .clk_dsi_i(clk_dsi_i),
@@ -300,7 +300,7 @@ module dsi_core
       .serdes_strobe_o(serdes_strobe)
       );
 
-   dphy_serdes_pll U_BufPLL_Clk
+   dphy_serdes_pllb U_BufPLL_Clk
      (
       .clk_phy_i(clk_phy_shifted_i),
       .clk_dsi_i(clk_dsi_i),

@@ -21,7 +21,7 @@
 
 /* dphy_serdes.v - the DSI SerDes, based on Xilinx IOSERDES primitves. */
 
-module dphy_serdes_pll (
+module dphy_serdes_plla (
                         input  clk_phy_i,
                         input  clk_dsi_i,
                         input  rst_n_a_i,
@@ -31,6 +31,30 @@ module dphy_serdes_pll (
                         output clk_serdes_o,
                         output serdes_strobe_o );
 
+   (* LOC = "BUFPLL_X0Y3" *)
+   BUFPLL
+     #(.DIVIDE        (8))
+   U_BufPLL
+     (.IOCLK        (clk_serdes_o),
+      .LOCK         (locked_o),
+      .SERDESSTROBE (serdes_strobe_o),
+      .GCLK         (clk_dsi_i),
+      .LOCKED       (locked_i),
+      .PLLIN        (clk_phy_i));
+
+endmodule // dphy_serdes_pll
+
+module dphy_serdes_pllb (
+                        input  clk_phy_i,
+                        input  clk_dsi_i,
+                        input  rst_n_a_i,
+
+                        input  locked_i,
+                        output locked_o,
+                        output clk_serdes_o,
+                        output serdes_strobe_o );
+
+   (* LOC = "BUFPLL_X0Y2" *)
    BUFPLL
      #(.DIVIDE        (8))
    U_BufPLL
