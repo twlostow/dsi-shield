@@ -1,0 +1,110 @@
+diff -rup hdmi_orig/hdmi_rx/dvi_decoder.v hdmi_rx/dvi_decoder.v
+--- hdmi_orig/hdmi_rx/dvi_decoder.v	2010-10-12 01:19:24.000000000 +0200
++++ hdmi_rx/dvi_decoder.v	2015-10-06 18:59:43.515905983 +0200
+@@ -78,15 +78,21 @@ module dvi_decoder (
+   output wire green_rdy,
+   output wire red_rdy,
+ 
++  output wire 	     link_up,
+   output wire psalgnerr,
+ 
+   output wire [29:0] sdout,
+   output wire [7:0] red,      // pixel data out
+   output wire [7:0] green,    // pixel data out
+-  output wire [7:0] blue);    // pixel data out
++  output wire [7:0] blue,    // pixel data out
++
++  output wire [47:0] pixel,
++  output wire 	     pixel_valid);    // pixel data out
+     
+ 
+   wire [9:0] sdout_blue, sdout_green, sdout_red;
++  wire [7:0] red_int ,green_int, blue_int;
++
+ /*
+   assign sdout = {sdout_red[9], sdout_green[9], sdout_blue[9], sdout_red[8], sdout_green[8], sdout_blue[8],
+                   sdout_red[7], sdout_green[7], sdout_blue[7], sdout_red[6], sdout_green[6], sdout_blue[6],
+@@ -189,7 +195,7 @@ module dvi_decoder (
+     .c1           (vsync),
+     .de           (de_b),
+     .sdout        (sdout_blue),
+-    .dout         (blue)) ;
++    .dout         (blue_int));
+ 
+   decode dec_g (
+     .reset        (reset),
+@@ -211,7 +217,7 @@ module dvi_decoder (
+     .c1           (),
+     .de           (de_g),
+     .sdout        (sdout_green),
+-    .dout         (green)) ;
++    .dout         (green_int)) ;
+     
+   decode dec_r (
+     .reset        (reset),
+@@ -233,10 +239,35 @@ module dvi_decoder (
+     .c1           (),
+     .de           (de_r),
+     .sdout        (sdout_red),
+-    .dout         (red)) ;
+-
++    .dout         (red_int));
+ 
+ 
+-  assign psalgnerr = red_psalgnerr | blue_psalgnerr | green_psalgnerr;
++   assign link_up = green_vld;
+ 
++   reg [23:0] pix_hi;
++   reg 	      even;
++   
++   
++   always@(posedge pclk)
++     begin
++	if(!de_b)
++	  even <= 1;
++	else begin
++	   even <= ~even;
++	   if(even)
++	     pix_hi <= {red_int, green_int, blue_int};
++	   end
++     end // always@ (posedge pclk)
++
++   assign pixel_valid = ~even & de;
++   assign pixel = {pix_hi, red_int ,green_int, blue_int};
++   
++   assign red =red_int;
++   assign green =green_int;
++   assign blue = blue_int;
++   
++   
++   
++   assign psalgnerr = red_psalgnerr | blue_psalgnerr | green_psalgnerr;
++   
+ endmodule
+diff -rup hdmi_orig/hdmi_rx/serdes_1_to_5_diff_data.v hdmi_rx/serdes_1_to_5_diff_data.v
+--- hdmi_orig/hdmi_rx/serdes_1_to_5_diff_data.v	2010-11-07 01:10:50.000000000 +0100
++++ hdmi_rx/serdes_1_to_5_diff_data.v	2015-03-27 00:33:34.843965939 +0100
+@@ -194,10 +194,10 @@ else begin
+     incdec_data_d <= incdec_data_or[1] ;
+     valid_data_d <= valid_data_or[1] ;
+     if (ce_data_inta == 1'b1) begin
+-      ce_data = mux ;
++      ce_data <= mux ;
+     end
+     else begin
+-      ce_data = 64'h0000000000000000 ;
++      ce_data <= 64'h0000000000000000 ;
+     end
+       if (state == 7) begin
+       flag <= 1'b0 ;
+@@ -232,8 +232,8 @@ else begin
+       end
+     end
+     else begin
+-    ce_data = all_ce ;
+-    inc_data_int = debug_in[1] ;
++    ce_data <= all_ce ;
++    inc_data_int <= debug_in[1] ;
+     end
+ end
+ end
