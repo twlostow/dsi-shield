@@ -41,7 +41,7 @@ use unisim.vcomponents.all;
 entity rev2_top is
   generic (
     g_cpu_firmware : string  := "boot.ram";
-    g_use_urv : boolean := false;
+    g_use_urv : boolean := true;
     g_with_hdmi     : boolean := true;
     -- DDR clock-to-data delay
     g_data_delay    : integer := 0; --70;
@@ -617,7 +617,7 @@ sda_master_i : in std_logic;
   signal pwm_prescaler: unsigned(11 downto 0); -- 100 MHz / 4096 = 5 kHz
   signal pwm_count: unsigned(4 downto 0); -- 100 MHz / 4096 = 5 kHz
   
-  component xrv_core is
+  component xurv_core is
     generic (
       g_internal_ram_size      : integer;
       g_internal_ram_init_file : string;
@@ -631,7 +631,7 @@ sda_master_i : in std_logic;
       dwb_i        : in  t_wishbone_master_in;
       host_slave_i : in  t_wishbone_slave_in          := cc_dummy_slave_in;
       host_slave_o : out t_wishbone_slave_out);
-  end component xrv_core;
+  end component xurv_core;
   
   component chipscope_icon is
     port (
@@ -888,10 +888,10 @@ begin  -- rtl
 
   end generate gen_with_lm32;
 
-  gen_with_uriscv: if( g_use_urv  ) generate
+--  gen_with_uriscv: if( g_use_urv  ) generate
 
 
-    U_CPU : xrv_core
+    U_CPU : xurv_core
       generic map (
         g_internal_ram_size      => 16384,
         g_internal_ram_init_file => g_cpu_firmware,
@@ -907,7 +907,7 @@ begin  -- rtl
     
 
     
-  end generate gen_with_uriscv;
+--  end generate gen_with_uriscv;
       
 
   

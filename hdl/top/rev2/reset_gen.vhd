@@ -36,7 +36,7 @@ begin  -- behavioral
     clk_i    => clk_sys_i,
     rst_n_i  => '1',
     data_i   => rst_button_n_a_i,
-    synced_o => button_synced_n);
+    ppulse_o => button_synced_n);
 
   p_powerup_reset : process(clk_sys_i)
   begin
@@ -50,6 +50,6 @@ begin  -- behavioral
     end if;
   end process;
 
-  rst_n_o <= powerup_n and button_synced_n and (not pcie_synced_n);
+  rst_n_o <= powerup_n and (not button_synced_n) and (not pcie_synced_n);
 
 end behavioral;

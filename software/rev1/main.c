@@ -97,7 +97,9 @@ void hdmi_fsm()
  			  	if(!fb_hdmi_check_link())
  			  		{
 					    pp_printf("no sg\n");
- 			  			show_nosignal_screen(); 
+ 			  		    show_nosignal_screen(); 
+    					    writel(SYS_PWM_CTL, 16);
+
  			  			state = ST_NO_HDMI;
  			  		} else 
  			  			state = ST_NO_HDMI;
@@ -117,6 +119,8 @@ void hdmi_fsm()
 				if(!fb_hdmi_check_link())
  			  	{
 					pp_printf("HDMI: link down\n");
+				    writel(SYS_PWM_CTL, 0);
+
  			  		fb_disable_overlay();
  			  		show_nosignal_screen(); 
  			  		state = ST_NO_HDMI;
@@ -136,9 +140,14 @@ main()
 {
 
 	int i, j;
+
+	writel(SYS_PWM_CTL, 0);
 	
 	uart_init_hw();
-	_sdram_init();
+	pp_printf("Setting up SDRAM.\n");
+	sdram_init();
+	pp_printf("Startup.\n");
+
 
 //	memtest_init();
 
@@ -204,11 +213,11 @@ main()
 
 	pp_printf("Panel : %d x %d\n", panel->width, panel->height) 	;
 
-	writel(SYS_PWM_CTL, 16);
+//	writel(SYS_PWM_CTL, 16);
 
 //	memtest_init();
 
- 			  			show_nosignal_screen(); 
+// 			  			show_nosignal_screen(); 
 
 //	for(;;)
 //	    memtest_test((void *) 0x80000000, 1, 10);

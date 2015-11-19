@@ -150,7 +150,7 @@ void dsi_long_write(int is_dcs, const unsigned char *data, int length)
 
 void dsi_delay()
 {
-	delay (100000);
+	delay (50000);
 }
 
 #define DTYPE_GEN_LWRITE 0
@@ -482,16 +482,16 @@ void dsi_init( struct dsi_panel_config *panel )
 
   dsi_write(REG_DSI_CTL, dsi_ctl); /* enable DSI clock */
   dsi_delay();
-  delay(300000);
+  delay(100000);
 
   dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
-  delay(300000);
+  delay(100000);
  
   dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
-  delay(300000);
+  delay(100000);
  
   dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-  delay(300000);
+  delay(100000);
 
   dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch );
   dsi_write(REG_H_BACK_PORCH, panel->h_back_porch );
