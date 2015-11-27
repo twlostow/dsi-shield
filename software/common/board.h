@@ -35,10 +35,9 @@
 #define BASE_DSI   (BASE_IOREGS+0x20000)
 #define BASE_FBCTL (BASE_IOREGS+0x40000)
 
+#define SYS_PLL_FREQ 0xc004002c
 
 #define UART_BAUDRATE 115200
-
-#define FB_PLL_STATUS (BASE_IOREGS+0x40014)
 
 #ifndef __ASSEMBLY__
 static inline void writel ( uint32_t reg, uint32_t val)
@@ -53,19 +52,12 @@ static inline uint32_t readl ( uint32_t reg )
 
 static inline unsigned int board_system_freq()
 {
-    return BASE_CLOCK * 31 / 8;
-
-    unsigned int pll_mul = readl (FB_PLL_STATUS) & 0x3f;
-    unsigned int pll_div = (readl (FB_PLL_STATUS) >> 6) & 0x3f;
-    return (unsigned int)BASE_CLOCK * pll_mul / pll_div;
-
+    return readl(SYS_PLL_FREQ);
 }
 
 static inline unsigned int board_phy_freq()
 {
-    unsigned int pll_mul = readl (FB_PLL_STATUS) & 0x3f;
-    unsigned int pll_div = (readl (FB_PLL_STATUS) >> 12) & 0x3f;
-    return (unsigned int)BASE_CLOCK * pll_mul / pll_div;
+    return 0;
 }
 #endif
 
