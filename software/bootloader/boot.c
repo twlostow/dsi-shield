@@ -9,20 +9,10 @@
 #include "board.h"
 #include "uart.h"
 
-#define USER_START 0x800
+#define USER_START 0xa00
 
-const char hexchars[] = "0123456789abcdef";
+//const char hexchars[] = "0123456789abcdef";
 
-void dump_int(uint32_t v)
-{
-    int i;
-    for(i=7;i>=0;i--)
-    {
-	uart_write_byte(hexchars[(v>>(i*4)) & 0xf]);
-    }
-uart_write_byte('\n');
-uart_write_byte('\r');
-}
 
 int read_blocking(uint8_t *what)
 {
