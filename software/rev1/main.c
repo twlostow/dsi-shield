@@ -136,14 +136,21 @@ void memtest_test(void *buffer, size_t megabytes, int passes);
 
 volatile uint32_t *buf = 0x80000000;
 
+#include "pll.h"
+
+
 main()
 {
 
 	int i, j;
 
 	writel(SYS_PWM_CTL, 0);
-	
+
 	uart_init_hw();
+
+	pp_printf("Reconfiguring PLL\n");
+	pll_reconfigure(&cfg_default);
+
 	pp_printf("Setting up SDRAM.\n");
 	sdram_init();
 	pp_printf("Startup.\n");
