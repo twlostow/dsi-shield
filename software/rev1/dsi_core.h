@@ -22,6 +22,7 @@
 
 #include <stdint.h>
 #include "board.h"
+#include "pll.h"
 
 /* Register definitions */
 #define REG_H_FRONT_PORCH 0x0
@@ -42,10 +43,19 @@
 #define REG_DSI_GPIO      0x3c
 #define REG_DSI_LANE_CTL      0x40
 
+#define DSI_LANE(index, swap, reverse) \
+    ((swap&3) << ((index) * 2) | ((reverse) ? (1<<((index)+8)) : 0 ))
+
+#define DSI_LANE_INVERT_CLOCK (1<<12)
+    
+
+
 struct dsi_panel_config {
   char *name;
 
   int num_lanes;
+  uint32_t lane_config;
+
   int lp_divider;
   
   int width, height;
@@ -55,7 +65,12 @@ struct dsi_panel_config {
   
   int frame_gap;
 
+  int cmd_delay;
+
   const uint8_t *edid_data;
+  const struct pll_config *pll_cfg;
+
+  int (*user_init)(struct dsi_panel_config *cfg);
 };
 
 /* I/O registers access */

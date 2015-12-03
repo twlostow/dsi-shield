@@ -32,10 +32,11 @@ struct pll_config {
     uint32_t sys_div;
     uint32_t phy_div;
     uint32_t phy_phase;
-    uint64_t *data;
+    const uint64_t *data;
 };
-void pll_reconfigure( struct pll_config *cfg );
 
-extern struct pll_config cfg_default;
+void pll_reconfigure( struct pll_config *cfg );
+uint32_t pll_system_freq();
+uint32_t pll_phy_freq();
 
 #endif

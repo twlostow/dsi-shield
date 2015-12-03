@@ -14,7 +14,7 @@ ARCH = RV32I
 
 CFLAGS = -g -m32  -Os  -msoft-float -march=$(ARCH)  -I. -I../common -ffunction-sections -fdata-sections 
 LDFLAGS = -m32 -Wl,--gc-sections -g  -msoft-float  -march=$(ARCH) -nostartfiles
-OBJS = ../arch/risc-v/crtuser.o ../common/libhpdmc-c.o ../common/uart.o  main.o ../common/vsprintf-xint.o ../common/printf.o memtest.o dsi_core.o fonts/font_helv17.o panels.o  fb.o i2c.o pll.o
+OBJS = ../arch/risc-v/crtuser.o ../common/libhpdmc-c.o ../common/uart.o  main.o ../common/vsprintf-xint.o ../common/printf.o memtest.o dsi_core.o fonts/font_helv17.o  fb.o i2c.o pll.o flash.o config.o panels/iphone4.o panels/panels.o panels/e980.o
 LDS = ../arch/risc-v/user.ld
 OUTPUT=rev2
 
@@ -33,7 +33,7 @@ clean:
 bitstream:
 	dd if=/dev/zero of=_tmp.bin bs=1 count=16384
 	dd if=../bootloader/boot.bin of=_tmp.bin bs=1 count=2560 conv=notrunc
-	dd if=$(OUTPUT).bin of=_tmp.bin bs=1 count=14000 seek=2560 conv=notrunc
+#	dd if=$(OUTPUT).bin of=_tmp.bin bs=1 count=14000 seek=2560 conv=notrunc
 	../tools/genmeminit _tmp.bin 4096 > _tmp.mem
 	../tools/genraminit _tmp.bin 4096 > rev1.ram
 

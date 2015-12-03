@@ -38,6 +38,7 @@ static const uint8_t edid_dna[] =
 struct dsi_panel_config panel_p880 = {
   "LG Optimus P880",
   4,    /* num_lanes */
+    0,
   2,    /* lp_divider */
   720,  /* width */
   1280, /* height */
@@ -54,6 +55,13 @@ struct dsi_panel_config panel_p880 = {
 struct dsi_panel_config panel_iphone4 = {
   "LH350WS02 (Iphone4/4S)",
   3,    /* num_lanes */
+
+ DSI_LANE(0, 0, 1) |
+ DSI_LANE(1, 1, 0) |
+ DSI_LANE(2, 2, 1) |
+ DSI_LANE(3, 3, 0),
+
+
   2,    /* lp_divider */
   640,  /* width */
   960, /* height */
@@ -83,9 +91,16 @@ struct dsi_panel_config panel_dna_1080p60 = {
 };
 #endif
 
-struct dsi_panel_config panel_dna = {
+struct dsi_panel_config panel_e980 = {
   "LH550WF1-SD01 (LG E980)",
   4,    /* num_lanes */
+
+ DSI_LANE(0, 2, 1) |
+ DSI_LANE(1, 3, 0) |
+ DSI_LANE(2, 0, 0) |
+ DSI_LANE(3, 1, 1) |
+ DSI_LANE_INVERT_CLOCK,
+
   5,    /* lp_divider */
   1080,  /* width */
   1920, /* height */
@@ -102,7 +117,8 @@ struct dsi_panel_config panel_dna = {
 static struct dsi_panel_config *cfg[] = {
     &panel_p880,
     &panel_iphone4,
-    &panel_dna,
+//    &panel_dna,
+    &panel_e980,
     NULL
 };
 

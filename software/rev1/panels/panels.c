@@ -17,23 +17,28 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* panels.h - builtin panel timigs */
+/* panels.c - builtin panel timigs */
 
-#ifndef __PANELS_H
-#define __PANELS_H
+#include <stdio.h>
 
 #include "dsi_core.h"
 
-/* Available LCD panel types */
-#define PANEL_P880 	0  /* LG Optimus P880 (720x1280) */
-#define PANEL_IPHONE4 	1  
-#define PANEL_DNA 	2  /* HTC Droid DNA (1080x1920) */
+extern struct dsi_panel_config panel_iphone4;
+extern struct dsi_panel_config panel_e980;
 
-/* Select your panel type here */
-#define PANEL_TYPE	0 //PANEL_IPHONE4
+static struct dsi_panel_config *cfg[] = {
+    &panel_e980,
+    NULL
+};
 
-int panel_count();
-struct dsi_panel_config *panel_get_config (int i);
+int panel_count()
+{
+    int i;
+    while(cfg[i]) i++;
+    return i;
+}
 
-#endif
-
+struct dsi_panel_config *panel_get_config (int i)
+{
+    return cfg[i];
+}
