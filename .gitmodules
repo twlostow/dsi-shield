@@ -1,0 +1,3 @@
+[submodule "hdl/ip_cores/urv-core"]
+	path = hdl/ip_cores/urv-core
+	url = git://ohwr.org/hdl-core-lib/urv-core.git

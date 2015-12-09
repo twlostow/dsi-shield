@@ -38,13 +38,13 @@ print("Init1")
 
 while(recv() != 'o'):
 	pass
-	
+
 while(recv() != 'o'):
 	pass
-	
+
 while(recv() != 't'):
 	pass
-	
+
 while(recv() != '?'):
 	pass
 
@@ -84,10 +84,3 @@ while(recv() != 'G'):
 	time.sleep(100e-6)
 
 print("Programming done!")
-
-while True:
-	b=recv()
-	if(b):
-		sys.stderr.write(b)
-	else:
-		time.sleep(0.01)

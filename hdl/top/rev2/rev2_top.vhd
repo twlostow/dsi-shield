@@ -40,8 +40,6 @@ use unisim.vcomponents.all;
 
 entity rev2_top is
   generic (
-    g_cpu_firmware : string  := "boot.ram";
-    g_use_urv      : boolean := true;
     g_with_hdmi    : boolean := true;
     -- DDR clock-to-data delay
     g_data_delay   : integer := 0;      --70;
@@ -884,47 +882,10 @@ begin  -- rtl
       master_i  => cnx_master_in,
       master_o  => cnx_master_out);
 
-  gen_with_lm32 : if(not g_use_urv) generate
-    U_CPU : xwb_lm32
-      generic map (
-        g_profile => "medium_icache")
-      port map (
-        clk_sys_i => clk_sys,
-        rst_n_i   => rst_n_sys,
-        irq_i     => x"00000000",
-        dwb_o     => cnx_slave_in(0),
-        dwb_i     => cnx_slave_out(0),
-        iwb_o     => cpu_iwb_out,
-        iwb_i     => cpu_iwb_in);
-
-    
-
-    U_DPRAM : xwb_dpram
-      generic map (
-        g_size                  => 4096,  -- 16kB
-        g_init_file             => g_cpu_firmware,
-        g_must_have_init_file   => true,
-        g_slave1_interface_mode => PIPELINED,
-        g_slave2_interface_mode => PIPELINED,
-        g_slave1_granularity    => BYTE,
-        g_slave2_granularity    => BYTE)
-      port map (
-        clk_sys_i => clk_sys,
-        rst_n_i   => rst_n_sys,
-        slave1_i  => cnx_master_out(c_slave_dpram),
-        slave1_o  => cnx_master_in(c_slave_dpram),
-        slave2_i  => cpu_iwb_out,
-        slave2_o  => cpu_iwb_in);
-
-  end generate gen_with_lm32;
-
---  gen_with_uriscv: if( g_use_urv  ) generate
-
-
   U_CPU : xurv_core
     generic map (
       g_internal_ram_size      => 32768, 
-      g_internal_ram_init_file => g_cpu_firmware,
+      g_internal_ram_init_file => "",
       g_simulation             => g_simulation)
     port map (
       clk_sys_i => clk_sys,
@@ -934,12 +895,6 @@ begin  -- rtl
       dwb_o     => cnx_slave_in(0),
       dwb_i     => cnx_slave_out(0)
       );
-
-
-
---  end generate gen_with_uriscv;
-
-
 
   U_UART : xwb_simple_uart
     generic map (
