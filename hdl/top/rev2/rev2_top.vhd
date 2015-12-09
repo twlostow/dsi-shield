@@ -41,15 +41,15 @@ use unisim.vcomponents.all;
 entity rev2_top is
   generic (
     g_cpu_firmware : string  := "boot.ram";
-    g_use_urv : boolean := true;
-    g_with_hdmi     : boolean := true;
+    g_use_urv      : boolean := true;
+    g_with_hdmi    : boolean := true;
     -- DDR clock-to-data delay
-    g_data_delay    : integer := 0; --70;
+    g_data_delay   : integer := 0;      --70;
     -- DDR data-to-DQs delay
-    g_dqs_delay     : integer := 40; --140; --75 - 45;
-    g_clock_delay : integer := 40; --70;
-    g_addr_delay : integer := 0; --70;
-    
+    g_dqs_delay    : integer := 40;  --140; --75 - 45;
+    g_clock_delay  : integer := 40;     --70;
+    g_addr_delay   : integer := 0;      --70;
+
 
     -- PLL configuration:
     -- Fsys = 25 MHz * g_pll_mul / g_pll_sys_div
@@ -62,14 +62,13 @@ entity rev2_top is
     -- DSI PHY clock PLL divider
     g_pll_phy_div     : integer := 2;
     -- DSI PHY clock period, in picoseconds
-    g_clock_period_ps : integer := 2580;
+    g_clock_period_ps : integer := 1538;
 
     g_simulation : boolean := false
     );
   port (
     clk_25m_i : in std_logic;
 
-    rst_n_a_i  : in  std_logic;
     uart_txd_o : out std_logic;
     uart_rxd_i : in  std_logic;
 
@@ -77,8 +76,8 @@ entity rev2_top is
 -- HDMI
 -------------------------------------------------------------------------------
 
-    hdmi_rx_p_i : in std_logic_vector(3 downto 0);
-    hdmi_rx_n_i : in std_logic_vector(3 downto 0);
+    hdmi_rx_p_i      : in    std_logic_vector(3 downto 0);
+    hdmi_rx_n_i      : in    std_logic_vector(3 downto 0);
     hdmi_scl_b       : inout std_logic;
     hdmi_sda_b       : inout std_logic;
     hdmi_hpd_o       : out   std_logic;
@@ -126,7 +125,15 @@ entity rev2_top is
     lcd_pwren_o : out std_logic;
     bl_dim_o    : out std_logic;
 
-    vid_resetn_o : out std_logic
+    vid_resetn_o : out std_logic;
+
+    -- SPI Flash interface (bit-banged)
+    spi_cs_n_rst_b : inout std_logic;
+    spi_mosi_o     : out   std_logic;
+    spi_miso_i     : in    std_logic;
+    spi_sck_o      : out   std_logic;
+
+    dbg_o : out std_logic_vector(3 downto 0)
     );
 
 end rev2_top;
@@ -134,7 +141,7 @@ end rev2_top;
 architecture rtl of rev2_top is
 
   constant c_fml_depth : integer := 25;
-  
+
   component dsi_core is
     generic(
       g_pixels_per_clock : integer := 2;
@@ -302,8 +309,8 @@ architecture rtl of rev2_top is
       sdram_columndepth : integer := 10;
       data_delay        : integer := 0;
       dqs_delay         : integer := 0;
-      clock_delay : integer := 0;
-      addr_delay : integer := 0
+      clock_delay       : integer := 0;
+      addr_delay        : integer := 0
       );
     port (
       sys_clk   : in std_logic;
@@ -339,44 +346,39 @@ architecture rtl of rev2_top is
       );
   end component;
 
-  component reset_gen
+  component reset_gen is
     port (
       clk_sys_i        : in  std_logic;
       rst_pcie_n_a_i   : in  std_logic;
       rst_button_n_a_i : in  std_logic;
       rst_n_o          : out std_logic);
-  end component;
+  end component reset_gen;
 
   component pll_drp_sequencer
-    generic (
-      g_default_pll_mul : integer;
-      g_default_pll_sys_div : integer;
-      g_default_pll_phy_div : integer
-      );
 
     port (
-      clk_sys_i : in std_logic;
+      clk_sys_i    : in std_logic;
       clk_reconf_i : in std_logic;
 
-      r_pll_ctl0_i : in std_logic_vector(31 downto 0);
-      r_pll_ctl1_i : in std_logic_vector(31 downto 0);
+      r_pll_ctl0_i   : in  std_logic_vector(31 downto 0);
+      r_pll_ctl1_i   : in  std_logic_vector(31 downto 0);
       r_pll_status_o : out std_logic_vector(31 downto 0);
 
-      pll_locked_i : in std_logic;
-      pll_rst_o : out std_logic;
-      pll_di_o : out std_logic_vector(15 downto 0);
-      pll_do_i : in std_logic_vector(15 downto 0);
-      pll_drdy_i : in std_logic;
-      pll_daddr_o : out std_logic_vector(4 downto 0);
-      pll_den_o : out std_logic;
-      pll_dwe_o : out std_logic;
-      busy_o : out std_logic
+      pll_locked_i : in  std_logic;
+      pll_rst_o    : out std_logic;
+      pll_di_o     : out std_logic_vector(15 downto 0);
+      pll_do_i     : in  std_logic_vector(15 downto 0);
+      pll_drdy_i   : in  std_logic;
+      pll_daddr_o  : out std_logic_vector(4 downto 0);
+      pll_den_o    : out std_logic;
+      pll_dwe_o    : out std_logic;
+      busy_o       : out std_logic
       );
   end component;
-  
+
   component fml_framebuffer
     generic (
-      g_fml_depth   : integer
+      g_fml_depth : integer
       );
     port (
       clk_sys_i : in std_logic;
@@ -395,17 +397,19 @@ architecture rtl of rev2_top is
       fml_sel : out std_logic_vector(3 downto 0);
       fml_di  : in  std_logic_vector(31 downto 0);
 
-      r_fb_enable_i  : in std_logic;
-      r_fb_pix32_i : in std_logic;
-      r_fb_addr_i : in std_logic_vector(g_fml_depth-1 downto 0);
-      r_fb_size_i : in std_logic_vector(g_fml_depth-1 downto 0)
+      r_fb_enable_i : in std_logic;
+      r_fb_pix32_i  : in std_logic;
+      r_fb_addr_i   : in std_logic_vector(g_fml_depth-1 downto 0);
+      r_fb_size_i   : in std_logic_vector(g_fml_depth-1 downto 0)
       );
   end component;
 
 
   component sysctl_regs
     generic (
-      g_fml_depth   : integer
+      g_fml_depth           : integer;
+      g_default_pll_mul     : integer;
+      g_default_pll_sys_div : integer
       );
     port (
       clk_sys_i : in std_logic;
@@ -421,29 +425,29 @@ architecture rtl of rev2_top is
       wb_stall_o : out std_logic;
       wb_ack_o   : out std_logic;
 
-      r_fb_enable_o  : out std_logic;
-      r_fb_pix32_o : out std_logic;
-      r_fb_addr_o : out std_logic_vector(g_fml_depth-1 downto 0);
-      r_fb_size_o : out std_logic_vector(g_fml_depth-1 downto 0);
-      
+      r_fb_enable_o : out std_logic;
+      r_fb_pix32_o  : out std_logic;
+      r_fb_addr_o   : out std_logic_vector(g_fml_depth-1 downto 0);
+      r_fb_size_o   : out std_logic_vector(g_fml_depth-1 downto 0);
+
       r_mixer_ctl_i : in  std_logic_vector(7 downto 0);
       r_mixer_ctl_o : out std_logic_vector(7 downto 0);
 
-      r_edid_addr_o       : out std_logic_vector(7 downto 0);
-      r_edid_data_o       : out std_logic_vector(7 downto 0);
-      r_edid_wr_o         : out std_logic;
+      r_edid_addr_o : out std_logic_vector(7 downto 0);
+      r_edid_data_o : out std_logic_vector(7 downto 0);
+      r_edid_wr_o   : out std_logic;
 
       r_pwm_ctl_o : out std_logic_vector(7 downto 0);
 
-      r_pll_ctl0_o : out std_logic_vector(31 downto 0);
-      r_pll_ctl1_o : out std_logic_vector(31 downto 0);
-      r_pll_status_i : in std_logic_vector( 31 downto 0);
-      r_gpio_o : out std_logic_vector(31 downto 0);
-      r_gpio_i : in std_logic_vector(31 downto 0)
+      r_pll_ctl0_o   : out std_logic_vector(31 downto 0);
+      r_pll_ctl1_o   : out std_logic_vector(31 downto 0);
+      r_pll_status_i : in  std_logic_vector(31 downto 0);
+      r_gpio_o       : out std_logic_vector(31 downto 0);
+      r_gpio_i       : in  std_logic_vector(31 downto 0)
       );
   end component;
 
- 
+
   component dvi_decoder
     port (
       tmdsclk_p : in std_logic;
@@ -481,10 +485,10 @@ architecture rtl of rev2_top is
       rst_n_i          : in    std_logic;
       scl_b            : inout std_logic;
       sda_b            : inout std_logic;
-      	  edid_en_i : in std_logic;
-  scl_master_i : in std_logic;
-sda_master_i : in std_logic;
-  sda_master_o : out std_logic;
+      edid_en_i        : in    std_logic;
+      scl_master_i     : in    std_logic;
+      sda_master_i     : in    std_logic;
+      sda_master_o     : out   std_logic;
       hdmi_p5v_notif_i : in    std_logic;
       hdmi_hpd_en_o    : out   std_logic;
       addr_i           : in    std_logic_vector(7 downto 0);
@@ -525,18 +529,18 @@ sda_master_i : in std_logic;
 
   constant c_cnx_slave_ports  : integer := 1;
   constant c_cnx_master_ports : integer := 6;
-  constant c_master_cpu_i : integer := 0;
+  constant c_master_cpu_i     : integer := 0;
 
   constant c_slave_dpram     : integer := 0;
   constant c_slave_uart      : integer := 1;
   constant c_slave_dsi       : integer := 2;
   constant c_slave_ddram_csr : integer := 3;
-  constant c_slave_csr    : integer := 4;
+  constant c_slave_csr       : integer := 4;
   constant c_slave_ddram_mem : integer := 5;
 
 
 
-  
+
   signal cnx_slave_in  : t_wishbone_slave_in_array(c_cnx_slave_ports-1 downto 0);
   signal cnx_slave_out : t_wishbone_slave_out_array(c_cnx_slave_ports-1 downto 0);
 
@@ -545,7 +549,7 @@ sda_master_i : in std_logic;
 
   constant c_cfg_base_addr : t_wishbone_address_array(c_cnx_master_ports-1 downto 0) :=
     (0 => x"00000000",                  -- 64KB of fpga memory
-     1 => x"c0010000",                  
+     1 => x"c0010000",
      2 => x"c0020000",
      3 => x"c0030000",
      4 => x"c0040000",
@@ -605,18 +609,18 @@ sda_master_i : in std_logic;
   signal hdmi_pixel                                                           : std_logic_vector(47 downto 0);
 
   signal r_mixer_ctl_tomix, r_mixer_ctl_tocsr : std_logic_vector(7 downto 0);
-  signal r_edid_addr, r_edid_data        : std_logic_vector(7 downto 0);
-  signal r_edid_wr                     : std_logic;
-  signal r_fb_pix32, r_fb_enable: std_logic;
-  signal r_fb_addr, r_fb_size: std_logic_vector(c_fml_depth-1 downto 0);
-  signal r_gpio_in, r_gpio_out : std_logic_vector(31 downto 0);
+  signal r_edid_addr, r_edid_data             : std_logic_vector(7 downto 0);
+  signal r_edid_wr                            : std_logic;
+  signal r_fb_pix32, r_fb_enable              : std_logic;
+  signal r_fb_addr, r_fb_size                 : std_logic_vector(c_fml_depth-1 downto 0);
+  signal r_gpio_in, r_gpio_out                : std_logic_vector(31 downto 0);
   signal r_pll_ctl1, r_pll_ctl0, r_pll_status : std_logic_vector(31 downto 0);
-  signal r_pwm_ctl : std_logic_vector(7 downto 0);
-  signal dsi_gpio                    : std_logic_vector(2 downto 0);
+  signal r_pwm_ctl                            : std_logic_vector(7 downto 0);
+  signal dsi_gpio                             : std_logic_vector(2 downto 0);
 
-  signal pwm_prescaler: unsigned(11 downto 0); -- 100 MHz / 4096 = 5 kHz
-  signal pwm_count: unsigned(4 downto 0); -- 100 MHz / 4096 = 5 kHz
-  
+  signal pwm_prescaler : unsigned(11 downto 0);  -- 100 MHz / 4096 = 5 kHz
+  signal pwm_count     : unsigned(4 downto 0);   -- 100 MHz / 4096 = 5 kHz
+
   component xurv_core is
     generic (
       g_internal_ram_size      : integer;
@@ -632,7 +636,7 @@ sda_master_i : in std_logic;
       host_slave_i : in  t_wishbone_slave_in          := cc_dummy_slave_in;
       host_slave_o : out t_wishbone_slave_out);
   end component xurv_core;
-  
+
   component chipscope_icon is
     port (
       CONTROL0 : inout std_logic_vector(35 downto 0));
@@ -664,14 +668,19 @@ sda_master_i : in std_logic;
   signal pll_drdy   : std_logic;
   signal pll_locked : std_logic;
 
-  signal backlight_pwm : std_logic;
-  signal dcm_locked, dcm_locked_n : std_logic;
+  signal backlight_pwm              : std_logic;
   signal dcm_clk_sys, dcm_clk_sys_n : std_logic;
 
+  signal pll_locked_synced   : std_logic;
   signal pll_locked_n_masked : std_logic;
-  signal pll_reconfiguring : std_logic;
-  signal pll_clk_in_bufio : std_logic;
-  signal pll_clk_in_reconf : std_logic;
+  signal pll_reconfiguring   : std_logic;
+  signal pll_clk_in_bufio    : std_logic;
+  signal pll_clk_in_reconf   : std_logic;
+
+  signal mask_reset_input : std_logic;
+  signal rst_n_a          : std_logic;
+  signal rst_n_sys_pre    : std_logic;
+
 begin  -- rtl
 
   
@@ -686,6 +695,9 @@ begin  -- rtl
       data_i   => rst_n_sys,
       synced_o => rst_n_dsi);
 
+
+
+
   --BUFIO2_1: BUFIO2
   --  generic map (
   --    DIVIDE_BYPASS => true,
@@ -698,7 +710,7 @@ begin  -- rtl
   --    SERDESSTROBE => open,
   --    I            => clk_25m_i);
 
-  U_IbufG_CLKIn: IBUFG
+  U_IbufG_CLKIn : IBUFG
     port map (
       I => clk_25m_i,
       O => pll_clk_in
@@ -710,7 +722,7 @@ begin  -- rtl
   --      );
 
   pll_clk_in_reconf <= pll_clk_in;
-  
+
   U_PLL : PLL_ADV
     generic map (
       BANDWIDTH          => "OPTIMIZED",
@@ -744,35 +756,34 @@ begin  -- rtl
     port map (
       CLKIN1   => pll_clk_in,
       CLKIN2   => '0',
-      CLKINSEL => '1',  -- select CLKIN1
+      CLKINSEL => '1',                  -- select CLKIN1
       CLKFBOUT => pll_clk_fb,
-      CLKOUT0  => clk_phy,
-      CLKOUT1  => clk_phy_shifted,
-      CLKOUT4  => pll_clk_sys,
-      CLKOUT5  => pll_clk_sys_n,
-      CLKOUT3  => pll_clk_dsi,
-      CLKOUT2  => open,
-      LOCKED   => pll_locked,
-      RST      => pll_rst,
-      CLKFBIN  => pll_clk_fb,
-      DO       => pll_do,
-      DI       => pll_di,
-      DRDY     => pll_drdy,
-      DADDR    => pll_daddr,
-      DCLK     => pll_clk_in_reconf,
-      DEN      => pll_den,
-      DWE      => pll_dwe,
-      REL      => '0'
+
+      CLKOUT0 => clk_phy,
+      CLKOUT1 => clk_phy_shifted,
+      CLKOUT2 => open,
+      CLKOUT3 => pll_clk_dsi,
+
+      CLKOUT4 => pll_clk_sys,
+      CLKOUT5 => pll_clk_sys_n,
+
+      LOCKED  => pll_locked,
+      RST     => pll_rst,
+      CLKFBIN => pll_clk_fb,
+      DO      => pll_do,
+      DI      => pll_di,
+      DRDY    => pll_drdy,
+      DADDR   => pll_daddr,
+      DCLK    => pll_clk_in_reconf,
+      DEN     => pll_den,
+      DWE     => pll_dwe,
+      REL     => '0'
       );
 
-  U_PLL_Reconf: pll_drp_sequencer
-    generic map (
-      g_default_pll_mul     => g_pll_mul,
-      g_default_pll_sys_div => g_pll_sys_div,
-      g_default_pll_phy_div => g_pll_phy_div)
+  U_PLL_Reconf : pll_drp_sequencer
     port map (
       clk_sys_i      => clk_sys,
-      clk_reconf_i   =>pll_clk_in_reconf,
+      clk_reconf_i   => pll_clk_in_reconf,
       r_pll_ctl0_i   => r_pll_ctl0,
       r_pll_ctl1_i   => r_pll_ctl1,
       r_pll_status_o => r_pll_status,
@@ -784,13 +795,11 @@ begin  -- rtl
       pll_daddr_o    => pll_daddr,
       pll_den_o      => pll_den,
       pll_dwe_o      => pll_dwe,
-      busy_o => pll_reconfiguring);
+      busy_o         => pll_reconfiguring);
 
   
- 
   pll_locked_n <= not pll_locked;
-  dcm_locked_n <= not dcm_locked;
-  
+
   U_BufG_CLK_DSI : BUFG
     port map (
       I => pll_clk_dsi,
@@ -801,11 +810,11 @@ begin  -- rtl
   --    I => pll_clk_dsi_shifted,
   --    O => clk_dsi_shifted);
 
- U_BufG_CLK_SYS: BUFG
-     port map (
+  U_BufG_CLK_SYS : BUFG
+    port map (
       I => pll_clk_sys,
       O => clk_sys);
-  
+
   --U_BufG_CLK_SYS : BUFGCE
   --  port map (
   --    O  => clk_sys,
@@ -831,15 +840,36 @@ begin  -- rtl
       O => clk_sys_n);
 
   pll_locked_n_masked <= pll_locked_n or pll_rst;
-  
+
+
+  --dbg_o(0) <= clk_sys_div2;
+  --dbg_o(1) <= clk_sys_sh_div2;
+  --dbg_o(2) <= clk_dsi_div2;
+  --dbg_o(3) <= rst_n_sys;
+
+  dbg_o <= (others => '0');
+
+
+  rst_n_a <= spi_cs_n_rst_b and not mask_reset_input;
+
+  U_Sync_PLL_Lock : gc_sync_ffs
+    port map (
+      clk_i    => clk_sys,
+      rst_n_i  => '1',
+      data_i   => pll_locked,
+      synced_o => pll_locked_synced);
+
   U_Reset_Gen : reset_gen
     port map (
       clk_sys_i        => clk_sys,
-      rst_pcie_n_a_i   => pll_locked_n_masked,
-      rst_button_n_a_i => rst_n_a_i,
-      rst_n_o          => rst_n_sys);
+      rst_pcie_n_a_i   => '1',
+      rst_button_n_a_i => rst_n_a,
+      rst_n_o          => rst_n_sys_pre);
 
- U_Intercon : xwb_crossbar
+  rst_n_sys <= rst_n_sys_pre and pll_locked_synced;  -- and rst_n_sys_pre;
+
+
+  U_Intercon : xwb_crossbar
     generic map (
       g_num_masters => c_cnx_slave_ports,
       g_num_slaves  => c_cnx_master_ports,
@@ -853,64 +883,64 @@ begin  -- rtl
       slave_o   => cnx_slave_out,
       master_i  => cnx_master_in,
       master_o  => cnx_master_out);
-  
-  gen_with_lm32: if( not g_use_urv  ) generate
-  U_CPU : xwb_lm32
-    generic map (
-      g_profile => "medium_icache")
-    port map (
-      clk_sys_i => clk_sys,
-      rst_n_i   => rst_n_sys,
-      irq_i     => x"00000000",
-      dwb_o     => cnx_slave_in(0),
-      dwb_i     => cnx_slave_out(0),
-      iwb_o     => cpu_iwb_out,
-      iwb_i     => cpu_iwb_in);
 
- 
+  gen_with_lm32 : if(not g_use_urv) generate
+    U_CPU : xwb_lm32
+      generic map (
+        g_profile => "medium_icache")
+      port map (
+        clk_sys_i => clk_sys,
+        rst_n_i   => rst_n_sys,
+        irq_i     => x"00000000",
+        dwb_o     => cnx_slave_in(0),
+        dwb_i     => cnx_slave_out(0),
+        iwb_o     => cpu_iwb_out,
+        iwb_i     => cpu_iwb_in);
 
-  U_DPRAM : xwb_dpram
-    generic map (
-      g_size                  => 4096,  -- 16kB
-      g_init_file             => g_cpu_firmware,
-      g_must_have_init_file   => true,
-      g_slave1_interface_mode => PIPELINED,
-      g_slave2_interface_mode => PIPELINED,
-      g_slave1_granularity    => BYTE,
-      g_slave2_granularity    => BYTE)
-    port map (
-      clk_sys_i => clk_sys,
-      rst_n_i   => rst_n_sys,
-      slave1_i  => cnx_master_out(c_slave_dpram),
-      slave1_o  => cnx_master_in(c_slave_dpram),
-      slave2_i  => cpu_iwb_out,
-      slave2_o  => cpu_iwb_in);
+    
+
+    U_DPRAM : xwb_dpram
+      generic map (
+        g_size                  => 4096,  -- 16kB
+        g_init_file             => g_cpu_firmware,
+        g_must_have_init_file   => true,
+        g_slave1_interface_mode => PIPELINED,
+        g_slave2_interface_mode => PIPELINED,
+        g_slave1_granularity    => BYTE,
+        g_slave2_granularity    => BYTE)
+      port map (
+        clk_sys_i => clk_sys,
+        rst_n_i   => rst_n_sys,
+        slave1_i  => cnx_master_out(c_slave_dpram),
+        slave1_o  => cnx_master_in(c_slave_dpram),
+        slave2_i  => cpu_iwb_out,
+        slave2_o  => cpu_iwb_in);
 
   end generate gen_with_lm32;
 
 --  gen_with_uriscv: if( g_use_urv  ) generate
 
 
-    U_CPU : xurv_core
-      generic map (
-        g_internal_ram_size      => 16384,
-        g_internal_ram_init_file => g_cpu_firmware,
-        g_simulation             => g_simulation)
-      port map (
-        clk_sys_i    => clk_sys,
-        rst_n_i      => rst_n_sys,
-        cpu_rst_i    => rst_sys,
-        irq_i        => x"00",
-        dwb_o        => cnx_slave_in(0),
-        dwb_i        => cnx_slave_out(0)
-        );
-    
+  U_CPU : xurv_core
+    generic map (
+      g_internal_ram_size      => 32768, 
+      g_internal_ram_init_file => g_cpu_firmware,
+      g_simulation             => g_simulation)
+    port map (
+      clk_sys_i => clk_sys,
+      rst_n_i   => rst_n_sys,
+      cpu_rst_i => rst_sys,
+      irq_i     => x"00",
+      dwb_o     => cnx_slave_in(0),
+      dwb_i     => cnx_slave_out(0)
+      );
 
-    
+
+
 --  end generate gen_with_uriscv;
-      
 
-  
+
+
   U_UART : xwb_simple_uart
     generic map (
       g_interface_mode      => PIPELINED,
@@ -928,10 +958,10 @@ begin  -- rtl
 
   U_DDR_Controller : hpdmc
     generic map (
-      data_delay => g_data_delay,
-      dqs_delay  => g_dqs_delay,
-      clock_delay=>g_clock_delay,
-      addr_delay => g_addr_delay)
+      data_delay  => g_data_delay,
+      dqs_delay   => g_dqs_delay,
+      clock_delay => g_clock_delay,
+      addr_delay  => g_addr_delay)
     port map (
       sys_clk   => clk_sys,
       sys_clk_n => clk_sys_n,
@@ -964,7 +994,7 @@ begin  -- rtl
 
   U_FML_Arb : fmlarb
     generic map (
-     fml_width => 32,
+      fml_width => 32,
       fml_depth => c_fml_depth)
     port map (
       sys_clk => clk_sys,
@@ -1060,7 +1090,7 @@ begin  -- rtl
 
   U_Framebuffer : fml_framebuffer
     generic map (
-      g_fml_depth   => c_fml_depth
+      g_fml_depth => c_fml_depth
       )
     port map (
       clk_sys_i => clk_sys,
@@ -1079,18 +1109,21 @@ begin  -- rtl
       fml_sel => frameb.sel,
       fml_di  => frameb.d_s2m,
 
-      r_fb_addr_i => r_fb_addr,
-      r_fb_size_i => r_fb_size,
-      r_fb_pix32_i => r_fb_pix32,
+      r_fb_addr_i   => r_fb_addr,
+      r_fb_size_i   => r_fb_size,
+      r_fb_pix32_i  => r_fb_pix32,
       r_fb_enable_i => r_fb_enable
       );
 
-  U_Sysctl_Regs: sysctl_regs
+  U_Sysctl_Regs : sysctl_regs
     generic map (
-      g_fml_depth => c_fml_depth)
+      g_fml_depth           => c_fml_depth,
+      g_default_pll_mul     => g_pll_mul,
+      g_default_pll_sys_div => g_pll_sys_div)
+
     port map (
-      clk_sys_i      => clk_sys,
-      rst_n_i        => rst_n_sys,
+      clk_sys_i => clk_sys,
+      rst_n_i   => rst_n_sys,
 
       wb_adr_i   => cnx_master_out(c_slave_csr).adr,
       wb_cyc_i   => cnx_master_out(c_slave_csr).cyc,
@@ -1152,23 +1185,31 @@ begin  -- rtl
 
   end generate gen_with_hdmi_sampler;
 
-U_EDID_EEPROM : edid_eeprom
-      port map (
-        clk_sys_i        => clk_sys,
-        rst_n_i          => rst_n_sys,
+  mask_reset_input <= r_gpio_out(3);
 
-        edid_en_i  => r_gpio_out(0),
-        scl_master_i => r_gpio_out(1),
-        sda_master_i => r_gpio_out(2),
-        sda_master_o => r_gpio_in(2),
+  spi_cs_n_rst_b <= r_gpio_out(4) when mask_reset_input = '1' else 'Z';
+  spi_sck_o      <= r_gpio_out(5);
+  spi_mosi_o     <= r_gpio_out(6);
+  r_gpio_in(6)   <= spi_miso_i;
 
-        scl_b            => hdmi_scl_b,
-        sda_b            => hdmi_sda_b,
-        hdmi_p5v_notif_i => hdmi_p5v_notif_i,
-        hdmi_hpd_en_o    => hdmi_hpd_o,
-        addr_i           => r_edid_addr,
-        data_i           => r_edid_data,
-        wr_i             => r_edid_wr);
+  U_EDID_EEPROM : edid_eeprom
+    port map (
+      clk_sys_i => clk_sys,
+      rst_n_i   => rst_n_sys,
+
+      edid_en_i    => r_gpio_out(0),
+      scl_master_i => r_gpio_out(1),
+      sda_master_i => r_gpio_out(2),
+      sda_master_o => r_gpio_in(2),
+
+      scl_b            => hdmi_scl_b,
+      sda_b            => hdmi_sda_b,
+      hdmi_p5v_notif_i => hdmi_p5v_notif_i,
+      hdmi_hpd_en_o    => hdmi_hpd_o,
+      addr_i           => r_edid_addr,
+      data_i           => r_edid_data,
+      wr_i             => r_edid_wr);
+
   U_Video_Mixer : video_mixer
     port map (
       clk_sys_i          => clk_sys,
@@ -1222,26 +1263,26 @@ U_EDID_EEPROM : edid_eeprom
     if rising_edge(clk_sys) then
       if rst_n_sys = '0' then
         pwm_prescaler <= (others => '0');
-        pwm_count <= (others => '0');
-        bl_dim_o <= '0';
+        pwm_count     <= (others => '0');
+        bl_dim_o      <= '0';
       else
         pwm_prescaler <= pwm_prescaler + 1;
         if(pwm_prescaler = 0) then
           pwm_count <= pwm_count + 1;
         end if;
 
-        if(pwm_count < unsigned(r_pwm_ctl) ) then
+        if(pwm_count < unsigned(r_pwm_ctl)) then
           bl_dim_o <= '1';
         else
           bl_dim_o <= '0';
         end if;
 
       end if;
-    end if; 
+    end if;
   end process;
-  
 
-  lcd_pwren_o <= '1';
+
+  lcd_pwren_o  <= '1';
   vid_resetn_o <= '1';
   
 end rtl;
