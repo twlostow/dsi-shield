@@ -25,7 +25,7 @@ int read_blocking(uint8_t *what)
 			break;
 	}
 
-	if(cnt)
+	if(cnt > 0)
 	{
 		*what = b;
 		return 0;

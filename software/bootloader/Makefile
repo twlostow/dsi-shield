@@ -18,6 +18,8 @@ OBJS = crtboot.o  boot.o ../common/uart.o ../arch/risc-v/emulate.o ../arch/risc-
 LDS = boot.ld
 OUTPUT= boot
 
+#CFLAGS += -DSIMULATION
+
 $(OUTPUT): $(LDS) $(OBJS)
 	${CC} -g  -m32 -Wl,--gc-sections -march=RV32I -o $(OUTPUT).elf $(LDFLAGS) -nostartfiles $(OBJS)  -lm -T $(LDS)
 	${OBJCOPY} -O binary $(OUTPUT).elf $(OUTPUT).bin
