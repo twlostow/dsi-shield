@@ -14,7 +14,7 @@ SECTIONS
   PROVIDE( eprol = . );
 
   /* text: Program code section */
-  .text : 
+  .text :
   {
     *(.boot)
     *(.text)
@@ -23,19 +23,19 @@ SECTIONS
   }
 
   /* init: Code to execute before main (called by crt0.S) */
-  .init : 
+  .init :
   {
     KEEP( *(.init) )
   }
 
   /* fini: Code to execute after main (called by crt0.S) */
-  .fini : 
+  .fini :
   {
     KEEP( *(.fini) )
   }
 
   /* rodata: Read-only data */
-  .rodata : 
+  .rodata :
   {
     *(.rdata)
     *(.rodata)
@@ -65,7 +65,7 @@ SECTIONS
      the begin and end indicators in the right place. */
 
   /* ctors : Array of global constructor function pointers */
- 
+
   /*--------------------------------------------------------------------*/
   /* Initialized data segment                                           */
   /*--------------------------------------------------------------------*/
@@ -75,7 +75,7 @@ SECTIONS
    _fdata = .;
 
   /* data: Writable data */
-  .data : 
+  .data :
   {
     *(.data)
     *(.data.*)
@@ -91,7 +91,7 @@ SECTIONS
   _gp = . + 0x800;
 
   /* Writable small data segment */
-  .sdata : 
+  .sdata :
   {
     *(.sdata)
     *(.sdata.*)
@@ -108,7 +108,7 @@ SECTIONS
   _fbss = .;
 
   /* Writable uninitialized small data segment */
-  .sbss : 
+  .sbss :
   {
     *(.sbss)
     *(.sbss.*)
@@ -118,7 +118,7 @@ SECTIONS
   /* bss: Uninitialized writeable data section */
   . = .;
   _bss_start = .;
-  .bss : 
+  .bss :
   {
     *(.bss)
     *(.bss.*)
@@ -130,6 +130,6 @@ SECTIONS
   PROVIDE( end = . );
   _end = ALIGN(8);
 
-  PROVIDE( _fstack = 0x3ffc - 0x400 );
-  PROVIDE( _fexception_stack = 0x3ffc );
+  PROVIDE( _fstack = 0x7ffc - 0x400 );
+  PROVIDE( _fexception_stack = 0x7ffc );
 }

@@ -1,3 +1,8 @@
+/*
+  RISC-V / RV32 interrupt support code
+  Based on the RISC-V proxy kernel
+*/
+
 .section .text
 
 .global trap_entry
