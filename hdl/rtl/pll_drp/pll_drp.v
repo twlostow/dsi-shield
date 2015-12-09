@@ -44,11 +44,6 @@ endmodule // reconf_ram
 
 
 module pll_drp_sequencer
-  #(
-    parameter  	g_default_pll_mul = 1,  // for PLL_STATUS register
-    parameter  	g_default_pll_sys_div = 2,
-    parameter  	g_default_pll_phy_div = 3
-    )  
    (
     input 	      clk_sys_i,
 
@@ -131,7 +126,11 @@ module pll_drp_sequencer
 	trig_d2 <= trig_d1;
 	restart <= ~trig_d2 & trig_d1;
      end
+   
 
+   
+reg [15:0] pll_do_reg;
+   
    
    always@(posedge clk_reconf_i or posedge rst_powerup)
      if ( rst_powerup ) begin
@@ -184,13 +183,15 @@ module pll_drp_sequencer
 		    if (pll_drdy_i)
 		      begin
 			 state <= `ST_WRITE_DRP;
+			 pll_do_reg <= pll_do_i;
+			 
 		      end
 		 end
 	       
 
 	       `ST_WRITE_DRP:
 		 begin
-		    pll_di_o <= (pll_do_i & reg_val[31:16]) | reg_val[15:0];
+		    pll_di_o <= (pll_do_reg & reg_val[31:16]) | reg_val[15:0];
 		    index <= index + 1;
 		    pll_den_o <= 1;
 		    pll_dwe_o <= 1;
@@ -208,7 +209,7 @@ module pll_drp_sequencer
 			 if( index == r_n_regs )
 			   state <= `ST_WAIT_LOCK;
 			 else
-			   state <= `ST_READ_DRP;
+			   state <= `ST_READ_ROM;
 		      end
 		 end // case: `ST_WAIT_WRITE_DRP
 
@@ -229,9 +230,6 @@ module pll_drp_sequencer
 
    
    
-   assign r_pll_status_o[5:0] = g_default_pll_mul;
-   assign r_pll_status_o[11:6] = g_default_pll_sys_div;
-   assign r_pll_status_o[17:12] = g_default_pll_phy_div;   
    assign r_pll_status_o[18] = pll_locked_i;
 
    assign busy_o = (state != `ST_IDLE);
