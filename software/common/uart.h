@@ -28,8 +28,7 @@ int uart_write_string(const char *s);
 int puts(const char *s);
 int uart_read_byte(void);
 
-/* uart-sw is used by ppsi (but may be wrapped to normal uart) */
-int uart_sw_write_string(const char *s);
+int uart_poll();
 
 
 #endif

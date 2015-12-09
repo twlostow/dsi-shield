@@ -55,10 +55,12 @@ static inline unsigned int board_system_freq()
     return readl(SYS_PLL_FREQ);
 }
 
-static inline unsigned int board_phy_freq()
+static inline void delay(int tics)
 {
-    return 0;
+        while(tics--) asm volatile ("nop");
 }
+
+
 #endif
 
 #endif

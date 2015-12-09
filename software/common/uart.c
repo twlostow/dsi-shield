@@ -32,6 +32,12 @@
 
 volatile struct UART_WB *uart;
 
+#ifdef SIMULATION
+volatile uint32_t *TX_REG = 0x100000;
+volatile uint32_t *RX_REG = 0x100004;
+volatile uint32_t *STATUS_REG = 0x100008;
+#endif
+
 void uart_init_hw()
 {
 
@@ -54,12 +60,18 @@ void uart_write_byte(int b)
 	while (uart->SR & UART_SR_TX_BUSY)
 		;
 	uart->TDR = b;
+#else
+	*TX_REG = b;
 #endif
 }
 
 int uart_poll()
 {
+#ifndef SIMULATION
 	return uart->SR & UART_SR_RX_RDY;
+#else
+	return (*STATUS_REG) ? 1: 0;
+#endif
 }
 
 int uart_read_byte()
@@ -67,8 +79,15 @@ int uart_read_byte()
 	if (!uart_poll())
 		return -1;
 
+#ifndef SIMULATION
 	return uart->RDR & 0xff;
+#else
+	return (*RX_REG) & 0xff;
+#endif
+
+
 }
+
 int puts(const char *s)
 {
   char c;
