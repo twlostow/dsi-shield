@@ -30,12 +30,14 @@
 `define REG_GPIO_OUT 32
 `define REG_GPIO_IN 36
 `define REG_PLL_CONFIG1 40
-
+`define REG_PLL_FREQ 44
 
 
 module sysctl_regs
    #(
-     parameter g_fml_depth = 26
+     parameter g_fml_depth = 26,
+     parameter  	g_default_pll_mul = 1,  // for PLL_STATUS register
+     parameter  	g_default_pll_sys_div = 2
      )
   (
    input 		    clk_sys_i,
@@ -78,6 +80,7 @@ module sysctl_regs
    reg [g_fml_depth-1:0]    r_fb_addr;
    reg [g_fml_depth-1:0]    r_fb_size;
    reg [31:0] 		    r_gpio;
+   reg [31:0] 		    r_pll_freq = (25000000 * g_default_pll_mul / g_default_pll_sys_div);
 
    always@(posedge clk_sys_i)
      if(!rst_n_i)
@@ -107,6 +110,7 @@ module sysctl_regs
 		 
 		 `REG_PLL_CONFIG0: 
 		    r_pll_ctl0_o <= wb_dat_i[31:0];
+
 		 `REG_PLL_CONFIG1: 
 		    r_pll_ctl1_o <= wb_dat_i[31:0];
      
@@ -116,6 +120,10 @@ module sysctl_regs
 		 `REG_GPIO_OUT:
 		   r_gpio <= wb_dat_i[31:0];
 
+		 `REG_PLL_FREQ:
+		   r_pll_freq <= wb_dat_i[31:0];
+		 
+		 
                endcase // case (wb_adr_i)
              else
                case (wb_adr_i[5:0])
@@ -127,12 +135,15 @@ module sysctl_regs
 		 `REG_PLL_STATUS: wb_dat_o <= r_pll_status_i;
 		 `REG_GPIO_OUT: wb_dat_o <= r_gpio;
 		 `REG_GPIO_IN: wb_dat_o <= r_gpio_i;
+		 `REG_PLL_FREQ : wb_dat_o <= r_pll_freq;
+		 
                endcase // case (wb_adr_i)
           end // if (wb_stb_i & wb_cyc_i)
        end // else: !if(!rst_n_i)
 
    reg [2:0] cyc_dly;
 
+   
    always@(posedge clk_sys_i)
      if(!rst_n_i)
        cyc_dly <= 0;
