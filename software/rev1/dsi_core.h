@@ -1,4 +1,4 @@
-/* 
+/*
  * DSI Core
  * Copyright (C) 2013 twl <twlostow@printf.cc>
  *
@@ -26,9 +26,9 @@
 
 /* Register definitions */
 #define REG_H_FRONT_PORCH 0x0
-#define REG_H_BACK_PORCH  0x4 
+#define REG_H_BACK_PORCH  0x4
 #define REG_H_ACTIVE      0x8
-#define REG_H_TOTAL       0xc 
+#define REG_H_TOTAL       0xc
 #define REG_V_FRONT_PORCH 0x10
 #define REG_V_BACK_PORCH  0x14
 #define REG_V_ACTIVE      0x18
@@ -47,7 +47,7 @@
     ((swap&3) << ((index) * 2) | ((reverse) ? (1<<((index)+8)) : 0 ))
 
 #define DSI_LANE_INVERT_CLOCK (1<<12)
-    
+
 
 
 struct dsi_panel_config {
@@ -57,12 +57,12 @@ struct dsi_panel_config {
   uint32_t lane_config;
 
   int lp_divider;
-  
+
   int width, height;
 
   int h_front_porch, h_back_porch;
   int v_front_porch, v_back_porch;
-  
+
   int frame_gap;
 
   int cmd_delay;
@@ -86,6 +86,9 @@ static inline uint32_t dsi_read(uint32_t reg)
 
 void dsi_send_lp_short(uint8_t ptype, uint8_t w0, uint8_t w1);
 void dsi_init( struct dsi_panel_config *);
+int dsi_calc_vrefresh(struct dsi_panel_config *panel);
+int dsi_calc_bitrate(struct dsi_panel_config *panel);
+void dsi_force_lp(int force);
+void dsi_long_write(int is_dcs, const unsigned char *data, int length);
 
 #endif
-

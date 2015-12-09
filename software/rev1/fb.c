@@ -19,8 +19,11 @@
 
 /* fb.c - framebuffer support */
 
+#include <stdlib.h>
+
 #include "board.h"
 #include "fb.h"
+#include "dsi_core.h"
 
 #define FB_CTL 		(BASE_IOREGS+0x040000)
 #define FB_BASE 	(BASE_IOREGS+0x040004)
@@ -112,7 +115,7 @@ void fb_draw_bitmap(int x0, int y0, const struct fb_rle_bitmap *b)
 		int pix = (*d) & 0x80 ? 1: 0;
 		int rep = ( (*d) & 0x7f) + 1;
 		d++;
-		
+
 		while(rep--)
 		{
 			if(pix)
@@ -123,11 +126,11 @@ void fb_draw_bitmap(int x0, int y0, const struct fb_rle_bitmap *b)
 				x=0;
 				y++;
 			}
-		
+
 		}
-	
+
 	}
-	
+
 }
 
 int draw_glyph(const struct fb_font *font, int x0, int y0, int scale, int c, uint32_t color)
@@ -193,7 +196,7 @@ void fb_disable_overlay()
     writel(FB_MIXCTL,0 );
     writel ( FB_CTL, 1 );
 }
- 
+
 void fb_enable_overlay()
 {
     writel(FB_MIXCTL, MIXCTL_FBUF_PURGE);
@@ -205,11 +208,11 @@ void fb_enable_overlay()
  {
  	while(! (readl(FB_MIXCTL) & MIXCTL_VSYNC) );
     while( (readl(FB_MIXCTL) & MIXCTL_VSYNC) );
-    
+
  }
  while(! (readl(FB_MIXCTL) & MIXCTL_VSYNC) );
     while( (readl(FB_MIXCTL) & MIXCTL_VSYNC) );
-    
+
  //while( (readl(FB_MIXCTL) & MIXCTL_VSYNC) );
 	dsi_force_lp(0);
     writel(FB_MIXCTL, MIXCTL_OVERLAY_EN );

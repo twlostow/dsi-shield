@@ -35,7 +35,7 @@ struct pll_config {
     const uint64_t *data;
 };
 
-void pll_reconfigure( struct pll_config *cfg );
+void pll_reconfigure( const struct pll_config *cfg );
 uint32_t pll_system_freq();
 uint32_t pll_phy_freq();
 

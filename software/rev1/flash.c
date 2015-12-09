@@ -1,3 +1,4 @@
+#include "board.h"
 #include "sysctl.h"
 
 #define GPIO_SPI_EN 3
@@ -7,8 +8,8 @@
 #define GPIO_SPI_MISO 6
 
 #define FLASH_PAGE_SIZE 256
-#define FLASH_SECTOR_SIZE 0x40000
-#define FLASH_SIZE 0x1000000
+#define FLASH_SECTOR_SIZE 0x10000
+#define FLASH_SIZE 0x100000
 
 /* M25Pxxx SPI flash commands */
 #define FLASH_WREN 0x06
@@ -30,7 +31,9 @@ void spi_cs(int cs)
 
 void spi_delay()
 {
-    delay(100);
+    int i;
+    for(i=0;i<100;i++)
+      asm volatile("nop");
 }
 
 uint8_t spi_read8()
@@ -85,7 +88,7 @@ void spi_write8(uint8_t d)
 void spi_enable(int enable)
 {
     if(!enable)
-	spi_cs(1);
+	   spi_cs(1);
     delay(1000);
 
     gpio_set(GPIO_SPI_EN, enable);
@@ -162,8 +165,15 @@ void flash_read(uint32_t addr, uint8_t * data, int size)
   spi_write8((addr >> 8) & 0xff);
   spi_write8((addr >> 0) & 0xff);
 
+  //pp_printf("REad %d bytes\n", size);
+
   for (n = 0, p = data; n < size; n++)
-    *p++ = spi_read8();
+  {
+
+    *p = spi_read8();
+    //pp_printf("Read %x\n", *p);
+    p++;
+  }
 
   spi_cs(0);
   spi_enable(0);
@@ -180,7 +190,11 @@ void flash_program_page(uint32_t addr, const uint8_t * data, int size)
 	spi_write8((addr >> 8) & 0x00ff);	/* Address to start writing */
 	spi_write8(addr & 0x00ff);	/* Address to start writing (LSB) */
 	for (i = 0; i < size; i++)
-		spi_write8(data[i]);
+  {
+    //pp_printf("write %x\n", data[i]);
+  	spi_write8(data[i]);
+  }
+
 	for (; i < FLASH_PAGE_SIZE; i++)
 		spi_write8(0xff);
 	spi_cs(0);
@@ -196,6 +210,7 @@ void flash_init()
     uint32_t id;
 
     id = flash_read_id();
+    //pp_printf("Found FLASH: ID=%x\n",id);
 
     spi_enable(0);
 }

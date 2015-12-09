@@ -143,8 +143,7 @@ struct dsi_panel_config panel_e980 = {
   4,    /* num_lanes */
 
 (2<<0) | (3<<2) | (1<<4) | (0<<6) | (1<<8) | (1<<11) | ( 1<<12 ),
-/*
- DSI_LANE(0, 2, 1) |
+/* DSI_LANE(0, 2, 1) |
  DSI_LANE(1, 3, 0) |
  DSI_LANE(2, 0, 0) |
  DSI_LANE(3, 1, 1) |

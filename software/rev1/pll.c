@@ -1,7 +1,7 @@
 /*
  * DSI Shield
  *
- * Copyright (C) 2013-2014 twl
+ * Copyright (C) 2013-2015 twl
  *
  * This program is free software: you can redistribute it and/or modify it
  * under the terms of the GNU General Public License as published by the
@@ -17,8 +17,9 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* main.c - main LM32 application */
+/* pll.c - Xilinx PLL dynamic reconfiguration stuff */
 
+#include <string.h>
 
 #include "pll.h"
 
@@ -48,10 +49,10 @@ static struct pll_config cfg_current = {
     0xdeadbeef,
     0xdeadbeef,
     0xdeadbeef,
-    0xdeadbeef
+    NULL
 };
 
-void pll_reconfigure( struct pll_config *cfg )
+void pll_reconfigure( const struct pll_config *cfg )
 {
     uint32_t new_freq = BASE_CLOCK * cfg->mul / cfg->sys_div;
     uint32_t cur_freq = readl(SYS_PLL_FREQ);
@@ -64,8 +65,6 @@ void pll_reconfigure( struct pll_config *cfg )
     return;
 
     memcpy(&cfg_current, cfg, sizeof(struct pll_config) );
-
-//    pp_printf("PLL reconfig necessary.\n");
 
     writel(SYS_PLL_FREQ, new_freq);
 

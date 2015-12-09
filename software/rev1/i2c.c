@@ -7,8 +7,10 @@
  *
  * Released according to the GNU GPL, version 2 or any later version.
  */
+
 #include "board.h"
 #include "sysctl.h"
+#include "pp-printf.h"
 
 #define I2C_DELAY 300
 
@@ -20,20 +22,19 @@ void mi2c_delay()
 }
 
 
-void M_SDA_OUT(int if_, int v) 
-{ 
+void M_SDA_OUT(int if_, int v)
+{
     mi2c_delay();
     uint32_t cur = readl(SYS_GPIO_OUT);
     if(v)
 	cur &= ~SYS_GPIO_OUT_SDA;
     else
 	cur |= SYS_GPIO_OUT_SDA;
-//    pp_printf("write %x\n", cur);
     writel(SYS_GPIO_OUT, cur);
 }
 
-void M_SCL_OUT(int if_, int v) 
-{ 
+void M_SCL_OUT(int if_, int v)
+{
     mi2c_delay();
     uint32_t cur = readl(SYS_GPIO_OUT);
     if(v)
@@ -86,7 +87,7 @@ unsigned char mi2c_put_byte(uint8_t i2cif, unsigned char data)
 	M_SCL_OUT(i2cif, 1);
 
 
-	
+
 	ack = M_SDA_IN(i2cif);	/* ack: sda is pulled low ->success.     */
 //	printf("SDA State: %d\n", ack);
 
@@ -150,7 +151,7 @@ void mi2c_scan(uint8_t i2cif)
     for(i=0;i<0xff;i+=2)
     {
      mi2c_start(i2cif);
-     if(!mi2c_put_byte(i2cif, i)) pp_printf("found : %x\n", i); 
+     if(!mi2c_put_byte(i2cif, i)) pp_printf("found : %x\n", i);
      mi2c_stop(i2cif);
 
     }

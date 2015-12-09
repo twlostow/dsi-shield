@@ -28,12 +28,13 @@ extern struct dsi_panel_config panel_e980;
 
 static struct dsi_panel_config *cfg[] = {
     &panel_e980,
+    &panel_iphone4,
     NULL
 };
 
 int panel_count()
 {
-    int i;
+    int i = 0;
     while(cfg[i]) i++;
     return i;
 }
