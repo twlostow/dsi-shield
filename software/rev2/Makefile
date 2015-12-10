@@ -73,7 +73,7 @@ bitstream:
 	promgen -p bin -o $(BIN_DIR)/$(OUTPUT)-fpga.bin -spi -u 0 $(BIN_DIR)/$(OUTPUT).bit  -w
 	rm -f _tmp.bin _tmp.mem
 
-	scp -P 12345 $(BIN_DIR)/$(OUTPUT).bit twl@localhost:~/gw
+	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bit twl@localhost:~/gw
 	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bin twl@localhost:~/gw
 
 load:

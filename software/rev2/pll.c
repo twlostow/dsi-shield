@@ -32,16 +32,16 @@
 #define SYS_GPIO_OUT  0xc0040020
 #define SYS_GPIO_IN   0xc0040024
 
-#define GPIO_OUT_EDID_EN (1<<0)
-#define GPIO_OUT_SCL (1<<1)
-#define GPIO_OUT_SDA (1<<2)
-#define GPIO_IN_SDA (1<<2)
+#define GPIO_OUT_EDID_EN (1 << 0)
+#define GPIO_OUT_SCL (1 << 1)
+#define GPIO_OUT_SDA (1 << 2)
+#define GPIO_IN_SDA (1 << 2)
 
 
 #define PLL_CFG0_ROM_ADDR_SHIFT 0
 #define PLL_CFG0_DRP_ADDR_SHIFT 16
-#define PLL_CFG0_WE (1<<5)
-#define PLL_CFG0_TRIGGER (1<<6)
+#define PLL_CFG0_WE (1 << 5)
+#define PLL_CFG0_TRIGGER (1 << 6)
 #define PLL_CFG0_N_REGS_SHIFT 7
 
 static struct pll_config cfg_current = {
@@ -52,19 +52,19 @@ static struct pll_config cfg_current = {
     NULL
 };
 
-void pll_reconfigure( const struct pll_config *cfg )
+void pll_reconfigure(const struct pll_config *cfg)
 {
     uint32_t new_freq = BASE_CLOCK * cfg->mul / cfg->sys_div;
     uint32_t cur_freq = readl(SYS_PLL_FREQ);
 
 
-    if(cfg->mul == cfg_current.mul &&
-       cfg->sys_div == cfg_current.sys_div &&
-       cfg->phy_div == cfg_current.phy_div &&
-       cfg->phy_phase == cfg_current.phy_phase)
-    return;
+    if ((cfg->mul == cfg_current.mul) &&
+        (cfg->sys_div == cfg_current.sys_div) &&
+        (cfg->phy_div == cfg_current.phy_div) &&
+        (cfg->phy_phase == cfg_current.phy_phase))
+        return;
 
-    memcpy(&cfg_current, cfg, sizeof(struct pll_config) );
+    memcpy(&cfg_current, cfg, sizeof(struct pll_config));
 
     writel(SYS_PLL_FREQ, new_freq);
 
@@ -73,20 +73,21 @@ void pll_reconfigure( const struct pll_config *cfg )
 
     int i;
 
-    for(i=0;cfg->data[i] != 0; i++)
+    for (i = 0; cfg->data[i] != 0; i++)
     {
-	uint32_t addr = (cfg->data[i] >> 32);
-	uint32_t data = (cfg->data[i] & 0xffffffff);
+        uint32_t addr = (cfg->data[i] >> 32);
+        uint32_t data = (cfg->data[i] & 0xffffffff);
 
-	writel(SYS_PLL_CONFIG1, data);
+        writel(SYS_PLL_CONFIG1, data);
 
-	uint32_t ctl0 = (addr << PLL_CFG0_DRP_ADDR_SHIFT) | (i << PLL_CFG0_ROM_ADDR_SHIFT);
-	writel(SYS_PLL_CONFIG0, ctl0 | PLL_CFG0_WE);
-	writel(SYS_PLL_CONFIG0, ctl0);
+        uint32_t ctl0 =
+            (addr << PLL_CFG0_DRP_ADDR_SHIFT) | (i << PLL_CFG0_ROM_ADDR_SHIFT);
+        writel(SYS_PLL_CONFIG0, ctl0 | PLL_CFG0_WE);
+        writel(SYS_PLL_CONFIG0, ctl0);
     }
 
 
-    writel(SYS_PLL_CONFIG0, PLL_CFG0_TRIGGER | (i << PLL_CFG0_N_REGS_SHIFT) );
+    writel(SYS_PLL_CONFIG0, PLL_CFG0_TRIGGER | (i << PLL_CFG0_N_REGS_SHIFT));
 }
 
 uint32_t pll_system_freq()
