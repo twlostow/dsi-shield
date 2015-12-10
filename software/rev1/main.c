@@ -17,7 +17,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* main.c - main LM32 application */
+/* main.c - main DSI Shield application */
 
 #include <stdint.h>
 #include <stdio.h>
@@ -142,6 +142,7 @@ void run()
 void init()
 {
         uart_init_hw();
+
         pp_printf("DSI Shield (build %s, %s) starting up...\n", build_revision, build_date);
 
         writel(SYS_PWM_CTL, 0);
