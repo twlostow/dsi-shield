@@ -91,7 +91,8 @@ int uart_read_byte()
 int puts(const char *s)
 {
   char c;
-  while(c=*s++)
+  while((c = *s++))
     uart_write_byte(c);
+  return 0;
 }
 

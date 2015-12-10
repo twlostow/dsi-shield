@@ -24,6 +24,7 @@
 
 #ifndef __ASSEMBLY__
 #include <stdint.h>
+#include <risc-v/encoding.h>
 #endif
 
 #define BASE_CLOCK 25000000 // Xtal frequency
@@ -38,6 +39,7 @@
 #define SYS_PLL_FREQ 0xc004002c
 
 #define UART_BAUDRATE 115200
+
 
 #ifndef __ASSEMBLY__
 static inline void writel ( uint32_t reg, uint32_t val)
@@ -60,6 +62,17 @@ static inline void delay(int tics)
         while(tics--) asm volatile ("nop");
 }
 
+static inline void delay_ms(int ms)
+{
+    uint32_t t_end = rv_rdtime() + ms;
+
+    while(rv_rdtime() < t_end) asm volatile( "nop");
+}
+
+static inline uint32_t get_ms_ticks()
+{
+    return rv_rdtime();
+}
 
 #endif
 

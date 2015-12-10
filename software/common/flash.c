@@ -205,12 +205,14 @@ void flash_program_page(uint32_t addr, const uint8_t * data, int size)
 
 void flash_init()
 {
+    /*
     spi_enable(1);
 
     uint32_t id;
 
     id = flash_read_id();
-    //pp_printf("Found FLASH: ID=%x\n",id);
+    pp_printf("Found FLASH: ID=%x\n",id);
 
     spi_enable(0);
+    */
 }

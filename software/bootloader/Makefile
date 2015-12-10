@@ -7,14 +7,11 @@ OBJDUMP =	$(CROSS_COMPILE)objdump
 OBJCOPY =	$(CROSS_COMPILE)objcopy
 SIZE =		$(CROSS_COMPILE)size
 
-SYN_DIR=../../syn/rev2
-SYN_TOP_LEVEL=rev2_top
-
 # keep RV32I: the bootloader also emulates DIV/MULH instuctions
 
-CFLAGS = -g -Os -m32 -msoft-float -march=RV32I -I. -I../common -ffunction-sections -fdata-sections # -DSIMULATION
+CFLAGS = -g -Os -m32 -msoft-float -march=RV32I -I. -I../common -ffunction-sections -fdata-sections -I../arch -Wall
 LDFLAGS = -Wl,--gc-sections 
-OBJS = crtboot.o  boot.o ../common/uart.o ../arch/risc-v/emulate.o ../arch/risc-v/irq.o 
+OBJS = crtboot.o ../common/uart.o ../arch/risc-v/emulate.o ../arch/risc-v/irq.o ../common/flash.o main.o
 LDS = boot.ld
 OUTPUT= boot
 
@@ -25,15 +22,12 @@ $(OUTPUT): $(LDS) $(OBJS)
 	${OBJCOPY} -O binary $(OUTPUT).elf $(OUTPUT).bin
 	${OBJDUMP} -D $(OUTPUT).elf > disasm.S
 	$(SIZE) $(OUTPUT).elf
-	../tools/genraminit $(OUTPUT).bin 512 0 0 > $(OUTPUT).ram
-	../tools/genmeminit $(OUTPUT).bin 512 0 0 > $(OUTPUT).mem
+	../tools/genraminit $(OUTPUT).bin 1300 0 0 > $(OUTPUT).ram
+	../tools/genmeminit $(OUTPUT).bin 1300 0 0 > $(OUTPUT).mem
+	${OBJDUMP} -t $(OUTPUT).elf | sort > syms
 
 clean:
 	rm -f $(OUTPUT).elf $(OUTPUT).bin $(OBJS)
-
-bitstream: $(OUTPUT)
-	data2mem -o b $(SYN_TOP_LEVEL)_$(OUTPUT).bit -bt $(SYN_DIR)/$(SYN_TOP_LEVEL).bit -bm $(SYN_DIR)/$(SYN_TOP_LEVEL)_bd.bmm -bd $(OUTPUT).mem tag urv_iram
-#	data2mem -bx 1 -bt $(SYN_DIR)/$(SYN_TOP_LEVEL).bit -bm $(SYN_DIR)/$(SYN_TOP_LEVEL)_bd.bmm -bd $(OUTPUT).mem tag urv_iram
 	
 
 %.o:	%.S
