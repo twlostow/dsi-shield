@@ -7,3 +7,6 @@ genmeminit: genmeminit.c
 
 genraminit: genraminit.c
 	${CC} $^ -o $@
+
+clean:
+	rm -f genraminit genmeminit

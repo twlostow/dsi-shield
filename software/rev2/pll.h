@@ -17,8 +17,6 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* main.c - main LM32 application */
-
 #ifndef __PLL_H
 #define __PLL_H
 

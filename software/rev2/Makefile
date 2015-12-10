@@ -67,13 +67,12 @@ bitstream:
 	../tools/genmeminit _tmp.bin 8192 > _tmp.mem
 	../tools/genraminit _tmp.bin 8192 > rev2.ram
 
-	data2mem -o b $(BIN_DIR)/$(OUTPUT).bit -bt $(SYN_DIR)/$(SYN_TOP_LEVEL).bit -bm $(SYN_DIR)/$(SYN_TOP_LEVEL)_bd.bmm -bd _tmp.mem tag urv_iram
-#	data2mem -o v $(SYN_TOP_LEVEL)_$(OUTPUT).v -bt $(SYN_DIR)/$(SYN_TOP_LEVEL).bit -bm $(SYN_DIR)/$(SYN_TOP_LEVEL)_bd.bmm -bd _tmp.mem tag urv_iram
-	promgen -p mcs -o $(BIN_DIR)/$(OUTPUT)-fpga.mcs -spi -u 0 $(BIN_DIR)/$(OUTPUT).bit  -w
-	promgen -p bin -o $(BIN_DIR)/$(OUTPUT)-fpga.bin -spi -u 0 $(BIN_DIR)/$(OUTPUT).bit  -w
+	data2mem -o b $(BIN_DIR)/$(OUTPUT)-fpga.bit -bt $(SYN_DIR)/$(SYN_TOP_LEVEL).bit -bm $(SYN_DIR)/$(SYN_TOP_LEVEL)_bd.bmm -bd _tmp.mem tag urv_iram
+	promgen -p mcs -o $(BIN_DIR)/$(OUTPUT)-fpga.mcs -spi -u 0 $(BIN_DIR)/$(OUTPUT)-fpga.bit  -w
+	promgen -p bin -o $(BIN_DIR)/$(OUTPUT)-fpga.bin -spi -u 0 $(BIN_DIR)/$(OUTPUT)-fpga.bit  -w
 	rm -f _tmp.bin _tmp.mem
 
-	scp -P 12345 $(BIN_DIR)/$(OUTPUT).bit twl@localhost:~/gw
+	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bit twl@localhost:~/gw
 	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bin twl@localhost:~/gw
 
 load:
