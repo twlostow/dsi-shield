@@ -616,7 +616,7 @@ architecture rtl of rev2_top is
   signal r_pwm_ctl                            : std_logic_vector(7 downto 0);
   signal dsi_gpio                             : std_logic_vector(2 downto 0);
 
-  signal pwm_prescaler : unsigned(11 downto 0);  -- 100 MHz / 4096 = 5 kHz
+  signal pwm_prescaler : unsigned(6 downto 0);  
   signal pwm_count     : unsigned(4 downto 0);   -- 100 MHz / 4096 = 5 kHz
 
   component xurv_core is
