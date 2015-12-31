@@ -143,6 +143,7 @@ void hdmi_fsm_update()
 
         if (!fb_hdmi_check_link())
         {
+            panel_set_brightness(0);
             show_nosignal_screen();
             panel_set_brightness(current_config.brightness);
 
@@ -172,6 +173,7 @@ void hdmi_fsm_update()
 
             fb_disable_overlay();
             show_nosignal_screen();
+            panel_set_brightness(current_config.brightness);
             state = ST_NO_HDMI;
         }
         break;

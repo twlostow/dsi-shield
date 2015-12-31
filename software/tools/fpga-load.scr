@@ -1,0 +1,6 @@
+setMode -bscan
+setCable -p auto
+identifyMPM
+addDevice -p 1 -file ../bin/rev2-fpga.bit
+program -p 1
+quit

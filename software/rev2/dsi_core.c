@@ -40,6 +40,11 @@ static inline uint8_t parity(uint32_t d)
     return p;
 }
 
+void delay(int tics)
+{
+	while(tics--) asm volatile("nop");
+}
+
 static uint8_t reverse_bits(uint8_t x)
 {
     uint8_t r = 0;
@@ -188,19 +193,19 @@ void dsi_init(struct dsi_panel_config *panel)
     dsi_write(REG_DSI_CTL, dsi_ctl); /* enable DSI clock */
     dsi_delay();
 
+
     if (panel->user_init)
         panel->user_init(panel);
+    else {
+        dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
+        delay(panel->cmd_delay);
 
-    dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
-    delay(panel->cmd_delay);
+        dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
+        delay(panel->cmd_delay);
 
-    dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
-    delay(panel->cmd_delay);
-
-    dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
-    delay(panel->cmd_delay);
-
-    dsi_delay();
+        dsi_send_lp_short(0x15, 0x38, 0x00); /* send DCS EXIT_IDLE_MODE */
+        delay(panel->cmd_delay);
+    }
 
     dsi_write(REG_H_FRONT_PORCH, panel->h_front_porch);
     dsi_write(REG_H_BACK_PORCH, panel->h_back_porch);

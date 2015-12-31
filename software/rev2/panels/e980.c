@@ -150,6 +150,15 @@ static int e980_init(struct dsi_panel_config *panel)
     { 0xD5, 0x06, 0x00, 0x00, 0x01, 0x2C, 0x01, 0x2C };
     dsi_long_write(0, init17, sizeof(init17));
 
+    delay(10000);
+
+    int i;
+
+    for(i = 0; i < 5;i++)
+    {
+        dsi_send_lp_short(0x15, 0x29, 0x00); /* send DCS DISPLAY_ON */
+        dsi_send_lp_short(0x15, 0x11, 0x00); /* send DCS SLEEP_OUT */
+    }
     return 0;
 }
 
@@ -170,7 +179,7 @@ struct dsi_panel_config panel_e980 = {
        DSI_LANE_INVERT_CLOCK,*/
 
     /* lp_divider */
-    6,
+    5,
 
     /* width */
     1080,

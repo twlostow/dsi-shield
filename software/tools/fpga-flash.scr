@@ -1,0 +1,8 @@
+setMode -bscan
+setCable -p auto
+identify
+identifyMPM
+attachflash -position 1 -spi "M25P80"
+assignfiletoattachedflash -position 1 -file "../bin/rev2-fpga.mcs"
+Program -p 1 -dataWidth 1 -spionly -e -loadfpga 
+quit

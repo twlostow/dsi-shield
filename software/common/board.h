@@ -57,11 +57,6 @@ static inline unsigned int board_system_freq()
     return readl(SYS_PLL_FREQ);
 }
 
-static inline void delay(int tics)
-{
-        while(tics--) asm volatile ("nop");
-}
-
 static inline void delay_ms(int ms)
 {
     uint32_t t_end = rv_rdtime() + ms;
@@ -73,6 +68,8 @@ static inline uint32_t get_ms_ticks()
 {
     return rv_rdtime();
 }
+
+void delay(int tics);
 
 #endif
 
