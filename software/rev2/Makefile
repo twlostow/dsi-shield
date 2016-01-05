@@ -49,7 +49,6 @@ $(OUTPUT): $(LDS) $(OBJS)
 	${OBJDUMP} -D $(OUTPUT).elf > disasm.S
 	${OBJDUMP} -t $(OUTPUT).elf | sort > syms
 	$(SIZE) $(OUTPUT).elf
-	scp -P 12345 rev2.bin twl@localhost:~/gw
 
 clean:
 	rm -f $(OUTPUT).elf $(OUTPUT).bin $(OBJS)
@@ -72,10 +71,7 @@ bitstream:
 	promgen -p bin -o $(BIN_DIR)/$(OUTPUT)-fpga.bin -spi -u 0 $(BIN_DIR)/$(OUTPUT)-fpga.bit  -w
 	rm -f _tmp.bin _tmp.mem
 
-	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bit twl@localhost:~/gw
-	scp -P 12345 $(BIN_DIR)/$(OUTPUT)-fpga.bin twl@localhost:~/gw
-
 load:
-	- killall -9 uart-bootloader.py
-	../uart-bootloader.py rev2.bin
-	com /dev/ttyUSB0 115200
+	- killall -9 usb-bootloader.py
+	../tools/usb-bootloader.py rev2.bin
+#	com /dev/ttyUSB0 115200
