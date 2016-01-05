@@ -346,10 +346,10 @@ architecture rtl of rev2_top is
 
   component reset_gen is
     port (
-      clk_sys_i        : in  std_logic;
-      rst_pcie_n_a_i   : in  std_logic;
-      rst_button_n_a_i : in  std_logic;
-      rst_n_o          : out std_logic);
+      clk_sys_i      : in  std_logic;
+      spi_cs_n_rst_i : in  std_logic;
+      mask_reset_i   : in  std_logic;
+      rst_sys_n_o    : out std_logic);
   end component reset_gen;
 
   component pll_drp_sequencer
@@ -676,7 +676,6 @@ architecture rtl of rev2_top is
   signal pll_clk_in_reconf   : std_logic;
 
   signal mask_reset_input : std_logic;
-  signal rst_n_a          : std_logic;
   signal rst_n_sys_pre    : std_logic;
 
 begin  -- rtl
@@ -848,7 +847,6 @@ begin  -- rtl
   dbg_o <= (others => '0');
 
 
-  rst_n_a <= spi_cs_n_rst_b and not mask_reset_input;
 
   U_Sync_PLL_Lock : gc_sync_ffs
     port map (
@@ -860,9 +858,9 @@ begin  -- rtl
   U_Reset_Gen : reset_gen
     port map (
       clk_sys_i        => clk_sys,
-      rst_pcie_n_a_i   => '1',
-      rst_button_n_a_i => rst_n_a,
-      rst_n_o          => rst_n_sys_pre);
+      mask_reset_i => mask_reset_input,
+      spi_cs_n_rst_i => spi_cs_n_rst_b,
+      rst_sys_n_o          => rst_n_sys_pre);
 
   rst_n_sys <= rst_n_sys_pre and pll_locked_synced;  -- and rst_n_sys_pre;
 
