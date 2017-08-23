@@ -721,8 +721,9 @@ U 1 1 598F5B38
 P 6550 2650
 F 0 "CN4" H 6469 2175 50  0000 C CNN
 F 1 "JTAG" H 6469 2266 50  0000 C CNN
-F 2 "" H 6550 2650 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 6550 2650 50  0001 C CNN
 F 3 "" H 6550 2650 50  0001 C CNN
+F 4 "Value" H 6550 2650 60  0001 C CNN "Fieldname"
 	1    6550 2650
 	-1   0    0    1   
 $EndComp
@@ -1014,17 +1015,6 @@ F 39 "03/13/08 00:00:00" H 1650 -1280 60  0001 L CNN "LatestRevisionDate"
 F 40 "Resistors SMD" H 1650 -1370 60  0001 L CNN "Library Name"
 F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 1650 -1460 60  0001 L CNN "License"
 	1    1650 2350
-	1    0    0    -1  
-$EndComp
-$Comp
-L +3V3 #PWR019
-U 1 1 5990096E
-P 1450 2250
-F 0 "#PWR019" H 1450 2100 50  0001 C CNN
-F 1 "+3V3" H 1465 2423 50  0000 C CNN
-F 2 "" H 1450 2250 50  0001 C CNN
-F 3 "" H 1450 2250 50  0001 C CNN
-	1    1450 2250
 	1    0    0    -1  
 $EndComp
 Text Notes 1650 1950 0    60   ~ 0
@@ -4005,4 +3995,15 @@ Text Notes 15625 11075 2    60   ~ 0
 2.2a
 Text Notes 12450 10925 2    60   ~ 0
 FPGA
+$Comp
+L +2V5 #PWR019
+U 1 1 599ECA35
+P 1450 2250
+F 0 "#PWR019" H 1450 2100 50  0001 C CNN
+F 1 "+2V5" V 1465 2378 50  0000 L CNN
+F 2 "" H 1450 2250 50  0001 C CNN
+F 3 "" H 1450 2250 50  0001 C CNN
+	1    1450 2250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

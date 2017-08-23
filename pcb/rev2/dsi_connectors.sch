@@ -152,17 +152,6 @@ F 42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L LCD_PVDRV #PWR0132
-U 1 1 5992E116
-P 6900 1650
-F 0 "#PWR0132" H 6900 1500 50  0001 C CNN
-F 1 "LCD_PVDRV" V 6915 1778 50  0000 L CNN
-F 2 "" H 6900 1650 50  0001 C CNN
-F 3 "" H 6900 1650 50  0001 C CNN
-	1    6900 1650
-	0    1    1    0   
-$EndComp
-$Comp
 L +1V8 #PWR0133
 U 1 1 5992E6B7
 P 6900 1750
@@ -283,9 +272,9 @@ Wire Wire Line
 	5300 2450 6200 2450
 Wire Wire Line
 	5300 2550 6200 2550
-Text Label 5400 1550 0    60   ~ 0
-DSI_L0_P
 Text Label 5400 1650 0    60   ~ 0
+DSI_L0_P
+Text Label 5400 1550 0    60   ~ 0
 DSI_L0_N
 Text Label 5400 1850 0    60   ~ 0
 DSI_L1_P
@@ -295,9 +284,9 @@ Text Label 5400 2150 0    60   ~ 0
 DSI_CLK_P
 Text Label 5400 2250 0    60   ~ 0
 DSI_CLK_N
-Text Label 5400 2450 0    60   ~ 0
-DSI_L2_P
 Text Label 5400 2550 0    60   ~ 0
+DSI_L2_P
+Text Label 5400 2450 0    60   ~ 0
 DSI_L2_N
 Wire Wire Line
 	6400 2850 6400 2950
@@ -670,28 +659,6 @@ Wire Wire Line
 Wire Wire Line
 	6200 4650 6000 4650
 $Comp
-L LCD_PVDRV #PWR0139
-U 1 1 59953AB8
-P 6000 4550
-F 0 "#PWR0139" H 6000 4400 50  0001 C CNN
-F 1 "LCD_PVDRV" V 6015 4678 50  0000 L CNN
-F 2 "" H 6000 4550 50  0001 C CNN
-F 3 "" H 6000 4550 50  0001 C CNN
-	1    6000 4550
-	0    -1   -1   0   
-$EndComp
-$Comp
-L LCD_MVDRV #PWR0140
-U 1 1 59953DAA
-P 6000 4650
-F 0 "#PWR0140" H 6000 4500 50  0001 C CNN
-F 1 "LCD_MVDRV" V 6015 4777 50  0000 L CNN
-F 2 "" H 6000 4650 50  0001 C CNN
-F 3 "" H 6000 4650 50  0001 C CNN
-	1    6000 4650
-	0    -1   -1   0   
-$EndComp
-$Comp
 L GND #PWR0141
 U 1 1 59956F93
 P 6450 6150
@@ -832,10 +799,10 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR?
+L GND #PWR0132
 U 1 1 599E1E7E
 P 2850 5350
-F 0 "#PWR?" H 2850 5100 50  0001 C CNN
+F 0 "#PWR0132" H 2850 5100 50  0001 C CNN
 F 1 "GND" H 2855 5177 50  0000 C CNN
 F 2 "" H 2850 5350 50  0001 C CNN
 F 3 "" H 2850 5350 50  0001 C CNN
@@ -847,10 +814,10 @@ Wire Wire Line
 Wire Wire Line
 	2850 5250 2850 5350
 $Comp
-L +5V #PWR?
+L +5V #PWR0139
 U 1 1 599E219E
 P 2850 4850
-F 0 "#PWR?" H 2850 4700 50  0001 C CNN
+F 0 "#PWR0139" H 2850 4700 50  0001 C CNN
 F 1 "+5V" H 2865 5023 50  0000 C CNN
 F 2 "" H 2850 4850 50  0001 C CNN
 F 3 "" H 2850 4850 50  0001 C CNN
@@ -861,4 +828,407 @@ Wire Wire Line
 	2500 5000 2850 5000
 Wire Wire Line
 	2850 5000 2850 4850
+$Comp
+L LCD_PVDD #PWR0140
+U 1 1 599DFBF6
+P 6900 1650
+F 0 "#PWR0140" H 6900 1500 50  0001 C CNN
+F 1 "LCD_PVDD" V 6915 1778 50  0000 L CNN
+F 2 "" H 6900 1650 50  0001 C CNN
+F 3 "" H 6900 1650 50  0001 C CNN
+	1    6900 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L LCD_PVDD #PWR0142
+U 1 1 599E01CB
+P 6000 4550
+F 0 "#PWR0142" H 6000 4400 50  0001 C CNN
+F 1 "LCD_PVDD" V 6015 4677 50  0000 L CNN
+F 2 "" H 6000 4550 50  0001 C CNN
+F 3 "" H 6000 4550 50  0001 C CNN
+	1    6000 4550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LCD_MVDD #PWR0143
+U 1 1 599E04B6
+P 6000 4650
+F 0 "#PWR0143" H 6000 4500 50  0001 C CNN
+F 1 "LCD_MVDD" V 6015 4777 50  0000 L CNN
+F 2 "" H 6000 4650 50  0001 C CNN
+F 3 "" H 6000 4650 50  0001 C CNN
+	1    6000 4650
+	0    -1   -1   0   
+$EndComp
+$Comp
+L LCD_PVDD #PWR0144
+U 1 1 599E0758
+P 8900 1550
+F 0 "#PWR0144" H 8900 1400 50  0001 C CNN
+F 1 "LCD_PVDD" H 8915 1723 50  0000 C CNN
+F 2 "" H 8900 1550 50  0001 C CNN
+F 3 "" H 8900 1550 50  0001 C CNN
+	1    8900 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L +1V8 #PWR0145
+U 1 1 599E078B
+P 9400 1550
+F 0 "#PWR0145" H 9400 1400 50  0001 C CNN
+F 1 "+1V8" V 9415 1678 50  0000 L CNN
+F 2 "" H 9400 1550 50  0001 C CNN
+F 3 "" H 9400 1550 50  0001 C CNN
+	1    9400 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L CC0603_100NF_100V_10%_X7R C1
+U 1 1 599E1407
+P 8900 1650
+F 0 "C1" V 9004 1760 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 8900 1390 60  0001 L CNN
+F 2 "CAPC1608X90N" H 8900 580 60  0001 L CNN
+F 3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 8900 1210 60  0001 L CNN
+F 4 "100nF" V 9095 1760 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 8900 1120 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 8900 1030 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 8900 940 60  0001 L CNN "Library Path"
+F 8 "=Value" H 8900 850 60  0001 L CNN "Comment"
+F 9 "Standard" H 8900 760 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 8900 670 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 8900 490 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 8900 400 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 8900 310 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 8900 220 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 8900 130 60  0001 L CNN "Val"
+F 16 "None" H 8900 40  60  0001 L CNN "Status"
+F 17 "~~" H 8900 -50 60  0001 L CNN "Status Comment"
+F 18 "100V" H 8900 -140 60  0001 L CNN "Voltage"
+F 19 "X7R" H 8900 -230 60  0001 L CNN "TC"
+F 20 "±10%" H 8900 -320 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 8900 -410 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 8900 -500 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 8900 -590 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 8900 -680 60  0001 L CNN "Case"
+F 25 "Yes" H 8900 -770 60  0001 L CNN "Mounted"
+F 26 "No" H 8900 -860 60  0001 L CNN "Socket"
+F 27 "Yes" H 8900 -950 60  0001 L CNN "SMD"
+F 28 "~~" H 8900 -1040 60  0001 L CNN "PressFit"
+F 29 "No" H 8900 -1130 60  0001 L CNN "Sense"
+F 30 "~~" H 8900 -1220 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 8900 -1310 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 8900 -1400 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 8900 -1490 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 8900 -1580 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 8900 -1670 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 8900 -1760 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 8900 -1850 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 8900 -1940 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 8900 -2030 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 8900 -2120 60  0001 L CNN "License"
+	1    8900 1650
+	0    1    1    0   
+$EndComp
+$Comp
+L CC0603_100NF_100V_10%_X7R C2
+U 1 1 599E1572
+P 9400 1650
+F 0 "C2" V 9504 1760 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 9400 1390 60  0001 L CNN
+F 2 "CAPC1608X90N" H 9400 580 60  0001 L CNN
+F 3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9400 1210 60  0001 L CNN
+F 4 "100nF" V 9595 1760 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 9400 1120 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 9400 1030 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 9400 940 60  0001 L CNN "Library Path"
+F 8 "=Value" H 9400 850 60  0001 L CNN "Comment"
+F 9 "Standard" H 9400 760 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 9400 670 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 9400 490 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 9400 400 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 9400 310 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 9400 220 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 9400 130 60  0001 L CNN "Val"
+F 16 "None" H 9400 40  60  0001 L CNN "Status"
+F 17 "~~" H 9400 -50 60  0001 L CNN "Status Comment"
+F 18 "100V" H 9400 -140 60  0001 L CNN "Voltage"
+F 19 "X7R" H 9400 -230 60  0001 L CNN "TC"
+F 20 "±10%" H 9400 -320 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 9400 -410 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 9400 -500 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 9400 -590 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 9400 -680 60  0001 L CNN "Case"
+F 25 "Yes" H 9400 -770 60  0001 L CNN "Mounted"
+F 26 "No" H 9400 -860 60  0001 L CNN "Socket"
+F 27 "Yes" H 9400 -950 60  0001 L CNN "SMD"
+F 28 "~~" H 9400 -1040 60  0001 L CNN "PressFit"
+F 29 "No" H 9400 -1130 60  0001 L CNN "Sense"
+F 30 "~~" H 9400 -1220 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 9400 -1310 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 9400 -1400 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 9400 -1490 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 9400 -1580 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9400 -1670 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 9400 -1760 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 9400 -1850 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 9400 -1940 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 9400 -2030 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 9400 -2120 60  0001 L CNN "License"
+	1    9400 1650
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9400 1550 9400 1650
+Wire Wire Line
+	8900 1550 8900 1650
+$Comp
+L GND #PWR0146
+U 1 1 599E1772
+P 9400 2050
+F 0 "#PWR0146" H 9400 1800 50  0001 C CNN
+F 1 "GND" V 9405 1922 50  0000 R CNN
+F 2 "" H 9400 2050 50  0001 C CNN
+F 3 "" H 9400 2050 50  0001 C CNN
+	1    9400 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9400 1950 9400 2050
+$Comp
+L GND #PWR0147
+U 1 1 599E188B
+P 8900 2050
+F 0 "#PWR0147" H 8900 1800 50  0001 C CNN
+F 1 "GND" V 8905 1922 50  0000 R CNN
+F 2 "" H 8900 2050 50  0001 C CNN
+F 3 "" H 8900 2050 50  0001 C CNN
+	1    8900 2050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 1950 8900 2050
+$Comp
+L LCD_PVDD #PWR0148
+U 1 1 599E3395
+P 8900 4800
+F 0 "#PWR0148" H 8900 4650 50  0001 C CNN
+F 1 "LCD_PVDD" H 8915 4973 50  0000 C CNN
+F 2 "" H 8900 4800 50  0001 C CNN
+F 3 "" H 8900 4800 50  0001 C CNN
+	1    8900 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L +1V8 #PWR0149
+U 1 1 599E339B
+P 9900 4800
+F 0 "#PWR0149" H 9900 4650 50  0001 C CNN
+F 1 "+1V8" V 9915 4928 50  0000 L CNN
+F 2 "" H 9900 4800 50  0001 C CNN
+F 3 "" H 9900 4800 50  0001 C CNN
+	1    9900 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L CC0603_100NF_100V_10%_X7R C32
+U 1 1 599E33C6
+P 8900 4900
+F 0 "C32" V 9004 5010 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 8900 4640 60  0001 L CNN
+F 2 "CAPC1608X90N" H 8900 3830 60  0001 L CNN
+F 3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 8900 4460 60  0001 L CNN
+F 4 "100nF" V 9095 5010 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 8900 4370 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 8900 4280 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 8900 4190 60  0001 L CNN "Library Path"
+F 8 "=Value" H 8900 4100 60  0001 L CNN "Comment"
+F 9 "Standard" H 8900 4010 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 8900 3920 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 8900 3740 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 8900 3650 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 8900 3560 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 8900 3470 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 8900 3380 60  0001 L CNN "Val"
+F 16 "None" H 8900 3290 60  0001 L CNN "Status"
+F 17 "~~" H 8900 3200 60  0001 L CNN "Status Comment"
+F 18 "100V" H 8900 3110 60  0001 L CNN "Voltage"
+F 19 "X7R" H 8900 3020 60  0001 L CNN "TC"
+F 20 "±10%" H 8900 2930 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 8900 2840 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 8900 2750 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 8900 2660 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 8900 2570 60  0001 L CNN "Case"
+F 25 "Yes" H 8900 2480 60  0001 L CNN "Mounted"
+F 26 "No" H 8900 2390 60  0001 L CNN "Socket"
+F 27 "Yes" H 8900 2300 60  0001 L CNN "SMD"
+F 28 "~~" H 8900 2210 60  0001 L CNN "PressFit"
+F 29 "No" H 8900 2120 60  0001 L CNN "Sense"
+F 30 "~~" H 8900 2030 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 8900 1940 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 8900 1850 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 8900 1760 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 8900 1670 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 8900 1580 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 8900 1490 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 8900 1400 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 8900 1310 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 8900 1220 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 8900 1130 60  0001 L CNN "License"
+	1    8900 4900
+	0    1    1    0   
+$EndComp
+$Comp
+L CC0603_100NF_100V_10%_X7R C34
+U 1 1 599E33F2
+P 9900 4900
+F 0 "C34" V 10004 5010 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 9900 4640 60  0001 L CNN
+F 2 "CAPC1608X90N" H 9900 3830 60  0001 L CNN
+F 3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9900 4460 60  0001 L CNN
+F 4 "100nF" V 10095 5010 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 9900 4370 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 9900 4280 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 9900 4190 60  0001 L CNN "Library Path"
+F 8 "=Value" H 9900 4100 60  0001 L CNN "Comment"
+F 9 "Standard" H 9900 4010 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 9900 3920 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 9900 3740 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 9900 3650 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 9900 3560 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 9900 3470 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 9900 3380 60  0001 L CNN "Val"
+F 16 "None" H 9900 3290 60  0001 L CNN "Status"
+F 17 "~~" H 9900 3200 60  0001 L CNN "Status Comment"
+F 18 "100V" H 9900 3110 60  0001 L CNN "Voltage"
+F 19 "X7R" H 9900 3020 60  0001 L CNN "TC"
+F 20 "±10%" H 9900 2930 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 9900 2840 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 9900 2750 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 9900 2660 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 9900 2570 60  0001 L CNN "Case"
+F 25 "Yes" H 9900 2480 60  0001 L CNN "Mounted"
+F 26 "No" H 9900 2390 60  0001 L CNN "Socket"
+F 27 "Yes" H 9900 2300 60  0001 L CNN "SMD"
+F 28 "~~" H 9900 2210 60  0001 L CNN "PressFit"
+F 29 "No" H 9900 2120 60  0001 L CNN "Sense"
+F 30 "~~" H 9900 2030 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 9900 1940 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 9900 1850 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 9900 1760 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 9900 1670 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9900 1580 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 9900 1490 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 9900 1400 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 9900 1310 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 9900 1220 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 9900 1130 60  0001 L CNN "License"
+	1    9900 4900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9900 4800 9900 4900
+Wire Wire Line
+	8900 4800 8900 4900
+$Comp
+L GND #PWR0150
+U 1 1 599E33FB
+P 9900 5300
+F 0 "#PWR0150" H 9900 5050 50  0001 C CNN
+F 1 "GND" V 9905 5172 50  0000 R CNN
+F 2 "" H 9900 5300 50  0001 C CNN
+F 3 "" H 9900 5300 50  0001 C CNN
+	1    9900 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9900 5200 9900 5300
+$Comp
+L GND #PWR0151
+U 1 1 599E3402
+P 8900 5300
+F 0 "#PWR0151" H 8900 5050 50  0001 C CNN
+F 1 "GND" V 8905 5172 50  0000 R CNN
+F 2 "" H 8900 5300 50  0001 C CNN
+F 3 "" H 8900 5300 50  0001 C CNN
+	1    8900 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8900 5200 8900 5300
+$Comp
+L CC0603_100NF_100V_10%_X7R C33
+U 1 1 599E34F6
+P 9400 4900
+F 0 "C33" V 9504 5010 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 9400 4640 60  0001 L CNN
+F 2 "CAPC1608X90N" H 9400 3830 60  0001 L CNN
+F 3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9400 4460 60  0001 L CNN
+F 4 "100nF" V 9595 5010 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 9400 4370 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 9400 4280 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 9400 4190 60  0001 L CNN "Library Path"
+F 8 "=Value" H 9400 4100 60  0001 L CNN "Comment"
+F 9 "Standard" H 9400 4010 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 9400 3920 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 9400 3740 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 9400 3650 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 9400 3560 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 9400 3470 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 9400 3380 60  0001 L CNN "Val"
+F 16 "None" H 9400 3290 60  0001 L CNN "Status"
+F 17 "~~" H 9400 3200 60  0001 L CNN "Status Comment"
+F 18 "100V" H 9400 3110 60  0001 L CNN "Voltage"
+F 19 "X7R" H 9400 3020 60  0001 L CNN "TC"
+F 20 "±10%" H 9400 2930 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 9400 2840 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 9400 2750 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 9400 2660 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 9400 2570 60  0001 L CNN "Case"
+F 25 "Yes" H 9400 2480 60  0001 L CNN "Mounted"
+F 26 "No" H 9400 2390 60  0001 L CNN "Socket"
+F 27 "Yes" H 9400 2300 60  0001 L CNN "SMD"
+F 28 "~~" H 9400 2210 60  0001 L CNN "PressFit"
+F 29 "No" H 9400 2120 60  0001 L CNN "Sense"
+F 30 "~~" H 9400 2030 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 9400 1940 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 9400 1850 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 9400 1760 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 9400 1670 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 9400 1580 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 9400 1490 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 9400 1400 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 9400 1310 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 9400 1220 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 9400 1130 60  0001 L CNN "License"
+	1    9400 4900
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	9400 4800 9400 4900
+$Comp
+L GND #PWR0152
+U 1 1 599E34FE
+P 9400 5300
+F 0 "#PWR0152" H 9400 5050 50  0001 C CNN
+F 1 "GND" V 9405 5172 50  0000 R CNN
+F 2 "" H 9400 5300 50  0001 C CNN
+F 3 "" H 9400 5300 50  0001 C CNN
+	1    9400 5300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9400 5200 9400 5300
+$Comp
+L LCD_MVDD #PWR0153
+U 1 1 599E3520
+P 9400 4800
+F 0 "#PWR0153" H 9400 4650 50  0001 C CNN
+F 1 "LCD_MVDD" H 9415 4973 50  0000 C CNN
+F 2 "" H 9400 4800 50  0001 C CNN
+F 3 "" H 9400 4800 50  0001 C CNN
+	1    9400 4800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

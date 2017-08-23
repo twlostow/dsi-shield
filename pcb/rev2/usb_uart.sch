@@ -76,45 +76,46 @@ U 1 1 599785FD
 P 3600 3450
 F 0 "CN9" H 4075 3575 50  0000 L CNN
 F 1 "TYCO_1734035-1" H 3600 2460 60  0001 L CNN
-F 2 "TYCO_1734035-1" H 3600 1650 60  0001 L CNN
+F 2 "TYCO SMD:TYCO_1734035-1" H 3600 1650 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" H 3600 2280 60  0001 L CNN
-F 4 "USB" H 4075 3500 50  0000 L CNN "~"
-F 5 "TYCO_1734035-1" H 3600 2190 60  0001 L CNN "Part Number"
-F 6 "Connector USB 5 Pin + 1Shield" H 3600 2100 60  0001 L CNN "Library Ref"
-F 7 "SchLib\\Connectors.SchLib" H 3600 2010 60  0001 L CNN "Library Path"
-F 8 "~~" H 3600 1920 60  0001 L CNN "Comment"
-F 9 "Standard" H 3600 1830 60  0001 L CNN "Component Kind"
-F 10 "Standard" H 3600 1740 60  0001 L CNN "Component Type"
-F 11 "~~" H 3600 1560 60  0001 L CNN "PackageDescription"
-F 12 "6" H 3600 1470 60  0001 L CNN "Pin Count"
-F 13 "~~" H 3600 1380 60  0001 L CNN "Case"
-F 14 "PcbLib\\TYCO SMD.PcbLib" H 3600 1290 60  0001 L CNN "Footprint Path"
-F 15 "TYCO_1734035-1" H 3600 1200 60  0001 L CNN "Footprint Ref"
-F 16 "USB" H 3600 1110 60  0001 L CNN "Family"
-F 17 "Yes" H 3600 1020 60  0001 L CNN "Mounted"
-F 18 "No" H 3600 930 60  0001 L CNN "Socket"
-F 19 "Yes" H 3600 840 60  0001 L CNN "SMD"
-F 20 "No" H 3600 750 60  0001 L CNN "PressFit"
-F 21 "No" H 3600 660 60  0001 L CNN "Sense"
-F 22 "~~" H 3600 570 60  0001 L CNN "Sense Comment"
-F 23 "None" H 3600 480 60  0001 L CNN "Status"
-F 24 "~~" H 3600 390 60  0001 L CNN "Status Comment"
-F 25 "~~" H 3600 300 60  0001 L CNN "SCEM"
-F 26 "~~" H 3600 210 60  0001 L CNN "Device"
-F 27 "5 Position, Right Angle, SMD Mini USB Type B Receptacle" H 3600 120 60  0001 L CNN "Part Description"
-F 28 "TYCO ELECTRONICS" H 3600 30  60  0001 L CNN "Manufacturer"
-F 29 "1734035-1" H 3600 -60 60  0001 L CNN "Manufacturer Part Number"
-F 30 "3.95mm" H 3600 -150 60  0001 L CNN "ComponentHeight"
-F 31 "~~" H 3600 -240 60  0001 L CNN "ComponentLink1URL"
-F 32 "~~" H 3600 -330 60  0001 L CNN "ComponentLink1Description"
-F 33 "~~" H 3600 -420 60  0001 L CNN "ComponentLink2URL"
-F 34 "~~" H 3600 -510 60  0001 L CNN "ComponentLink2Description"
-F 35 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" H 3600 -600 60  0001 L CNN "HelpURL"
-F 36 "CERN DEM JLC" H 3600 -690 60  0001 L CNN "Author"
-F 37 "05/02/11 00:00:00" H 3600 -780 60  0001 L CNN "CreateDate"
-F 38 "05/02/11 00:00:00" H 3600 -870 60  0001 L CNN "LatestRevisionDate"
-F 39 "TYCO SMD" H 3600 -960 60  0001 L CNN "Library Name"
-F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 3600 -1050 60  0001 L CNN "License"
+F 4 "Value" H 3600 3450 60  0001 C CNN "Fieldname"
+F 5 "USB" H 4075 3500 50  0000 L CNN "~"
+F 6 "TYCO_1734035-1" H 3600 2190 60  0001 L CNN "Part Number"
+F 7 "Connector USB 5 Pin + 1Shield" H 3600 2100 60  0001 L CNN "Library Ref"
+F 8 "SchLib\\Connectors.SchLib" H 3600 2010 60  0001 L CNN "Library Path"
+F 9 "~~" H 3600 1920 60  0001 L CNN "Comment"
+F 10 "Standard" H 3600 1830 60  0001 L CNN "Component Kind"
+F 11 "Standard" H 3600 1740 60  0001 L CNN "Component Type"
+F 12 "~~" H 3600 1560 60  0001 L CNN "PackageDescription"
+F 13 "6" H 3600 1470 60  0001 L CNN "Pin Count"
+F 14 "~~" H 3600 1380 60  0001 L CNN "Case"
+F 15 "PcbLib\\TYCO SMD.PcbLib" H 3600 1290 60  0001 L CNN "Footprint Path"
+F 16 "TYCO_1734035-1" H 3600 1200 60  0001 L CNN "Footprint Ref"
+F 17 "USB" H 3600 1110 60  0001 L CNN "Family"
+F 18 "Yes" H 3600 1020 60  0001 L CNN "Mounted"
+F 19 "No" H 3600 930 60  0001 L CNN "Socket"
+F 20 "Yes" H 3600 840 60  0001 L CNN "SMD"
+F 21 "No" H 3600 750 60  0001 L CNN "PressFit"
+F 22 "No" H 3600 660 60  0001 L CNN "Sense"
+F 23 "~~" H 3600 570 60  0001 L CNN "Sense Comment"
+F 24 "None" H 3600 480 60  0001 L CNN "Status"
+F 25 "~~" H 3600 390 60  0001 L CNN "Status Comment"
+F 26 "~~" H 3600 300 60  0001 L CNN "SCEM"
+F 27 "~~" H 3600 210 60  0001 L CNN "Device"
+F 28 "5 Position, Right Angle, SMD Mini USB Type B Receptacle" H 3600 120 60  0001 L CNN "Part Description"
+F 29 "TYCO ELECTRONICS" H 3600 30  60  0001 L CNN "Manufacturer"
+F 30 "1734035-1" H 3600 -60 60  0001 L CNN "Manufacturer Part Number"
+F 31 "3.95mm" H 3600 -150 60  0001 L CNN "ComponentHeight"
+F 32 "~~" H 3600 -240 60  0001 L CNN "ComponentLink1URL"
+F 33 "~~" H 3600 -330 60  0001 L CNN "ComponentLink1Description"
+F 34 "~~" H 3600 -420 60  0001 L CNN "ComponentLink2URL"
+F 35 "~~" H 3600 -510 60  0001 L CNN "ComponentLink2Description"
+F 36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" H 3600 -600 60  0001 L CNN "HelpURL"
+F 37 "CERN DEM JLC" H 3600 -690 60  0001 L CNN "Author"
+F 38 "05/02/11 00:00:00" H 3600 -780 60  0001 L CNN "CreateDate"
+F 39 "05/02/11 00:00:00" H 3600 -870 60  0001 L CNN "LatestRevisionDate"
+F 40 "TYCO SMD" H 3600 -960 60  0001 L CNN "Library Name"
+F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 3600 -1050 60  0001 L CNN "License"
 	1    3600 3450
 	-1   0    0    -1  
 $EndComp
@@ -217,7 +218,7 @@ $EndComp
 Wire Wire Line
 	4550 2550 4550 2800
 Wire Wire Line
-	4100 2700 5000 2700
+	4100 2700 4550 2700
 Wire Wire Line
 	3800 3650 4400 3650
 Connection ~ 4100 3650
@@ -242,53 +243,51 @@ $EndComp
 $Comp
 L CC0603_100NF_100V_10%_X7R C79
 U 1 1 5997CE02
-P 5000 2800
-F 0 "C79" V 5104 2910 50  0000 L CNN
-F 1 "CC0603_100NF_100V_10%_X7R" H 5000 2540 60  0001 L CNN
-F 2 "Capacitors SMD:CAPC1608X90N" H 5000 1730 60  0001 L CNN
-F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 5000 2360 60  0001 L CNN
-F 4 "100nF" V 5195 2910 50  0000 L CNN "~"
-F 5 "CC0603_100NF_100V_10%_X7R" H 5000 2270 60  0001 L CNN "Part Number"
-F 6 "Capacitor - non polarized" H 5000 2180 60  0001 L CNN "Library Ref"
-F 7 "SchLib\\Capacitors.SchLib" H 5000 2090 60  0001 L CNN "Library Path"
-F 8 "=Value" H 5000 2000 60  0001 L CNN "Comment"
-F 9 "Standard" H 5000 1910 60  0001 L CNN "Component Kind"
-F 10 "Standard" H 5000 1820 60  0001 L CNN "Component Type"
-F 11 "2.0000000000000000e+00" H 5000 1640 60  0001 L CNN "Pin Count"
-F 12 "PcbLib\\Capacitors SMD.PcbLib" H 5000 1550 60  0001 L CNN "Footprint Path"
-F 13 "CAPC1608X90N" H 5000 1460 60  0001 L CNN "Footprint Ref"
-F 14 "~~" H 5000 1370 60  0001 L CNN "PackageDescription"
-F 15 "100nF" H 5000 1280 60  0001 L CNN "Val"
-F 16 "None" H 5000 1190 60  0001 L CNN "Status"
-F 17 "~~" H 5000 1100 60  0001 L CNN "Status Comment"
-F 18 "100V" H 5000 1010 60  0001 L CNN "Voltage"
-F 19 "X7R" H 5000 920 60  0001 L CNN "TC"
-F 20 "±10%" H 5000 830 60  0001 L CNN "Tolerance"
-F 21 "SMD Multilayer Chip Ceramic Capacitor" H 5000 740 60  0001 L CNN "Part Description"
-F 22 "GENERIC" H 5000 650 60  0001 L CNN "Manufacturer"
-F 23 "CC0603_100NF_100V_10%_X7R" H 5000 560 60  0001 L CNN "Manufacturer Part Number"
-F 24 "0603" H 5000 470 60  0001 L CNN "Case"
-F 25 "Yes" H 5000 380 60  0001 L CNN "Mounted"
-F 26 "No" H 5000 290 60  0001 L CNN "Socket"
-F 27 "Yes" H 5000 200 60  0001 L CNN "SMD"
-F 28 "~~" H 5000 110 60  0001 L CNN "PressFit"
-F 29 "No" H 5000 20  60  0001 L CNN "Sense"
-F 30 "~~" H 5000 -70 60  0001 L CNN "Sense Comment"
-F 31 "~~" H 5000 -160 60  0001 L CNN "ComponentHeight"
-F 32 "MURATA" H 5000 -250 60  0001 L CNN "Manufacturer1 Example"
-F 33 "GRM188R72A104KA35D" H 5000 -340 60  0001 L CNN "Manufacturer1 Part Number"
-F 34 "0.9mm" H 5000 -430 60  0001 L CNN "Manufacturer1 ComponentHeight"
-F 35 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 5000 -520 60  0001 L CNN "HelpURL"
-F 36 "CERN DEM JLC" H 5000 -610 60  0001 L CNN "Author"
-F 37 "12/11/13 00:00:00" H 5000 -700 60  0001 L CNN "CreateDate"
-F 38 "12/11/13 00:00:00" H 5000 -790 60  0001 L CNN "LatestRevisionDate"
-F 39 "Capacitors SMD" H 5000 -880 60  0001 L CNN "Library Name"
-F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 5000 -970 60  0001 L CNN "License"
-	1    5000 2800
-	0    1    1    0   
+P 4000 3200
+F 0 "C79" V 4104 3310 50  0000 L CNN
+F 1 "CC0603_100NF_100V_10%_X7R" H 4000 2940 60  0001 L CNN
+F 2 "Capacitors SMD:CAPC1608X90N" H 4000 2130 60  0001 L CNN
+F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 4000 2760 60  0001 L CNN
+F 4 "100nF" V 4195 3310 50  0000 L CNN "~"
+F 5 "CC0603_100NF_100V_10%_X7R" H 4000 2670 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 4000 2580 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 4000 2490 60  0001 L CNN "Library Path"
+F 8 "=Value" H 4000 2400 60  0001 L CNN "Comment"
+F 9 "Standard" H 4000 2310 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 4000 2220 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 4000 2040 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 4000 1950 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X90N" H 4000 1860 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 4000 1770 60  0001 L CNN "PackageDescription"
+F 15 "100nF" H 4000 1680 60  0001 L CNN "Val"
+F 16 "None" H 4000 1590 60  0001 L CNN "Status"
+F 17 "~~" H 4000 1500 60  0001 L CNN "Status Comment"
+F 18 "100V" H 4000 1410 60  0001 L CNN "Voltage"
+F 19 "X7R" H 4000 1320 60  0001 L CNN "TC"
+F 20 "±10%" H 4000 1230 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 4000 1140 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 4000 1050 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_100NF_100V_10%_X7R" H 4000 960 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 4000 870 60  0001 L CNN "Case"
+F 25 "Yes" H 4000 780 60  0001 L CNN "Mounted"
+F 26 "No" H 4000 690 60  0001 L CNN "Socket"
+F 27 "Yes" H 4000 600 60  0001 L CNN "SMD"
+F 28 "~~" H 4000 510 60  0001 L CNN "PressFit"
+F 29 "No" H 4000 420 60  0001 L CNN "Sense"
+F 30 "~~" H 4000 330 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 4000 240 60  0001 L CNN "ComponentHeight"
+F 32 "MURATA" H 4000 150 60  0001 L CNN "Manufacturer1 Example"
+F 33 "GRM188R72A104KA35D" H 4000 60  60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.9mm" H 4000 -30 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" H 4000 -120 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 4000 -210 60  0001 L CNN "Author"
+F 37 "12/11/13 00:00:00" H 4000 -300 60  0001 L CNN "CreateDate"
+F 38 "12/11/13 00:00:00" H 4000 -390 60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 4000 -480 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 4000 -570 60  0001 L CNN "License"
+	1    4000 3200
+	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	5000 2700 5000 2800
 Connection ~ 4550 2700
 Wire Wire Line
 	4100 2800 4100 2700
@@ -558,16 +557,14 @@ Wire Wire Line
 $Comp
 L GND #PWR0101
 U 1 1 599837FA
-P 5000 3150
-F 0 "#PWR0101" H 5000 2900 50  0001 C CNN
-F 1 "GND" H 5005 2977 50  0000 C CNN
-F 2 "" H 5000 3150 50  0001 C CNN
-F 3 "" H 5000 3150 50  0001 C CNN
-	1    5000 3150
-	1    0    0    -1  
+P 3550 3200
+F 0 "#PWR0101" H 3550 2950 50  0001 C CNN
+F 1 "GND" H 3555 3027 50  0000 C CNN
+F 2 "" H 3550 3200 50  0001 C CNN
+F 3 "" H 3550 3200 50  0001 C CNN
+	1    3550 3200
+	0    1    1    0   
 $EndComp
-Wire Wire Line
-	5000 3150 5000 3100
 $Comp
 L +5V #PWR0102
 U 1 1 599839AA
@@ -939,4 +936,9 @@ Wire Notes Line
 	11100 6400 11100 5700
 Wire Notes Line
 	11100 5700 8700 5700
+Wire Wire Line
+	4000 3200 4100 3200
+Connection ~ 4100 3200
+Wire Wire Line
+	3700 3200 3550 3200
 $EndSCHEMATC

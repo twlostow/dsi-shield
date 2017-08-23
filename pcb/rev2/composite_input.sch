@@ -76,7 +76,7 @@ U 1 1 59904558
 P 5150 2700
 F 0 "IC28" H 5950 2773 50  0000 C CNN
 F 1 "TVP5150AM1PBS" H 5150 2800 60  0001 L CNN
-F 2 "" H 5150 2700 60  0001 C CNN
+F 2 "dsi_shield:TSQFP50P700X700-32L" H 5150 2700 60  0001 C CNN
 F 3 "" H 5150 2700 60  0001 C CNN
 F 4 "Value" H 5150 2700 60  0001 C CNN "Fieldname"
 	1    5150 2700
@@ -183,17 +183,6 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR0110
-U 1 1 599061B2
-P 2300 2000
-F 0 "#PWR0110" H 2300 1750 50  0001 C CNN
-F 1 "GND" H 2305 1827 50  0000 C CNN
-F 2 "" H 2300 2000 50  0001 C CNN
-F 3 "" H 2300 2000 50  0001 C CNN
-	1    2300 2000
-	1    0    0    -1  
-$EndComp
-$Comp
 L CC0603_100NF_100V_10%_X7R C7
 U 1 1 59906E21
 P 2450 1500
@@ -292,10 +281,10 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R4
+L R0603_3K3_1%_0.1W_100PPM R34
 U 1 1 5990925B
 P 4250 3200
-F 0 "R4" H 4400 3050 50  0000 C CNN
+F 0 "R34" H 4400 3050 50  0000 C CNN
 F 1 "R0603_3K3_1%_0.1W_100PPM" H 4250 2990 60  0001 L CNN
 F 2 "Resistors SMD:RESC1608X55N" H 4250 2180 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 4250 2810 60  0001 L CNN
@@ -354,56 +343,8 @@ $EndComp
 $Comp
 L CC0603_22PF_50V_5%_NP0 C31
 U 1 1 5990B552
-P 3300 3600
-F 0 "C31" V 3404 3710 50  0000 L CNN
-F 1 "CC0603_22PF_50V_5%_NP0" H 3300 3340 60  0001 L CNN
-F 2 "Capacitors SMD:CAPC1608X87N" H 3300 2530 60  0001 L CNN
-F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" H 3300 3160 60  0001 L CNN
-F 4 "22pF" V 3495 3710 50  0000 L CNN "~"
-F 5 "CC0603_22PF_50V_5%_NP0" H 3300 3070 60  0001 L CNN "Part Number"
-F 6 "Capacitor - non polarized" H 3300 2980 60  0001 L CNN "Library Ref"
-F 7 "SchLib\\Capacitors.SchLib" H 3300 2890 60  0001 L CNN "Library Path"
-F 8 "=Value" H 3300 2800 60  0001 L CNN "Comment"
-F 9 "Standard" H 3300 2710 60  0001 L CNN "Component Kind"
-F 10 "Standard" H 3300 2620 60  0001 L CNN "Component Type"
-F 11 "2.0000000000000000e+00" H 3300 2440 60  0001 L CNN "Pin Count"
-F 12 "PcbLib\\Capacitors SMD.PcbLib" H 3300 2350 60  0001 L CNN "Footprint Path"
-F 13 "CAPC1608X87N" H 3300 2260 60  0001 L CNN "Footprint Ref"
-F 14 "~~" H 3300 2170 60  0001 L CNN "PackageDescription"
-F 15 "22pF" H 3300 2080 60  0001 L CNN "Val"
-F 16 "Preferred" H 3300 1990 60  0001 L CNN "Status"
-F 17 "~~" H 3300 1900 60  0001 L CNN "Status Comment"
-F 18 "50V" H 3300 1810 60  0001 L CNN "Voltage"
-F 19 "C0G/NP0" H 3300 1720 60  0001 L CNN "TC"
-F 20 "±5%" H 3300 1630 60  0001 L CNN "Tolerance"
-F 21 "SMD Multilayer Chip Ceramic Capacitor" H 3300 1540 60  0001 L CNN "Part Description"
-F 22 "GENERIC" H 3300 1450 60  0001 L CNN "Manufacturer"
-F 23 "CC0603_22PF_50V_5%_NP0" H 3300 1360 60  0001 L CNN "Manufacturer Part Number"
-F 24 "0603" H 3300 1270 60  0001 L CNN "Case"
-F 25 "Yes" H 3300 1180 60  0001 L CNN "Mounted"
-F 26 "No" H 3300 1090 60  0001 L CNN "Socket"
-F 27 "Yes" H 3300 1000 60  0001 L CNN "SMD"
-F 28 "~~" H 3300 910 60  0001 L CNN "PressFit"
-F 29 "No" H 3300 820 60  0001 L CNN "Sense"
-F 30 "~~" H 3300 730 60  0001 L CNN "Sense Comment"
-F 31 "~~" H 3300 640 60  0001 L CNN "ComponentHeight"
-F 32 "PHYCOMP" H 3300 550 60  0001 L CNN "Manufacturer1 Example"
-F 33 "223886715229" H 3300 460 60  0001 L CNN "Manufacturer1 Part Number"
-F 34 "0.87mm" H 3300 370 60  0001 L CNN "Manufacturer1 ComponentHeight"
-F 35 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" H 3300 280 60  0001 L CNN "HelpURL"
-F 36 "CERN DEM JLC" H 3300 190 60  0001 L CNN "Author"
-F 37 "12/03/07 00:00:00" H 3300 100 60  0001 L CNN "CreateDate"
-F 38 "12/03/07 00:00:00" H 3300 10  60  0001 L CNN "LatestRevisionDate"
-F 39 "Capacitors SMD" H 3300 -80 60  0001 L CNN "Library Name"
-F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 3300 -170 60  0001 L CNN "License"
-	1    3300 3600
-	0    1    1    0   
-$EndComp
-$Comp
-L CC0603_22PF_50V_5%_NP0 C59
-U 1 1 5990B6BB
 P 2850 3600
-F 0 "C59" V 2954 3710 50  0000 L CNN
+F 0 "C31" V 2954 3710 50  0000 L CNN
 F 1 "CC0603_22PF_50V_5%_NP0" H 2850 3340 60  0001 L CNN
 F 2 "Capacitors SMD:CAPC1608X87N" H 2850 2530 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" H 2850 3160 60  0001 L CNN
@@ -448,26 +389,52 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR0112
-U 1 1 5990B96D
-P 2850 3900
-F 0 "#PWR0112" H 2850 3650 50  0001 C CNN
-F 1 "GND" H 2855 3727 50  0000 C CNN
-F 2 "" H 2850 3900 50  0001 C CNN
-F 3 "" H 2850 3900 50  0001 C CNN
-	1    2850 3900
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR0113
-U 1 1 5990BA01
-P 3300 3900
-F 0 "#PWR0113" H 3300 3650 50  0001 C CNN
-F 1 "GND" H 3305 3727 50  0000 C CNN
-F 2 "" H 3300 3900 50  0001 C CNN
-F 3 "" H 3300 3900 50  0001 C CNN
-	1    3300 3900
-	1    0    0    -1  
+L CC0603_22PF_50V_5%_NP0 C59
+U 1 1 5990B6BB
+P 3300 3600
+F 0 "C59" V 3404 3710 50  0000 L CNN
+F 1 "CC0603_22PF_50V_5%_NP0" H 3300 3340 60  0001 L CNN
+F 2 "Capacitors SMD:CAPC1608X87N" H 3300 2530 60  0001 L CNN
+F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" H 3300 3160 60  0001 L CNN
+F 4 "22pF" V 3495 3710 50  0000 L CNN "~"
+F 5 "CC0603_22PF_50V_5%_NP0" H 3300 3070 60  0001 L CNN "Part Number"
+F 6 "Capacitor - non polarized" H 3300 2980 60  0001 L CNN "Library Ref"
+F 7 "SchLib\\Capacitors.SchLib" H 3300 2890 60  0001 L CNN "Library Path"
+F 8 "=Value" H 3300 2800 60  0001 L CNN "Comment"
+F 9 "Standard" H 3300 2710 60  0001 L CNN "Component Kind"
+F 10 "Standard" H 3300 2620 60  0001 L CNN "Component Type"
+F 11 "2.0000000000000000e+00" H 3300 2440 60  0001 L CNN "Pin Count"
+F 12 "PcbLib\\Capacitors SMD.PcbLib" H 3300 2350 60  0001 L CNN "Footprint Path"
+F 13 "CAPC1608X87N" H 3300 2260 60  0001 L CNN "Footprint Ref"
+F 14 "~~" H 3300 2170 60  0001 L CNN "PackageDescription"
+F 15 "22pF" H 3300 2080 60  0001 L CNN "Val"
+F 16 "Preferred" H 3300 1990 60  0001 L CNN "Status"
+F 17 "~~" H 3300 1900 60  0001 L CNN "Status Comment"
+F 18 "50V" H 3300 1810 60  0001 L CNN "Voltage"
+F 19 "C0G/NP0" H 3300 1720 60  0001 L CNN "TC"
+F 20 "±5%" H 3300 1630 60  0001 L CNN "Tolerance"
+F 21 "SMD Multilayer Chip Ceramic Capacitor" H 3300 1540 60  0001 L CNN "Part Description"
+F 22 "GENERIC" H 3300 1450 60  0001 L CNN "Manufacturer"
+F 23 "CC0603_22PF_50V_5%_NP0" H 3300 1360 60  0001 L CNN "Manufacturer Part Number"
+F 24 "0603" H 3300 1270 60  0001 L CNN "Case"
+F 25 "Yes" H 3300 1180 60  0001 L CNN "Mounted"
+F 26 "No" H 3300 1090 60  0001 L CNN "Socket"
+F 27 "Yes" H 3300 1000 60  0001 L CNN "SMD"
+F 28 "~~" H 3300 910 60  0001 L CNN "PressFit"
+F 29 "No" H 3300 820 60  0001 L CNN "Sense"
+F 30 "~~" H 3300 730 60  0001 L CNN "Sense Comment"
+F 31 "~~" H 3300 640 60  0001 L CNN "ComponentHeight"
+F 32 "PHYCOMP" H 3300 550 60  0001 L CNN "Manufacturer1 Example"
+F 33 "223886715229" H 3300 460 60  0001 L CNN "Manufacturer1 Part Number"
+F 34 "0.87mm" H 3300 370 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 35 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" H 3300 280 60  0001 L CNN "HelpURL"
+F 36 "CERN DEM JLC" H 3300 190 60  0001 L CNN "Author"
+F 37 "12/03/07 00:00:00" H 3300 100 60  0001 L CNN "CreateDate"
+F 38 "12/03/07 00:00:00" H 3300 10  60  0001 L CNN "LatestRevisionDate"
+F 39 "Capacitors SMD" H 3300 -80 60  0001 L CNN "Library Name"
+F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 3300 -170 60  0001 L CNN "License"
+	1    3300 3600
+	0    1    1    0   
 $EndComp
 $Comp
 L XTAL_12MHZ_TXC_7A-12.000MAAJ-T X1
@@ -1373,4 +1340,37 @@ Text Notes 10825 7650 2    60   ~ 0
 2.2a
 Text Notes 8525 7500 2    60   ~ 0
 Composite input/decoder
+$Comp
+L GNDA #PWR0110
+U 1 1 599E49EF
+P 2300 2000
+F 0 "#PWR0110" H 2300 1750 50  0001 C CNN
+F 1 "GNDA" H 2305 1827 50  0000 C CNN
+F 2 "" H 2300 2000 50  0001 C CNN
+F 3 "" H 2300 2000 50  0001 C CNN
+	1    2300 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDA #PWR0112
+U 1 1 599EEF10
+P 2850 3900
+F 0 "#PWR0112" H 2850 3650 50  0001 C CNN
+F 1 "GNDA" H 2855 3727 50  0000 C CNN
+F 2 "" H 2850 3900 50  0001 C CNN
+F 3 "" H 2850 3900 50  0001 C CNN
+	1    2850 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDA #PWR0113
+U 1 1 599EEF41
+P 3300 3900
+F 0 "#PWR0113" H 3300 3650 50  0001 C CNN
+F 1 "GNDA" H 3305 3727 50  0000 C CNN
+F 2 "" H 3300 3900 50  0001 C CNN
+F 3 "" H 3300 3900 50  0001 C CNN
+	1    3300 3900
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

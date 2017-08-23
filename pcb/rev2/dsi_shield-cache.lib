@@ -1165,12 +1165,12 @@ F11 "Yes" 0 -1540 60 H I L CNN "Field16"
 F12 "Yes" 0 -1720 60 H I L CNN "Field18"
 DRAW
 P 2 0 1 0 70 70 230 70 N
-B 0 0 1 10 N
-B 0 0 1 10 N
-B 0 0 1 10 N
-B 0 0 1 10 N
-B 0 0 1 10 N
-B 0 0 1 10 N
+B 4 0 1 10 100 50 86 50 75 27 75 0 N
+B 4 0 1 10 125 0 125 27 114 50 100 50 N
+B 4 0 1 10 150 50 136 50 125 27 125 0 N
+B 4 0 1 10 175 0 175 27 164 50 150 50 N
+B 4 0 1 10 200 50 186 50 175 27 175 0 N
+B 4 0 1 10 225 0 225 27 214 50 200 50 N
 X 1 1 0 0 75 R 0 0 0 1 P
 X 2 2 300 0 75 L 0 0 0 1 P
 ENDDRAW
@@ -1405,12 +1405,12 @@ F35 "01/17/17 00:00:00" 0 -3160 60 H I L CNN "LatestRevisionDate"
 F36 "Inductors SMD" 0 -3250 60 H I L CNN "Library Name"
 F37 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3340 60 H I L CNN "License"
 DRAW
-B 0 0 1 10  100 50  86 50  75 27  75 0 N
-B 0 0 1 10  125 0  125 27  114 50  100 50 N
-B 0 0 1 10  150 50  136 50  125 27  125 0 N
-B 0 0 1 10  175 0  175 27  164 50  150 50 N
-B 0 0 1 10  200 50  186 50  175 27  175 0 N
-B 0 0 1 10  225 0  225 27  214 50  200 50 N
+B 4 0 1 10 100 50 86 50 75 27 75 0 N
+B 4 0 1 10 125 0 125 27 114 50 100 50 N
+B 4 0 1 10 150 50 136 50 125 27 125 0 N
+B 4 0 1 10 175 0 175 27 164 50 150 50 N
+B 4 0 1 10 200 50 186 50 175 27 175 0 N
+B 4 0 1 10 225 0 225 27 214 50 200 50 N
 X 1 1 0 0 75 R 0 0 0 1 P
 X 2 2 300 0 75 L 0 0 0 1 P
 ENDDRAW
