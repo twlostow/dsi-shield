@@ -71,17 +71,17 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R0603_160R_1%_0.1W_100PPM R52A1
+L R0603_160R_1%_0.1W_100PPM RA52
 U 1 1 598DB2C0
 P 6600 2100
-AR Path="/598D85B4/598D9987/598DB2C0" Ref="R52A1"  Part="1" 
-AR Path="/598D85B4/598E0462/598DB2C0" Ref="R52B1"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DB2C0" Ref="R52C1"  Part="1" 
-AR Path="/598D85B4/598E1801/598DB2C0" Ref="R52D1"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DB2C0" Ref="R52E1"  Part="1" 
-F 0 "R52E1" H 6750 1903 50  0000 C CNN
+AR Path="/598D85B4/598D9987/598DB2C0" Ref="RA52"  Part="1" 
+AR Path="/598D85B4/598E0462/598DB2C0" Ref="RB52"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DB2C0" Ref="RC52"  Part="1" 
+AR Path="/598D85B4/598E1801/598DB2C0" Ref="RD52"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DB2C0" Ref="RE52"  Part="1" 
+F 0 "RA52" H 6750 1903 50  0000 C CNN
 F 1 "R0603_160R_1%_0.1W_100PPM" H 6600 1890 60  0001 L CNN
-F 2 "RESC1608X55N" H 6600 1080 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6600 1080 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6600 1710 60  0001 L CNN
 F 4 "160" H 6750 1994 50  0000 C CNN "~"
 F 5 "R0603_160R_1%_0.1W_100PPM" H 6600 1620 60  0001 L CNN "Part Number"
@@ -125,71 +125,72 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    1   
 $EndComp
 $Comp
-L R0603_22R_1%_0.1W_100PPM R51A1
+L R0603_22R_1%_0.1W_100PPM RA51
 U 1 1 598DC2CA
 P 6800 1750
-AR Path="/598D85B4/598D9987/598DC2CA" Ref="R51A1"  Part="1" 
-AR Path="/598D85B4/598E0462/598DC2CA" Ref="R51B1"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DC2CA" Ref="R51C1"  Part="1" 
-AR Path="/598D85B4/598E1801/598DC2CA" Ref="R51D1"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DC2CA" Ref="R51E1"  Part="1" 
-F 0 "R51E1" V 6904 1810 50  0000 L CNN
+AR Path="/598D85B4/598D9987/598DC2CA" Ref="RA51"  Part="1" 
+AR Path="/598D85B4/598E0462/598DC2CA" Ref="RB51"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DC2CA" Ref="RC51"  Part="1" 
+AR Path="/598D85B4/598E1801/598DC2CA" Ref="RD51"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DC2CA" Ref="RE51"  Part="1" 
+F 0 "RA51" V 6904 1810 50  0000 L CNN
 F 1 "R0603_22R_1%_0.1W_100PPM" H 6800 1540 60  0001 L CNN
-F 2 "RESC1608X55N" H 6800 730 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6800 730 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 1360 60  0001 L CNN
-F 4 "22" V 6995 1810 50  0000 L CNN "~"
-F 5 "R0603_22R_1%_0.1W_100PPM" H 6800 1270 60  0001 L CNN "Part Number"
-F 6 "Resistor - 1%" H 6800 1180 60  0001 L CNN "Library Ref"
-F 7 "SchLib\\Resistors.SchLib" H 6800 1090 60  0001 L CNN "Library Path"
-F 8 "=Value" H 6800 1000 60  0001 L CNN "Comment"
-F 9 "Standard" H 6800 910 60  0001 L CNN "Component Kind"
-F 10 "Standard" H 6800 820 60  0001 L CNN "Component Type"
-F 11 "~~" H 6800 640 60  0001 L CNN "PackageDescription"
-F 12 "2" H 6800 550 60  0001 L CNN "Pin Count"
-F 13 "PcbLib\\Resistors SMD.PcbLib" H 6800 460 60  0001 L CNN "Footprint Path"
-F 14 "RESC1608X55N" H 6800 370 60  0001 L CNN "Footprint Ref"
-F 15 "22" H 6800 280 60  0001 L CNN "Val"
-F 16 "Preferred" H 6800 190 60  0001 L CNN "Status"
-F 17 "0.1W" H 6800 100 60  0001 L CNN "Power"
-F 18 "±100ppm/°C" H 6800 10  60  0001 L CNN "TC"
-F 19 "~~" H 6800 -80 60  0001 L CNN "Voltage"
-F 20 "±1%" H 6800 -170 60  0001 L CNN "Tolerance"
-F 21 "General Purpose Thick Film Chip Resistor" H 6800 -260 60  0001 L CNN "Part Description"
-F 22 "GENERIC" H 6800 -350 60  0001 L CNN "Manufacturer"
-F 23 "R0603_22R_1%_0.1W_100PPM" H 6800 -440 60  0001 L CNN "Manufacturer Part Number"
-F 24 "0603" H 6800 -530 60  0001 L CNN "Case"
-F 25 "No" H 6800 -620 60  0001 L CNN "PressFit"
-F 26 "Yes" H 6800 -710 60  0001 L CNN "Mounted"
-F 27 "~~" H 6800 -800 60  0001 L CNN "Sense Comment"
-F 28 "No" H 6800 -890 60  0001 L CNN "Sense"
-F 29 "~~" H 6800 -980 60  0001 L CNN "Status Comment"
-F 30 "No" H 6800 -1070 60  0001 L CNN "Socket"
-F 31 "Yes" H 6800 -1160 60  0001 L CNN "SMD"
-F 32 "~~" H 6800 -1250 60  0001 L CNN "ComponentHeight"
-F 33 "NIC COMPONENT" H 6800 -1340 60  0001 L CNN "Manufacturer1 Example"
-F 34 "NRC06F22R0TRF" H 6800 -1430 60  0001 L CNN "Manufacturer1 Part Number"
-F 35 "0.55mm" H 6800 -1520 60  0001 L CNN "Manufacturer1 ComponentHeight"
-F 36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 -1610 60  0001 L CNN "HelpURL"
-F 37 "CERN DEM JLC" H 6800 -1700 60  0001 L CNN "Author"
-F 38 "12/03/07 00:00:00" H 6800 -1790 60  0001 L CNN "CreateDate"
-F 39 "03/13/08 00:00:00" H 6800 -1880 60  0001 L CNN "LatestRevisionDate"
-F 40 "Resistors SMD" H 6800 -1970 60  0001 L CNN "Library Name"
-F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 6800 -2060 60  0001 L CNN "License"
+F 4 "Value" H 6800 1750 60  0001 C CNN "Fieldname"
+F 5 "22" V 6995 1810 50  0000 L CNN "~"
+F 6 "R0603_22R_1%_0.1W_100PPM" H 6800 1270 60  0001 L CNN "Part Number"
+F 7 "Resistor - 1%" H 6800 1180 60  0001 L CNN "Library Ref"
+F 8 "SchLib\\Resistors.SchLib" H 6800 1090 60  0001 L CNN "Library Path"
+F 9 "=Value" H 6800 1000 60  0001 L CNN "Comment"
+F 10 "Standard" H 6800 910 60  0001 L CNN "Component Kind"
+F 11 "Standard" H 6800 820 60  0001 L CNN "Component Type"
+F 12 "~~" H 6800 640 60  0001 L CNN "PackageDescription"
+F 13 "2" H 6800 550 60  0001 L CNN "Pin Count"
+F 14 "PcbLib\\Resistors SMD.PcbLib" H 6800 460 60  0001 L CNN "Footprint Path"
+F 15 "RESC1608X55N" H 6800 370 60  0001 L CNN "Footprint Ref"
+F 16 "22" H 6800 280 60  0001 L CNN "Val"
+F 17 "Preferred" H 6800 190 60  0001 L CNN "Status"
+F 18 "0.1W" H 6800 100 60  0001 L CNN "Power"
+F 19 "±100ppm/°C" H 6800 10  60  0001 L CNN "TC"
+F 20 "~~" H 6800 -80 60  0001 L CNN "Voltage"
+F 21 "±1%" H 6800 -170 60  0001 L CNN "Tolerance"
+F 22 "General Purpose Thick Film Chip Resistor" H 6800 -260 60  0001 L CNN "Part Description"
+F 23 "GENERIC" H 6800 -350 60  0001 L CNN "Manufacturer"
+F 24 "R0603_22R_1%_0.1W_100PPM" H 6800 -440 60  0001 L CNN "Manufacturer Part Number"
+F 25 "0603" H 6800 -530 60  0001 L CNN "Case"
+F 26 "No" H 6800 -620 60  0001 L CNN "PressFit"
+F 27 "Yes" H 6800 -710 60  0001 L CNN "Mounted"
+F 28 "~~" H 6800 -800 60  0001 L CNN "Sense Comment"
+F 29 "No" H 6800 -890 60  0001 L CNN "Sense"
+F 30 "~~" H 6800 -980 60  0001 L CNN "Status Comment"
+F 31 "No" H 6800 -1070 60  0001 L CNN "Socket"
+F 32 "Yes" H 6800 -1160 60  0001 L CNN "SMD"
+F 33 "~~" H 6800 -1250 60  0001 L CNN "ComponentHeight"
+F 34 "NIC COMPONENT" H 6800 -1340 60  0001 L CNN "Manufacturer1 Example"
+F 35 "NRC06F22R0TRF" H 6800 -1430 60  0001 L CNN "Manufacturer1 Part Number"
+F 36 "0.55mm" H 6800 -1520 60  0001 L CNN "Manufacturer1 ComponentHeight"
+F 37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 -1610 60  0001 L CNN "HelpURL"
+F 38 "CERN DEM JLC" H 6800 -1700 60  0001 L CNN "Author"
+F 39 "12/03/07 00:00:00" H 6800 -1790 60  0001 L CNN "CreateDate"
+F 40 "03/13/08 00:00:00" H 6800 -1880 60  0001 L CNN "LatestRevisionDate"
+F 41 "Resistors SMD" H 6800 -1970 60  0001 L CNN "Library Name"
+F 42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." H 6800 -2060 60  0001 L CNN "License"
 	1    6800 1750
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_51R_1%_0.1W_100PPM R3A1
+L R0603_51R_1%_0.1W_100PPM RA3
 U 1 1 598DD2C1
 P 6800 2150
-AR Path="/598D85B4/598D9987/598DD2C1" Ref="R3A1"  Part="1" 
-AR Path="/598D85B4/598E0462/598DD2C1" Ref="R3B1"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DD2C1" Ref="R3C1"  Part="1" 
-AR Path="/598D85B4/598E1801/598DD2C1" Ref="R3D1"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DD2C1" Ref="R3E1"  Part="1" 
-F 0 "R3E1" V 6904 2210 50  0000 L CNN
+AR Path="/598D85B4/598D9987/598DD2C1" Ref="RA3"  Part="1" 
+AR Path="/598D85B4/598E0462/598DD2C1" Ref="RB3"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DD2C1" Ref="RC3"  Part="1" 
+AR Path="/598D85B4/598E1801/598DD2C1" Ref="RD3"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DD2C1" Ref="RE3"  Part="1" 
+F 0 "RA3" V 6904 2210 50  0000 L CNN
 F 1 "R0603_51R_1%_0.1W_100PPM" H 6800 1940 60  0001 L CNN
-F 2 "RESC1608X55N" H 6800 1130 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6800 1130 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 1760 60  0001 L CNN
 F 4 "51" V 6995 2210 50  0000 L CNN "~"
 F 5 "R0603_51R_1%_0.1W_100PPM" H 6800 1670 60  0001 L CNN "Part Number"
@@ -250,17 +251,17 @@ Wire Wire Line
 	6800 2050 6800 2150
 Connection ~ 6800 2100
 $Comp
-L R0603_51R_1%_0.1W_100PPM R4A1
+L R0603_51R_1%_0.1W_100PPM RA4
 U 1 1 598DDA7D
 P 6800 2550
-AR Path="/598D85B4/598D9987/598DDA7D" Ref="R4A1"  Part="1" 
-AR Path="/598D85B4/598E0462/598DDA7D" Ref="R4B1"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DDA7D" Ref="R4C1"  Part="1" 
-AR Path="/598D85B4/598E1801/598DDA7D" Ref="R4D1"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DDA7D" Ref="R4E1"  Part="1" 
-F 0 "R4E1" V 6904 2610 50  0000 L CNN
+AR Path="/598D85B4/598D9987/598DDA7D" Ref="RA4"  Part="1" 
+AR Path="/598D85B4/598E0462/598DDA7D" Ref="RB4"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DDA7D" Ref="RC4"  Part="1" 
+AR Path="/598D85B4/598E1801/598DDA7D" Ref="RD4"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DDA7D" Ref="RE4"  Part="1" 
+F 0 "RA4" V 6904 2610 50  0000 L CNN
 F 1 "R0603_51R_1%_0.1W_100PPM" H 6800 2340 60  0001 L CNN
-F 2 "RESC1608X55N" H 6800 1530 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6800 1530 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 2160 60  0001 L CNN
 F 4 "51" V 6995 2610 50  0000 L CNN "~"
 F 5 "R0603_51R_1%_0.1W_100PPM" H 6800 2070 60  0001 L CNN "Part Number"
@@ -327,17 +328,17 @@ Wire Wire Line
 	7200 2500 7200 2550
 Connection ~ 6800 2500
 $Comp
-L R0603_22R_1%_0.1W_100PPM R6A
+L R0603_22R_1%_0.1W_100PPM RA6
 U 1 1 598DDD38
 P 6800 2950
-AR Path="/598D85B4/598D9987/598DDD38" Ref="R6A"  Part="1" 
-AR Path="/598D85B4/598E0462/598DDD38" Ref="R6B"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DDD38" Ref="R6C"  Part="1" 
-AR Path="/598D85B4/598E1801/598DDD38" Ref="R6D"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DDD38" Ref="R6E1"  Part="1" 
-F 0 "R6E1" V 6904 3010 50  0000 L CNN
+AR Path="/598D85B4/598D9987/598DDD38" Ref="RA6"  Part="1" 
+AR Path="/598D85B4/598E0462/598DDD38" Ref="RB6"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DDD38" Ref="RC6"  Part="1" 
+AR Path="/598D85B4/598E1801/598DDD38" Ref="RD6"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DDD38" Ref="RE6"  Part="1" 
+F 0 "RA6" V 6904 3010 50  0000 L CNN
 F 1 "R0603_22R_1%_0.1W_100PPM" H 6800 2740 60  0001 L CNN
-F 2 "RESC1608X55N" H 6800 1930 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6800 1930 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6800 2560 60  0001 L CNN
 F 4 "22" V 6995 3010 50  0000 L CNN "~"
 F 5 "R0603_22R_1%_0.1W_100PPM" H 6800 2470 60  0001 L CNN "Part Number"
@@ -381,17 +382,17 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_160R_1%_0.1W_100PPM R5A1
+L R0603_160R_1%_0.1W_100PPM RA5
 U 1 1 598DDDBE
 P 6600 2900
-AR Path="/598D85B4/598D9987/598DDDBE" Ref="R5A1"  Part="1" 
-AR Path="/598D85B4/598E0462/598DDDBE" Ref="R5B1"  Part="1" 
-AR Path="/598D85B4/598E0D2D/598DDDBE" Ref="R5C1"  Part="1" 
-AR Path="/598D85B4/598E1801/598DDDBE" Ref="R5D1"  Part="1" 
-AR Path="/598D85B4/598E2C48/598DDDBE" Ref="R5E1"  Part="1" 
-F 0 "R5E1" H 6750 2703 50  0000 C CNN
+AR Path="/598D85B4/598D9987/598DDDBE" Ref="RA5"  Part="1" 
+AR Path="/598D85B4/598E0462/598DDDBE" Ref="RB5"  Part="1" 
+AR Path="/598D85B4/598E0D2D/598DDDBE" Ref="RC5"  Part="1" 
+AR Path="/598D85B4/598E1801/598DDDBE" Ref="RD5"  Part="1" 
+AR Path="/598D85B4/598E2C48/598DDDBE" Ref="RE5"  Part="1" 
+F 0 "RA5" H 6750 2703 50  0000 C CNN
 F 1 "R0603_160R_1%_0.1W_100PPM" H 6600 2690 60  0001 L CNN
-F 2 "RESC1608X55N" H 6600 1880 60  0001 L CNN
+F 2 "Resistors SMD:RESC1608X55N" H 6600 1880 60  0001 L CNN
 F 3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" H 6600 2510 60  0001 L CNN
 F 4 "160" H 6750 2794 50  0000 C CNN "~"
 F 5 "R0603_160R_1%_0.1W_100PPM" H 6600 2420 60  0001 L CNN "Part Number"

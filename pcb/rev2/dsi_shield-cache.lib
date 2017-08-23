@@ -83,7 +83,7 @@ DEF 2N7002 T 0 60 Y Y 1 L N
 F0 "T" 150 200 50 H V R CNN
 F1 "2N7002" 150 -100 50 H V R CNN
 F2 "ICs And Semiconductors SMD:SOT95P240X130-3N" 0 -400 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\2N7002.pdf" 0 -490 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\2N7002.pdf" 0 -490 60 H I L CNN
 F4 "2N7002" 0 -580 60 H I L CNN "Part Number"
 F5 "N-MOSFET-D 1G 2S 3D" 0 -670 60 H I L CNN "Library Ref"
 F6 "SchLib\\Transistors.SchLib" 0 -760 60 H I L CNN "Library Path"
@@ -110,7 +110,7 @@ F26 "~~" 0 -2560 60 H I L CNN "Status Comment"
 F27 "1.3mm" 0 -2650 60 H I L CNN "ComponentHeight"
 F28 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -2740 60 H I L CNN "Footprint Path"
 F29 "SOT95P240X130-3N" 0 -2830 60 H I L CNN "Footprint Ref"
-F30 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\2N7002.pdf" 0 -2920 60 H I L CNN "HelpURL"
+F30 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\2N7002.pdf" 0 -2920 60 H I L CNN "HelpURL"
 F31 "~~" 0 -3010 60 H I L CNN "ComponentLink1URL"
 F32 "~~" 0 -3100 60 H I L CNN "ComponentLink1Description"
 F33 "~~" 0 -3190 60 H I L CNN "ComponentLink2URL"
@@ -121,28 +121,28 @@ F37 "04/07/09 00:00:00" 0 -3550 60 H I L CNN "LatestRevisionDate"
 F38 "ICs And Semiconductors SMD" 0 -3640 60 H I L CNN "Library Name"
 F39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3730 60 H I L CNN "License"
 DRAW
-A 190 50 100 0 0 0 0 10 N 290 50 290 50
-T 0 200 210 25 1 0 0 D Normal 0 L T
-T 0 30 0 25 1 0 0 G Normal 0 L B
-T 0 200 -110 25 1 0 0 S Normal 0 L B
-S 170 -20 180 20 0 0 0 F
-S 170 30 180 70 0 0 0 F
-S 170 80 180 120 0 0 0 F
-S 230 60 270 70 0 0 0 F
-P 2 0 0 10 140 0 100 0 N
-P 2 0 0 10 175 50 215 50 N
-P 2 0 0 10 180 0 250 0 N
-P 2 0 0 10 180 100 250 100 N
-P 2 0 0 10 215 50 215 0 N
-P 2 0 0 10 250 0 250 -30 N
-P 2 0 0 10 250 100 250 0 N
-P 2 0 0 10 250 130 250 100 N
-P 4 0 0 0 180 50 200 70 200 30 180 50 F
-P 4 0 0 0 250 70 230 35 270 35 250 70 F
-P 5 0 0 0 140 -20 160 -20 160 120 140 120 140 -20 F
-X G 1 0 0 100 R 0 0 0 0 P
-X S 2 250 -150 120 U 0 0 0 0 P
-X D 3 250 250 120 D 0 0 0 0 P
+A 190 50 100 0 0 0 1 10 N 290 50 290 50
+T 0 200 210 25 1 0 1 D Normal 0 L T
+T 0 30 0 25 1 0 1 G Normal 0 L B
+T 0 200 -110 25 1 0 1 S Normal 0 L B
+S 170 -20 180 20 0 1 0 F
+S 170 30 180 70 0 1 0 F
+S 170 80 180 120 0 1 0 F
+S 230 60 270 70 0 1 0 F
+P 2 0 1 10 140 0 100 0 N
+P 2 0 1 10 175 50 215 50 N
+P 2 0 1 10 180 0 250 0 N
+P 2 0 1 10 180 100 250 100 N
+P 2 0 1 10 215 50 215 0 N
+P 2 0 1 10 250 0 250 -30 N
+P 2 0 1 10 250 100 250 0 N
+P 2 0 1 10 250 130 250 100 N
+P 4 0 1 0 180 50 200 70 200 30 180 50 F
+P 4 0 1 0 250 70 230 35 270 35 250 70 F
+P 5 0 1 0 140 -20 160 -20 160 120 140 120 140 -20 F
+X G 1 0 0 100 R 0 0 0 1 P
+X S 2 250 -150 120 U 0 0 0 1 P
+X D 3 250 250 120 D 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -172,7 +172,7 @@ DEF BSS84LT1G T 0 60 Y Y 1 L N
 F0 "T" 150 200 50 H V R CNN
 F1 "BSS84LT1G" 150 -100 50 H V R CNN
 F2 "ICs And Semiconductors SMD:SOT95P240X110-3N" 0 -400 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\BSS84LT1G.pdf" 0 -490 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\BSS84LT1G.pdf" 0 -490 60 H I L CNN
 F4 "BSS84LT1G" 0 -580 60 H I L CNN "Part Number"
 F5 "P-MOSFET-D 1G 2S 3D" 0 -670 60 H I L CNN "Library Ref"
 F6 "SchLib\\Transistors.SchLib" 0 -760 60 H I L CNN "Library Path"
@@ -199,7 +199,7 @@ F26 "~~" 0 -2560 60 H I L CNN "Status Comment"
 F27 "1.1mm" 0 -2650 60 H I L CNN "ComponentHeight"
 F28 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -2740 60 H I L CNN "Footprint Path"
 F29 "SOT95P240X110-3N" 0 -2830 60 H I L CNN "Footprint Ref"
-F30 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\BSS84LT1G.pdf" 0 -2920 60 H I L CNN "HelpURL"
+F30 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\BSS84LT1G.pdf" 0 -2920 60 H I L CNN "HelpURL"
 F31 "~~" 0 -3010 60 H I L CNN "ComponentLink1URL"
 F32 "~~" 0 -3100 60 H I L CNN "ComponentLink1Description"
 F33 "~~" 0 -3190 60 H I L CNN "ComponentLink2URL"
@@ -210,28 +210,28 @@ F37 "03/29/12 00:00:00" 0 -3550 60 H I L CNN "LatestRevisionDate"
 F38 "ICs And Semiconductors SMD" 0 -3640 60 H I L CNN "Library Name"
 F39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3730 60 H I L CNN "License"
 DRAW
-A 190 50 100 0 0 0 0 10 N 290 50 290 50
-T 0 200 210 25 1 0 0 D Normal 0 L T
-T 0 30 0 25 1 0 0 G Normal 0 L B
-T 0 200 -110 25 1 0 0 S Normal 0 L B
-S 170 -20 180 20 0 0 0 F
-S 170 30 180 70 0 0 0 F
-S 170 80 180 120 0 0 0 F
-S 230 40 270 50 0 0 0 F
-P 2 0 0 10 140 0 100 0 N
-P 2 0 0 10 175 50 215 50 N
-P 2 0 0 10 180 0 250 0 N
-P 2 0 0 10 180 100 250 100 N
-P 2 0 0 10 215 50 215 0 N
-P 2 0 0 10 250 0 250 -30 N
-P 2 0 0 10 250 100 250 0 N
-P 2 0 0 10 250 130 250 100 N
-P 4 0 0 0 210 50 190 30 190 70 210 50 F
-P 4 0 0 0 250 40 270 75 230 75 250 40 F
-P 5 0 0 0 140 -20 160 -20 160 120 140 120 140 -20 F
-X G 1 0 0 100 R 0 0 0 0 P
-X S 2 250 -150 120 U 0 0 0 0 P
-X D 3 250 250 120 D 0 0 0 0 P
+A 190 50 100 0 0 0 1 10 N 290 50 290 50
+T 0 200 210 25 1 0 1 D Normal 0 L T
+T 0 30 0 25 1 0 1 G Normal 0 L B
+T 0 200 -110 25 1 0 1 S Normal 0 L B
+S 170 -20 180 20 0 1 0 F
+S 170 30 180 70 0 1 0 F
+S 170 80 180 120 0 1 0 F
+S 230 40 270 50 0 1 0 F
+P 2 0 1 10 140 0 100 0 N
+P 2 0 1 10 175 50 215 50 N
+P 2 0 1 10 180 0 250 0 N
+P 2 0 1 10 180 100 250 100 N
+P 2 0 1 10 215 50 215 0 N
+P 2 0 1 10 250 0 250 -30 N
+P 2 0 1 10 250 100 250 0 N
+P 2 0 1 10 250 130 250 100 N
+P 4 0 1 0 210 50 190 30 190 70 210 50 F
+P 4 0 1 0 250 40 270 75 230 75 250 40 F
+P 5 0 1 0 140 -20 160 -20 160 120 140 120 140 -20 F
+X G 1 0 0 100 R 0 0 0 1 P
+X S 2 250 -150 120 U 0 0 0 1 P
+X D 3 250 250 120 D 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -241,7 +241,7 @@ DEF ~CC0603_100NF_100V_10%_X7R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_100NF_100V_10%_X7R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X90N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" 0 -440 60 H I L CNN
 F4 "100nF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_100NF_100V_10%_X7R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -274,19 +274,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "MURATA" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "GRM188R72A104KA35D" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.9mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_MURATA_GRM188R72A104KA35D.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/11/13 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/11/13 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -296,7 +296,7 @@ DEF ~CC0603_100NF_50V_10%_X7R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_100NF_50V_10%_X7R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "100nF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_100NF_50V_10%_X7R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -329,19 +329,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223858615649" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -351,7 +351,7 @@ DEF ~CC0603_10NF_50V_10%_X7R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_10NF_50V_10%_X7R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "10nF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_10NF_50V_10%_X7R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -384,19 +384,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223858615636" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -406,7 +406,7 @@ DEF ~CC0603_1NF_50V_5%_NP0 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_1NF_50V_5%_NP0" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X90N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_NP0_PHYCOMP_16VTO50V.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_NP0_PHYCOMP_16VTO50V.pdf" 0 -440 60 H I L CNN
 F4 "1nF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_1NF_50V_5%_NP0" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -439,19 +439,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "YAGEO PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "CC0603JRNPO9BN102" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.9mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_NP0_PHYCOMP_16VTO50V.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_NP0_PHYCOMP_16VTO50V.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "10/22/12 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "10/22/12 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -461,7 +461,7 @@ DEF ~CC0603_1UF_50V_10%_X5R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_1UF_50V_10%_X5R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X5R_TDK_C.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X5R_TDK_C.pdf" 0 -440 60 H I L CNN
 F4 "1uF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_1UF_50V_10%_X5R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -494,19 +494,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "TDK" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "C1608X5R1H105K080" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.9mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X5R_TDK_C.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X5R_TDK_C.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JMW" 0 -3410 60 H I L CNN "Author"
 F38 "11/09/15 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "11/09/15 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -516,7 +516,7 @@ DEF ~CC0603_220NF_10V_10%_X7R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_220NF_10V_10%_X7R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "220nF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_220NF_10V_10%_X7R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -549,19 +549,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "YAGEO PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223824615654 or CC0603KRX7R6BB224" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.9mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_X7R_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "10/25/12 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "10/25/12 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -571,7 +571,7 @@ DEF ~CC0603_22PF_50V_5%_NP0 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_22PF_50V_5%_NP0" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "22pF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_22PF_50V_5%_NP0" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -604,19 +604,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223886715229" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -626,7 +626,7 @@ DEF ~CC0603_33PF_50V_5%_NP0 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_33PF_50V_5%_NP0" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "33pF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_33PF_50V_5%_NP0" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -659,19 +659,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223886715339" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -681,7 +681,7 @@ DEF ~CC0603_4.7UF_6.3V_10%_X5R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_4.7UF_6.3V_10%_X5R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_X5R_PHYCOMP_HC.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_X5R_PHYCOMP_HC.pdf" 0 -440 60 H I L CNN
 F4 "4.7uF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_4.7UF_6.3V_10%_X5R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -714,19 +714,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "225520613672" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_X5R_PHYCOMP_HC.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0805_X5R_PHYCOMP_HC.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -736,7 +736,7 @@ DEF ~CC0603_6.8PF_50V_0.5PF_NP0 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_6.8PF_50V_0.5PF_NP0" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "6.8pF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_6.8PF_50V_0.5PF_NP0" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -769,19 +769,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223886715688" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -791,7 +791,7 @@ DEF ~CC0603_8.2PF_50V_0.5PF_NP0 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0603_8.2PF_50V_0.5PF_NP0" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC1608X87N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -440 60 H I L CNN
 F4 "8.2pF" 150 -120 50 H V C CNN "~"
 F5 "CC0603_8.2PF_50V_0.5PF_NP0" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -824,19 +824,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "PHYCOMP" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "223886715828" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "0.87mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC0603_NP0_PHYCOMP.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -846,7 +846,7 @@ DEF ~CC0805_10UF_16V_10%_X5R C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CC0805_10UF_16V_10%_X5R" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPC2012X135N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC1206_X5R_KEMET.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC1206_X5R_KEMET.pdf" 0 -440 60 H I L CNN
 F4 "10uF" 150 -120 50 H V C CNN "~"
 F5 "CC0805_10UF_16V_10%_X5R" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - non polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -879,19 +879,19 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "KEMET" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "C0805C106K4PAC" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "1.4mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC1206_X5R_KEMET.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CC1206_X5R_KEMET.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "12/03/07 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "12/03/07 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 130 0 N
-P 2 0 0 10 130 -80 130 80 N
-P 2 0 0 10 170 80 170 -80 N
-P 2 0 0 10 200 0 170 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 0 130 0 N
+P 2 0 1 10 130 -80 130 80 N
+P 2 0 1 10 170 80 170 -80 N
+P 2 0 1 10 200 0 170 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -1096,7 +1096,7 @@ DEF ~CTE3528-21_47UF_6.3V_10%_LESR0250 C 0 60 Y Y 1 L N
 F0 "C" 150 120 50 H V C CNN
 F1 "CTE3528-21_47UF_6.3V_10%_LESR0250" 0 -260 60 H I L CNN
 F2 "Capacitors SMD:CAPMP3528X210N" 0 -350 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CTE-LESR_AVX_TPS.pdf" 0 -440 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CTE-LESR_AVX_TPS.pdf" 0 -440 60 H I L CNN
 F4 "47uF" 150 -120 50 H V C CNN "~"
 F5 "CTE3528-21_47UF_6.3V_10%_LESR0250" 0 -530 60 H I L CNN "Part Number"
 F6 "Capacitor - polarized" 0 -620 60 H I L CNN "Library Ref"
@@ -1129,21 +1129,21 @@ F32 "~~" 0 -2960 60 H I L CNN "ComponentHeight"
 F33 "AVX" 0 -3050 60 H I L CNN "Manufacturer1 Example"
 F34 "TPSB476K006R0250" 0 -3140 60 H I L CNN "Manufacturer1 Part Number"
 F35 "2.1mm" 0 -3230 60 H I L CNN "Manufacturer1 ComponentHeight"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CTE-LESR_AVX_TPS.pdf" 0 -3320 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\CTE-LESR_AVX_TPS.pdf" 0 -3320 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -3410 60 H I L CNN "Author"
 F38 "05/05/08 00:00:00" 0 -3500 60 H I L CNN "CreateDate"
 F39 "01/20/09 00:00:00" 0 -3590 60 H I L CNN "LatestRevisionDate"
 F40 "Capacitors SMD" 0 -3680 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-A 320 0 160 1800 1500 0 0 10 N 160 0 181 80
-A 320 0 160 -1499 1800 0 0 10 N 182 -80 160 0
-T 900 100 30 50 1 0 0 + Normal 0 L B
-P 2 0 0 10 80 0 120 0 N
-P 2 0 0 10 120 80 120 -80 N
-P 2 0 0 10 160 0 200 0 N
-X 1 1 0 0 100 R 0 0 0 0 P
-X 2 2 300 0 100 L 0 0 0 0 P
+A 320 0 160 1800 1500 0 1 10 N 160 0 181 80
+A 320 0 160 -1499 1800 0 1 10 N 182 -80 160 0
+T 900 100 30 50 1 0 1 + Normal 0 L B
+P 2 0 1 10 80 0 120 0 N
+P 2 0 1 10 120 80 120 -80 N
+P 2 0 1 10 160 0 200 0 N
+X 1 1 0 0 100 R 0 0 0 1 P
+X 2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -1265,11 +1265,11 @@ F40 "Square Fiducial Target, Top Layer, 1.0mm, Top Solder 2.0mm, Keepout =2.0mm"
 F41 "Pads" 0 -3660 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3750 60 H I L CNN "License"
 DRAW
-C 0 0 20 0 0 0 f
-C 0 0 30 0 0 0 f
-C 0 0 40 0 0 0 f
-P 2 0 0 0 -60 0 60 0 N
-P 2 0 0 0 0 60 0 -60 N
+C 0 0 20 0 1 0 f
+C 0 0 30 0 1 0 f
+C 0 0 40 0 1 0 f
+P 2 0 1 0 -60 0 60 0 N
+P 2 0 1 0 0 60 0 -60 N
 ENDDRAW
 ENDDEF
 #
@@ -1279,7 +1279,7 @@ DEF FT230XS-T IC 0 60 Y Y 1 L N
 F0 "IC" 500 50 50 H V C CNN
 F1 "FT230XS-T" 500 -1350 50 H V C CNN
 F2 "ICs And Semiconductors SMD:SOP63P600X175-16N" 0 -1580 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\FT230XS-T.pdf" 0 -1670 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\FT230XS-T.pdf" 0 -1670 60 H I L CNN
 F4 "FT230XS-T" 0 -1760 60 H I L CNN "Part Number"
 F5 "FT230XS" 0 -1850 60 H I L CNN "Library Ref"
 F6 "SchLib\\Analog & Interface.SchLib" 0 -1940 60 H I L CNN "Library Path"
@@ -1307,7 +1307,7 @@ F27 "1.75mm" 0 -3830 60 H I L CNN "ComponentHeight"
 F28 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -3920 60 H I L CNN "Footprint Path"
 F29 "SOP63P600X175-16N" 0 -4010 60 H I L CNN "Footprint Ref"
 F30 "CERN DEM JLC" 0 -4100 60 H I L CNN "Author"
-F31 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\FT230XS-T.pdf" 0 -4190 60 H I L CNN "HelpURL"
+F31 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\FT230XS-T.pdf" 0 -4190 60 H I L CNN "HelpURL"
 F32 "~~" 0 -4280 60 H I L CNN "ComponentLink1URL"
 F33 "~~" 0 -4370 60 H I L CNN "ComponentLink2URL"
 F34 "~~" 0 -4460 60 H I L CNN "ComponentLink2Description"
@@ -1317,23 +1317,23 @@ F37 "11/21/12 00:00:00" 0 -4730 60 H I L CNN "LatestRevisionDate"
 F38 "ICs And Semiconductors SMD" 0 -4820 60 H I L CNN "Library Name"
 F39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -4910 60 H I L CNN "License"
 DRAW
-S 0 -1300 1000 0 0 0 0 f
-X TXD 1 1200 -100 200 L 60 60 0 0 O
-X ~RTS 2 1200 -300 200 L 60 60 0 0 O
-X VCCIO 3 -200 -1000 200 R 60 60 0 0 W
-X RXD 4 1200 -200 200 L 60 60 0 0 I
-X GND 5 -200 -1200 200 R 60 60 0 0 W
-X ~CTS 6 1200 -400 200 L 60 60 0 0 I
-X CBUS2 7 1200 -800 200 L 60 60 0 0 B
-X USBDP 8 -200 -400 200 R 60 60 0 0 I
-X USBDM 9 -200 -300 200 R 60 60 0 0 I
-X 3V3OUT 10 -200 -800 200 R 60 60 0 0 w
-X ~RESET 11 -200 -600 200 R 60 60 0 0 O
-X VCC 12 -200 -100 200 R 60 60 0 0 W
-X GND 13 1200 -1200 200 L 60 60 0 0 W
-X CBUS1 14 1200 -700 200 L 60 60 0 0 B
-X CBUS0 15 1200 -600 200 L 60 60 0 0 B
-X CBUS3 16 1200 -900 200 L 60 60 0 0 B
+S 0 -1300 1000 0 0 1 0 f
+X TXD 1 1200 -100 200 L 60 60 0 1 O
+X ~RTS 2 1200 -300 200 L 60 60 0 1 O
+X VCCIO 3 -200 -1000 200 R 60 60 0 1 W
+X RXD 4 1200 -200 200 L 60 60 0 1 I
+X GND 5 -200 -1200 200 R 60 60 0 1 W
+X ~CTS 6 1200 -400 200 L 60 60 0 1 I
+X CBUS2 7 1200 -800 200 L 60 60 0 1 B
+X USBDP 8 -200 -400 200 R 60 60 0 1 I
+X USBDM 9 -200 -300 200 R 60 60 0 1 I
+X 3V3OUT 10 -200 -800 200 R 60 60 0 1 w
+X ~RESET 11 -200 -600 200 R 60 60 0 1 O
+X VCC 12 -200 -100 200 R 60 60 0 1 W
+X GND 13 1200 -1200 200 L 60 60 0 1 W
+X CBUS1 14 1200 -700 200 L 60 60 0 1 B
+X CBUS0 15 1200 -600 200 L 60 60 0 1 B
+X CBUS3 16 1200 -900 200 L 60 60 0 1 B
 ENDDRAW
 ENDDEF
 #
@@ -1369,7 +1369,7 @@ DEF ~IND0805_MURATA_BLM21PG221SN1D L 0 60 Y Y 1 L N
 F0 "L" 150 100 50 H V C CNN
 F1 "IND0805_MURATA_BLM21PG221SN1D" 0 -190 60 H I L CNN
 F2 "Inductors SMD:INDC2012X105N" 0 -280 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\IND0805_MURATA_BLM21P.pdf" 0 -370 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\IND0805_MURATA_BLM21P.pdf" 0 -370 60 H I L CNN
 F4 "220R@100MHz" 150 -50 50 H V C CNN "~"
 F5 "IND0805_MURATA_BLM21PG221SN1D" 0 -460 60 H I L CNN "Part Number"
 F6 "Inductor" 0 -550 60 H I L CNN "Library Ref"
@@ -1398,21 +1398,21 @@ F28 "~~" 0 -2530 60 H I L CNN "Sense Comment"
 F29 "No" 0 -2620 60 H I L CNN "Sense"
 F30 "~~" 0 -2710 60 H I L CNN "Status Comment"
 F31 "1.05mm" 0 -2800 60 H I L CNN "ComponentHeight"
-F32 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\IND0805_MURATA_BLM21P.pdf" 0 -2890 60 H I L CNN "HelpURL"
+F32 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\IND0805_MURATA_BLM21P.pdf" 0 -2890 60 H I L CNN "HelpURL"
 F33 "CERN DEM JLC" 0 -2980 60 H I L CNN "Author"
 F34 "01/25/10 00:00:00" 0 -3070 60 H I L CNN "CreateDate"
 F35 "01/17/17 00:00:00" 0 -3160 60 H I L CNN "LatestRevisionDate"
 F36 "Inductors SMD" 0 -3250 60 H I L CNN "Library Name"
 F37 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3340 60 H I L CNN "License"
 DRAW
-B 0 0 0 10 N
-B 0 0 0 10 N
-B 0 0 0 10 N
-B 0 0 0 10 N
-B 0 0 0 10 N
-B 0 0 0 10 N
-X 1 1 0 0 75 R 0 0 0 0 P
-X 2 2 300 0 75 L 0 0 0 0 P
+B 0 0 1 10  100 50  86 50  75 27  75 0 N
+B 0 0 1 10  125 0  125 27  114 50  100 50 N
+B 0 0 1 10  150 50  136 50  125 27  125 0 N
+B 0 0 1 10  175 0  175 27  164 50  150 50 N
+B 0 0 1 10  200 50  186 50  175 27  175 0 N
+B 0 0 1 10  225 0  225 27  214 50  200 50 N
+X 1 1 0 0 75 R 0 0 0 1 P
+X 2 2 300 0 75 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -1491,33 +1491,33 @@ X 10 10 500 -1300 100 L 60 60 0 1 P
 ENDDRAW
 ENDDEF
 #
-# LCD_MVDRV
+# LCD_MVDD
 #
-DEF LCD_MVDRV #PWR 0 0 Y Y 1 F P
+DEF LCD_MVDD #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "LCD_MVDRV" 0 150 50 H V C CNN
+F1 "LCD_MVDD" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
 P 2 0 1 0 -30 50 0 100 N
 P 2 0 1 0 0 0 0 100 N
 P 2 0 1 0 0 100 30 50 N
-X LCD_MVDRV 1 0 0 0 U 50 50 1 1 W N
+X LCD_MVDD 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
-# LCD_PVDRV
+# LCD_PVDD
 #
-DEF LCD_PVDRV #PWR 0 0 Y Y 1 F P
+DEF LCD_PVDD #PWR 0 0 Y Y 1 F P
 F0 "#PWR" 0 -150 50 H I C CNN
-F1 "LCD_PVDRV" 0 150 50 H V C CNN
+F1 "LCD_PVDD" 0 140 50 H V C CNN
 F2 "" 0 0 50 H I C CNN
 F3 "" 0 0 50 H I C CNN
 DRAW
 P 2 0 1 0 -30 50 0 100 N
 P 2 0 1 0 0 0 0 100 N
 P 2 0 1 0 0 100 30 50 N
-X LCD_PVDRV 1 0 0 0 U 50 50 1 1 W N
+X LCD_PVDD 1 0 0 0 U 50 50 1 1 W N
 ENDDRAW
 ENDDEF
 #
@@ -1586,7 +1586,7 @@ DEF M25P80-VMN6P IC 0 60 Y Y 1 L N
 F0 "IC" 350 50 50 H V C CNN
 F1 "M25P80-VMN6P" 350 -650 50 H V C CNN
 F2 "ICs And Semiconductors SMD:SOIC127P600X175-8N" 0 -880 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\M25P80-VMN6P.pdf" 0 -970 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\M25P80-VMN6P.pdf" 0 -970 60 H I L CNN
 F4 "M25P80-VMN6P" 0 -1060 60 H I L CNN "Part Number"
 F5 "M25P80-VMN6P" 0 -1150 60 H I L CNN "Library Ref"
 F6 "SchLib\\Logic.SchLib" 0 -1240 60 H I L CNN "Library Path"
@@ -1613,7 +1613,7 @@ F26 "~~" 0 -3040 60 H I L CNN "Status Comment"
 F27 "1.75mm" 0 -3130 60 H I L CNN "ComponentHeight"
 F28 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -3220 60 H I L CNN "Footprint Path"
 F29 "SOIC127P600X175-8N" 0 -3310 60 H I L CNN "Footprint Ref"
-F30 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\M25P80-VMN6P.pdf" 0 -3400 60 H I L CNN "HelpURL"
+F30 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\M25P80-VMN6P.pdf" 0 -3400 60 H I L CNN "HelpURL"
 F31 "~~" 0 -3490 60 H I L CNN "ComponentLink1URL"
 F32 "~~" 0 -3580 60 H I L CNN "ComponentLink1Description"
 F33 "~~" 0 -3670 60 H I L CNN "ComponentLink2URL"
@@ -1624,15 +1624,15 @@ F37 "10/05/11 00:00:00" 0 -4030 60 H I L CNN "LatestRevisionDate"
 F38 "ICs And Semiconductors SMD" 0 -4120 60 H I L CNN "Library Name"
 F39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -4210 60 H I L CNN "License"
 DRAW
-S 0 -600 700 0 0 0 0 f
-X ~S 1 -200 -300 200 R 60 60 0 0 I
-X DQ1 2 900 -100 200 L 60 60 0 0 O
-X ~W 3 -200 -400 200 R 60 60 0 0 I
-X VSS 4 900 -500 200 L 60 60 0 0 W
-X DQ0 5 -200 -100 200 R 60 60 0 0 I
-X C 6 -200 -200 200 R 60 60 0 0 I
-X ~HOLD 7 -200 -500 200 R 60 60 0 0 I
-X VCC 8 900 -400 200 L 60 60 0 0 W
+S 0 -600 700 0 0 1 0 f
+X ~S 1 -200 -300 200 R 60 60 0 1 I
+X DQ1 2 900 -100 200 L 60 60 0 1 O
+X ~W 3 -200 -400 200 R 60 60 0 1 I
+X VSS 4 900 -500 200 L 60 60 0 1 W
+X DQ0 5 -200 -100 200 R 60 60 0 1 I
+X C 6 -200 -200 200 R 60 60 0 1 I
+X ~HOLD 7 -200 -500 200 R 60 60 0 1 I
+X VCC 8 900 -400 200 L 60 60 0 1 W
 ENDDRAW
 ENDDEF
 #
@@ -1642,7 +1642,7 @@ DEF MBR0530PbF D 0 60 Y Y 1 L N
 F0 "D" 150 110 50 H V C CNN
 F1 "MBR0530PbF" 150 -100 50 H V C CNN
 F2 "ICs And Semiconductors SMD:SOD3715X145N" 0 -330 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MBR0530PBF.pdf" 0 -420 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MBR0530PBF.pdf" 0 -420 60 H I L CNN
 F4 "MBR0530PbF" 0 -510 60 H I L CNN "Part Number"
 F5 "Diode Schottky" 0 -600 60 H I L CNN "Library Ref"
 F6 "SchLib\\Diodes.SchLib" 0 -690 60 H I L CNN "Library Path"
@@ -1671,7 +1671,7 @@ F28 "~~" 0 -2670 60 H I L CNN "Status Comment"
 F29 "1.45mm" 0 -2760 60 H I L CNN "ComponentHeight"
 F30 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -2850 60 H I L CNN "Footprint Path"
 F31 "SOD3715X145N" 0 -2940 60 H I L CNN "Footprint Ref"
-F32 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MBR0530PBF.pdf" 0 -3030 60 H I L CNN "HelpURL"
+F32 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MBR0530PBF.pdf" 0 -3030 60 H I L CNN "HelpURL"
 F33 "~~" 0 -3120 60 H I L CNN "ComponentLink1URL"
 F34 "~~" 0 -3210 60 H I L CNN "ComponentLink1Description"
 F35 "~~" 0 -3300 60 H I L CNN "ComponentLink2URL"
@@ -1682,15 +1682,15 @@ F39 "01/26/10 00:00:00" 0 -3660 60 H I L CNN "LatestRevisionDate"
 F40 "ICs And Semiconductors SMD" 0 -3750 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3840 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 200 0 N
-P 2 0 0 10 160 60 160 50 N
-P 2 0 0 10 180 60 160 60 N
-P 2 0 0 10 180 60 180 -60 N
-P 2 0 0 10 200 -60 180 -60 N
-P 2 0 0 10 200 -50 200 -60 N
-P 4 0 0 10 120 -60 180 0 120 60 120 -60 F
-X C 1 300 0 100 L 0 0 0 0 P
-X A 2 0 0 100 R 0 0 0 0 P
+P 2 0 1 10 100 0 200 0 N
+P 2 0 1 10 160 60 160 50 N
+P 2 0 1 10 180 60 160 60 N
+P 2 0 1 10 180 60 180 -60 N
+P 2 0 1 10 200 -60 180 -60 N
+P 2 0 1 10 200 -50 200 -60 N
+P 4 0 1 10 120 -60 180 0 120 60 120 -60 F
+X C 1 300 0 100 L 0 0 0 1 P
+X A 2 0 0 100 R 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -1700,7 +1700,7 @@ DEF ~MOLEX_500254-1927 J 0 60 Y Y 1 L N
 F0 "J" 150 50 50 H V C CNN
 F1 "MOLEX_500254-1927" 0 -2400 60 H I L CNN
 F2 "MOLEX SMD:MOLEX_500254-1927" 0 -2490 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MOLEX_500254-1927.pdf" 0 -2580 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MOLEX_500254-1927.pdf" 0 -2580 60 H I L CNN
 F4 "HDMI" 0 -2670 60 H I L CNN
 F5 "MOLEX_500254-1927" 0 -2670 60 H I L CNN "Part Number"
 F6 "Connector HDMI 19 Male + 1 Shield" 0 -2760 60 H I L CNN "Library Ref"
@@ -1729,7 +1729,7 @@ F28 "0.5mm Pitch, Surface Mount Right Angle 19 Contacts HDMI Receptacle With Thr
 F29 "MOLEX" 0 -4830 60 H I L CNN "Manufacturer"
 F30 "500254-1927" 0 -4920 60 H I L CNN "Manufacturer Part Number"
 F31 "6.18mm" 0 -5010 60 H I L CNN "ComponentHeight"
-F32 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MOLEX_500254-1927.pdf" 0 -5100 60 H I L CNN "HelpURL"
+F32 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\MOLEX_500254-1927.pdf" 0 -5100 60 H I L CNN "HelpURL"
 F33 "~~" 0 -5190 60 H I L CNN "ComponentLink1URL"
 F34 "~~" 0 -5280 60 H I L CNN "ComponentLink1Description"
 F35 "~~" 0 -5370 60 H I L CNN "ComponentLink2URL"
@@ -1740,74 +1740,74 @@ F39 "11/21/11 00:00:00" 0 -5730 60 H I L CNN "LatestRevisionDate"
 F40 "MOLEX SMD" 0 -5820 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -5910 60 H I L CNN "License"
 DRAW
-C 0 -2200 20 0 0 0 F
-T 0 200 -2200 50 1 0 0 SHIELD Normal 0 C C
-S 0 -2300 400 0 0 0 0 f
-S 160 -2015 280 -1985 0 0 0 F
-S 160 -1915 280 -1885 0 0 0 F
-S 160 -1815 280 -1785 0 0 0 F
-S 160 -1715 280 -1685 0 0 0 F
-S 160 -1615 280 -1585 0 0 0 F
-S 160 -1515 280 -1485 0 0 0 F
-S 160 -1415 280 -1385 0 0 0 F
-S 160 -1315 280 -1285 0 0 0 F
-S 160 -1215 280 -1185 0 0 0 F
-S 160 -1115 280 -1085 0 0 0 F
-S 160 -1015 280 -985 0 0 0 F
-S 160 -915 280 -885 0 0 0 F
-S 160 -815 280 -785 0 0 0 F
-S 160 -715 280 -685 0 0 0 F
-S 160 -615 280 -585 0 0 0 F
-S 160 -515 280 -485 0 0 0 F
-S 160 -415 280 -385 0 0 0 F
-S 160 -315 280 -285 0 0 0 F
-S 160 -215 280 -185 0 0 0 F
-P 2 0 0 10 0 -2300 0 0 N
-P 2 0 0 10 100 -2050 300 -2050 N
-P 2 0 0 10 100 -2000 200 -2000 N
-P 2 0 0 10 100 -1900 200 -1900 N
-P 2 0 0 10 100 -1800 200 -1800 N
-P 2 0 0 10 100 -1700 200 -1700 N
-P 2 0 0 10 100 -1600 200 -1600 N
-P 2 0 0 10 100 -1500 200 -1500 N
-P 2 0 0 10 100 -1400 200 -1400 N
-P 2 0 0 10 100 -1300 200 -1300 N
-P 2 0 0 10 100 -1200 200 -1200 N
-P 2 0 0 10 100 -1100 200 -1100 N
-P 2 0 0 10 100 -1000 200 -1000 N
-P 2 0 0 10 100 -900 200 -900 N
-P 2 0 0 10 100 -800 200 -800 N
-P 2 0 0 10 100 -700 200 -700 N
-P 2 0 0 10 100 -600 200 -600 N
-P 2 0 0 10 100 -500 200 -500 N
-P 2 0 0 10 100 -400 200 -400 N
-P 2 0 0 10 100 -300 200 -300 N
-P 2 0 0 10 100 -200 200 -200 N
-P 2 0 0 10 100 -150 300 -150 N
-P 2 0 0 10 300 -2050 300 -150 N
-P 2 0 0 10 400 -2300 0 -2300 N
-P 2 0 0 10 400 -2300 400 0 N
-P 2 0 0 10 400 0 0 0 N
-X 1 1 -200 -200 200 R 60 0 0 0 B
-X 2 2 -200 -300 200 R 60 0 0 0 B
-X 3 3 -200 -400 200 R 60 0 0 0 B
-X 4 4 -200 -500 200 R 60 0 0 0 B
-X 5 5 -200 -600 200 R 60 0 0 0 B
-X 6 6 -200 -700 200 R 60 0 0 0 B
-X 7 7 -200 -800 200 R 60 0 0 0 B
-X 8 8 -200 -900 200 R 60 0 0 0 B
-X 9 9 -200 -1000 200 R 60 0 0 0 B
-X 10 10 -200 -1100 200 R 60 0 0 0 B
-X 11 11 -200 -1200 200 R 60 0 0 0 B
-X 12 12 -200 -1300 200 R 60 0 0 0 B
-X 13 13 -200 -1400 200 R 60 0 0 0 B
-X 14 14 -200 -1500 200 R 60 0 0 0 B
-X 15 15 -200 -1600 200 R 60 0 0 0 B
-X 16 16 -200 -1700 200 R 60 0 0 0 B
-X 17 17 -200 -1800 200 R 60 0 0 0 B
-X 18 18 -200 -1900 200 R 60 0 0 0 B
-X 19 19 -200 -2000 200 R 60 0 0 0 B
-X SHIELD SHIE -200 -2200 200 R 0 0 0 0 W
+C 0 -2200 20 0 1 0 F
+T 0 200 -2200 50 1 0 1 SHIELD Normal 0 C C
+S 0 -2300 400 0 0 1 0 f
+S 160 -2015 280 -1985 0 1 0 F
+S 160 -1915 280 -1885 0 1 0 F
+S 160 -1815 280 -1785 0 1 0 F
+S 160 -1715 280 -1685 0 1 0 F
+S 160 -1615 280 -1585 0 1 0 F
+S 160 -1515 280 -1485 0 1 0 F
+S 160 -1415 280 -1385 0 1 0 F
+S 160 -1315 280 -1285 0 1 0 F
+S 160 -1215 280 -1185 0 1 0 F
+S 160 -1115 280 -1085 0 1 0 F
+S 160 -1015 280 -985 0 1 0 F
+S 160 -915 280 -885 0 1 0 F
+S 160 -815 280 -785 0 1 0 F
+S 160 -715 280 -685 0 1 0 F
+S 160 -615 280 -585 0 1 0 F
+S 160 -515 280 -485 0 1 0 F
+S 160 -415 280 -385 0 1 0 F
+S 160 -315 280 -285 0 1 0 F
+S 160 -215 280 -185 0 1 0 F
+P 2 0 1 10 0 -2300 0 0 N
+P 2 0 1 10 100 -2050 300 -2050 N
+P 2 0 1 10 100 -2000 200 -2000 N
+P 2 0 1 10 100 -1900 200 -1900 N
+P 2 0 1 10 100 -1800 200 -1800 N
+P 2 0 1 10 100 -1700 200 -1700 N
+P 2 0 1 10 100 -1600 200 -1600 N
+P 2 0 1 10 100 -1500 200 -1500 N
+P 2 0 1 10 100 -1400 200 -1400 N
+P 2 0 1 10 100 -1300 200 -1300 N
+P 2 0 1 10 100 -1200 200 -1200 N
+P 2 0 1 10 100 -1100 200 -1100 N
+P 2 0 1 10 100 -1000 200 -1000 N
+P 2 0 1 10 100 -900 200 -900 N
+P 2 0 1 10 100 -800 200 -800 N
+P 2 0 1 10 100 -700 200 -700 N
+P 2 0 1 10 100 -600 200 -600 N
+P 2 0 1 10 100 -500 200 -500 N
+P 2 0 1 10 100 -400 200 -400 N
+P 2 0 1 10 100 -300 200 -300 N
+P 2 0 1 10 100 -200 200 -200 N
+P 2 0 1 10 100 -150 300 -150 N
+P 2 0 1 10 300 -2050 300 -150 N
+P 2 0 1 10 400 -2300 0 -2300 N
+P 2 0 1 10 400 -2300 400 0 N
+P 2 0 1 10 400 0 0 0 N
+X 1 1 -200 -200 200 R 60 0 0 1 B
+X 2 2 -200 -300 200 R 60 0 0 1 B
+X 3 3 -200 -400 200 R 60 0 0 1 B
+X 4 4 -200 -500 200 R 60 0 0 1 B
+X 5 5 -200 -600 200 R 60 0 0 1 B
+X 6 6 -200 -700 200 R 60 0 0 1 B
+X 7 7 -200 -800 200 R 60 0 0 1 B
+X 8 8 -200 -900 200 R 60 0 0 1 B
+X 9 9 -200 -1000 200 R 60 0 0 1 B
+X 10 10 -200 -1100 200 R 60 0 0 1 B
+X 11 11 -200 -1200 200 R 60 0 0 1 B
+X 12 12 -200 -1300 200 R 60 0 0 1 B
+X 13 13 -200 -1400 200 R 60 0 0 1 B
+X 14 14 -200 -1500 200 R 60 0 0 1 B
+X 15 15 -200 -1600 200 R 60 0 0 1 B
+X 16 16 -200 -1700 200 R 60 0 0 1 B
+X 17 17 -200 -1800 200 R 60 0 0 1 B
+X 18 18 -200 -1900 200 R 60 0 0 1 B
+X 19 19 -200 -2000 200 R 60 0 0 1 B
+X SHIELD SHIE -200 -2200 200 R 0 0 0 1 W
 ENDDRAW
 ENDDEF
 #
@@ -1891,7 +1891,7 @@ DEF ~OSC_25MHZ_PERICOM_FNETHE025 OSC 0 60 Y Y 1 L N
 F0 "OSC" 300 50 50 H V C CNN
 F1 "OSC_25MHZ_PERICOM_FNETHE025" 0 -590 60 H I L CNN
 F2 "ICs And Semiconductors SMD:OSC_PERICOM_FNETHE025" 0 -680 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\OSC_PERICOM_FNETHE025.pdf" 0 -770 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\OSC_PERICOM_FNETHE025.pdf" 0 -770 60 H I L CNN
 F4 "25MHz" 300 -450 50 H V C CNN "~"
 F5 "OSC_25MHZ_PERICOM_FNETHE025" 0 -860 60 H I L CNN "Part Number"
 F6 "Oscillator 1OE 2GND 3OUT 4VDD" 0 -950 60 H I L CNN "Library Ref"
@@ -1921,7 +1921,7 @@ F29 "~~" 0 -3020 60 H I L CNN "Field1"
 F30 "1.55mm" 0 -3110 60 H I L CNN "ComponentHeight"
 F31 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -3200 60 H I L CNN "Footprint Path"
 F32 "OSC_PERICOM_FNETHE025" 0 -3290 60 H I L CNN "Footprint Ref"
-F33 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\OSC_PERICOM_FNETHE025.pdf" 0 -3380 60 H I L CNN "HelpURL"
+F33 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\OSC_PERICOM_FNETHE025.pdf" 0 -3380 60 H I L CNN "HelpURL"
 F34 "~~" 0 -3470 60 H I L CNN "ComponentLink1URL"
 F35 "~~" 0 -3560 60 H I L CNN "ComponentLink1Description"
 F36 "~~" 0 -3650 60 H I L CNN "ComponentLink2URL"
@@ -1932,15 +1932,67 @@ F40 "04/25/12 00:00:00" 0 -4010 60 H I L CNN "LatestRevisionDate"
 F41 "ICs And Semiconductors SMD" 0 -4100 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -4190 60 H I L CNN "License"
 DRAW
-S 0 -400 600 0 0 0 0 f
-P 2 0 0 10 250 -160 250 -240 N
-P 2 0 0 10 270 -130 330 -130 N
-P 2 0 0 10 350 -160 350 -240 N
-P 4 0 0 10 330 -130 330 -270 270 -270 270 -130 N
-X OE 1 -200 -300 200 R 60 60 0 0 I
-X GND 2 800 -300 200 L 60 60 0 0 W
-X OUT 3 800 -100 200 L 60 60 0 0 O
-X VDD 4 -200 -100 200 R 60 60 0 0 W
+S 0 -400 600 0 0 1 0 f
+P 2 0 1 10 250 -160 250 -240 N
+P 2 0 1 10 270 -130 330 -130 N
+P 2 0 1 10 350 -160 350 -240 N
+P 4 0 1 10 330 -130 330 -270 270 -270 270 -130 N
+X OE 1 -200 -300 200 R 60 60 0 1 I
+X GND 2 800 -300 200 L 60 60 0 1 W
+X OUT 3 800 -100 200 L 60 60 0 1 O
+X VDD 4 -200 -100 200 R 60 60 0 1 W
+ENDDRAW
+ENDDEF
+#
+# PLATED_HOLE0.8_PAD1.3
+#
+DEF ~PLATED_HOLE0.8_PAD1.3 B 0 60 Y Y 1 L N
+F0 "B" -50 0 50 H V R CNN
+F1 "PLATED_HOLE0.8_PAD1.3" 0 -170 60 H I L CNN
+F2 "Pads:c130h80" 0 -260 60 H I L CNN
+F3 "Undefined" 0 -350 60 H I L CNN
+F4 "Plated Hole" 0 -440 60 H I L CNN
+F5 "PLATED_HOLE0.8_PAD1.3" 0 -440 60 H I L CNN "Part Number"
+F6 "Single Terminal Socket" 0 -530 60 H I L CNN "Library Ref"
+F7 "SchLib\\Pads.SchLib" 0 -620 60 H I L CNN "Library Path"
+F8 "~~" 0 -710 60 H I L CNN "Comment"
+F9 "Standard (No BOM)" 0 -800 60 H I L CNN "Component Kind"
+F10 "Standard (No BOM)" 0 -890 60 H I L CNN "Component Type"
+F11 "c130h80" 0 -980 60 H I L CNN "Footprint"
+F12 "1" 0 -1070 60 H I L CNN "Pin Count"
+F13 "~~" 0 -1160 60 H I L CNN "Case"
+F14 "PcbLib\\Pads.PcbLib" 0 -1250 60 H I L CNN "Footprint Path"
+F15 "c130h80" 0 -1340 60 H I L CNN "Footprint Ref"
+F16 "Plated Hole" 0 -1430 60 H I L CNN "Family"
+F17 "No" 0 -1520 60 H I L CNN "Mounted"
+F18 "No" 0 -1610 60 H I L CNN "Socket"
+F19 "No" 0 -1700 60 H I L CNN "SMD"
+F20 "No" 0 -1790 60 H I L CNN "Sense"
+F21 "~~" 0 -1880 60 H I L CNN "Sense Comment"
+F22 "None" 0 -1970 60 H I L CNN "Status"
+F23 "~~" 0 -2060 60 H I L CNN "Status Comment"
+F24 "~~" 0 -2150 60 H I L CNN "SCEM"
+F25 "Plated Through Hole: Hole Dia.=0.8mm Pad Dia.=1.3mm, IPC-7251 Level C" 0 -2240 60 H I L CNN "Part Description"
+F26 "~~" 0 -2330 60 H I L CNN "Manufacturer"
+F27 "~~" 0 -2420 60 H I L CNN "Manufacturer Part Number"
+F28 "0mm" 0 -2510 60 H I L CNN "ComponentHeight"
+F29 "~~" 0 -2600 60 H I L CNN "Manufacturer1 Example"
+F30 "~~" 0 -2690 60 H I L CNN "Manufacturer1 Part Number"
+F31 "~~" 0 -2780 60 H I L CNN "Manufacturer1 ComponentHeight"
+F32 "Undefined" 0 -2870 60 H I L CNN "HelpURL"
+F33 "~~" 0 -2960 60 H I L CNN "ComponentLink1URL"
+F34 "~~" 0 -3050 60 H I L CNN "ComponentLink1Description"
+F35 "~~" 0 -3140 60 H I L CNN "ComponentLink2URL"
+F36 "~~" 0 -3230 60 H I L CNN "ComponentLink2Description"
+F37 "CERN DEM JLC" 0 -3320 60 H I L CNN "Author"
+F38 "10/30/08 00:00:00" 0 -3410 60 H I L CNN "CreateDate"
+F39 "10/30/08 00:00:00" 0 -3500 60 H I L CNN "LatestRevisionDate"
+F40 "Plated Through Hole: Hole Dia.=0.8mm Pad Dia.=1.3mm, IPC-7251 Level C" 0 -3590 60 H I L CNN "PackageDescription"
+F41 "Pads" 0 -3680 60 H I L CNN "Library Name"
+F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
+DRAW
+C 0 0 30 0 1 10 f
+X 1 1 0 0 0 L 0 0 0 1 B
 ENDDRAW
 ENDDEF
 #
@@ -1991,8 +2043,8 @@ F40 "Plated Through Hole: Hole Dia.=2.0mm Pad Dia.=3.5mm" 0 -3590 60 H I L CNN "
 F41 "Pads" 0 -3680 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3770 60 H I L CNN "License"
 DRAW
-C 0 0 30 0 0 10 f
-X 1 1 0 0 0 L 0 0 0 0 B
+C 0 0 30 0 1 10 f
+X 1 1 0 0 0 L 0 0 0 1 B
 ENDDRAW
 ENDDEF
 #
@@ -2024,7 +2076,7 @@ DEF PRTR5V0U2X D 0 60 Y Y 1 L N
 F0 "D" 200 50 50 H V C CNN
 F1 "PRTR5V0U2X" 200 -550 50 H V C CNN
 F2 "ICs And Semiconductors SMD:SOT190P230X110-4N" 0 -780 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\PRTR5V0U2X.pdf" 0 -870 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\PRTR5V0U2X.pdf" 0 -870 60 H I L CNN
 F4 "PRTR5V0U2X" 0 -960 60 H I L CNN "Part Number"
 F5 "PRTR5V0U2X" 0 -1050 60 H I L CNN "Library Ref"
 F6 "SchLib\\Diodes.SchLib" 0 -1140 60 H I L CNN "Library Path"
@@ -2053,7 +2105,7 @@ F28 "~~" 0 -3120 60 H I L CNN "Status Comment"
 F29 "1.1mm" 0 -3210 60 H I L CNN "ComponentHeight"
 F30 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -3300 60 H I L CNN "Footprint Path"
 F31 "SOT190P230X110-4N" 0 -3390 60 H I L CNN "Footprint Ref"
-F32 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\PRTR5V0U2X.pdf" 0 -3480 60 H I L CNN "HelpURL"
+F32 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\PRTR5V0U2X.pdf" 0 -3480 60 H I L CNN "HelpURL"
 F33 "~~" 0 -3570 60 H I L CNN "ComponentLink1URL"
 F34 "~~" 0 -3660 60 H I L CNN "ComponentLink1Description"
 F35 "~~" 0 -3750 60 H I L CNN "ComponentLink2URL"
@@ -2064,37 +2116,37 @@ F39 "03/22/11 00:00:00" 0 -4110 60 H I L CNN "LatestRevisionDate"
 F40 "ICs And Semiconductors SMD" 0 -4200 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -4290 60 H I L CNN "License"
 DRAW
-A 50 -200 10 0 0 0 0 10 N 60 -200 60 -200
-A 50 -100 10 0 0 0 0 10 N 60 -100 60 -100
-A 170 -200 10 0 0 0 0 10 N 180 -200 180 -200
-A 200 -300 10 0 0 0 0 10 N 210 -300 210 -300
-A 350 -200 10 0 0 0 0 10 N 360 -200 360 -200
-A 350 -100 10 0 0 0 0 10 N 360 -100 360 -100
-S 0 -500 400 0 0 0 0 f
-P 2 0 0 10 0 -100 400 -100 N
-P 2 0 0 10 50 -300 350 -300 N
-P 2 0 0 10 50 -200 350 -200 N
-P 2 0 0 10 50 -100 50 -300 N
-P 2 0 0 10 130 -260 130 -340 N
-P 2 0 0 10 130 -160 130 -240 N
-P 2 0 0 10 170 -400 0 -400 N
-P 2 0 0 10 170 -400 170 -200 N
-P 2 0 0 10 180 -60 200 -60 N
-P 2 0 0 10 200 -300 200 -400 N
-P 2 0 0 10 200 -60 200 -140 N
-P 2 0 0 10 280 -260 280 -340 N
-P 2 0 0 10 280 -160 280 -240 N
-P 2 0 0 10 350 -100 350 -300 N
-P 2 0 0 10 400 -400 200 -400 N
-P 4 0 0 10 90 -340 130 -300 90 -260 90 -340 F
-P 4 0 0 10 90 -240 130 -200 90 -160 90 -240 F
-P 4 0 0 10 160 -140 200 -100 160 -60 160 -140 F
-P 4 0 0 10 240 -340 280 -300 240 -260 240 -340 F
-P 4 0 0 10 240 -240 280 -200 240 -160 240 -240 F
-X GND 1 -200 -100 200 R 60 0 0 0 W
-X I/O1 2 -200 -400 200 R 60 0 0 0 B
-X I/O2 3 600 -400 200 L 60 0 0 0 B
-X VCC 4 600 -100 200 L 60 0 0 0 W
+A 50 -200 10 0 0 0 1 10 N 60 -200 60 -200
+A 50 -100 10 0 0 0 1 10 N 60 -100 60 -100
+A 170 -200 10 0 0 0 1 10 N 180 -200 180 -200
+A 200 -300 10 0 0 0 1 10 N 210 -300 210 -300
+A 350 -200 10 0 0 0 1 10 N 360 -200 360 -200
+A 350 -100 10 0 0 0 1 10 N 360 -100 360 -100
+S 0 -500 400 0 0 1 0 f
+P 2 0 1 10 0 -100 400 -100 N
+P 2 0 1 10 50 -300 350 -300 N
+P 2 0 1 10 50 -200 350 -200 N
+P 2 0 1 10 50 -100 50 -300 N
+P 2 0 1 10 130 -260 130 -340 N
+P 2 0 1 10 130 -160 130 -240 N
+P 2 0 1 10 170 -400 0 -400 N
+P 2 0 1 10 170 -400 170 -200 N
+P 2 0 1 10 180 -60 200 -60 N
+P 2 0 1 10 200 -300 200 -400 N
+P 2 0 1 10 200 -60 200 -140 N
+P 2 0 1 10 280 -260 280 -340 N
+P 2 0 1 10 280 -160 280 -240 N
+P 2 0 1 10 350 -100 350 -300 N
+P 2 0 1 10 400 -400 200 -400 N
+P 4 0 1 10 90 -340 130 -300 90 -260 90 -340 F
+P 4 0 1 10 90 -240 130 -200 90 -160 90 -240 F
+P 4 0 1 10 160 -140 200 -100 160 -60 160 -140 F
+P 4 0 1 10 240 -340 280 -300 240 -260 240 -340 F
+P 4 0 1 10 240 -240 280 -200 240 -160 240 -240 F
+X GND 1 -200 -100 200 R 60 0 0 1 W
+X I/O1 2 -200 -400 200 R 60 0 0 1 B
+X I/O2 3 600 -400 200 L 60 0 0 1 B
+X VCC 4 600 -100 200 L 60 0 0 1 W
 ENDDRAW
 ENDDEF
 #
@@ -2104,7 +2156,7 @@ DEF ~R0603_0R_JUMPER R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_0R_JUMPER" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "0" 150 -70 50 H V C CNN "~"
 F5 "R0603_0R_JUMPER" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor" 0 -570 60 H I L CNN "Library Ref"
@@ -2138,19 +2190,19 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06Z0" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2160,7 +2212,7 @@ DEF ~R0603_100K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_100K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "100k" 150 -70 50 H V C CNN "~"
 F5 "R0603_100K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2194,20 +2246,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F1003TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2217,7 +2269,7 @@ DEF ~R0603_100R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_100R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "100" 150 -70 50 H V C CNN "~"
 F5 "R0603_100R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2251,20 +2303,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F4700TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2274,7 +2326,7 @@ DEF ~R0603_10R_1%_0.1W_200PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_10R_1%_0.1W_200PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "10" 150 -70 50 H V C CNN "~"
 F5 "R0603_10R_1%_0.1W_200PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2308,20 +2360,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F10R0TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "06/24/09 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2331,7 +2383,7 @@ DEF ~R0603_160R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_160R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "160" 150 -70 50 H V C CNN "~"
 F5 "R0603_160R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2365,20 +2417,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F1600TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2388,7 +2440,7 @@ DEF ~R0603_180R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_180R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "180" 150 -70 50 H V C CNN "~"
 F5 "R0603_180R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2422,20 +2474,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F1800TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2445,7 +2497,7 @@ DEF ~R0603_1K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_1K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "1k" 150 -70 50 H V C CNN "~"
 F5 "R0603_1K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2479,20 +2531,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F1001TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2502,7 +2554,7 @@ DEF ~R0603_1M_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_1M_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "1M" 150 -70 50 H V C CNN "~"
 F5 "R0603_1M_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2536,20 +2588,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F1004TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2559,7 +2611,7 @@ DEF ~R0603_200K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_200K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "200k" 150 -70 50 H V C CNN "~"
 F5 "R0603_200K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2593,20 +2645,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F2003TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2616,7 +2668,7 @@ DEF ~R0603_220R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_220R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "220" 150 -70 50 H V C CNN "~"
 F5 "R0603_220R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2650,20 +2702,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F2200TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2673,7 +2725,7 @@ DEF ~R0603_22R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_22R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "22" 150 -70 50 H V C CNN "~"
 F5 "R0603_22R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2707,20 +2759,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F22R0TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2730,7 +2782,7 @@ DEF ~R0603_270K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_270K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "270k" 150 -70 50 H V C CNN "~"
 F5 "R0603_270K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2764,20 +2816,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F2703TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2787,7 +2839,7 @@ DEF ~R0603_27K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_27K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "27k" 150 -70 50 H V C CNN "~"
 F5 "R0603_27K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2821,20 +2873,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F2702TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2844,7 +2896,7 @@ DEF ~R0603_33R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_33R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "33" 150 -70 50 H V C CNN "~"
 F5 "R0603_33R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2878,20 +2930,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F33R0TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2901,7 +2953,7 @@ DEF ~R0603_3K3_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_3K3_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "3k3" 150 -70 50 H V C CNN "~"
 F5 "R0603_3K3_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2935,20 +2987,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F3301TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -2958,7 +3010,7 @@ DEF ~R0603_51R_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_51R_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "51" 150 -70 50 H V C CNN "~"
 F5 "R0603_51R_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -2992,20 +3044,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F51R0TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -3015,7 +3067,7 @@ DEF ~R0603_560K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_560K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "560k" 150 -70 50 H V C CNN "~"
 F5 "R0603_560K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -3049,20 +3101,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F5603TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -3072,7 +3124,7 @@ DEF ~R0603_750K_1%_0.1W_100PPM R 0 60 Y Y 1 L N
 F0 "R" 150 70 50 H V C CNN
 F1 "R0603_750K_1%_0.1W_100PPM" 0 -210 60 H I L CNN
 F2 "Resistors SMD:RESC1608X55N" 0 -300 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -390 60 H I L CNN
 F4 "750k" 150 -70 50 H V C CNN "~"
 F5 "R0603_750K_1%_0.1W_100PPM" 0 -480 60 H I L CNN "Part Number"
 F6 "Resistor - 1%" 0 -570 60 H I L CNN "Library Ref"
@@ -3106,20 +3158,20 @@ F33 "~~" 0 -3000 60 H I L CNN "ComponentHeight"
 F34 "NIC COMPONENT" 0 -3090 60 H I L CNN "Manufacturer1 Example"
 F35 "NRC06F7503TRF" 0 -3180 60 H I L CNN "Manufacturer1 Part Number"
 F36 "0.55mm" 0 -3270 60 H I L CNN "Manufacturer1 ComponentHeight"
-F37 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
+F37 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\R0603_NIC_NRC.pdf" 0 -3360 60 H I L CNN "HelpURL"
 F38 "CERN DEM JLC" 0 -3450 60 H I L CNN "Author"
 F39 "12/03/07 00:00:00" 0 -3540 60 H I L CNN "CreateDate"
 F40 "03/13/08 00:00:00" 0 -3630 60 H I L CNN "LatestRevisionDate"
 F41 "Resistors SMD" 0 -3720 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3810 60 H I L CNN "License"
 DRAW
-T 0 150 0 25 1 0 0 1% Normal 0 C C
-P 2 0 0 10 60 -30 240 -30 N
-P 2 0 0 10 60 30 60 -30 N
-P 2 0 0 10 240 -30 240 30 N
-P 2 0 0 10 240 30 60 30 N
-X 1 1 0 0 60 R 0 0 0 0 P
-X 2 2 300 0 60 L 0 0 0 0 P
+T 0 150 0 25 1 0 1 1% Normal 0 C C
+P 2 0 1 10 60 -30 240 -30 N
+P 2 0 1 10 60 30 60 -30 N
+P 2 0 1 10 240 -30 240 30 N
+P 2 0 1 10 240 30 60 30 N
+X 1 1 0 0 60 R 0 0 0 1 P
+X 2 2 300 0 60 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -3129,7 +3181,7 @@ DEF SMAJ5.0A D 0 60 Y Y 1 L N
 F0 "D" 150 110 50 H V C CNN
 F1 "SMAJ5.0A" 150 -100 50 H V C CNN
 F2 "ICs And Semiconductors SMD:DIOM5226X262N" 0 -330 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\SMAJ5.0A.pdf" 0 -420 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\SMAJ5.0A.pdf" 0 -420 60 H I L CNN
 F4 "SMAJ5.0A" 0 -510 60 H I L CNN "Part Number"
 F5 "Diode TVS Uni-Directional" 0 -600 60 H I L CNN "Library Ref"
 F6 "SchLib\\Diodes.SchLib" 0 -690 60 H I L CNN "Library Path"
@@ -3158,7 +3210,7 @@ F28 "~~" 0 -2670 60 H I L CNN "Status Comment"
 F29 "2.62mm" 0 -2760 60 H I L CNN "ComponentHeight"
 F30 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -2850 60 H I L CNN "Footprint Path"
 F31 "DIOM5226X262N" 0 -2940 60 H I L CNN "Footprint Ref"
-F32 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\SMAJ5.0A.pdf" 0 -3030 60 H I L CNN "HelpURL"
+F32 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\SMAJ5.0A.pdf" 0 -3030 60 H I L CNN "HelpURL"
 F33 "~~" 0 -3120 60 H I L CNN "ComponentLink1URL"
 F34 "~~" 0 -3210 60 H I L CNN "ComponentLink1Description"
 F35 "~~" 0 -3300 60 H I L CNN "ComponentLink2URL"
@@ -3169,13 +3221,13 @@ F39 "07/14/16 00:00:00" 0 -3660 60 H I L CNN "LatestRevisionDate"
 F40 "ICs And Semiconductors SMD" 0 -3750 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3840 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 0 200 0 N
-P 2 0 0 10 180 40 160 60 N
-P 2 0 0 10 180 40 180 -40 N
-P 2 0 0 10 200 -60 180 -40 N
-P 4 0 0 10 120 -60 180 0 120 60 120 -60 F
-X C 1 300 0 100 L 0 0 0 0 P
-X A 2 0 0 100 R 0 0 0 0 P
+P 2 0 1 10 100 0 200 0 N
+P 2 0 1 10 180 40 160 60 N
+P 2 0 1 10 180 40 180 -40 N
+P 2 0 1 10 200 -60 180 -40 N
+P 4 0 1 10 120 -60 180 0 120 60 120 -60 F
+X C 1 300 0 100 L 0 0 0 1 P
+X A 2 0 0 100 R 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
@@ -3251,7 +3303,7 @@ DEF ~TYCO_1734035-1 J 0 60 Y Y 1 L N
 F0 "J" 300 50 50 H V C CNN
 F1 "TYCO_1734035-1" 0 -990 60 H I L CNN
 F2 "TYCO SMD:TYCO_1734035-1" 0 -1080 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" 0 -1170 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" 0 -1170 60 H I L CNN
 F4 "USB" 300 -850 50 H V C CNN "~"
 F5 "TYCO_1734035-1" 0 -1260 60 H I L CNN "Part Number"
 F6 "Connector USB 5 Pin + 1Shield" 0 -1350 60 H I L CNN "Library Ref"
@@ -3284,38 +3336,38 @@ F32 "~~" 0 -3690 60 H I L CNN "ComponentLink1URL"
 F33 "~~" 0 -3780 60 H I L CNN "ComponentLink1Description"
 F34 "~~" 0 -3870 60 H I L CNN "ComponentLink2URL"
 F35 "~~" 0 -3960 60 H I L CNN "ComponentLink2Description"
-F36 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" 0 -4050 60 H I L CNN "HelpURL"
+F36 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\TYCO_1734035-1.pdf" 0 -4050 60 H I L CNN "HelpURL"
 F37 "CERN DEM JLC" 0 -4140 60 H I L CNN "Author"
 F38 "05/02/11 00:00:00" 0 -4230 60 H I L CNN "CreateDate"
 F39 "05/02/11 00:00:00" 0 -4320 60 H I L CNN "LatestRevisionDate"
 F40 "TYCO SMD" 0 -4410 60 H I L CNN "Library Name"
 F41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -4500 60 H I L CNN "License"
 DRAW
-C 0 -700 20 0 0 0 F
-S 0 -800 600 0 0 0 0 f
-S 410 -615 530 -585 0 0 0 F
-S 410 -515 530 -485 0 0 0 F
-S 410 -415 530 -385 0 0 0 F
-S 410 -315 530 -285 0 0 0 F
-S 410 -215 530 -185 0 0 0 F
-P 2 0 0 10 0 -800 0 0 N
-P 2 0 0 10 0 -800 600 -800 N
-P 2 0 0 10 0 0 600 0 N
-P 2 0 0 10 350 -650 550 -650 N
-P 2 0 0 10 350 -600 450 -600 N
-P 2 0 0 10 350 -500 450 -500 N
-P 2 0 0 10 350 -400 450 -400 N
-P 2 0 0 10 350 -300 450 -300 N
-P 2 0 0 10 350 -200 450 -200 N
-P 2 0 0 10 350 -150 550 -150 N
-P 2 0 0 10 550 -650 550 -150 N
-P 2 0 0 10 600 0 600 -800 N
-X VBUS 1 -200 -200 200 R 60 60 0 0 B
-X -D 2 -200 -300 200 R 60 60 0 0 B
-X +D 3 -200 -400 200 R 60 60 0 0 B
-X ID 4 -200 -500 200 R 60 60 0 0 P
-X GND 5 -200 -600 200 R 60 60 0 0 B
-X SH 6 -200 -700 200 R 0 0 0 0 W
+C 0 -700 20 0 1 0 F
+S 0 -800 600 0 0 1 0 f
+S 410 -615 530 -585 0 1 0 F
+S 410 -515 530 -485 0 1 0 F
+S 410 -415 530 -385 0 1 0 F
+S 410 -315 530 -285 0 1 0 F
+S 410 -215 530 -185 0 1 0 F
+P 2 0 1 10 0 -800 0 0 N
+P 2 0 1 10 0 -800 600 -800 N
+P 2 0 1 10 0 0 600 0 N
+P 2 0 1 10 350 -650 550 -650 N
+P 2 0 1 10 350 -600 450 -600 N
+P 2 0 1 10 350 -500 450 -500 N
+P 2 0 1 10 350 -400 450 -400 N
+P 2 0 1 10 350 -300 450 -300 N
+P 2 0 1 10 350 -200 450 -200 N
+P 2 0 1 10 350 -150 550 -150 N
+P 2 0 1 10 550 -650 550 -150 N
+P 2 0 1 10 600 0 600 -800 N
+X VBUS 1 -200 -200 200 R 60 60 0 1 B
+X -D 2 -200 -300 200 R 60 60 0 1 B
+X +D 3 -200 -400 200 R 60 60 0 1 B
+X ID 4 -200 -500 200 R 60 60 0 1 P
+X GND 5 -200 -600 200 R 60 60 0 1 B
+X SH 6 -200 -700 200 R 0 0 0 1 W
 ENDDRAW
 ENDDEF
 #
@@ -3339,7 +3391,7 @@ DEF XC6SLX9-3TQG144I IC 0 60 Y Y 7 L N
 F0 "IC" 0 150 50 H V L CNN
 F1 "XC6SLX9-3TQG144I" 0 50 50 H V L CNN
 F2 "ICs And Semiconductors SMD:QFP50P2200X2200X160-144N" 0 -2880 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I.pdf" 0 -2970 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I.pdf" 0 -2970 60 H I L CNN
 F4 "XC6SLX9-3TQG144I" 0 -3060 60 H I L CNN "Part Number"
 F5 "XC6SLX9-3TQG144I" 0 -3150 60 H I L CNN "Library Ref"
 F6 "SchLib\\Logic.SchLib" 0 -3240 60 H I L CNN "Library Path"
@@ -3366,8 +3418,8 @@ F26 "~~" 0 -5040 60 H I L CNN "Status Comment"
 F27 "1.6mm" 0 -5130 60 H I L CNN "ComponentHeight"
 F28 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -5220 60 H I L CNN "Footprint Path"
 F29 "QFP50P2200X2200X160-144N" 0 -5310 60 H I L CNN "Footprint Ref"
-F30 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I.pdf" 0 -5400 60 H I L CNN "HelpURL"
-F31 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I_Package-Pinout.pdf" 0 -5490 60 H I L CNN "ComponentLink1URL"
+F30 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I.pdf" 0 -5400 60 H I L CNN "HelpURL"
+F31 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XC6SLX9-3TQG144I_Package-Pinout.pdf" 0 -5490 60 H I L CNN "ComponentLink1URL"
 F32 "Package/Pinout" 0 -5580 60 H I L CNN "ComponentLink1Description"
 F33 "~~" 0 -5670 60 H I L CNN "ComponentLink2URL"
 F34 "~~" 0 -5760 60 H I L CNN "ComponentLink2Description"
@@ -3377,165 +3429,165 @@ F37 "06/14/10 00:00:00" 0 -6030 60 H I L CNN "LatestRevisionDate"
 F38 "ICs And Semiconductors SMD" 0 -6120 60 H I L CNN "Library Name"
 F39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -6210 60 H I L CNN "License"
 DRAW
-T 900 200 -550 70 1 1 0 BANK~0 Normal 1 L B
-S 0 -2700 1800 0 1 0 0 f
-S 1750 -2650 1800 -50 1 0 0 F
-X IO_L62N_VREF_0 120 2100 -1800 300 L 60 60 1 0 B
-X IO_L3P_0 140 2100 -500 300 L 60 60 1 0 B
-X IO_L66N_SCP0_0 111 2100 -2600 300 L 60 60 1 0 B
-X IO_L62P_0 121 2100 -1700 300 L 60 60 1 0 B
-X IO_L35N_GCLK16_0 131 2100 -1200 300 L 60 60 1 0 B
-X IO_L2N_0 141 2100 -400 300 L 60 60 1 0 B
-X IO_L66P_SCP1_0 112 2100 -2500 300 L 60 60 1 0 B
-X IO_L35P_GCLK17_0 132 2100 -1100 300 L 60 60 1 0 B
-X IO_L2P_0 142 2100 -300 300 L 60 60 1 0 B
-X IO_L37N_GCLK12_0 123 2100 -1600 300 L 60 60 1 0 B
-X IO_L34N_GCLK18_0 133 2100 -1000 300 L 60 60 1 0 B
-X IO_L1N_VREF_0 143 2100 -200 300 L 60 60 1 0 B
-X IO_L65N_SCP2_0 114 2100 -2400 300 L 60 60 1 0 B
-X IO_L37P_GCLK13_0 124 2100 -1500 300 L 60 60 1 0 B
-X IO_L34P_GCLK19_0 134 2100 -900 300 L 60 60 1 0 B
-X IO_L1P_HSWAPEN_0 144 2100 -100 300 L 60 60 1 0 B
-X IO_L65P_SCP3_0 115 2100 -2300 300 L 60 60 1 0 B
-X IO_L64N_SCP4_0 116 2100 -2200 300 L 60 60 1 0 B
-X IO_L36N_GCLK14_0 126 2100 -1400 300 L 60 60 1 0 B
-X IO_L64P_SCP5_0 117 2100 -2100 300 L 60 60 1 0 B
-X IO_L36P_GCLK15_0 127 2100 -1300 300 L 60 60 1 0 B
-X IO_L4N_0 137 2100 -800 300 L 60 60 1 0 B
-X IO_L63N_SCP6_0 118 2100 -2000 300 L 60 60 1 0 B
-X IO_L4P_0 138 2100 -700 300 L 60 60 1 0 B
-X IO_L63P_SCP7_0 119 2100 -1900 300 L 60 60 1 0 B
-X IO_L3N_0 139 2100 -600 300 L 60 60 1 0 B
-T 900 200 -550 70 1 2 0 BANK~1 Normal 1 L B
-S 0 -2500 1800 0 2 0 0 f
-S 1750 -2450 1800 -50 2 0 0 F
-X IO_L46N_1 80 2100 -2000 300 L 60 60 2 0 B
-X IO_L46P_1 81 2100 -1900 300 L 60 60 2 0 B
-X IO_L45N_1 82 2100 -1800 300 L 60 60 2 0 B
-X IO_L41N_GCLK8_1 92 2100 -1200 300 L 60 60 2 0 B
-X IO_L45P_1 83 2100 -1700 300 L 60 60 2 0 B
-X IO_L41P_GCLK9_IRDY1_1 93 2100 -1100 300 L 60 60 2 0 B
-X IO_L74N_DOUT_BUSY_1 74 2100 -2400 300 L 60 60 2 0 B
-X IO_L43N_GCLK4_1 84 2100 -1600 300 L 60 60 2 0 B
-X IO_L40N_GCLK10_1 94 2100 -1000 300 L 60 60 2 0 B
-X IO_L74P_AWAKE_1 75 2100 -2300 300 L 60 60 2 0 B
-X IO_L43P_GCLK5_1 85 2100 -1500 300 L 60 60 2 0 B
-X IO_L40P_GCLK11_1 95 2100 -900 300 L 60 60 2 0 B
-X IO_L42N_GCLK6_TRDY1_1 87 2100 -1400 300 L 60 60 2 0 B
-X IO_L34N_1 97 2100 -800 300 L 60 60 2 0 B
-X IO_L47N_1 78 2100 -2200 300 L 60 60 2 0 B
-X IO_L42P_GCLK7_1 88 2100 -1300 300 L 60 60 2 0 B
-X IO_L34P_1 98 2100 -700 300 L 60 60 2 0 B
-X IO_L47P_1 79 2100 -2100 300 L 60 60 2 0 B
-X IO_L33N_1 99 2100 -600 300 L 60 60 2 0 B
-X IO_L33P_1 100 2100 -500 300 L 60 60 2 0 B
-X IO_L32N_1 101 2100 -400 300 L 60 60 2 0 B
-X IO_L32P_1 102 2100 -300 300 L 60 60 2 0 B
-X IO_L1N_VREF_1 104 2100 -200 300 L 60 60 2 0 B
-X IO_L1P_1 105 2100 -100 300 L 60 60 2 0 B
-T 900 200 -550 70 1 3 0 BANK~2 Normal 1 L B
-S 0 -2700 1800 0 3 0 0 f
-S 1750 -2650 1800 -50 3 0 0 F
-X IO_L64N_D9_2 40 2100 -2400 300 L 60 60 3 0 B
-X IO_L31N_GCLK30_D15_2 50 2100 -1600 300 L 60 60 3 0 B
-X IO_L13P_M1_2 60 2100 -900 300 L 60 60 3 0 B
-X IO_L1P_CCLK_2 70 2100 -100 300 L 60 60 3 0 B
-X IO_L64P_D8_2 41 2100 -2300 300 L 60 60 3 0 B
-X IO_L31P_GCLK31_D14_2 51 2100 -1500 300 L 60 60 3 0 B
-X IO_L12N_D2_MISO3_2 61 2100 -800 300 L 60 60 3 0 B
-X IO_L12P_D1_MISO2_2 62 2100 -700 300 L 60 60 3 0 B
-X IO_L62N_D6_2 43 2100 -2200 300 L 60 60 3 0 B
-X IO_L62P_D5_2 44 2100 -2100 300 L 60 60 3 0 B
-X IO_L3N_MOSI_CSI_B_MISO0_2 64 2100 -600 300 L 60 60 3 0 B
-X IO_L49N_D4_2 45 2100 -2000 300 L 60 60 3 0 B
-X IO_L30N_GCLK0_USERCCLK_2 55 2100 -1400 300 L 60 60 3 0 B
-X IO_L3P_D0_DIN_MISO_MISO1_2 65 2100 -500 300 L 60 60 3 0 B
-X IO_L49P_D3_2 46 2100 -1900 300 L 60 60 3 0 B
-X IO_L30P_GCLK1_D13_2 56 2100 -1300 300 L 60 60 3 0 B
-X IO_L2N_CMPMOSI_2 66 2100 -400 300 L 60 60 3 0 B
-X IO_L48N_RDWR_B_VREF_2 47 2100 -1800 300 L 60 60 3 0 B
-X IO_L14N_D12_2 57 2100 -1200 300 L 60 60 3 0 B
-X IO_L2P_CMPCLK_2 67 2100 -300 300 L 60 60 3 0 B
-X IO_L65N_CSO_B_2 38 2100 -2600 300 L 60 60 3 0 B
-X IO_L48P_D7_2 48 2100 -1700 300 L 60 60 3 0 B
-X IO_L14P_D11_2 58 2100 -1100 300 L 60 60 3 0 B
-X IO_L65P_INIT_B_2 39 2100 -2500 300 L 60 60 3 0 B
-X IO_L13N_D10_2 59 2100 -1000 300 L 60 60 3 0 B
-X IO_L1N_M0_CMPMISO_2 69 2100 -200 300 L 60 60 3 0 B
-T 900 200 -550 70 1 4 0 BANK~3 Normal 1 L B
-S 0 -2700 1800 0 4 0 0 f
-S 1750 -2650 1800 -50 4 0 0 f
-X IO_L83N_VREF_3 1 2100 -2600 300 L 60 60 4 0 B
-X IO_L83P_3 2 2100 -2500 300 L 60 60 4 0 B
-X IO_L52N_3 5 2100 -2400 300 L 60 60 4 0 B
-X IO_L52P_3 6 2100 -2300 300 L 60 60 4 0 B
-X IO_L51N_3 7 2100 -2200 300 L 60 60 4 0 B
-X IO_L51P_3 8 2100 -2100 300 L 60 60 4 0 B
-X IO_L50N_3 9 2100 -2000 300 L 60 60 4 0 B
-X IO_L50P_3 10 2100 -1900 300 L 60 60 4 0 B
-X IO_L36P_3 30 2100 -500 300 L 60 60 4 0 B
-X IO_L49N_3 11 2100 -1800 300 L 60 60 4 0 B
-X IO_L42N_GCLK24_3 21 2100 -1200 300 L 60 60 4 0 B
-X IO_L49P_3 12 2100 -1700 300 L 60 60 4 0 B
-X IO_L42P_GCLK25_TRDY2_3 22 2100 -1100 300 L 60 60 4 0 B
-X IO_L2N_3 32 2100 -400 300 L 60 60 4 0 B
-X IO_L41N_GCLK26_3 23 2100 -1000 300 L 60 60 4 0 B
-X IO_L2P_3 33 2100 -300 300 L 60 60 4 0 B
-X IO_L44N_GCLK20_3 14 2100 -1600 300 L 60 60 4 0 B
-X IO_L41P_GCLK27_3 24 2100 -900 300 L 60 60 4 0 B
-X IO_L1N_VREF_3 34 2100 -200 300 L 60 60 4 0 B
-X IO_L44P_GCLK21_3 15 2100 -1500 300 L 60 60 4 0 B
-X IO_L1P_3 35 2100 -100 300 L 60 60 4 0 B
-X IO_L43N_GCLK22_IRDY2_3 16 2100 -1400 300 L 60 60 4 0 B
-X IO_L37N_3 26 2100 -800 300 L 60 60 4 0 B
-X IO_L43P_GCLK23_3 17 2100 -1300 300 L 60 60 4 0 B
-X IO_L37P_3 27 2100 -700 300 L 60 60 4 0 B
-X IO_L36N_3 29 2100 -600 300 L 60 60 4 0 B
-S 0 -1200 800 0 5 0 0 f
-X DONE_2 71 -300 -100 300 R 60 60 5 0 B
-X CMPCS_B_2 72 -300 -1100 300 R 60 60 5 0 I
-X SUSPEND 73 -300 -400 300 R 60 60 5 0 I
-X PROGRAM_B_2 37 -300 -300 300 R 60 60 5 0 I
-X TDI 110 -300 -700 300 R 60 60 5 0 I
-X TDO 106 -300 -800 300 R 60 60 5 0 O
-X TMS 107 -300 -900 300 R 60 60 5 0 I
-X TCK 109 -300 -600 300 R 60 60 5 0 I
-S 0 -1500 1100 0 6 0 0 f
-X VCCO_3 4 -300 -1400 300 R 60 60 6 0 W
-X VCCAUX 20 1400 -200 300 L 60 60 6 0 W
-X VCCAUX 90 1400 -500 300 L 60 60 6 0 W
-X VCCO_3 31 -300 -1300 300 R 60 60 6 0 W
-X VCCO_2 42 -300 -900 300 R 60 60 6 0 W
-X VCCINT 52 1400 -1000 300 L 60 60 6 0 W
-X VCCAUX 53 1400 -400 300 L 60 60 6 0 W
-X VCCO_2 63 -300 -1000 300 R 60 60 6 0 W
-X VCCAUX 36 1400 -300 300 L 60 60 6 0 W
-X VCCO_1 76 -300 -600 300 R 60 60 6 0 W
-X VCCO_1 86 -300 -700 300 R 60 60 6 0 W
-X VCCO_3 18 -300 -1200 300 R 60 60 6 0 W
-X VCCINT 28 1400 -900 300 L 60 60 6 0 W
-X VCCINT 19 1400 -800 300 L 60 60 6 0 W
-X VCCINT 89 1400 -1100 300 L 60 60 6 0 W
-X VCCO_0 122 -300 -100 300 R 60 60 6 0 W
-X VCCO_1 103 -300 -500 300 R 60 60 6 0 W
-X VCCO_0 125 -300 -200 300 R 60 60 6 0 W
-X VCCO_0 135 -300 -300 300 R 60 60 6 0 W
-X VCCINT 128 1400 -700 300 L 60 60 6 0 W
-X VCCAUX 129 1400 -100 300 L 60 60 6 0 W
-S 0 -800 600 0 7 0 0 f
-X GND 3 -300 -700 300 R 60 60 7 0 W
-X GND 91 900 -500 300 L 60 60 7 0 W
-X GND 13 -300 -300 300 R 60 60 7 0 W
-X GND 54 900 -200 300 L 60 60 7 0 W
-X GND 25 -300 -600 300 R 60 60 7 0 W
-X GND 96 900 -600 300 L 60 60 7 0 W
-X GND 77 900 -400 300 L 60 60 7 0 W
-X GND 68 900 -300 300 L 60 60 7 0 W
-X GND 49 900 -100 300 L 60 60 7 0 W
-X GND 130 -300 -400 300 R 60 60 7 0 W
-X GND 113 -300 -200 300 R 60 60 7 0 W
-X GND 136 -300 -500 300 R 60 60 7 0 W
-X GND 108 -300 -100 300 R 60 60 7 0 W
+T 900 200 -550 70 1 1 1 BANK~0 Normal 1 L B
+T 900 200 -550 70 1 2 1 BANK~1 Normal 1 L B
+T 900 200 -550 70 1 3 1 BANK~2 Normal 1 L B
+T 900 200 -550 70 1 4 1 BANK~3 Normal 1 L B
+S 0 -2700 1800 0 1 1 0 f
+S 1750 -2650 1800 -50 1 1 0 F
+S 0 -2500 1800 0 2 1 0 f
+S 1750 -2450 1800 -50 2 1 0 F
+S 0 -2700 1800 0 3 1 0 f
+S 1750 -2650 1800 -50 3 1 0 F
+S 0 -2700 1800 0 4 1 0 f
+S 1750 -2650 1800 -50 4 1 0 f
+S 0 -1200 800 0 5 1 0 f
+S 0 -1500 1100 0 6 1 0 f
+S 0 -800 600 0 7 1 0 f
+X IO_L62N_VREF_0 120 2100 -1800 300 L 60 60 1 1 B
+X IO_L3P_0 140 2100 -500 300 L 60 60 1 1 B
+X IO_L66N_SCP0_0 111 2100 -2600 300 L 60 60 1 1 B
+X IO_L62P_0 121 2100 -1700 300 L 60 60 1 1 B
+X IO_L35N_GCLK16_0 131 2100 -1200 300 L 60 60 1 1 B
+X IO_L2N_0 141 2100 -400 300 L 60 60 1 1 B
+X IO_L66P_SCP1_0 112 2100 -2500 300 L 60 60 1 1 B
+X IO_L35P_GCLK17_0 132 2100 -1100 300 L 60 60 1 1 B
+X IO_L2P_0 142 2100 -300 300 L 60 60 1 1 B
+X IO_L37N_GCLK12_0 123 2100 -1600 300 L 60 60 1 1 B
+X IO_L34N_GCLK18_0 133 2100 -1000 300 L 60 60 1 1 B
+X IO_L1N_VREF_0 143 2100 -200 300 L 60 60 1 1 B
+X IO_L65N_SCP2_0 114 2100 -2400 300 L 60 60 1 1 B
+X IO_L37P_GCLK13_0 124 2100 -1500 300 L 60 60 1 1 B
+X IO_L34P_GCLK19_0 134 2100 -900 300 L 60 60 1 1 B
+X IO_L1P_HSWAPEN_0 144 2100 -100 300 L 60 60 1 1 B
+X IO_L65P_SCP3_0 115 2100 -2300 300 L 60 60 1 1 B
+X IO_L64N_SCP4_0 116 2100 -2200 300 L 60 60 1 1 B
+X IO_L36N_GCLK14_0 126 2100 -1400 300 L 60 60 1 1 B
+X IO_L64P_SCP5_0 117 2100 -2100 300 L 60 60 1 1 B
+X IO_L36P_GCLK15_0 127 2100 -1300 300 L 60 60 1 1 B
+X IO_L4N_0 137 2100 -800 300 L 60 60 1 1 B
+X IO_L63N_SCP6_0 118 2100 -2000 300 L 60 60 1 1 B
+X IO_L4P_0 138 2100 -700 300 L 60 60 1 1 B
+X IO_L63P_SCP7_0 119 2100 -1900 300 L 60 60 1 1 B
+X IO_L3N_0 139 2100 -600 300 L 60 60 1 1 B
+X IO_L46N_1 80 2100 -2000 300 L 60 60 2 1 B
+X IO_L46P_1 81 2100 -1900 300 L 60 60 2 1 B
+X IO_L45N_1 82 2100 -1800 300 L 60 60 2 1 B
+X IO_L41N_GCLK8_1 92 2100 -1200 300 L 60 60 2 1 B
+X IO_L45P_1 83 2100 -1700 300 L 60 60 2 1 B
+X IO_L41P_GCLK9_IRDY1_1 93 2100 -1100 300 L 60 60 2 1 B
+X IO_L74N_DOUT_BUSY_1 74 2100 -2400 300 L 60 60 2 1 B
+X IO_L43N_GCLK4_1 84 2100 -1600 300 L 60 60 2 1 B
+X IO_L40N_GCLK10_1 94 2100 -1000 300 L 60 60 2 1 B
+X IO_L74P_AWAKE_1 75 2100 -2300 300 L 60 60 2 1 B
+X IO_L43P_GCLK5_1 85 2100 -1500 300 L 60 60 2 1 B
+X IO_L40P_GCLK11_1 95 2100 -900 300 L 60 60 2 1 B
+X IO_L42N_GCLK6_TRDY1_1 87 2100 -1400 300 L 60 60 2 1 B
+X IO_L34N_1 97 2100 -800 300 L 60 60 2 1 B
+X IO_L47N_1 78 2100 -2200 300 L 60 60 2 1 B
+X IO_L42P_GCLK7_1 88 2100 -1300 300 L 60 60 2 1 B
+X IO_L34P_1 98 2100 -700 300 L 60 60 2 1 B
+X IO_L47P_1 79 2100 -2100 300 L 60 60 2 1 B
+X IO_L33N_1 99 2100 -600 300 L 60 60 2 1 B
+X IO_L33P_1 100 2100 -500 300 L 60 60 2 1 B
+X IO_L32N_1 101 2100 -400 300 L 60 60 2 1 B
+X IO_L32P_1 102 2100 -300 300 L 60 60 2 1 B
+X IO_L1N_VREF_1 104 2100 -200 300 L 60 60 2 1 B
+X IO_L1P_1 105 2100 -100 300 L 60 60 2 1 B
+X IO_L64N_D9_2 40 2100 -2400 300 L 60 60 3 1 B
+X IO_L31N_GCLK30_D15_2 50 2100 -1600 300 L 60 60 3 1 B
+X IO_L13P_M1_2 60 2100 -900 300 L 60 60 3 1 B
+X IO_L1P_CCLK_2 70 2100 -100 300 L 60 60 3 1 B
+X IO_L64P_D8_2 41 2100 -2300 300 L 60 60 3 1 B
+X IO_L31P_GCLK31_D14_2 51 2100 -1500 300 L 60 60 3 1 B
+X IO_L12N_D2_MISO3_2 61 2100 -800 300 L 60 60 3 1 B
+X IO_L12P_D1_MISO2_2 62 2100 -700 300 L 60 60 3 1 B
+X IO_L62N_D6_2 43 2100 -2200 300 L 60 60 3 1 B
+X IO_L62P_D5_2 44 2100 -2100 300 L 60 60 3 1 B
+X IO_L3N_MOSI_CSI_B_MISO0_2 64 2100 -600 300 L 60 60 3 1 B
+X IO_L49N_D4_2 45 2100 -2000 300 L 60 60 3 1 B
+X IO_L30N_GCLK0_USERCCLK_2 55 2100 -1400 300 L 60 60 3 1 B
+X IO_L3P_D0_DIN_MISO_MISO1_2 65 2100 -500 300 L 60 60 3 1 B
+X IO_L49P_D3_2 46 2100 -1900 300 L 60 60 3 1 B
+X IO_L30P_GCLK1_D13_2 56 2100 -1300 300 L 60 60 3 1 B
+X IO_L2N_CMPMOSI_2 66 2100 -400 300 L 60 60 3 1 B
+X IO_L48N_RDWR_B_VREF_2 47 2100 -1800 300 L 60 60 3 1 B
+X IO_L14N_D12_2 57 2100 -1200 300 L 60 60 3 1 B
+X IO_L2P_CMPCLK_2 67 2100 -300 300 L 60 60 3 1 B
+X IO_L65N_CSO_B_2 38 2100 -2600 300 L 60 60 3 1 B
+X IO_L48P_D7_2 48 2100 -1700 300 L 60 60 3 1 B
+X IO_L14P_D11_2 58 2100 -1100 300 L 60 60 3 1 B
+X IO_L65P_INIT_B_2 39 2100 -2500 300 L 60 60 3 1 B
+X IO_L13N_D10_2 59 2100 -1000 300 L 60 60 3 1 B
+X IO_L1N_M0_CMPMISO_2 69 2100 -200 300 L 60 60 3 1 B
+X IO_L83N_VREF_3 1 2100 -2600 300 L 60 60 4 1 B
+X IO_L83P_3 2 2100 -2500 300 L 60 60 4 1 B
+X IO_L52N_3 5 2100 -2400 300 L 60 60 4 1 B
+X IO_L52P_3 6 2100 -2300 300 L 60 60 4 1 B
+X IO_L51N_3 7 2100 -2200 300 L 60 60 4 1 B
+X IO_L51P_3 8 2100 -2100 300 L 60 60 4 1 B
+X IO_L50N_3 9 2100 -2000 300 L 60 60 4 1 B
+X IO_L50P_3 10 2100 -1900 300 L 60 60 4 1 B
+X IO_L36P_3 30 2100 -500 300 L 60 60 4 1 B
+X IO_L49N_3 11 2100 -1800 300 L 60 60 4 1 B
+X IO_L42N_GCLK24_3 21 2100 -1200 300 L 60 60 4 1 B
+X IO_L49P_3 12 2100 -1700 300 L 60 60 4 1 B
+X IO_L42P_GCLK25_TRDY2_3 22 2100 -1100 300 L 60 60 4 1 B
+X IO_L2N_3 32 2100 -400 300 L 60 60 4 1 B
+X IO_L41N_GCLK26_3 23 2100 -1000 300 L 60 60 4 1 B
+X IO_L2P_3 33 2100 -300 300 L 60 60 4 1 B
+X IO_L44N_GCLK20_3 14 2100 -1600 300 L 60 60 4 1 B
+X IO_L41P_GCLK27_3 24 2100 -900 300 L 60 60 4 1 B
+X IO_L1N_VREF_3 34 2100 -200 300 L 60 60 4 1 B
+X IO_L44P_GCLK21_3 15 2100 -1500 300 L 60 60 4 1 B
+X IO_L1P_3 35 2100 -100 300 L 60 60 4 1 B
+X IO_L43N_GCLK22_IRDY2_3 16 2100 -1400 300 L 60 60 4 1 B
+X IO_L37N_3 26 2100 -800 300 L 60 60 4 1 B
+X IO_L43P_GCLK23_3 17 2100 -1300 300 L 60 60 4 1 B
+X IO_L37P_3 27 2100 -700 300 L 60 60 4 1 B
+X IO_L36N_3 29 2100 -600 300 L 60 60 4 1 B
+X DONE_2 71 -300 -100 300 R 60 60 5 1 B
+X CMPCS_B_2 72 -300 -1100 300 R 60 60 5 1 I
+X SUSPEND 73 -300 -400 300 R 60 60 5 1 I
+X PROGRAM_B_2 37 -300 -300 300 R 60 60 5 1 I
+X TDI 110 -300 -700 300 R 60 60 5 1 I
+X TDO 106 -300 -800 300 R 60 60 5 1 O
+X TMS 107 -300 -900 300 R 60 60 5 1 I
+X TCK 109 -300 -600 300 R 60 60 5 1 I
+X VCCO_3 4 -300 -1400 300 R 60 60 6 1 W
+X VCCAUX 20 1400 -200 300 L 60 60 6 1 W
+X VCCAUX 90 1400 -500 300 L 60 60 6 1 W
+X VCCO_3 31 -300 -1300 300 R 60 60 6 1 W
+X VCCO_2 42 -300 -900 300 R 60 60 6 1 W
+X VCCINT 52 1400 -1000 300 L 60 60 6 1 W
+X VCCAUX 53 1400 -400 300 L 60 60 6 1 W
+X VCCO_2 63 -300 -1000 300 R 60 60 6 1 W
+X VCCAUX 36 1400 -300 300 L 60 60 6 1 W
+X VCCO_1 76 -300 -600 300 R 60 60 6 1 W
+X VCCO_1 86 -300 -700 300 R 60 60 6 1 W
+X VCCO_3 18 -300 -1200 300 R 60 60 6 1 W
+X VCCINT 28 1400 -900 300 L 60 60 6 1 W
+X VCCINT 19 1400 -800 300 L 60 60 6 1 W
+X VCCINT 89 1400 -1100 300 L 60 60 6 1 W
+X VCCO_0 122 -300 -100 300 R 60 60 6 1 W
+X VCCO_1 103 -300 -500 300 R 60 60 6 1 W
+X VCCO_0 125 -300 -200 300 R 60 60 6 1 W
+X VCCO_0 135 -300 -300 300 R 60 60 6 1 W
+X VCCINT 128 1400 -700 300 L 60 60 6 1 W
+X VCCAUX 129 1400 -100 300 L 60 60 6 1 W
+X GND 3 -300 -700 300 R 60 60 7 1 W
+X GND 91 900 -500 300 L 60 60 7 1 W
+X GND 13 -300 -300 300 R 60 60 7 1 W
+X GND 54 900 -200 300 L 60 60 7 1 W
+X GND 25 -300 -600 300 R 60 60 7 1 W
+X GND 96 900 -600 300 L 60 60 7 1 W
+X GND 77 900 -400 300 L 60 60 7 1 W
+X GND 68 900 -300 300 L 60 60 7 1 W
+X GND 49 900 -100 300 L 60 60 7 1 W
+X GND 130 -300 -400 300 R 60 60 7 1 W
+X GND 113 -300 -200 300 R 60 60 7 1 W
+X GND 136 -300 -500 300 R 60 60 7 1 W
+X GND 108 -300 -100 300 R 60 60 7 1 W
 ENDDRAW
 ENDDEF
 #
@@ -3545,7 +3597,7 @@ DEF ~XTAL_12MHZ_TXC_7A-12.000MAAJ-T Q 0 60 Y Y 1 L N
 F0 "Q" 150 150 50 H V C CNN
 F1 "XTAL_12MHZ_TXC_7A-12.000MAAJ-T" 0 -290 60 H I L CNN
 F2 "ICs And Semiconductors SMD:XTAL_TXC_7A" 0 -380 60 H I L CNN
-F3 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XTAL_TXC_7A.pdf" 0 -470 60 H I L CNN
+F3 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XTAL_TXC_7A.pdf" 0 -470 60 H I L CNN
 F4 "12MHz" 150 -150 50 H V C CNN "~"
 F5 "XTAL_12MHZ_TXC_7A-12.000MAAJ-T" 0 -560 60 H I L CNN "Part Number"
 F6 "Quartz Crystal" 0 -650 60 H I L CNN "Library Ref"
@@ -3575,7 +3627,7 @@ F29 "~~" 0 -2720 60 H I L CNN "Field1"
 F30 "1.2mm" 0 -2810 60 H I L CNN "ComponentHeight"
 F31 "PcbLib\\ICs And Semiconductors SMD.PcbLib" 0 -2900 60 H I L CNN "Footprint Path"
 F32 "XTAL_TXC_7A" 0 -2990 60 H I L CNN "Footprint Ref"
-F33 "\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XTAL_TXC_7A.pdf" 0 -3080 60 H I L CNN "HelpURL"
+F33 "\\\\cern.ch\\dfs\\Applications\\Altium\\Datasheets\\XTAL_TXC_7A.pdf" 0 -3080 60 H I L CNN "HelpURL"
 F34 "~~" 0 -3170 60 H I L CNN "ComponentLink1URL"
 F35 "~~" 0 -3260 60 H I L CNN "ComponentLink1Description"
 F36 "~~" 0 -3350 60 H I L CNN "ComponentLink2URL"
@@ -3586,11 +3638,11 @@ F40 "11/12/14 00:00:00" 0 -3710 60 H I L CNN "LatestRevisionDate"
 F41 "ICs And Semiconductors SMD" 0 -3800 60 H I L CNN "Library Name"
 F42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To the extent that circuit schematics that use Licensed Material can be considered to be ‘Adapted Material’, then the copyright holder waives article 3.b of the license with respect to these schematics." 0 -3890 60 H I L CNN "License"
 DRAW
-P 2 0 0 10 100 90 100 -90 N
-P 2 0 0 10 200 90 200 -90 N
-P 5 0 0 10 170 -90 130 -90 130 90 170 90 170 -90 N
-X OSC1 1 0 0 100 R 0 0 0 0 P
-X OSC2 2 300 0 100 L 0 0 0 0 P
+P 2 0 1 10 100 90 100 -90 N
+P 2 0 1 10 200 90 200 -90 N
+P 5 0 1 10 170 -90 130 -90 130 90 170 90 170 -90 N
+X OSC1 1 0 0 100 R 0 0 0 1 P
+X OSC2 2 300 0 100 L 0 0 0 1 P
 ENDDRAW
 ENDDEF
 #
