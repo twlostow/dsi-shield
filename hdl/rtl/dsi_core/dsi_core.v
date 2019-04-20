@@ -35,9 +35,6 @@ module dsi_core
    clk_phy_i,
 
    // Shifted version of DSI/PHY clocks (for clock-data lane alignment)
-   clk_dsi_shifted_i,
-
-   clk_phy_shifted_i,
   
    rst_n_i,
 
@@ -91,7 +88,41 @@ module dsi_core
    wb_stb_i,
    wb_we_i,
    wb_ack_o,
-   wb_stall_o
+   wb_stall_o,
+
+   // axi4 lite slave (control registers)
+   s_axil_ACLK,
+   s_axil_ARESETN,
+   s_axil_ARVALID,
+   s_axil_AWVALID,
+   s_axil_BREADY,
+   s_axil_RREADY,
+   s_axil_WVALID,
+   s_axil_ARADDR,
+   s_axil_AWADDR,
+   s_axil_WDATA,
+   s_axil_WSTRB,
+   s_axil_ARREADY,
+   s_axil_AWREADY,
+   s_axil_BVALID,
+   s_axil_RVALID, 
+   s_axil_WREADY,
+   s_axil_BRESP,
+   s_axil_RRESP,
+   s_axil_RDATA,
+
+   // axi4 stream slave (video data)
+   s_axis_aclk,
+   s_axis_aresetn,
+   s_axis_tdata,
+   s_axis_tdest,
+   s_axis_tid,
+   s_axis_tkeep,
+   s_axis_tlast,
+   s_axis_tready,
+   s_axis_tstrb,
+   s_axis_tuser,
+   s_axis_tvalid
    );
    
    // number of pixels processed in each clk_dsi_i cycle
@@ -100,13 +131,16 @@ module dsi_core
    parameter g_lanes = 3;
    // image FIFO size (holds g_pixels_per_clock * g_fifo_size pixels)
    parameter g_fifo_size = 1024;
-   // ineverted lane polarity mask (0 = lane 0, 0x4 = lane 2, etc)
-   parameter g_invert_lanes = 0;
-   // invert DSI clock when true
-   parameter g_invert_clock = 0;
 
    parameter g_use_external_dsi_clock = 0;
 
+   parameter g_pixel_interface_type = "AXI4";
+
+   parameter g_control_interface_type = "AXI4";
+
+   parameter g_target_fpga = "Zynq";
+   
+   
    // PHY clock period, in picoseconds. Used to set clock-to-data shift.
    parameter g_clock_period_ps = 3600;
    // picoseconds per ODELAY2 tap.  Used to set clock-to-data shift.
@@ -115,15 +149,54 @@ module dsi_core
    localparam g_data_delay = (g_clock_period_ps / 2) / g_ps_per_delay_tap;
    localparam g_pixel_width = 24 * g_pixels_per_clock;
 
+   input 			    s_axil_ACLK;
+   input 			    s_axil_ARESETN;
+   input 			    s_axil_ARVALID;
+   input 			    s_axil_AWVALID;
+   input 			    s_axil_BREADY;
+   input 			    s_axil_RREADY;
+//   input 			    s_axil_WLAST;
+   input 			    s_axil_WVALID;
+   input [31:0] 		    s_axil_ARADDR;
+   input [31:0] 		    s_axil_AWADDR;
+   input [31:0] 		    s_axil_WDATA;
+   input [3:0] 			    s_axil_WSTRB;
+   output 			    s_axil_ARREADY;
+   output 			    s_axil_AWREADY;
+   output 			    s_axil_BVALID;
+//   output 			    s_axil_RLAST; 
+   output 			    s_axil_RVALID; 
+   output 			    s_axil_WREADY;
+   output [1:0] 		    s_axil_BRESP;
+   output [1:0] 		    s_axil_RRESP;
+   output [31:0] 		    s_axil_RDATA;
+   
+   input 			    s_axis_aclk;
+   input 			    s_axis_aresetn;
+   input [31:0]			    s_axis_tdata; // fixme: generic
+   input 			    s_axis_tdest;
+   input s_axis_tid;
+   input s_axis_tkeep;
+   input s_axis_tlast;
+   output reg s_axis_tready;
+   input s_axis_tstrb;
+   input s_axis_tuser;
+  
+   input s_axis_tvalid;
+   
+   
    input [31:0] wb_adr_i;
    input [31:0] wb_dat_i;
    output [31:0] wb_dat_o;
    input [3:0] 	 wb_sel_i;
    input         wb_cyc_i, wb_stb_i, wb_we_i;
    output        wb_ack_o, wb_stall_o;
+
+   wire 	 clk_sys;
+   wire 	 rst_n_sys;
+   
    
    input 	 clk_sys_i, clk_phy_i, clk_dsi_i, rst_n_i;
-   input 	 clk_phy_shifted_i, clk_dsi_shifted_i;
    input 	 pll_locked_i;
    
    output 	 pix_next_frame_o;
@@ -152,27 +225,82 @@ module dsi_core
    reg [3:0]			  r_lane_invert;
    reg 				  r_clock_invert;
 
-   dsi_wishbone_async_bridge #(
-			       .g_csr_addr_bits(6)
-			       ) U_CsrBridge (
-					      .clk_wb_i (clk_sys_i),
-					      .clk_csr_i (clk_dsi_i),
-					      .rst_n_i(rst_n_i),
-					      .wb_adr_i(wb_adr_i),
-					      .wb_dat_i(wb_dat_i),
-					      .wb_sel_i(wb_sel_i),
-					      .wb_cyc_i(wb_cyc_i),
-					      .wb_stb_i(wb_stb_i),
-					      .wb_we_i(wb_we_i),
-					      .wb_ack_o(wb_ack_o),
-					      .wb_stall_o(wb_stall_o),
-					      .wb_dat_o(wb_dat_o),
+   initial
+     begin
+     if (g_control_interface_type != "Wishbone" && g_control_interface_type != "AXI4" )
+       $fatal("dsi_core: g_control_interface_type must be Wishbone or AXI4");
+     if (g_pixel_interface_type != "FIFO" && g_pixel_interface_type != "AXI4" )
+       $fatal("dsi_core: g_pixel_interface_type must be FIFO or AXI4");
+     end
+   
+   
+   generate
+      if (g_control_interface_type == "Wishbone")
+	begin
+      
+	   dsi_wishbone_async_bridge 
+	     #(
+	       .g_csr_addr_bits(6)
+	       ) U_CsrBridge (
+			      .clk_wb_i (clk_sys),
+			      .clk_csr_i (clk_dsi_i),
+			      .rst_n_i(rst_n_sys),
+			      .wb_adr_i(wb_adr_i),
+			      .wb_dat_i(wb_dat_i),
+			      .wb_sel_i(wb_sel_i),
+			      .wb_cyc_i(wb_cyc_i),
+			      .wb_stb_i(wb_stb_i),
+			      .wb_we_i(wb_we_i),
+			      .wb_ack_o(wb_ack_o),
+			      .wb_stall_o(wb_stall_o),
+			      .wb_dat_o(wb_dat_o),
 
-					      .csr_adr_o(host_a),
-					      .csr_dat_o(host_d_in),
-					      .csr_wr_o(host_wr),
-					      .csr_dat_i(host_d_out)
-					      );
+			      .csr_adr_o(host_a),
+			      .csr_dat_o(host_d_in),
+			      .csr_wr_o(host_wr),
+			      .csr_dat_i(host_d_out)
+			      );
+	end else if (g_control_interface_type == "AXI4") begin
+	   
+	   axi4_csr_bridge #(
+			     .g_csr_addr_bits(6)
+			     ) U_CsrBridge 
+	     (
+	      .clk_csr_i (clk_dsi_i),
+
+	      .s_axil_ACLK		(s_axil_ACLK),
+	      .s_axil_ARESETN 			   (s_axil_ARESETN),
+	      .s_axil_ARVALID            (s_axil_ARVALID),
+	      .s_axil_AWVALID            (s_axil_AWVALID),
+	      .s_axil_BREADY           ( s_axil_BREADY),
+	      .s_axil_RREADY           ( s_axil_RREADY),
+//	      .s_axil_WLAST          (  s_axil_WLAST),
+	      .s_axil_WVALID           ( s_axil_WVALID),
+	      .s_axil_ARADDR   		  ( s_axil_ARADDR),
+	      .s_axil_AWADDR   		  ( s_axil_AWADDR),
+	      .s_axil_WDATA   		 (  s_axil_WDATA),
+	      .s_axil_WSTRB   		 (  s_axil_WSTRB),
+	      .s_axil_ARREADY            (s_axil_ARREADY),
+	      .s_axil_AWREADY            (s_axil_AWREADY),
+	      .s_axil_BVALID           ( s_axil_BVALID),
+//	      .s_axil_RLAST           ( s_axil_RLAST), 
+	      .s_axil_RVALID            (s_axil_RVALID), 
+	      .s_axil_WREADY           ( s_axil_WREADY),
+	      .s_axil_BRESP    	    (  s_axil_BRESP),
+	      .s_axil_RRESP   	    (  s_axil_RRESP),
+	      .s_axil_RDATA   		 (  s_axil_RDATA),
+
+	      .csr_adr_o(host_a),
+	      .csr_dat_o(host_d_in),
+	      .csr_wr_o(host_wr),
+	      .csr_dat_i(host_d_out)
+	      );
+	end
+      
+      
+
+
+      endgenerate
    
    ///////////////////
    // PHY/Serdes layer
@@ -185,7 +313,7 @@ module dsi_core
    
 
    wire [g_lanes-1:0] 		  lp_txp, lp_txn, lp_oe;
-
+  
    wire                           lp_ready;
    wire                           phy_hs_ready;
 
@@ -202,8 +330,12 @@ module dsi_core
    reg [7:0] 			   lp_data = 0;
    reg [2:0] 			   num_lanes;
    
+
+
+   assign rst_n_sys = (g_control_interface_type == "AXI4" ? s_axil_ARESETN : rst_n_i );
+   assign clk_sys =  (g_control_interface_type == "AXI4" ? s_axil_ACLK : clk_sys_i );
    
-   dsi_sync_chain #(2) Sync3 (clk_dsi_i, 1'b0, rst_n_i, rst_n_dsi);
+   dsi_sync_chain #(2) Sync3 (clk_dsi_i, 1'b0, rst_n_sys, rst_n_dsi);
    
    generate
       genvar                       i;
@@ -287,75 +419,75 @@ module dsi_core
    assign serdes_oe_lane [g_lanes] = dsi_clk_lp_oe;
    assign dsi_clk_lp_oe_o = dsi_clk_lp_oe;
 
-   wire clk_serdes, serdes_strobe;
-   wire clk_serdes_shifted, serdes_strobe_shifted;
-
-   dphy_serdes_plla U_BufPLL 
-     (
-      .clk_phy_i(clk_phy_i),
-      .clk_dsi_i(clk_dsi_i),
-      .rst_n_a_i(rst_n_i),
-      .locked_i (pll_locked_i),
-      .clk_serdes_o(clk_serdes),
-      .serdes_strobe_o(serdes_strobe)
-      );
-
-   dphy_serdes_pllb U_BufPLL_Clk
-     (
-      .clk_phy_i(clk_phy_shifted_i),
-      .clk_dsi_i(clk_dsi_i),
-      .rst_n_a_i(rst_n_i),
-      .locked_i (pll_locked_i),
-      .clk_serdes_o(clk_serdes_shifted),
-      .serdes_strobe_o(serdes_strobe_shifted)
-      );
-   
-
-   wire [g_lanes:0] tx_p, tx_n;
 
    generate
-      for(i=0;i<g_lanes;i=i+1)
-        begin
-           dphy_serdes
-            #( .g_delay ( g_data_delay ) )
-           U_Serdes_LaneX (
-                           .clk_serdes_i(clk_serdes),
-                           .clk_word_i(clk_dsi_i),
-                           .rst_n_a_i(rst_n_i),
-                           .strobe_i(serdes_strobe),
-                           .oe_i(serdes_oe_lane[i]),
-                           .d_i(serdes_data[i*8 +: 8]),
-                           .q_p_o(tx_p[i]),
-                           .q_n_o(tx_n[i])
+      if (g_target_fpga == "Spartan6" || g_target_fpga == "Zynq")
+	begin
+	   
+	   wire clk_serdes, serdes_strobe;
 
-                           );
-
-	   if( i < g_lanes ) begin
-              assign dsi_hs_p_o[i] = tx_p[i];
-              assign dsi_hs_n_o[i] = tx_n[i];
-	   end
-
-        end // for (i=0;i<=g_lanes;i+=1)
-      
+	   dphy_serdes_plla U_BufPLL 
+	     (
+	      .clk_phy_i(clk_phy_i),
+	      .clk_dsi_i(clk_dsi_i),
+	      .rst_n_a_i(rst_n_sys),
+	      .locked_i (pll_locked_i),
+	      .clk_serdes_o(clk_serdes),
+	      .serdes_strobe_o(serdes_strobe)
+	      );
+	end 
       
    endgenerate
+   
 
-   dphy_serdes
-     #( .g_delay ( 0 ) )
-   U_Serdes_ClkLane (
-                     .clk_serdes_i(clk_serdes_shifted),
-                     .clk_word_i(clk_dsi_i),
-                     .rst_n_a_i(rst_n_i),
-                     .strobe_i(serdes_strobe_shifted),
-                     .oe_i(serdes_oe_lane[g_lanes]),
-                     .d_i(serdes_data[g_lanes*8 +: 8]),
-                     .q_p_o(tx_p[g_lanes]),
-                     .q_n_o(tx_n[g_lanes])
 
-                     );
+   generate
+      if (g_target_fpga == "Spartan6" || g_target_fpga == "Zynq" ) begin
+	 wire [g_lanes:0] tx_p, tx_n;
 
-   assign dsi_clk_p_o = tx_p[g_lanes];
-   assign dsi_clk_n_o = tx_n[g_lanes];
+	 for(i=0;i<g_lanes;i=i+1)
+           begin
+              dphy_serdes_spartan6
+               #( .g_delay ( g_data_delay ) )
+              U_Serdes_LaneX (
+                              .clk_serdes_i(clk_serdes),
+                              .clk_word_i(clk_dsi_i),
+                              .rst_n_a_i(rst_n_sys),
+                              .strobe_i(serdes_strobe),
+                              .oe_i(serdes_oe_lane[i]),
+                              .d_i(serdes_data[i*8 +: 8]),
+                              .q_p_o(tx_p[i]),
+                              .q_n_o(tx_n[i])
+
+                              );
+
+	      if( i < g_lanes ) begin
+		 assign dsi_hs_p_o[i] = tx_p[i];
+		 assign dsi_hs_n_o[i] = tx_n[i];
+	      end
+
+           end // for (i=0;i<=g_lanes;i+=1)
+	 
+
+	 dphy_serdes_spartan6
+	   #( .g_delay ( 0 ) )
+	 U_Serdes_ClkLane (
+			   .clk_serdes_i(clk_serdes),
+			   .clk_word_i(clk_dsi_i),
+			   .rst_n_a_i(rst_n_sys),
+			   .strobe_i(serdes_strobe),
+			   .oe_i(serdes_oe_lane[g_lanes]),
+			   .d_i(serdes_data[g_lanes*8 +: 8]),
+			   .q_p_o(tx_p[g_lanes]),
+			   .q_n_o(tx_n[g_lanes])
+
+			   );
+
+	 assign dsi_clk_p_o = tx_p[g_lanes];
+	 assign dsi_clk_n_o = tx_n[g_lanes];
+
+      end
+   endgenerate
    
    ////////////////   
    // Packet layer
@@ -398,28 +530,50 @@ module dsi_core
 
 
    wire                           fifo_empty, fifo_rd;
-   wire [g_pixel_width-1:0] 	  fifo_dout;
+   wire [g_pixel_width:0] 	  fifo_dout;
 
    
    ///////////////
    // Image timing
    ///////////////
 
-   wire                           pix_vsync_dsi, pix_next_frame_dsi;
+   wire                           pix_vsync_dsi, pix_next_frame_dsi, pix_vsync_dsi_fifo, pix_vsync_dsi_axi4;
 
-   dsi_sync_chain #(2) Sync1 (clk_dsi_i, rst_n_dsi, pix_vsync_i, pix_vsync_dsi);
-   dsi_sync_chain #(2) Sync2 (clk_sys_i, rst_n_i, pix_next_frame_dsi, pix_next_frame_o);
+   dsi_sync_chain #(2) Sync1 (clk_dsi_i, rst_n_dsi, pix_vsync_i, pix_vsync_dsi_fifo);
+   dsi_sync_chain #(2) Sync2 (clk_sys, rst_n_sys, pix_next_frame_dsi, pix_next_frame_o);
 
+
+   generate
+      if (g_pixel_interface_type == "FIFO") begin
+	 assign pix_vsync_dsi = pix_vsync_dsi_fifo;
+      end else begin
+
+	 wire vsync_axi = s_axis_tready & s_axis_tvalid & s_axis_tuser;
+	 
+	 dsi_pulse_sync SyncVSync 
+	   (
+	    .clk_in_i(clk_sys),
+	    .clk_out_i(clk_dsi_i),
+	    .rst_n_i(rst_n_sys),
+	    .d_p_i(vsync_axi),
+	    .q_p_o(pix_vsync_dsi)
+	    );
+	 
+	 
+      end
+   endgenerate
+   
+   
    dsi_timing_gen 
      #( .g_pixels_per_clock(g_pixels_per_clock) )
    U_TimingGen (
                 .clk_i(clk_dsi_i),
                 .rst_n_i(rst_n_dsi),
-
                 .fifo_empty_i(fifo_empty),
-                .fifo_rd_o(fifo_rd),
-                .fifo_pixels_i(fifo_dout),
-                .pix_vsync_i(pix_vsync_dsi),
+		.fifo_rd_o(fifo_rd),
+                .fifo_vsync_i(pix_vsync_dsi),
+		.fifo_pixels_i(fifo_dout[g_pixel_width-1:0]),
+//                .pix_vsync_i(pix_vsync_dsi),
                 .pix_next_frame_o(pix_next_frame_dsi),
                 .p_req_o(p_req),
                 .p_islong_o(p_islong),
@@ -438,14 +592,34 @@ module dsi_core
 
 
    ////////////////
-     /// Pixel Buffer
+   /// Pixel Buffer
    ////////////////
 
+   wire rst_n_pixel = 		  (g_pixel_interface_type == "AXI4" ? s_axis_aresetn : rst_n_i   );
+   wire 			  clk_pixel = (g_pixel_interface_type == "AXI4" ? s_axis_aclk : clk_sys_i );
 
+   reg pix_wr_muxed;
+   reg [g_pixel_width : 0 ] pix_muxed;
 
+   wire 		    fifo_almost_full;
+   
+   
+   always@*
+     if(g_pixel_interface_type == "AXI4") begin
+	pix_muxed <= {s_axis_tuser, s_axis_tdata[g_pixel_width-1:0] };
+	pix_wr_muxed <= s_axis_tvalid & ~fifo_almost_full;
+     end else begin
+	pix_muxed <= {pix_vsync_i, pix_i};
+	pix_wr_muxed <= pix_wr_i;
+     end
+
+   always@*
+     s_axis_tready <= ~fifo_almost_full ;
+
+   
    generic_async_fifo
      #(
-       .g_data_width(g_pixel_width),
+       .g_data_width(g_pixel_width + 1),
        .g_size(g_fifo_size),
        .g_almost_full_threshold(g_fifo_size-20),
        .g_almost_empty_threshold(10),
@@ -454,11 +628,11 @@ module dsi_core
        ) 
    U_PixFifo 
      (
-      .rst_n_i(rst_n_i),
-      .clk_wr_i(clk_sys_i),
-      .d_i(pix_i),
-      .wr_almost_full_o(pix_almost_full_o),
-      .we_i(pix_wr_i),
+      .rst_n_i(rst_n_pixel),
+      .clk_wr_i(clk_pixel),
+      .d_i(pix_muxed),
+      .wr_almost_full_o(fifo_almost_full),
+      .we_i(pix_wr_muxed),
 
       .clk_rd_i(clk_dsi_i),
       .rd_i(fifo_rd),
@@ -491,7 +665,7 @@ module dsi_core
                 tick_count <= tick_count + 1;
              end
         end // else: !if(!rst_n_i)
-     end // always@ (posedge clk_sys_i)
+     end // always@ (posedge clk_sys)
 
    reg [31:0] host_d_self;
 

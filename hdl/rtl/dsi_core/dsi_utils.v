@@ -219,8 +219,8 @@ module dsi_sync_chain
     input  d_i,
     output q_o );
 
-   reg [length-1:0] sync;
 
+   reg [length-1:0] sync; // synthesis KEEP=TRUE
    
    always@(posedge clk_i)
      begin
@@ -230,3 +230,61 @@ module dsi_sync_chain
    assign q_o = sync[length-1];
    
 endmodule // dsi_sync_chain
+
+module dsi_pulse_sync
+(
+ input 	clk_in_i,
+ input 	clk_out_i,
+ input 	rst_n_i,
+ input 	d_p_i,
+ output reg q_p_o,
+ output ready_o );
+		      
+   reg ready, d_p_d0, out_d;
+   reg in_ext;
+
+   wire out_ext;
+   wire out_feedback;
+   
+   dsi_sync_chain Sync_in2out( clk_out_i, rst_n_i, in_ext, out_ext );
+   dsi_sync_chain Sync_Out2in( clk_in_i, rst_n_i, out_ext, out_feedback );
+
+
+ always@(posedge clk_in_i or negedge rst_n_i )
+   if (!rst_n_i) begin
+      ready  <= 1;
+      in_ext <= 0;
+      d_p_d0 <= 0;
+      end else begin
+      d_p_d0 <= d_p_i;
+      
+      if(ready && d_p_i && !d_p_d0 )
+	begin
+           in_ext <= 1;
+           ready  <= 0;
+	   end else if (in_ext &&  out_feedback) begin
+             in_ext <= 0;
+	      end else if (!in_ext && !out_feedback) begin
+		 ready <=  1 ;
+	      end
+   end // if (!rst_n_i)
+   
+   
+   always@(posedge clk_out_i or negedge rst_n_i)
+     if (!rst_n_i)
+       begin
+	  q_p_o <= 0;
+	  out_d <= 0;
+       end
+     else
+       begin
+	  out_d <= out_ext;
+	  q_p_o <= out_ext && !out_d;
+       end
+
+
+   assign   d_ready_o = ready;
+   
+endmodule // dsi_pulse_sync
+
+		      

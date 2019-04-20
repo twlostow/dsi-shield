@@ -69,8 +69,137 @@ endmodule // dphy_serdes_pll
 
 
 
-module dphy_serdes #(
+module dphy_serdes_spartan6 #(
                      parameter g_delay = 0)
+   (
+    input 	clk_serdes_i,
+    input 	clk_word_i,
+    input 	rst_n_a_i,
+    input 	strobe_i,
+    input 	oe_i,
+   
+    input [7:0] d_i,
+
+    input 	lp_oe_n_i,
+    input 	lp_p_i,
+    input 	lp_n_i,
+    
+    
+    output 	q_p_o,
+    output 	q_n_o
+
+
+    );
+
+   wire 	tq_int;
+   wire 	dout_int, dout_predelay;
+   wire 	ms_d, ms_t, sm_d, sm_t;
+
+   OSERDES2
+     #(.DATA_RATE_OQ   ("SDR"),
+       .DATA_RATE_OT   ("SDR"),
+       .TRAIN_PATTERN  (0),
+       .DATA_WIDTH     (8),
+       .SERDES_MODE    ("MASTER"),
+       .OUTPUT_MODE    ("DIFFERENTIAL"))
+   U_Master (
+	     .CLK0       (clk_serdes_i),
+             .CLK1       (1'b0),
+             .CLKDIV     (clk_word_i),
+	     .D1         (d_i[4]),
+             .D2         (d_i[5]),
+             .D3         (d_i[6]),
+             .D4         (d_i[7]),
+             .T1         (oe_i),
+             .T2         (oe_i),
+             .T3         (oe_i),
+             .T4         (oe_i),
+             .SHIFTIN1   (1'b1),
+             .SHIFTIN2   (1'b1),
+             .SHIFTIN3   (sm_d),
+             .SHIFTIN4   (sm_t),
+             .SHIFTOUT1  (ms_d),
+             .SHIFTOUT2  (ms_t),
+             .TRAIN      (1'b0),
+             .OCE        (1'b1),
+             .OQ         (dout_predelay),
+             .TQ         (tq_int),
+             .IOCE       (strobe_i),
+             .TCE        (1'b1),
+             .RST        (~rst_n_a_i));
+
+
+   OSERDES2
+     #(.DATA_RATE_OQ   ("SDR"),
+       .DATA_RATE_OT   ("SDR"),
+       .DATA_WIDTH     (8),
+       .SERDES_MODE    ("SLAVE"),
+       .TRAIN_PATTERN  (0),
+       .OUTPUT_MODE    ("DIFFERENTIAL"))
+   U_Slave
+     (.CLK0       (clk_serdes_i),
+      .CLK1       (1'b0),
+      .CLKDIV     (clk_word_i),
+      .D1         (d_i[0]),
+      .D2         (d_i[1]),
+      .D3         (d_i[2]),
+      .D4         (d_i[3]),
+      .T1         (oe_i),
+      .T2         (oe_i),
+      .T3         (oe_i),
+      .T4         (oe_i),
+      .SHIFTIN1   (ms_d),
+      .SHIFTIN2   (ms_t),
+      .SHIFTIN3   (1'b1),
+      .SHIFTIN4   (1'b1),
+      .SHIFTOUT3  (sm_d),
+      .SHIFTOUT4  (sm_t),
+      .TRAIN      (1'b0),
+      .OCE        (1'b1),
+      .IOCE       (strobe_i),
+      .TCE        (1'b1),
+      .RST        (~rst_n_a_i));
+
+   
+
+   IODELAY2
+     #(.DATA_RATE                  ("SDR"),
+       .ODELAY_VALUE               (g_delay),
+       .COUNTER_WRAPAROUND         ("STAY_AT_LIMIT"),
+       .DELAY_SRC                  ("ODATAIN"),
+       .SERDES_MODE                ("NONE"),
+       .SIM_TAPDELAY_VALUE         (50))
+   U_IODelay
+     (
+      // required datapath
+      .T                      (1'b0),
+      .DOUT                   (dout_int),
+      .ODATAIN                (dout_predelay),
+      // inactive data connections
+      .IDATAIN                (1'b0),
+      // connect up the clocks
+      .IOCLK0                 (1'b0),                 // No calibration needed
+      .IOCLK1                 (1'b0),                 // No calibration needed
+      // Tie of the variable delay programming
+      .CAL                    (1'b0),
+      .INC                    (1'b0),
+      .CE                     (1'b0),
+      .RST                    (~rst_n_a_i));
+
+   OBUFTDS
+     #(.IOSTANDARD ("DIFF_SSTL18_II"))
+   U_Tristate
+     (.O          (q_p_o),
+      .OB         (q_n_o),
+      .T          (tq_int),
+      .I          (dout_int));
+
+endmodule
+
+
+module dphy_serdes_zynq
+ #(
+   parameter g_delay = 0)
    (
     input 	clk_serdes_i,
     input 	clk_word_i,
@@ -179,12 +308,15 @@ module dphy_serdes #(
       .CE                     (1'b0),
       .RST                    (~rst_n_a_i));
 
-   OBUFTDS
-     #(.IOSTANDARD ("DIFF_SSTL18_II"))
-   U_Tristate
-     (.O          (q_p_o),
-      .OB         (q_n_o),
-      .T          (tq_int),
-      .I          (dout_int));
+   OBUFTDS_DPHY
+     U_Buffer
+       (.O          (q_p_o),
+	.OB         (q_n_o),
+	.HSTX_I          (dout_int),
+	.HSTX_T          (tq_int),
+	.LPTX_I_P( lp_p_i),
+	.LPTX_I_N( lp_n_i),
+	.LPTX_T( ~lp_oe_n_i )
+	);
 
 endmodule

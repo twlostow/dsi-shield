@@ -34,6 +34,7 @@ module dsi_timing_gen
    clk_i,
    rst_n_i,
 
+   fifo_vsync_i,
    fifo_empty_i,
    fifo_rd_o,
    fifo_pixels_i,
@@ -63,6 +64,8 @@ module dsi_timing_gen
    input clk_i;
    input rst_n_i;
 
+   input fifo_vsync_i;
+   
    input fifo_empty_i;
    output fifo_rd_o;
    input [g_pixel_width - 1: 0] fifo_pixels_i;
@@ -98,6 +101,7 @@ module dsi_timing_gen
 `define ST_LONG_PACKET 9
 `define ST_LP 10
    
+   reg 				pix_vsync_latched;
    
    
 
@@ -176,6 +180,7 @@ module dsi_timing_gen
         push_pixels <= 0;
         push_pixels_d0 <= 0;
 	pix_next_frame_o <= 0;
+	pix_vsync_latched <= 0;
 	
      
      end else begin
@@ -204,6 +209,8 @@ module dsi_timing_gen
             end // case: `ST_FPORCH
           
           `ST_HSYNC_START: begin
+	     pix_vsync_latched <= 0;
+	     
              p_req_o <= 1;
 
              if(v_count == 0)
@@ -231,9 +238,12 @@ module dsi_timing_gen
 
           `ST_LP: begin
              p_req_o <= 0;
+
+	     if (fifo_vsync_i)
+	       pix_vsync_latched <= 1;
 	     
              if(pixel_counter == 0) begin
-		if(pix_vsync_i && !force_lp) begin
+		if(pix_vsync_latched && !force_lp) begin
                    state <= `ST_HSYNC_START;
 		   pix_next_frame_o <= 0;
 
