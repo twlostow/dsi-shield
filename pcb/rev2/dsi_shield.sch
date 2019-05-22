@@ -1,60 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:Capacitors Networks THD
-LIBS:Capacitors Networks SMD
-LIBS:Capacitors THD
-LIBS:Capacitors SMD
-LIBS:Miscellaneous
-LIBS:HARWIN
-LIBS:LEMO
-LIBS:WEIDMULLER
-LIBS:FCI
-LIBS:MOLEX
-LIBS:TYCO
-LIBS:ERNI
-LIBS:MENTOR
-LIBS:SAMTEC
-LIBS:STELVIO-KONTEK COMATEL
-LIBS:AMPHENOL
-LIBS:HARTING
-LIBS:3M
-LIBS:Pads
-LIBS:Switches
-LIBS:Relays
-LIBS:Heat-Sinks
-LIBS:Fasteners & Fixings
-LIBS:Batteries
-LIBS:Fuses
-LIBS:Metal Screening Box
-LIBS:Sockets
-LIBS:Regulators
-LIBS:Transistors
-LIBS:Power Supplies
-LIBS:Analog & Interface
-LIBS:Sensors
-LIBS:Logic
-LIBS:Optocouplers
-LIBS:Standard Logic
-LIBS:DC-DC Converters
-LIBS:Operational Amplifiers
-LIBS:Crystals & Oscillators
-LIBS:Diodes
-LIBS:LEDs & Displays
-LIBS:PCB Modules
-LIBS:Bonding
-LIBS:Resistors THD
-LIBS:Potentiometers SMD
-LIBS:Thermistors And Varistors
-LIBS:Potentiometers THD
-LIBS:Resistor Networks THD
-LIBS:Resistors SMD
-LIBS:Resistor Networks SMD
-LIBS:Transformers
-LIBS:Inductors SMD
-LIBS:Inductors THD
-LIBS:Cores
-LIBS:power
-LIBS:conn
-LIBS:dsi_shield
+EESchema Schematic File Version 4
 LIBS:dsi_shield-cache
 EELAYER 26 0
 EELAYER END
@@ -212,7 +156,7 @@ F7 "TCK" O L 11700 8050 60
 F8 "TMS" O L 11700 7950 60 
 $EndSheet
 $Comp
-L OSC_25MHZ_PERICOM_FNETHE025 IC12
+L dsi_shield-rescue:OSC_25MHZ_PERICOM_FNETHE025- IC12
 U 1 1 5992C2E4
 P 5850 7250
 F 0 "IC12" H 6150 7415 50  0000 C CNN
@@ -261,7 +205,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3V3 #PWR01
+L dsi_shield-rescue:+3V3- #PWR01
 U 1 1 5992D2A2
 P 5650 7200
 F 0 "#PWR01" H 5650 7050 50  0001 C CNN
@@ -272,7 +216,7 @@ F 3 "" H 5650 7200 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CC0603_100NF_100V_10%_X7R C17
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C17
 U 1 1 5992E213
 P 5650 7750
 F 0 "C17" V 5754 7860 50  0000 L CNN
@@ -320,7 +264,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR02
+L dsi_shield-rescue:GND- #PWR02
 U 1 1 5992E674
 P 5650 8050
 F 0 "#PWR02" H 5650 7800 50  0001 C CNN
@@ -331,7 +275,7 @@ F 3 "" H 5650 8050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR03
+L dsi_shield-rescue:GND- #PWR03
 U 1 1 5992E91D
 P 6700 7600
 F 0 "#PWR03" H 6700 7350 50  0001 C CNN
@@ -344,7 +288,7 @@ $EndComp
 Text Label 6750 7350 0    60   ~ 0
 CLK_25MHZ
 $Comp
-L PLATED_HOLE2.0_PAD3.5 B1
+L dsi_shield-rescue:PLATED_HOLE2.0_PAD3.5- B1
 U 1 1 59932F22
 P 6500 9950
 F 0 "B1" H 6600 9950 50  0000 C CNN
@@ -393,7 +337,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L PLATED_HOLE2.0_PAD3.5 B2
+L dsi_shield-rescue:PLATED_HOLE2.0_PAD3.5- B2
 U 1 1 599342E5
 P 6500 10050
 F 0 "B2" H 6600 10050 50  0000 C CNN
@@ -442,7 +386,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L PLATED_HOLE2.0_PAD3.5 B3
+L dsi_shield-rescue:PLATED_HOLE2.0_PAD3.5- B3
 U 1 1 599344FA
 P 6500 10150
 F 0 "B3" H 6600 10150 50  0000 C CNN
@@ -491,7 +435,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L PLATED_HOLE2.0_PAD3.5 B4
+L dsi_shield-rescue:PLATED_HOLE2.0_PAD3.5- B4
 U 1 1 59934715
 P 6500 10250
 F 0 "B4" H 6600 10250 50  0000 C CNN
@@ -540,7 +484,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR04
+L dsi_shield-rescue:GND- #PWR04
 U 1 1 59934D89
 P 6350 10400
 F 0 "#PWR04" H 6350 10150 50  0001 C CNN
@@ -576,7 +520,7 @@ CPU_RST_N
 Text Label 9300 7250 2    60   ~ 0
 CPU_RST_N
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG1
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG1
 U 1 1 599436EB
 P 6950 10050
 F 0 "FTG1" H 7038 10050 50  0000 L CNN
@@ -625,7 +569,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG2
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG2
 U 1 1 599440AC
 P 7350 10050
 F 0 "FTG2" H 7438 10050 50  0000 L CNN
@@ -674,7 +618,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG6
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG6
 U 1 1 599443FB
 P 7350 10350
 F 0 "FTG6" H 7438 10350 50  0000 L CNN
@@ -723,7 +667,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG5
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG5
 U 1 1 59944748
 P 6950 10350
 F 0 "FTG5" H 7038 10350 50  0000 L CNN
@@ -772,7 +716,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG4
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG4
 U 1 1 59944A9B
 P 7750 10350
 F 0 "FTG4" H 7838 10350 50  0000 L CNN
@@ -821,7 +765,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L FIDUCIAL_TARGET_S100-200 FTG3
+L dsi_shield-rescue:FIDUCIAL_TARGET_S100-200- FTG3
 U 1 1 59944DEC
 P 7750 10050
 F 0 "FTG3" H 7838 10050 50  0000 L CNN
@@ -878,7 +822,7 @@ SCL
 Text Label 8950 5200 0    60   ~ 0
 SDA
 $Comp
-L IOH CN5
+L dsi_shield-rescue:IOH- CN5
 U 1 1 5994E05C
 P 3650 4750
 F 0 "CN5" H 3694 3585 50  0000 C CNN
@@ -892,7 +836,7 @@ F 6 "IOH" H 3694 3676 50  0000 C CNN "Field5"
 	-1   0    0    1   
 $EndComp
 $Comp
-L IOL CN7
+L dsi_shield-rescue:IOL- CN7
 U 1 1 5994E87B
 P 3650 6250
 F 0 "CN7" H 3694 5271 50  0000 C CNN
@@ -906,21 +850,21 @@ F 6 "IOL" H 3694 5370 60  0000 C CNN "Field5"
 	-1   0    0    1   
 $EndComp
 $Comp
-L POWER_UNO CN6
+L dsi_shield-rescue:POWER_UNO- CN6
 U 1 1 5994EDEB
-P 2350 4550
-F 0 "CN6" H 2393 3677 50  0000 C CNN
-F 1 "POWER_UNO" H 2350 3560 60  0001 L CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 2350 3470 60  0001 L CNN
-F 3 "" H 2350 3380 60  0001 L CNN
-F 4 "Value" H 2350 4550 60  0001 C CNN "Fieldname"
-F 5 "Yes" H 2350 3290 60  0001 L CNN "Field4"
-F 6 "POWER" H 2350 3200 60  0001 L CNN "Field5"
-	1    2350 4550
-	1    0    0    1   
+P 2350 3850
+F 0 "CN6" H 2393 2977 50  0000 C CNN
+F 1 "POWER_UNO" H 2350 2860 60  0001 L CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x08" H 2350 2770 60  0001 L CNN
+F 3 "" H 2350 2680 60  0001 L CNN
+F 4 "Value" H 2350 3850 60  0001 C CNN "Fieldname"
+F 5 "Yes" H 2350 2590 60  0001 L CNN "Field4"
+F 6 "POWER" H 2350 2500 60  0001 L CNN "Field5"
+	1    2350 3850
+	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X02 CN10
+L dsi_shield-rescue:CONN_01X02- CN10
 U 1 1 5994F8EB
 P 6450 5850
 F 0 "CN10" H 6369 5575 50  0000 C CNN
@@ -932,7 +876,7 @@ F 4 "Value" H 6450 5850 60  0001 C CNN "Fieldname"
 	-1   0    0    1   
 $EndComp
 $Comp
-L GNDA #PWR05
+L dsi_shield-rescue:GNDA- #PWR05
 U 1 1 5995A62E
 P 6750 6050
 F 0 "#PWR05" H 6750 5800 50  0001 C CNN
@@ -943,7 +887,7 @@ F 3 "" H 6750 6050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MBR0530PbF D9
+L dsi_shield-rescue:MBR0530PbF- D9
 U 1 1 5995E5F7
 P 1300 4150
 F 0 "D9" V 1496 4060 50  0000 R CNN
@@ -991,7 +935,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    -1   -1   0   
 $EndComp
 $Comp
-L +5V #PWR06
+L dsi_shield-rescue:+5V- #PWR06
 U 1 1 59963732
 P 1300 3850
 F 0 "#PWR06" H 1300 3700 50  0001 C CNN
@@ -1002,7 +946,7 @@ F 3 "" H 1300 3850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR07
+L dsi_shield-rescue:GND- #PWR07
 U 1 1 5996428F
 P 1850 4700
 F 0 "#PWR07" H 1850 4450 50  0001 C CNN
@@ -1022,7 +966,7 @@ SCL
 Text Label 4100 3950 0    60   ~ 0
 SDA
 $Comp
-L GND #PWR08
+L dsi_shield-rescue:GND- #PWR08
 U 1 1 599708A5
 P 4050 4850
 F 0 "#PWR08" H 4050 4600 50  0001 C CNN
@@ -1060,7 +1004,7 @@ HOST_D1
 Text Label 4050 6250 0    60   ~ 0
 HOST_D0
 $Comp
-L AD CN8
+L dsi_shield-rescue:AD- CN8
 U 1 1 5997B8AD
 P 2350 5550
 F 0 "CN8" H 2350 5800 50  0000 L CNN
@@ -1133,7 +1077,7 @@ Wire Notes Line
 Wire Notes Line
 	3100 10400 700  10400
 Wire Wire Line
-	5650 7200 5650 7750
+	5650 7200 5650 7350
 Connection ~ 5650 7550
 Connection ~ 5650 7350
 Wire Wire Line
@@ -1145,7 +1089,7 @@ Wire Wire Line
 Wire Wire Line
 	6500 9950 6350 9950
 Wire Wire Line
-	6350 9950 6350 10400
+	6350 9950 6350 10050
 Wire Wire Line
 	6500 10250 6350 10250
 Connection ~ 6350 10250
@@ -1278,7 +1222,7 @@ Wire Wire Line
 Wire Wire Line
 	2050 4350 1850 4350
 Wire Wire Line
-	1850 4350 1850 4700
+	1850 4350 1850 4450
 Wire Wire Line
 	2050 4450 1850 4450
 Connection ~ 1850 4450
@@ -1361,8 +1305,6 @@ Wire Notes Line
 Wire Notes Line
 	1150 6650 1150 3400
 Wire Bus Line
-	4700 5650 4700 6350
-Wire Bus Line
 	4700 6350 5250 6350
 Wire Wire Line
 	9450 7750 8750 7750
@@ -1390,4 +1332,18 @@ Text Label 4100 4250 0    60   ~ 0
 HOST_A0
 Wire Bus Line
 	9450 7850 8750 7850
+Wire Wire Line
+	5650 7550 5650 7750
+Wire Wire Line
+	5650 7350 5650 7550
+Wire Wire Line
+	6350 10250 6350 10400
+Wire Wire Line
+	6350 10150 6350 10250
+Wire Wire Line
+	6350 10050 6350 10150
+Wire Wire Line
+	1850 4450 1850 4700
+Wire Bus Line
+	4700 5650 4700 6350
 $EndSCHEMATC

@@ -1,60 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:Capacitors Networks THD
-LIBS:Capacitors Networks SMD
-LIBS:Capacitors THD
-LIBS:Capacitors SMD
-LIBS:Miscellaneous
-LIBS:HARWIN
-LIBS:LEMO
-LIBS:WEIDMULLER
-LIBS:FCI
-LIBS:MOLEX
-LIBS:TYCO
-LIBS:ERNI
-LIBS:MENTOR
-LIBS:SAMTEC
-LIBS:STELVIO-KONTEK COMATEL
-LIBS:AMPHENOL
-LIBS:HARTING
-LIBS:3M
-LIBS:Pads
-LIBS:Switches
-LIBS:Relays
-LIBS:Heat-Sinks
-LIBS:Fasteners & Fixings
-LIBS:Batteries
-LIBS:Fuses
-LIBS:Metal Screening Box
-LIBS:Sockets
-LIBS:Regulators
-LIBS:Transistors
-LIBS:Power Supplies
-LIBS:Analog & Interface
-LIBS:Sensors
-LIBS:Logic
-LIBS:Optocouplers
-LIBS:Standard Logic
-LIBS:DC-DC Converters
-LIBS:Operational Amplifiers
-LIBS:Crystals & Oscillators
-LIBS:Diodes
-LIBS:LEDs & Displays
-LIBS:PCB Modules
-LIBS:Bonding
-LIBS:Resistors THD
-LIBS:Potentiometers SMD
-LIBS:Thermistors And Varistors
-LIBS:Potentiometers THD
-LIBS:Resistor Networks THD
-LIBS:Resistors SMD
-LIBS:Resistor Networks SMD
-LIBS:Transformers
-LIBS:Inductors SMD
-LIBS:Inductors THD
-LIBS:Cores
-LIBS:power
-LIBS:conn
-LIBS:dsi_shield
+EESchema Schematic File Version 4
 LIBS:dsi_shield-cache
 EELAYER 26 0
 EELAYER END
@@ -71,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L MOLEX_500254-1927 J?
+L dsi_shield-rescue:MOLEX_500254-1927- J?
 U 1 1 59999F77
 P 1500 750
 AR Path="/59999F77" Ref="J?"  Part="1" 
@@ -121,7 +65,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    -1  
 $EndComp
 $Comp
-L R0603_1M_1%_0.1W_100PPM R?
+L dsi_shield-rescue:R0603_1M_1%_0.1W_100PPM- R?
 U 1 1 59999FAE
 P 1800 3450
 AR Path="/59999FAE" Ref="R?"  Part="1" 
@@ -172,7 +116,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L CC0603_100NF_50V_10%_X7R C?
+L dsi_shield-rescue:CC0603_100NF_50V_10%_X7R- C?
 U 1 1 59999FDA
 P 1400 3450
 AR Path="/59999FDA" Ref="C?"  Part="1" 
@@ -222,7 +166,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR039
+L dsi_shield-rescue:GND- #PWR039
 U 1 1 59999FEA
 P 1800 4100
 F 0 "#PWR039" H 1800 3850 50  0001 C CNN
@@ -243,7 +187,7 @@ HDMI_SDA
 Text Label 2250 2150 0    60   ~ 0
 HDMI_CEC
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R30
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R30
 U 1 1 5999AB0C
 P 1500 4550
 F 0 "R30" V 1604 4610 50  0000 L CNN
@@ -292,7 +236,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R31
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R31
 U 1 1 5999AC5E
 P 1500 5050
 F 0 "R31" V 1604 5110 50  0000 L CNN
@@ -341,7 +285,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR040
+L dsi_shield-rescue:GND- #PWR040
 U 1 1 5999ACD8
 P 1500 5450
 F 0 "#PWR040" H 1500 5200 50  0001 C CNN
@@ -354,7 +298,7 @@ $EndComp
 Text HLabel 1300 4900 0    60   Output ~ 0
 HPD_NOTIF
 $Comp
-L PRTR5V0U2X IC8
+L dsi_shield-rescue:PRTR5V0U2X- IC8
 U 1 1 5999C2A3
 P 4350 5650
 F 0 "IC8" H 4550 4985 50  0000 C CNN
@@ -402,7 +346,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    1   
 $EndComp
 $Comp
-L PRTR5V0U2X IC9
+L dsi_shield-rescue:PRTR5V0U2X- IC9
 U 1 1 5999C42E
 P 4350 6500
 F 0 "IC9" H 4550 5835 50  0000 C CNN
@@ -454,7 +398,7 @@ HDMI_SCL
 Text Label 5050 6100 2    60   ~ 0
 HDMI_SDA
 $Comp
-L GND #PWR041
+L dsi_shield-rescue:GND- #PWR041
 U 1 1 5999C6B4
 P 4650 5550
 F 0 "#PWR041" H 4650 5300 50  0001 C CNN
@@ -465,7 +409,7 @@ F 3 "" H 4650 5550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR042
+L dsi_shield-rescue:GND- #PWR042
 U 1 1 5999C727
 P 4650 6400
 F 0 "#PWR042" H 4650 6150 50  0001 C CNN
@@ -478,7 +422,7 @@ $EndComp
 Text Label 5050 5250 2    60   ~ 0
 HDMI_HPD
 $Comp
-L CC0603_100NF_50V_10%_X7R C?
+L dsi_shield-rescue:CC0603_100NF_50V_10%_X7R- C?
 U 1 1 5999D084
 P 2500 3450
 AR Path="/5999D084" Ref="C?"  Part="1" 
@@ -528,7 +472,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR043
+L dsi_shield-rescue:GND- #PWR043
 U 1 1 5999D19C
 P 2500 4100
 F 0 "#PWR043" H 2500 3850 50  0001 C CNN
@@ -539,7 +483,7 @@ F 3 "" H 2500 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L 2N7002 Q3
+L dsi_shield-rescue:2N7002- Q3
 U 1 1 5999E138
 P 4550 3250
 F 0 "Q3" V 4300 3500 50  0000 C CNN
@@ -586,7 +530,7 @@ F 39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    -1   1    0   
 $EndComp
 $Comp
-L 2N7002 Q4
+L dsi_shield-rescue:2N7002- Q4
 U 1 1 5999ED55
 P 4550 4100
 F 0 "Q4" V 4914 4150 50  0000 C CNN
@@ -633,7 +577,7 @@ F 39 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    -1   1    0   
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R24
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R24
 U 1 1 599A03F7
 P 4100 3100
 F 0 "R24" V 4204 3160 50  0000 L CNN
@@ -682,7 +626,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R25
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R25
 U 1 1 599A05E7
 P 4850 3100
 F 0 "R25" V 4954 3160 50  0000 L CNN
@@ -731,7 +675,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R29
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R29
 U 1 1 599A0684
 P 4850 3950
 F 0 "R29" V 4954 4010 50  0000 L CNN
@@ -780,7 +724,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R28
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R28
 U 1 1 599A0727
 P 3750 3900
 F 0 "R28" V 3854 3960 50  0000 L CNN
@@ -829,7 +773,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L +3V3 #PWR044
+L dsi_shield-rescue:+3V3- #PWR044
 U 1 1 599A09BE
 P 4550 2950
 F 0 "#PWR044" H 4550 2800 50  0001 C CNN
@@ -840,7 +784,7 @@ F 3 "" H 4550 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +3V3 #PWR045
+L dsi_shield-rescue:+3V3- #PWR045
 U 1 1 599A0AEB
 P 4550 3850
 F 0 "#PWR045" H 4550 3700 50  0001 C CNN
@@ -991,7 +935,7 @@ Connection ~ 2850 5550
 Wire Wire Line
 	5350 2750 5350 3250
 $Comp
-L BSS84LT1G Q1
+L dsi_shield-rescue:BSS84LT1G- Q1
 U 1 1 599A6CE3
 P 6300 2900
 F 0 "Q1" H 6620 2904 50  0000 L CNN
@@ -1037,7 +981,7 @@ F 38 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    1   
 $EndComp
 $Comp
-L R0603_1K_1%_0.1W_100PPM R23
+L dsi_shield-rescue:R0603_1K_1%_0.1W_100PPM- R23
 U 1 1 599A8E93
 P 5650 3250
 F 0 "R23" H 5800 3145 50  0000 C CNN
@@ -1093,7 +1037,7 @@ Connection ~ 4100 2650
 Wire Wire Line
 	6050 2650 6050 2750
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R22
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R22
 U 1 1 599A9D4C
 P 6500 2700
 F 0 "R22" V 6604 2760 50  0000 L CNN
@@ -1153,7 +1097,7 @@ Wire Wire Line
 Wire Wire Line
 	6350 2900 6300 2900
 $Comp
-L 2N7002 Q2
+L dsi_shield-rescue:2N7002- Q2
 U 1 1 599AA988
 P 6750 3700
 F 0 "Q2" H 7070 3796 50  0000 L CNN
@@ -1199,7 +1143,7 @@ F 38 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    -1  
 $EndComp
 $Comp
-L GND #PWR046
+L dsi_shield-rescue:GND- #PWR046
 U 1 1 599AABDA
 P 6500 4100
 F 0 "#PWR046" H 6500 3850 50  0001 C CNN
@@ -1210,7 +1154,7 @@ F 3 "" H 6500 4100 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R26
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R26
 U 1 1 599AAC36
 P 6900 3750
 F 0 "R26" V 7004 3810 50  0000 L CNN
@@ -1263,7 +1207,7 @@ Wire Wire Line
 Wire Wire Line
 	6900 3700 6900 3750
 $Comp
-L GND #PWR047
+L dsi_shield-rescue:GND- #PWR047
 U 1 1 599AADCE
 P 6900 4100
 F 0 "#PWR047" H 6900 3850 50  0001 C CNN
@@ -1289,7 +1233,7 @@ Wire Wire Line
 Wire Wire Line
 	6650 4800 6950 4800
 $Comp
-L +3V3 #PWR048
+L dsi_shield-rescue:+3V3- #PWR048
 U 1 1 599AE1C6
 P 6950 4800
 F 0 "#PWR048" H 6950 4650 50  0001 C CNN
@@ -1300,7 +1244,7 @@ F 3 "" H 6950 4800 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L IP4292CZ10 D7
+L dsi_shield-rescue:IP4292CZ10- D7
 U 1 1 599AEDEC
 P 7200 3950
 F 0 "D7" H 7400 2915 50  0000 C CNN
@@ -1331,7 +1275,7 @@ TMDS_CLK_P
 Text HLabel 3800 2050 2    60   Output ~ 0
 TMDS_CLK_N
 $Comp
-L IP4292CZ10 D8
+L dsi_shield-rescue:IP4292CZ10- D8
 U 1 1 599B2763
 P 9400 3950
 F 0 "D8" H 9600 2915 50  0000 C CNN
@@ -1385,7 +1329,7 @@ Wire Wire Line
 	7000 5950 7100 5950
 Connection ~ 7000 5950
 $Comp
-L GND #PWR049
+L dsi_shield-rescue:GND- #PWR049
 U 1 1 599B50BC
 P 7000 6050
 F 0 "#PWR049" H 7000 5800 50  0001 C CNN
@@ -1411,7 +1355,7 @@ Wire Wire Line
 	9200 5950 9300 5950
 Connection ~ 9200 5950
 $Comp
-L GND #PWR050
+L dsi_shield-rescue:GND- #PWR050
 U 1 1 599B66EC
 P 9200 6050
 F 0 "#PWR050" H 9200 5800 50  0001 C CNN
@@ -1472,7 +1416,7 @@ Wire Notes Line
 Wire Notes Line
 	3150 6850 750  6850
 $Comp
-L Diode_Schottky D10
+L dsi_shield-rescue:Diode_Schottky- D10
 U 1 1 59908931
 P 6650 4800
 F 0 "D10" H 6800 4573 50  0000 C CNN

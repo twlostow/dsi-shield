@@ -9,3 +9,10 @@ transcript
 syn/
 *.bak
 *.vstf
+*.cmd
+*.elf
+*.#
+*.log
+*.out
+genraminit
+.#*

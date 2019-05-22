@@ -169,15 +169,13 @@ module main;
    Axi4StreamMaster U_DataMaster(.intf(pixels));
   
    
-   dsi_core 
+   dsi_core_zynq_wrapper
      #(
-       .g_control_interface_type("AXI4"),
-       .g_pixel_interface_type("AXI4")
        ) DUT(
 	     .s_axil_ACLK(clk_sys),
 	     .s_axil_ARESETN(rst_n),
 	     
-	     .clk_dsi_i(clk_sys),
+	     .clk_pll_i(clk_sys),
  	     .s_axil_ARVALID(control.ARVALID),
  	     .s_axil_AWVALID(control.AWVALID),
 	     .s_axil_BREADY(control.BREADY),
@@ -238,6 +236,7 @@ module main;
       panel.frame_gap = 1000;
       
       
+      #10us;
       
       
       while(!rst_n)

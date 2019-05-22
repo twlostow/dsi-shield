@@ -53,20 +53,16 @@ module dsi_core
    // FIFO write
    pix_wr_i,
 
-   // DSI high speed output
-   dsi_hs_p_o,
-   dsi_hs_n_o,
-
+   // DSI high speed output (to serdes - last byte is clock)
+   serdes_data_o,
+   serdes_oe_o,
+   
    // DSI low power output
    dsi_lp_p_o,
    dsi_lp_n_o,
 
    // Low power output enable
    dsi_lp_oe_o,
-
-   // DSI clock lane output
-   dsi_clk_p_o,
-   dsi_clk_n_o,
 
    // DSI clock lane LP signals + output enable
    dsi_clk_lp_p_o,
@@ -132,22 +128,18 @@ module dsi_core
    // image FIFO size (holds g_pixels_per_clock * g_fifo_size pixels)
    parameter g_fifo_size = 1024;
 
-   parameter g_use_external_dsi_clock = 0;
-
    parameter g_pixel_interface_type = "AXI4";
 
    parameter g_control_interface_type = "AXI4";
 
-   parameter g_target_fpga = "Zynq";
-   
    
    // PHY clock period, in picoseconds. Used to set clock-to-data shift.
    parameter g_clock_period_ps = 3600;
    // picoseconds per ODELAY2 tap.  Used to set clock-to-data shift.
    parameter g_ps_per_delay_tap = 50;
    
-   localparam g_data_delay = (g_clock_period_ps / 2) / g_ps_per_delay_tap;
-   localparam g_pixel_width = 24 * g_pixels_per_clock;
+   parameter g_data_delay = (g_clock_period_ps / 2) / g_ps_per_delay_tap;
+   parameter g_pixel_width = 24 * g_pixels_per_clock;
 
    input 			    s_axil_ACLK;
    input 			    s_axil_ARESETN;
@@ -205,13 +197,14 @@ module dsi_core
    input [g_pixel_width - 1 : 0 ] pix_i;
    input                          pix_wr_i;
 
-   output                         dsi_clk_p_o, dsi_clk_n_o;
-   output [g_lanes-1:0] 	  dsi_hs_p_o, dsi_hs_n_o;
    output [g_lanes-1:0] 	  dsi_lp_p_o, dsi_lp_n_o;
    output [g_lanes-1:0] 	  dsi_lp_oe_o;
-
    output                         dsi_clk_lp_p_o, dsi_clk_lp_n_o;
    output                         dsi_clk_lp_oe_o;
+
+   output [(g_lanes+1)*8-1:0] 	  serdes_data_o;
+   output [g_lanes:0] 	  serdes_oe_o;
+   
    
    output reg                     dsi_reset_n_o;
    output reg [2:0] 		  dsi_gpio_o;
@@ -335,7 +328,7 @@ module dsi_core
    assign rst_n_sys = (g_control_interface_type == "AXI4" ? s_axil_ARESETN : rst_n_i );
    assign clk_sys =  (g_control_interface_type == "AXI4" ? s_axil_ACLK : clk_sys_i );
    
-   dsi_sync_chain #(2) Sync3 (clk_dsi_i, 1'b0, rst_n_sys, rst_n_dsi);
+   dsi_sync_chain #(2) Sync3 (clk_dsi_i, rst_n_sys, 1'b1, rst_n_dsi);
    
    generate
       genvar                       i;
@@ -419,75 +412,8 @@ module dsi_core
    assign serdes_oe_lane [g_lanes] = dsi_clk_lp_oe;
    assign dsi_clk_lp_oe_o = dsi_clk_lp_oe;
 
-
-   generate
-      if (g_target_fpga == "Spartan6" || g_target_fpga == "Zynq")
-	begin
-	   
-	   wire clk_serdes, serdes_strobe;
-
-	   dphy_serdes_plla U_BufPLL 
-	     (
-	      .clk_phy_i(clk_phy_i),
-	      .clk_dsi_i(clk_dsi_i),
-	      .rst_n_a_i(rst_n_sys),
-	      .locked_i (pll_locked_i),
-	      .clk_serdes_o(clk_serdes),
-	      .serdes_strobe_o(serdes_strobe)
-	      );
-	end 
-      
-   endgenerate
-   
-
-
-   generate
-      if (g_target_fpga == "Spartan6" || g_target_fpga == "Zynq" ) begin
-	 wire [g_lanes:0] tx_p, tx_n;
-
-	 for(i=0;i<g_lanes;i=i+1)
-           begin
-              dphy_serdes_spartan6
-               #( .g_delay ( g_data_delay ) )
-              U_Serdes_LaneX (
-                              .clk_serdes_i(clk_serdes),
-                              .clk_word_i(clk_dsi_i),
-                              .rst_n_a_i(rst_n_sys),
-                              .strobe_i(serdes_strobe),
-                              .oe_i(serdes_oe_lane[i]),
-                              .d_i(serdes_data[i*8 +: 8]),
-                              .q_p_o(tx_p[i]),
-                              .q_n_o(tx_n[i])
-
-                              );
-
-	      if( i < g_lanes ) begin
-		 assign dsi_hs_p_o[i] = tx_p[i];
-		 assign dsi_hs_n_o[i] = tx_n[i];
-	      end
-
-           end // for (i=0;i<=g_lanes;i+=1)
-	 
-
-	 dphy_serdes_spartan6
-	   #( .g_delay ( 0 ) )
-	 U_Serdes_ClkLane (
-			   .clk_serdes_i(clk_serdes),
-			   .clk_word_i(clk_dsi_i),
-			   .rst_n_a_i(rst_n_sys),
-			   .strobe_i(serdes_strobe),
-			   .oe_i(serdes_oe_lane[g_lanes]),
-			   .d_i(serdes_data[g_lanes*8 +: 8]),
-			   .q_p_o(tx_p[g_lanes]),
-			   .q_n_o(tx_n[g_lanes])
-
-			   );
-
-	 assign dsi_clk_p_o = tx_p[g_lanes];
-	 assign dsi_clk_n_o = tx_n[g_lanes];
-
-      end
-   endgenerate
+   assign serdes_oe_o = serdes_oe_lane;
+   assign serdes_data_o = serdes_data;
    
    ////////////////   
    // Packet layer

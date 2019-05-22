@@ -1,60 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:Capacitors Networks THD
-LIBS:Capacitors Networks SMD
-LIBS:Capacitors THD
-LIBS:Capacitors SMD
-LIBS:Miscellaneous
-LIBS:HARWIN
-LIBS:LEMO
-LIBS:WEIDMULLER
-LIBS:FCI
-LIBS:MOLEX
-LIBS:TYCO
-LIBS:ERNI
-LIBS:MENTOR
-LIBS:SAMTEC
-LIBS:STELVIO-KONTEK COMATEL
-LIBS:AMPHENOL
-LIBS:HARTING
-LIBS:3M
-LIBS:Pads
-LIBS:Switches
-LIBS:Relays
-LIBS:Heat-Sinks
-LIBS:Fasteners & Fixings
-LIBS:Batteries
-LIBS:Fuses
-LIBS:Metal Screening Box
-LIBS:Sockets
-LIBS:Regulators
-LIBS:Transistors
-LIBS:Power Supplies
-LIBS:Analog & Interface
-LIBS:Sensors
-LIBS:Logic
-LIBS:Optocouplers
-LIBS:Standard Logic
-LIBS:DC-DC Converters
-LIBS:Operational Amplifiers
-LIBS:Crystals & Oscillators
-LIBS:Diodes
-LIBS:LEDs & Displays
-LIBS:PCB Modules
-LIBS:Bonding
-LIBS:Resistors THD
-LIBS:Potentiometers SMD
-LIBS:Thermistors And Varistors
-LIBS:Potentiometers THD
-LIBS:Resistor Networks THD
-LIBS:Resistors SMD
-LIBS:Resistor Networks SMD
-LIBS:Transformers
-LIBS:Inductors SMD
-LIBS:Inductors THD
-LIBS:Cores
-LIBS:power
-LIBS:conn
-LIBS:dsi_shield
+EESchema Schematic File Version 4
 LIBS:dsi_shield-cache
 EELAYER 26 0
 EELAYER END
@@ -71,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L R0603_160R_1%_0.1W_100PPM RA52
+L dsi_shield-rescue:R0603_160R_1%_0.1W_100PPM- RA52
 U 1 1 598DB2C0
 P 6600 2100
 AR Path="/598D85B4/598D9987/598DB2C0" Ref="RA52"  Part="1" 
@@ -125,7 +69,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	-1   0    0    1   
 $EndComp
 $Comp
-L R0603_22R_1%_0.1W_100PPM RA51
+L dsi_shield-rescue:R0603_22R_1%_0.1W_100PPM- RA51
 U 1 1 598DC2CA
 P 6800 1750
 AR Path="/598D85B4/598D9987/598DC2CA" Ref="RA51"  Part="1" 
@@ -180,7 +124,7 @@ F 42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_51R_1%_0.1W_100PPM RA3
+L dsi_shield-rescue:R0603_51R_1%_0.1W_100PPM- RA3
 U 1 1 598DD2C1
 P 6800 2150
 AR Path="/598D85B4/598D9987/598DD2C1" Ref="RA3"  Part="1" 
@@ -251,7 +195,7 @@ Wire Wire Line
 	6800 2050 6800 2150
 Connection ~ 6800 2100
 $Comp
-L R0603_51R_1%_0.1W_100PPM RA4
+L dsi_shield-rescue:R0603_51R_1%_0.1W_100PPM- RA4
 U 1 1 598DDA7D
 P 6800 2550
 AR Path="/598D85B4/598D9987/598DDA7D" Ref="RA4"  Part="1" 
@@ -307,7 +251,7 @@ $EndComp
 Wire Wire Line
 	6800 2550 6800 2450
 $Comp
-L GND #PWR034
+L dsi_shield-rescue:GND- #PWR034
 U 1 1 598DDCCB
 P 7200 2550
 AR Path="/598D85B4/598D9987/598DDCCB" Ref="#PWR034"  Part="1" 
@@ -328,7 +272,7 @@ Wire Wire Line
 	7200 2500 7200 2550
 Connection ~ 6800 2500
 $Comp
-L R0603_22R_1%_0.1W_100PPM RA6
+L dsi_shield-rescue:R0603_22R_1%_0.1W_100PPM- RA6
 U 1 1 598DDD38
 P 6800 2950
 AR Path="/598D85B4/598D9987/598DDD38" Ref="RA6"  Part="1" 
@@ -382,7 +326,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L R0603_160R_1%_0.1W_100PPM RA5
+L dsi_shield-rescue:R0603_160R_1%_0.1W_100PPM- RA5
 U 1 1 598DDDBE
 P 6600 2900
 AR Path="/598D85B4/598D9987/598DDDBE" Ref="RA5"  Part="1" 

@@ -1,60 +1,4 @@
-EESchema Schematic File Version 2
-LIBS:Capacitors Networks THD
-LIBS:Capacitors Networks SMD
-LIBS:Capacitors THD
-LIBS:Capacitors SMD
-LIBS:Miscellaneous
-LIBS:HARWIN
-LIBS:LEMO
-LIBS:WEIDMULLER
-LIBS:FCI
-LIBS:MOLEX
-LIBS:TYCO
-LIBS:ERNI
-LIBS:MENTOR
-LIBS:SAMTEC
-LIBS:STELVIO-KONTEK COMATEL
-LIBS:AMPHENOL
-LIBS:HARTING
-LIBS:3M
-LIBS:Pads
-LIBS:Switches
-LIBS:Relays
-LIBS:Heat-Sinks
-LIBS:Fasteners & Fixings
-LIBS:Batteries
-LIBS:Fuses
-LIBS:Metal Screening Box
-LIBS:Sockets
-LIBS:Regulators
-LIBS:Transistors
-LIBS:Power Supplies
-LIBS:Analog & Interface
-LIBS:Sensors
-LIBS:Logic
-LIBS:Optocouplers
-LIBS:Standard Logic
-LIBS:DC-DC Converters
-LIBS:Operational Amplifiers
-LIBS:Crystals & Oscillators
-LIBS:Diodes
-LIBS:LEDs & Displays
-LIBS:PCB Modules
-LIBS:Bonding
-LIBS:Resistors THD
-LIBS:Potentiometers SMD
-LIBS:Thermistors And Varistors
-LIBS:Potentiometers THD
-LIBS:Resistor Networks THD
-LIBS:Resistors SMD
-LIBS:Resistor Networks SMD
-LIBS:Transformers
-LIBS:Inductors SMD
-LIBS:Inductors THD
-LIBS:Cores
-LIBS:power
-LIBS:conn
-LIBS:dsi_shield
+EESchema Schematic File Version 4
 LIBS:dsi_shield-cache
 EELAYER 26 0
 EELAYER END
@@ -71,7 +15,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L CONN_02X13 CN2
+L dsi_shield-rescue:CONN_02X13- CN2
 U 1 1 5992BEF4
 P 6450 2050
 F 0 "CN2" H 6450 2865 50  0000 C CNN
@@ -102,7 +46,7 @@ LCD_BL_A
 Text Label 6900 1550 0    60   ~ 0
 LCD_BL_FB
 $Comp
-L R0603_10R_1%_0.1W_200PPM R1
+L dsi_shield-rescue:R0603_10R_1%_0.1W_200PPM- R1
 U 1 1 5992DD51
 P 7500 1550
 F 0 "R1" H 7650 1853 50  0000 C CNN
@@ -152,7 +96,7 @@ F 42 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L +1V8 #PWR0133
+L dsi_shield-rescue:+1V8- #PWR0133
 U 1 1 5992E6B7
 P 6900 1750
 F 0 "#PWR0133" H 6900 1600 50  0001 C CNN
@@ -167,7 +111,7 @@ Text Label 6900 1950 0    60   ~ 0
 DSI_RESET_N
 NoConn ~ 6700 2050
 $Comp
-L +1V8 #PWR0134
+L dsi_shield-rescue:+1V8- #PWR0134
 U 1 1 5992E849
 P 6900 2150
 F 0 "#PWR0134" H 6900 2000 50  0001 C CNN
@@ -204,7 +148,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 2150 6900 2150
 $Comp
-L R0603_3K3_1%_0.1W_100PPM R2
+L dsi_shield-rescue:R0603_3K3_1%_0.1W_100PPM- R2
 U 1 1 599346A2
 P 7500 1950
 F 0 "R2" H 7650 2147 50  0000 C CNN
@@ -292,7 +236,7 @@ Wire Wire Line
 	6400 2850 6400 2950
 Connection ~ 6400 2850
 $Comp
-L GND #PWR0135
+L dsi_shield-rescue:GND- #PWR0135
 U 1 1 5993C371
 P 6400 2950
 F 0 "#PWR0135" H 6400 2700 50  0001 C CNN
@@ -303,7 +247,7 @@ F 3 "" H 6400 2950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0136
+L dsi_shield-rescue:GND- #PWR0136
 U 1 1 5993C3F9
 P 7800 1550
 F 0 "#PWR0136" H 7800 1300 50  0001 C CNN
@@ -314,7 +258,7 @@ F 3 "" H 7800 1550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L GND #PWR0137
+L dsi_shield-rescue:GND- #PWR0137
 U 1 1 5993C774
 P 7800 1950
 F 0 "#PWR0137" H 7800 1700 50  0001 C CNN
@@ -427,7 +371,7 @@ Wire Wire Line
 Wire Wire Line
 	1550 3550 2450 3550
 $Comp
-L CONN_02X15_ALT CN3
+L dsi_shield-rescue:CONN_02X15_ALT- CN3
 U 1 1 59949FB3
 P 6450 4950
 F 0 "CN3" H 6450 5865 50  0000 C CNN
@@ -481,7 +425,7 @@ LCD_BL_A
 Wire Wire Line
 	6700 4350 7150 4350
 $Comp
-L R0603_10R_1%_0.1W_200PPM R49
+L dsi_shield-rescue:R0603_10R_1%_0.1W_200PPM- R49
 U 1 1 5994AFFA
 P 7150 4350
 F 0 "R49" H 7300 4547 50  0000 C CNN
@@ -530,7 +474,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L R0603_10R_1%_0.1W_200PPM R50
+L dsi_shield-rescue:R0603_10R_1%_0.1W_200PPM- R50
 U 1 1 5994B12D
 P 7150 4450
 F 0 "R50" H 7300 4345 50  0000 C CNN
@@ -604,7 +548,7 @@ Wire Wire Line
 Wire Wire Line
 	6700 4650 6900 4650
 $Comp
-L +1V8 #PWR0138
+L dsi_shield-rescue:+1V8- #PWR0138
 U 1 1 5994CF83
 P 6900 4650
 F 0 "#PWR0138" H 6900 4500 50  0001 C CNN
@@ -659,7 +603,7 @@ Wire Wire Line
 Wire Wire Line
 	6200 4650 6000 4650
 $Comp
-L GND #PWR0141
+L dsi_shield-rescue:GND- #PWR0141
 U 1 1 59956F93
 P 6450 6150
 F 0 "#PWR0141" H 6450 5900 50  0001 C CNN
@@ -701,7 +645,7 @@ Wire Notes Line
 Wire Notes Line
 	3100 6800 700  6800
 $Comp
-L PLATED_HOLE0.8_PAD1.3 B5
+L dsi_shield-rescue:PLATED_HOLE0.8_PAD1.3- B5
 U 1 1 599E1A70
 P 2500 5000
 F 0 "B5" H 2485 5105 50  0000 C CNN
@@ -750,7 +694,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L PLATED_HOLE0.8_PAD1.3 B6
+L dsi_shield-rescue:PLATED_HOLE0.8_PAD1.3- B6
 U 1 1 599E1C02
 P 2500 5250
 F 0 "B6" H 2485 5355 50  0000 C CNN
@@ -799,7 +743,7 @@ F 41 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR0132
+L dsi_shield-rescue:GND- #PWR0132
 U 1 1 599E1E7E
 P 2850 5350
 F 0 "#PWR0132" H 2850 5100 50  0001 C CNN
@@ -814,7 +758,7 @@ Wire Wire Line
 Wire Wire Line
 	2850 5250 2850 5350
 $Comp
-L +5V #PWR0139
+L dsi_shield-rescue:+5V- #PWR0139
 U 1 1 599E219E
 P 2850 4850
 F 0 "#PWR0139" H 2850 4700 50  0001 C CNN
@@ -829,7 +773,7 @@ Wire Wire Line
 Wire Wire Line
 	2850 5000 2850 4850
 $Comp
-L LCD_PVDD #PWR0140
+L dsi_shield-rescue:LCD_PVDD- #PWR0140
 U 1 1 599DFBF6
 P 6900 1650
 F 0 "#PWR0140" H 6900 1500 50  0001 C CNN
@@ -840,7 +784,7 @@ F 3 "" H 6900 1650 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L LCD_PVDD #PWR0142
+L dsi_shield-rescue:LCD_PVDD- #PWR0142
 U 1 1 599E01CB
 P 6000 4550
 F 0 "#PWR0142" H 6000 4400 50  0001 C CNN
@@ -851,7 +795,7 @@ F 3 "" H 6000 4550 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LCD_MVDD #PWR0143
+L dsi_shield-rescue:LCD_MVDD- #PWR0143
 U 1 1 599E04B6
 P 6000 4650
 F 0 "#PWR0143" H 6000 4500 50  0001 C CNN
@@ -862,7 +806,7 @@ F 3 "" H 6000 4650 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 $Comp
-L LCD_PVDD #PWR0144
+L dsi_shield-rescue:LCD_PVDD- #PWR0144
 U 1 1 599E0758
 P 8900 1550
 F 0 "#PWR0144" H 8900 1400 50  0001 C CNN
@@ -873,7 +817,7 @@ F 3 "" H 8900 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +1V8 #PWR0145
+L dsi_shield-rescue:+1V8- #PWR0145
 U 1 1 599E078B
 P 9400 1550
 F 0 "#PWR0145" H 9400 1400 50  0001 C CNN
@@ -884,7 +828,7 @@ F 3 "" H 9400 1550 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CC0603_100NF_100V_10%_X7R C1
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C1
 U 1 1 599E1407
 P 8900 1650
 F 0 "C1" V 9004 1760 50  0000 L CNN
@@ -932,7 +876,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L CC0603_100NF_100V_10%_X7R C2
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C2
 U 1 1 599E1572
 P 9400 1650
 F 0 "C2" V 9504 1760 50  0000 L CNN
@@ -984,7 +928,7 @@ Wire Wire Line
 Wire Wire Line
 	8900 1550 8900 1650
 $Comp
-L GND #PWR0146
+L dsi_shield-rescue:GND- #PWR0146
 U 1 1 599E1772
 P 9400 2050
 F 0 "#PWR0146" H 9400 1800 50  0001 C CNN
@@ -997,7 +941,7 @@ $EndComp
 Wire Wire Line
 	9400 1950 9400 2050
 $Comp
-L GND #PWR0147
+L dsi_shield-rescue:GND- #PWR0147
 U 1 1 599E188B
 P 8900 2050
 F 0 "#PWR0147" H 8900 1800 50  0001 C CNN
@@ -1010,7 +954,7 @@ $EndComp
 Wire Wire Line
 	8900 1950 8900 2050
 $Comp
-L LCD_PVDD #PWR0148
+L dsi_shield-rescue:LCD_PVDD- #PWR0148
 U 1 1 599E3395
 P 8900 4800
 F 0 "#PWR0148" H 8900 4650 50  0001 C CNN
@@ -1021,7 +965,7 @@ F 3 "" H 8900 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L +1V8 #PWR0149
+L dsi_shield-rescue:+1V8- #PWR0149
 U 1 1 599E339B
 P 9900 4800
 F 0 "#PWR0149" H 9900 4650 50  0001 C CNN
@@ -1032,7 +976,7 @@ F 3 "" H 9900 4800 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CC0603_100NF_100V_10%_X7R C32
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C32
 U 1 1 599E33C6
 P 8900 4900
 F 0 "C32" V 9004 5010 50  0000 L CNN
@@ -1080,7 +1024,7 @@ F 40 "This work is licensed under the Creative Commons CC-BY-SA 4.0 License. To 
 	0    1    1    0   
 $EndComp
 $Comp
-L CC0603_100NF_100V_10%_X7R C34
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C34
 U 1 1 599E33F2
 P 9900 4900
 F 0 "C34" V 10004 5010 50  0000 L CNN
@@ -1132,7 +1076,7 @@ Wire Wire Line
 Wire Wire Line
 	8900 4800 8900 4900
 $Comp
-L GND #PWR0150
+L dsi_shield-rescue:GND- #PWR0150
 U 1 1 599E33FB
 P 9900 5300
 F 0 "#PWR0150" H 9900 5050 50  0001 C CNN
@@ -1145,7 +1089,7 @@ $EndComp
 Wire Wire Line
 	9900 5200 9900 5300
 $Comp
-L GND #PWR0151
+L dsi_shield-rescue:GND- #PWR0151
 U 1 1 599E3402
 P 8900 5300
 F 0 "#PWR0151" H 8900 5050 50  0001 C CNN
@@ -1158,7 +1102,7 @@ $EndComp
 Wire Wire Line
 	8900 5200 8900 5300
 $Comp
-L CC0603_100NF_100V_10%_X7R C33
+L dsi_shield-rescue:CC0603_100NF_100V_10%_X7R- C33
 U 1 1 599E34F6
 P 9400 4900
 F 0 "C33" V 9504 5010 50  0000 L CNN
@@ -1208,7 +1152,7 @@ $EndComp
 Wire Wire Line
 	9400 4800 9400 4900
 $Comp
-L GND #PWR0152
+L dsi_shield-rescue:GND- #PWR0152
 U 1 1 599E34FE
 P 9400 5300
 F 0 "#PWR0152" H 9400 5050 50  0001 C CNN
@@ -1221,7 +1165,7 @@ $EndComp
 Wire Wire Line
 	9400 5200 9400 5300
 $Comp
-L LCD_MVDD #PWR0153
+L dsi_shield-rescue:LCD_MVDD- #PWR0153
 U 1 1 599E3520
 P 9400 4800
 F 0 "#PWR0153" H 9400 4650 50  0001 C CNN

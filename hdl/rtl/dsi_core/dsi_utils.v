@@ -222,8 +222,10 @@ module dsi_sync_chain
 
    reg [length-1:0] sync; // synthesis KEEP=TRUE
    
-   always@(posedge clk_i)
-     begin
+   always@(posedge clk_i or negedge rst_n_i)
+     if(!rst_n_i) begin
+	sync <= 0;
+     end else  begin
         sync[0] <= d_i;
         sync[length-1:1] <= sync[length-2:0];
      end
