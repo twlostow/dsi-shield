@@ -488,17 +488,47 @@ module dsi_core
 	 
       end
    endgenerate
+
+   wire       cbgen_enable;
+
+   wire [g_pixel_width-1:0] fifo_pixels_cbgen;
+   wire 		    fifo_empty_cbgen;
+   wire [g_pixel_width-1:0] fifo_pixels_muxed;
+   wire 		    fifo_empty_muxed;
+   wire 		    pix_vsync_cbgen;
+   wire 		    pix_vsync_dsi_muxed;
    
+   dsi_colorbar_gen
+     #( .g_pixels_per_clock(g_pixels_per_clock) )
+   U_ColorBarGen (
+                  .clk_i(clk_dsi_i),
+                  .rst_n_i(rst_n_dsi),
+                  .fifo_empty_o(fifo_empty_cbgen),
+		  .fifo_rd_i(fifo_rd),
+                  .pix_vsync_o(pix_vsync_cbgen),
+		  .fifo_pixels_o(fifo_pixels_cbgen),
+      
+                  .host_a_i(host_a),
+                  .host_d_i(host_d_in),
+                  .host_wr_i(host_wr),
+		  .test_en_o(cbgen_enable)
+		  );
    
+
+   assign   fifo_empty_muxed = cbgen_enable ? fifo_empty_cbgen : fifo_empty;
+   assign pix_vsync_dsi_muxed = cbgen_enable ? pix_vsync_cbgen : pix_vsync_dsi;
+   assign fifo_pixels_muxed = cbgen_enable ? fifo_pixels_cbgen : fifo_dout[g_pixel_width-1:0] ;
+   
+			      
    dsi_timing_gen 
      #( .g_pixels_per_clock(g_pixels_per_clock) )
    U_TimingGen (
                 .clk_i(clk_dsi_i),
                 .rst_n_i(rst_n_dsi),
-                .fifo_empty_i(fifo_empty),
+                .fifo_empty_i(fifo_empty_muxed),
 		.fifo_rd_o(fifo_rd),
-                .fifo_vsync_i(pix_vsync_dsi),
-		.fifo_pixels_i(fifo_dout[g_pixel_width-1:0]),
+                .fifo_vsync_i(pix_vsync_dsi_muxed),
+		.fifo_pixels_i(fifo_pixels_muxed),
 //                .pix_vsync_i(pix_vsync_dsi),
                 .pix_next_frame_o(pix_next_frame_dsi),
                 .p_req_o(p_req),
