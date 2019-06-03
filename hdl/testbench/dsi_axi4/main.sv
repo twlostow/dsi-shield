@@ -267,8 +267,13 @@ module main;
 
       acc.write(`REG_TIMING_CTL, 1); /* start display refresh */
 
+      acc.write(`REG_TEST_XSIZE, 640-1);
+      acc.write(`REG_TEST_YSIZE, 480-1);
+      acc.write(`REG_TEST_CTL, 1);
+      
+      
       $display("Config done!");
-      fgen.run();
+//      fgen.run();
       
       
       

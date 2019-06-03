@@ -224,72 +224,76 @@ add wave -noupdate -group ClkLane /main/DUT/U_WrappedCore/U_ClockLane/serdes_dat
 add wave -noupdate -group ClkLane /main/DUT/U_WrappedCore/U_ClockLane/hs_data_muxed
 add wave -noupdate -group ClkLane /main/DUT/U_WrappedCore/U_ClockLane/hs_valid_muxed
 add wave -noupdate -group ClkLane /main/DUT/U_WrappedCore/U_ClockLane/hs_request_muxed
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/clk_serdes_i
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/clk_word_i
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/rst_n_a_i
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/oe_i
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/d_i
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/q_p_o
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/q_n_o
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/dout_int
-add wave -noupdate -expand -group ClkSerdes /main/DUT/U_Serdes_ClkLane/tq_int
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/OFB}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/OQ}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/SHIFTOUT1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/SHIFTOUT2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/TBYTEOUT}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/TFB}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/TQ}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/CLK}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/CLKDIV}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D3}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D4}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D5}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D6}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D7}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/D8}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/OCE}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/RST}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/SHIFTIN1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/SHIFTIN2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/T1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/T2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/T3}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/T4}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/TBYTEIN}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/TCE}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/GSR}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_OFB}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_OQ}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_SHIFTOUT1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_SHIFTOUT2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_TBYTEOUT}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_TFB}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_TQ}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_CLK}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_CLKDIV}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D3}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D4}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D5}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D6}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D7}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_D8}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_OCE}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_RST}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_SHIFTIN1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_SHIFTIN2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_T1}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_T2}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_T3}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_T4}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_TBYTEIN}
-add wave -noupdate {/main/DUT/genblk1[2]/U_Serdes_LaneX/U_Serdes/delay_TCE}
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/clk_serdes_i
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/clk_word_i
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/rst_n_a_i
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/oe_i
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/d_i
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/q_p_o
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/q_n_o
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/dout_int
+add wave -noupdate -group ClkSerdes /main/DUT/U_Serdes_ClkLane/tq_int
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/clk_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/rst_n_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/fifo_empty_o
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/fifo_rd_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/fifo_pixels_o
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/pix_vsync_o
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/host_a_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/host_d_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/host_d_o
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/host_wr_i
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/test_en_o
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/r_xsize
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/r_ysize
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/r_enable
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/state
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/xcnt
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/ycnt
+add wave -noupdate -group CBGen /main/DUT/U_WrappedCore/U_ColorBarGen/vsync_cnt
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/clk_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/rst_n_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/fifo_vsync_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/fifo_empty_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/fifo_rd_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/fifo_pixels_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/pix_vsync_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/pix_next_frame_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_req_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_islong_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_type_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_wcount_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_command_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_payload_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_dreq_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/p_last_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/host_a_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/host_d_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/host_d_o
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/host_wr_i
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/pix_vsync_latched
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/state
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/next_state
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/h_count
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/v_count
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/h_front_porch
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/h_back_porch
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/h_active
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/h_total
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/v_front_porch
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/v_back_porch
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/v_active
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/v_total
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/enable
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/disp_en_mask
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/pixel_counter
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/pixel_counter_d0
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/force_lp
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/push_pixels
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/push_pixels_d0
+add wave -noupdate -expand -group TimGen /main/DUT/U_WrappedCore/U_TimingGen/waiting_frame
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {118577 ps} 0}
+WaveRestoreCursors {{Cursor 1} {100136989 ps} 0}
 configure wave -namecolwidth 218
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
@@ -304,4 +308,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ps
 update
-WaveRestoreZoom {60007 ps} {169993 ps}
+WaveRestoreZoom {16136989 ps} {184136989 ps}

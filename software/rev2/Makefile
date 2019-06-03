@@ -1,4 +1,4 @@
-CROSS_COMPILE ?= /opt/gcc-riscv-5.2.0/bin/riscv64-unknown-elf-
+CROSS_COMPILE ?= riscv32-elf-
 
 BIN_DIR=../bin
 
@@ -11,10 +11,10 @@ OBJDUMP =	$(CROSS_COMPILE)objdump
 OBJCOPY =	$(CROSS_COMPILE)objcopy
 SIZE =		$(CROSS_COMPILE)size
 
-ARCH = RV32IM
+ARCH = rv32im
 
-CFLAGS = -g -m32  -Os  -msoft-float -march=$(ARCH)  -I. -I../common -ffunction-sections -fdata-sections  -Ipanels -I../arch 
-LDFLAGS = -m32  -g  -msoft-float  -march=$(ARCH) -nostartfiles -Wl,--gc-sections
+CFLAGS = -g   -Os   -march=$(ARCH)  -I. -I../common -ffunction-sections -fdata-sections  -Ipanels -I../arch 
+LDFLAGS =  -g    -march=$(ARCH) -nostartfiles -Wl,--gc-sections
 OBJS = 	../arch/risc-v/crtuser.o \
 	../common/libhpdmc-c.o \
 	../common/uart.o  \

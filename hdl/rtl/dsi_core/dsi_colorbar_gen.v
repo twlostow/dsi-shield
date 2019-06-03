@@ -71,8 +71,8 @@ module dsi_colorbar_gen
    
    
    reg [11:0] 			     r_xsize, r_ysize;
-   reg 				     r_enable;
-   reg [2:0] 			     state;
+   (* mark_debug = "true", keep = "true" *)   reg 				     r_enable;
+   (* mark_debug = "true", keep = "true" *)   reg [2:0] 			     state;
 
    reg [11:0] 			     xcnt, ycnt;
    reg [11:0] 			     vsync_cnt = 0;
