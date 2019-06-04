@@ -95,7 +95,7 @@ module dsi_packet_assembler
    
    dsi_packer
      #(
-       .g_input_bytes(3*g_pixels_per_clock),
+       .g_input_bytes(6),
        .g_output_bytes(g_num_lanes)
        )
    U_Packer
@@ -123,7 +123,7 @@ module dsi_packet_assembler
    
    dsi_crc
      #(
-       .g_max_data_bytes(g_pixels_per_clock * 3)
+       .g_max_data_bytes(6)
        ) 
    U_CRC 
      (
