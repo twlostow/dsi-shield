@@ -203,7 +203,7 @@ module dsi_core
    output                         dsi_clk_lp_oe_o;
 
    output [(g_lanes+1)*8-1:0] 	  serdes_data_o;
-   output [g_lanes:0] 	  serdes_oe_o;
+   output reg [g_lanes:0] 	  serdes_oe_o;
    
    
    output reg                     dsi_reset_n_o;
@@ -412,9 +412,11 @@ module dsi_core
    assign serdes_oe_lane [g_lanes] = dsi_clk_lp_oe;
    assign dsi_clk_lp_oe_o = dsi_clk_lp_oe;
 
-   assign serdes_oe_o = serdes_oe_lane;
+   
    assign serdes_data_o = serdes_data;
    
+   always@(posedge clk_dsi_i)
+        serdes_oe_o <= serdes_oe_lane;
    ////////////////   
    // Packet layer
    ///////////////
@@ -489,14 +491,13 @@ module dsi_core
       end
    endgenerate
 
-   wire       cbgen_enable;
-
+   (* mark_debug = "true", keep = "true" *) wire       cbgen_enable;
    wire [g_pixel_width-1:0] fifo_pixels_cbgen;
-   wire 		    fifo_empty_cbgen;
-   wire [g_pixel_width-1:0] fifo_pixels_muxed;
-   wire 		    fifo_empty_muxed;
-   wire 		    pix_vsync_cbgen;
-   wire 		    pix_vsync_dsi_muxed;
+   (* mark_debug = "true", keep = "true"  *)    wire 		    fifo_empty_cbgen;
+   (* mark_debug = "true", keep = "true"  *)    wire [g_pixel_width-1:0] fifo_pixels_muxed;
+   (* mark_debug = "true", keep = "true" *)    wire 		    fifo_empty_muxed;
+   (* mark_debug = "true", keep = "true" *)    wire 		    pix_vsync_cbgen;
+   (* mark_debug = "true", keep = "true" *)    wire 		    pix_vsync_dsi_muxed;
    
    dsi_colorbar_gen
      #( .g_pixels_per_clock(g_pixels_per_clock) )
@@ -507,6 +508,7 @@ module dsi_core
 		  .fifo_rd_i(fifo_rd),
                   .pix_vsync_o(pix_vsync_cbgen),
 		  .fifo_pixels_o(fifo_pixels_cbgen),
+		  .pix_next_frame_i(pix_next_frame_dsi),
       
                   .host_a_i(host_a),
                   .host_d_i(host_d_in),
@@ -579,7 +581,7 @@ module dsi_core
        .g_size(g_fifo_size),
        .g_almost_full_threshold(g_fifo_size-20),
        .g_almost_empty_threshold(10),
-       .g_with_wr_almost_full(1)
+       .g_with_wr_almost_full(1'b1)
       
        ) 
    U_PixFifo 
