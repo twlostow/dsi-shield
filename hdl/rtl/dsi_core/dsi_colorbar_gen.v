@@ -41,6 +41,7 @@ module dsi_colorbar_gen
    fifo_rd_i,
    fifo_pixels_o,
    pix_vsync_o,
+   pix_next_frame_i,
 
    test_en_o,
 
@@ -58,6 +59,7 @@ module dsi_colorbar_gen
    output reg [g_pixel_width - 1: 0] fifo_pixels_o;
 
    output reg 			     pix_vsync_o;
+   input 			     pix_next_frame_i;
    
    input [3:0] 			     host_a_i;
    input [31:0] 		     host_d_i;
@@ -68,13 +70,14 @@ module dsi_colorbar_gen
 `define ST_IDLE 0
 `define ST_VSYNC 1
 `define ST_IMAGE 2
+`define ST_WAIT_NEXT_FRAME 3
    
    
    reg [11:0] 			     r_xsize, r_ysize;
-   (* mark_debug = "true", keep = "true" *)   reg 				     r_enable;
-   (* mark_debug = "true", keep = "true" *)   reg [2:0] 			     state;
+(* mark_debug = "true", keep = "true" *)   reg 				     r_enable;
+(* mark_debug = "true", keep = "true" *)   reg [2:0] 			     state;
 
-   reg [11:0] 			     xcnt, ycnt;
+(* mark_debug = "true", keep = "true" *)   reg [11:0] 			     xcnt, ycnt;
    reg [11:0] 			     vsync_cnt = 0;
    
    // host registers
@@ -99,6 +102,8 @@ module dsi_colorbar_gen
        begin
 	  state <= `ST_IDLE;
 	  pix_vsync_o <= 0;
+	  fifo_pixels_o <= 0;
+	  
        end  else begin
 	  case (state)
 	    `ST_IDLE:
@@ -107,17 +112,26 @@ module dsi_colorbar_gen
 		   xcnt <= 0;
 		   ycnt <= 0;
 		   vsync_cnt <= 0;
-		   state <= `ST_VSYNC;
+		   state <= `ST_WAIT_NEXT_FRAME;
 		end
-	    `ST_VSYNC: begin
-	       pix_vsync_o <= 1;
-	       vsync_cnt <= vsync_cnt+1;
-	       
-	       if(vsync_cnt == 1000)begin
-		  pix_vsync_o <= 0;
-		  state <= `ST_IMAGE;
+
+	    `ST_WAIT_NEXT_FRAME:begin
+	       if(pix_next_frame_i)
+		 begin
+		    pix_vsync_o <= 1;
+		    state <= `ST_VSYNC;
+		 end
 	       end
-	    end
+	    
+	    
+	    `ST_VSYNC: begin
+	       if(!pix_next_frame_i)
+		 begin
+		    pix_vsync_o <= 0;
+		    state <= `ST_IMAGE;
+		 end
+	    end // case: `ST_VSYNC
+	    
 	    
 	    `ST_IMAGE: 
 	      begin
@@ -139,13 +153,15 @@ module dsi_colorbar_gen
 		      endcase // case (xcnt[7:5])
 		   end
 
-		 if( xcnt == r_xsize )
+	          if( xcnt == r_xsize )
 		   begin
 		      xcnt <= 0;
 		      if (ycnt == r_ysize)
 			begin
 			   ycnt <= 0;
-			   state <= `ST_VSYNC;
+			   xcnt <= 0;
+			   vsync_cnt <= 0;
+			   state <= `ST_WAIT_NEXT_FRAME;
 			end else begin
 			   ycnt <= ycnt + 1;
 			end
@@ -161,7 +177,7 @@ module dsi_colorbar_gen
 	  endcase // case (state)
        end
 
-   assign fifo_empty_o = (state == `ST_VSYNC || state == `ST_IDLE );
+   assign fifo_empty_o = (state == `ST_VSYNC || state == `ST_IDLE || state == `ST_WAIT_NEXT_FRAME );
    assign test_en_o = r_enable;
 
    
