@@ -327,8 +327,8 @@ U_WrappedCore
 	   IOBUF U_IOBUF_LP_N
 	    (
 	     .O  (),
-	     .IO (dsi_clk_lp_p_o),
-	     .I  (dsi_clk_lp_p),
+	     .IO (dsi_clk_lp_n_o),
+	     .I  (dsi_clk_lp_n),
 	     .T  (~dsi_clk_lp_oe)
 	     );
 
