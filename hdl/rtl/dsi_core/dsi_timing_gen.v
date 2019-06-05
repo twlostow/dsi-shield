@@ -105,7 +105,7 @@ module dsi_timing_gen
    
    
 
-   (* mark_debug = "true", keep = "true" )   reg [3:0]                    state, next_state;
+   reg [3:0]                    state, next_state;
    
    reg [11:0]                   h_count, v_count;
 
