@@ -1,3 +1,5 @@
+`timescale 1ps/1ps
+
 interface AXI4 #(
   parameter N = 1,
   parameter I = 1)

@@ -1,3 +1,5 @@
+`timescale 1ps/1ps
+
 `define OKAY 2'b00
 `define EXOKAY 2'b01
 `define SLVERR 2'b10
@@ -22,7 +24,9 @@ interface Axi4LiteMaster(
     input [31:0] addr,
     input [2:0] prot
   );
-    for(int i=0; i<delay; i++) @(posedge intf.ACLK);
+    for(int i=0; i<delay; i++) 
+      @(posedge intf.ACLK);
+    
     intf.ARVALID <= 1'b1;
     intf.ARADDR <= addr;
     intf.ARPROT <= prot;

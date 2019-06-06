@@ -1,3 +1,5 @@
+`timescale 1ps/1ps
+
 module Axi4Master #(
   parameter N = 1,
   parameter I = 1

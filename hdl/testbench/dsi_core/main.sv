@@ -31,7 +31,7 @@ class CAXI4LiteMasterAccessor extends CBusAccessor;
 
    virtual interface Axi4LiteMaster m_intf;
    
-   virtual task writem(uint64_t addr[], uint64_t data[], input int size, ref int result);
+   virtual task writem(uint64_t addr[], uint64_t data[], input int size, output int result);
       bit[1:0] resp;
       
 //      if(size != 4)
@@ -40,7 +40,7 @@ class CAXI4LiteMasterAccessor extends CBusAccessor;
      m_intf.WriteTransaction(addr[0], 0, data[0], 'hff, resp);
    endtask // writem
    
-   virtual task readm(uint64_t addr[], ref uint64_t data[], input int size, ref int result);
+   virtual task readm(uint64_t addr[], ref uint64_t data[], input int size, output int result);
       bit[63:0] rv, resp;
   //    m_intf.ReadTransaction(addr[0], 0, rv, resp);
       data[0] = rv;
@@ -111,8 +111,12 @@ typedef struct {
    bit ecc_ok;
 } dsi_packet_t;
 
+typedef struct {
+   dsi_packet_t packets[$];
+} dsi_packet_array_t;
 
-task automatic dsi_decode( ref byte d[$], ref  dsi_packet_t decoded[$] );
+
+task automatic dsi_decode( inout byte d[$], inout dsi_packet_t decoded[$] );
 
    while(d.size() >= 4)
      begin
@@ -373,7 +377,7 @@ module main;
    wire [3:0] dsi_lp_p;
    wire [3:0] dsi_lp_n;
    wire [3:0] dsi_lp_oe;
-   parameter int c_num_lanes = 3;
+   parameter int c_num_lanes = 2;
    real       txp_vec[c_num_lanes], txn_vec[c_num_lanes];
    
 
