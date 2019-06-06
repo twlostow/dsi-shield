@@ -203,6 +203,7 @@ module dsi_packer
    always@*
      begin
         case (q_size_i)
+          2: shreg_shifted <= shreg >> 16;
           3: shreg_shifted <= shreg >> 24;
           default: shreg_shifted <= shreg >> 32;
         endcase // case (q_size_i)
