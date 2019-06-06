@@ -41,6 +41,7 @@ module dphy_serdes_zynq
    parameter DEV_W = 1;
 
    reg 		rst_int = 1'b1;
+   wire 	dout_int, dout_predelay, tq_int;
 
    always@(posedge clk_word_i or negedge rst_n_a_i)
      if(!rst_n_a_i)
@@ -92,7 +93,7 @@ module dphy_serdes_zynq
              .OCE            (1'b1),
              .CLK            (clk_serdes_i),
              .CLKDIV         (clk_word_i),
-             .OQ             (dout_int),
+             .OQ             (dout_predelay),
              .TQ             (tq_int), // Tri-State control for IOB
              .OFB            (),
              .TFB            (),
@@ -101,7 +102,35 @@ module dphy_serdes_zynq
              .TCE            (1'b1),
              .RST            (rst_int));
 
+   
+   
 
+/* -----\/----- EXCLUDED -----\/-----
+   ODELAYE2 
+     #(
+       .CINVCTRL_SEL("FALSE"),
+       .DELAY_SRC("ODATAIN"),
+       .HIGH_PERFORMANCE_MODE("FALSE"),
+       .ODELAY_TYPE("FIXED"),
+       .ODELAY_VALUE (g_delay),
+       .PIPE_SEL("FALSE"),
+       .REFCLK_FREQUENCY(200.0),
+       .SIGNAL_PATTERN("DATA")
+       ) U_Delay (
+		  .DATAOUT(dout_int),
+		  .C(1'b0),
+		  .CE(1'b0),
+		  .CINVCTRL(1'b0),
+		  .CLKIN(1'b0),
+		  .CNTVALUEIN(5'b0),
+		  .INC(1'b0),
+		  .LD(1'b0),
+		  .LDPIPEEN(1'b0),
+		  .ODATAIN(dout_predelay),
+		  .REGRST(1'b0));
+ -----/\----- EXCLUDED -----/\----- */
+
+   assign   dout_int  = dout_predelay;
    
    OBUFTDS
      #(.IOSTANDARD ("DIFF_SSTL18_II"))

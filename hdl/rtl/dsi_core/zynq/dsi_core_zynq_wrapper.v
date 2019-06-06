@@ -69,7 +69,7 @@ input clk_pll_rstn_i;
    parameter g_lanes = 4;
    parameter g_fifo_size = 1024;
    parameter g_clock_period_ps = 3600;
-   parameter g_ps_per_delay_tap = 50;
+   parameter g_ps_per_delay_tap = 100;
    parameter g_data_delay = (g_clock_period_ps / 2) / g_ps_per_delay_tap;
    
 
@@ -124,7 +124,7 @@ input clk_pll_rstn_i;
    
     
 
-   wire clk_serdes, clk_word, clk_word_prebuf;
+   wire clk_serdes, clk_serdes_90deg, clk_word, clk_word_prebuf;
    wire rst_n = s_axil_ARESETN;
    wire [(g_lanes+1)*8-1:0] 	  serdes_data;
    wire [g_lanes:0] 	  serdes_oe_lane;
@@ -221,14 +221,18 @@ U_WrappedCore
        .CLKOUT0_DIVIDE     (7), // 100 MHz
        .CLKOUT0_PHASE      (0.000),
        .CLKOUT0_DUTY_CYCLE (0.500),
-       .CLKOUT1_DIVIDE     (7*8), // 333/8 MHz
-       .CLKOUT1_PHASE      (0.000),
+       .CLKOUT1_DIVIDE     (7), // 333/8 MHz
+       .CLKOUT1_PHASE      (90.000),
        .CLKOUT1_DUTY_CYCLE (0.500),
+       .CLKOUT2_DIVIDE     (7*8), // 333/8 MHz
+       .CLKOUT2_PHASE      (0.000),
+       .CLKOUT2_DUTY_CYCLE (0.500),
        .CLKIN1_PERIOD      (20.000)  // 50 MHz
        ) U_PLL (
 		.CLKFBOUT ( clk_fb_pll),
-		.CLKOUT0  ( clk_serdes),
-		.CLKOUT1  ( clk_word_prebuf ),
+		.CLKOUT0  ( clk_serdes ),
+		.CLKOUT1  ( clk_serdes_90deg ),
+		.CLKOUT2  ( clk_word_prebuf ),
 		.CLKFBIN  ( clk_fb_pll),
 		.CLKIN1   ( clk_pll_i),
 		.CLKIN2   ( 1'b0 ),
@@ -265,7 +269,7 @@ U_WrappedCore
       for(i=0;i<g_lanes;i=i+1)
         begin
            dphy_serdes_zynq
-            #( .g_delay ( g_data_delay ) )
+            #( .g_delay ( 0 ) )
            U_Serdes_LaneX (
                            .clk_serdes_i(clk_serdes),
                            .clk_word_i(clk_word),
@@ -282,7 +286,7 @@ U_WrappedCore
    dphy_serdes_zynq
      #( .g_delay ( 0 ) )
    U_Serdes_ClkLane (
-		     .clk_serdes_i(clk_serdes),
+		     .clk_serdes_i(clk_serdes_90deg),
 		     .clk_word_i(clk_word),
 		     .rst_n_a_i(rst_n),
 		     .oe_i(serdes_oe_lane[g_lanes]),
@@ -293,8 +297,16 @@ U_WrappedCore
 		     );
 
 
+/* -----\/----- EXCLUDED -----\/-----
+   IDELAYCTRL U_DelayControl
+     (
+      .REFCLK(clk_word),
+      .RST(~rst_n)
+      );
+ -----/\----- EXCLUDED -----/\----- */
+   
    generate
-
+      
       for(i=0;i<g_lanes;i=i+1)
         begin
 	   IOBUF U_IOBUF_LP_P
