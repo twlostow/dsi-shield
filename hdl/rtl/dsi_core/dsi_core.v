@@ -217,6 +217,10 @@ module dsi_core
    reg [7:0] 			  r_lane_mux;
    reg [3:0]			  r_lane_invert;
    reg 				  r_clock_invert;
+   reg 				  r_clock_polarity;
+
+   wire [7:0] 			  clk_pattern = r_clock_polarity ? 8'h55 : 8'haa;
+   
 
    initial
      begin
@@ -390,7 +394,7 @@ module dsi_core
                         .tick_i(tick),
 
                         .hs_request_i (r_dsi_clk_en),
-                        .hs_data_i    ({24'h000000, clk_lane_ready ? 8'haa : 8'h00}),
+                        .hs_data_i    ({24'h000000, clk_lane_ready ? clk_pattern : 8'h00}),
                         .hs_ready_o   (clk_lane_ready),
                         .hs_valid_i(1'b1),
 
@@ -639,7 +643,7 @@ module dsi_core
 	  r_lane_mux <= 0;
 	  r_lane_invert <= 0;
 	  r_clock_invert <= 0;
-	  
+	  r_clock_polarity <= 0;
 	  
 	  
        end else if(host_wr) begin
@@ -666,6 +670,7 @@ module dsi_core
 	       r_lane_mux <= host_d_in[7:0];
 	       r_lane_invert <= host_d_in[11:8];
 	       r_clock_invert <= host_d_in[12];
+	       r_clock_polarity <= host_d_in[13];
 	    end
 	    
             
