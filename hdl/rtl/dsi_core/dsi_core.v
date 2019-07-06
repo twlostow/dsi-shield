@@ -165,7 +165,7 @@ module dsi_core
    
    input 			    s_axis_aclk;
    input 			    s_axis_aresetn;
-   input [31:0]			    s_axis_tdata; // fixme: generic
+   input [63:0]			    s_axis_tdata; // fixme: generic
    input 			    s_axis_tdest;
    input s_axis_tid;
    input s_axis_tkeep;
@@ -461,8 +461,8 @@ module dsi_core
    ///////////////
 
 
-   wire                           fifo_empty, fifo_rd;
-   wire [g_pixel_width:0] 	  fifo_dout;
+(* mark_debug = "true", keep = "true" *)       wire                           fifo_empty, fifo_rd;
+(* mark_debug = "true", keep = "true" *)       wire [g_pixel_width:0] 	  fifo_dout;
 
    
    ///////////////
@@ -525,7 +525,8 @@ module dsi_core
    assign pix_vsync_dsi_muxed = cbgen_enable ? pix_vsync_cbgen : pix_vsync_dsi;
    assign fifo_pixels_muxed = cbgen_enable ? fifo_pixels_cbgen : fifo_dout[g_pixel_width-1:0] ;
    
-			      
+   wire 		    fifo_enable;
+		      
    dsi_timing_gen 
      #( .g_pixels_per_clock(g_pixels_per_clock) )
    U_TimingGen (
@@ -535,6 +536,7 @@ module dsi_core
 		.fifo_rd_o(fifo_rd),
                 .fifo_vsync_i(pix_vsync_dsi_muxed),
 		.fifo_pixels_i(fifo_pixels_muxed),
+		.fifo_enable_o(fifo_enable),
 //                .pix_vsync_i(pix_vsync_dsi),
                 .pix_next_frame_o(pix_next_frame_dsi),
                 .p_req_o(p_req),
@@ -563,22 +565,102 @@ module dsi_core
    reg pix_wr_muxed;
    reg [g_pixel_width : 0 ] pix_muxed;
 
+   wire 		    fifo_full;
+   wire 		    fifo_ready = ~fifo_full;
+
+/* -----\/----- EXCLUDED -----\/-----
    wire 		    fifo_almost_full;
+   reg 			    fifo_full_latched;
+
+   always@(posedge clk_pixel)
+     if(!rst_n_pixel)
+       fifo_full_latched <= 0;
+     else if (fifo_full)
+       fifo_full_latched <= 1;
+     else if (!fifo_almost_full)
+       fifo_full_latched <= 0;
+ -----/\----- EXCLUDED -----/\----- */
    
+
+/* -----\/----- EXCLUDED -----\/-----
+   assign fifo_ready = ~(fifo_full_latched | fifo_full);
+ -----/\----- EXCLUDED -----/\----- */
+
+   reg 			    fifo_passthrough;
+   reg [1:0] 		    fifo_state;
+
+   reg 			    tuser_d;
+   wire 		    first_pixel_in_frame;
+
+   assign first_pixel_in_frame = s_axis_tuser && s_axis_tvalid && !tuser_d;
+   
+`define FST_PASS 0
+`define FST_WAIT_SYNC 1
+`define FST_ENABLED 2
+   
+
+   always@(posedge clk_pixel)
+     if (!rst_n_pixel)
+       begin
+	  fifo_state <= `FST_PASS;
+	  tuser_d <= 0;
+	  
+       end
+     else
+       begin
+
+	  if(s_axis_tvalid && s_axis_tready)
+	       tuser_d <= s_axis_tuser;
+	  
+	  
+		    
+	  case(fifo_state)
+	    `FST_PASS:
+	      begin
+	    
+		 if(fifo_enable)
+		   fifo_state <= `FST_WAIT_SYNC;
+
+	      end
+	    `FST_WAIT_SYNC:
+	      begin
+		 if(pix_next_frame_dsi && first_pixel_in_frame )
+		   fifo_state <= `FST_ENABLED;
+	      end
+
+	    `FST_ENABLED:
+	      begin
+		 if(!fifo_enable)
+		   fifo_state <= `FST_PASS;
+	      end
+	    
+	  endcase // case (fifo_state)
+       end // else: !if(rst_n_pixel)
+   
+
+   always@*
+     case(fifo_state)
+       `FST_PASS:
+	 fifo_passthrough <= 1;
+       `FST_WAIT_SYNC:
+	 fifo_passthrough <= ~( pix_next_frame_dsi && first_pixel_in_frame );
+       `FST_ENABLED:
+	 fifo_passthrough <= 0;
+     endcase // case (fifo_state)
+       
    
    always@*
      if(g_pixel_interface_type == "AXI4") begin
 	pix_muxed <= {s_axis_tuser, s_axis_tdata[g_pixel_width-1:0] };
-	pix_wr_muxed <= s_axis_tvalid & ~fifo_almost_full;
+	pix_wr_muxed <= s_axis_tvalid & fifo_ready && ~fifo_passthrough;
      end else begin
 	pix_muxed <= {pix_vsync_i, pix_i};
 	pix_wr_muxed <= pix_wr_i;
      end
 
    always@*
-     s_axis_tready <= ~fifo_almost_full ;
+     s_axis_tready <= fifo_ready | fifo_passthrough;
 
-   
    generic_async_fifo
      #(
        .g_data_width(g_pixel_width + 1),
@@ -594,6 +676,7 @@ module dsi_core
       .clk_wr_i(clk_pixel),
       .d_i(pix_muxed),
       .wr_almost_full_o(fifo_almost_full),
+      .wr_full_o(fifo_full),
       .we_i(pix_wr_muxed),
 
       .clk_rd_i(clk_dsi_i),

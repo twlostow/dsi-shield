@@ -38,7 +38,8 @@ module dsi_timing_gen
    fifo_empty_i,
    fifo_rd_o,
    fifo_pixels_i,
-
+   fifo_enable_o,
+   
    pix_vsync_i,
    pix_next_frame_o,
    
@@ -66,19 +67,19 @@ module dsi_timing_gen
 
    input fifo_vsync_i;
    
-   input fifo_empty_i;
-   output fifo_rd_o;
-   input [g_pixel_width - 1: 0] fifo_pixels_i;
+(* mark_debug = "true", keep = "true" *)    input fifo_empty_i;
+(* mark_debug = "true", keep = "true" *)    output fifo_rd_o;
+(* mark_debug = "true", keep = "true" *)    input [g_pixel_width - 1: 0] fifo_pixels_i;
 
-   input                        pix_vsync_i;
-   output  reg                 pix_next_frame_o;
+(* mark_debug = "true", keep = "true" *)    input                        pix_vsync_i;
+(* mark_debug = "true", keep = "true" *)    output  reg                 pix_next_frame_o;
    
  
    
-   output reg                   p_req_o, p_islong_o;
-   output reg [5:0]             p_type_o;
-   output reg [15:0]            p_wcount_o, p_command_o;
-   output [g_pixel_width-1:0]   p_payload_o;
+  (* mark_debug = "true", keep = "true" *)  output reg                   p_req_o, p_islong_o;
+(* mark_debug = "true", keep = "true" *)    output reg [5:0]             p_type_o;
+(* mark_debug = "true", keep = "true" *)    output reg [15:0]            p_wcount_o, p_command_o;
+(* mark_debug = "true", keep = "true" *)    output [g_pixel_width-1:0]   p_payload_o;
 
    input                        p_dreq_i;
    
@@ -105,18 +106,24 @@ module dsi_timing_gen
    
    
 
-   reg [3:0]                    state, next_state;
+(* mark_debug = "true", keep = "true" *)       reg [3:0]                    state, next_state;
    
-   reg [11:0]                   h_count, v_count;
+(* mark_debug = "true", keep = "true" *)       reg [11:0]                   h_count, v_count;
 
    reg [11:0]                   h_front_porch, h_back_porch, h_active, h_total;
    reg [11:0]                   v_front_porch, v_back_porch, v_active, v_total;
 
-   reg                          enable = 0;
+(* mark_debug = "true", keep = "true" *)       reg                          enable = 0;
    reg                          disp_en_mask;
 
-   reg [11:0]                   pixel_counter, pixel_counter_d0;
+(* mark_debug = "true", keep = "true" *)     reg [11:0]                   pixel_counter, pixel_counter_d0;
    reg 				force_lp = 0;
+
+   output 			fifo_enable_o;
+   
+   
+   assign fifo_enable_o = enable;
+   
    
    
    // host registers
@@ -239,7 +246,7 @@ module dsi_timing_gen
           `ST_LP: begin
              p_req_o <= 0;
 
-	     if (fifo_vsync_i)
+	     if ( !fifo_empty_i )
 	       pix_vsync_latched <= 1;
 	     
              if(pixel_counter == 0) begin
