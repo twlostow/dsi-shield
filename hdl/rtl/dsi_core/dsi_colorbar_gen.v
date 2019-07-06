@@ -141,6 +141,8 @@ module dsi_colorbar_gen
 		   begin
 		      fifo_pixels_o <= 'hffffff; // white border
 		   end else begin
+		      if (g_pixels_per_clock == 1)
+			begin
 		      case (xcnt[8:6])
 			3'b000: fifo_pixels_o <= 'hff0000; // red
 			3'b001: fifo_pixels_o <= 'h00ff00; // green
@@ -151,6 +153,20 @@ module dsi_colorbar_gen
 			3'b110: fifo_pixels_o <= 'h808080; // grey
 			3'b111: fifo_pixels_o <= 'h000000; // black
 		      endcase // case (xcnt[7:5])
+			end else begin // if (g_pixels_per_clock == 1)
+			   case (xcnt[7:5])
+			     3'b000: fifo_pixels_o <= 'hff0000ff0000; // red
+			     3'b001: fifo_pixels_o <= 'h00ff0000ff00; // green
+			     3'b010: fifo_pixels_o <= 'h0000ff0000ff; // blue
+			     3'b011: fifo_pixels_o <= 'hffff00ffff00; // yellow
+			     3'b100: fifo_pixels_o <= 'h00ffff00ffff; // cyan
+			     3'b101: fifo_pixels_o <= 'hff00ffff00ff; // magenta
+			     3'b110: fifo_pixels_o <= 'h808080808080; // grey
+			     3'b111: fifo_pixels_o <= 'h000000000000; // black
+			   endcase // case (xcnt[7:5])
+
+			end // else: !if(g_pixels_per_clock == 1)
+		      
 		   end
 
 	          if( xcnt == r_xsize )
