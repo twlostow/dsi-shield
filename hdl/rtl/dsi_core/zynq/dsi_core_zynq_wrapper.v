@@ -218,13 +218,13 @@ U_WrappedCore
        .DIVCLK_DIVIDE      (1),
        .CLKFBOUT_MULT      (20),
        .CLKFBOUT_PHASE     (0.000),
-       .CLKOUT0_DIVIDE     (7), // 100 MHz
+       .CLKOUT0_DIVIDE     (3), // 100 MHz
        .CLKOUT0_PHASE      (0.000),
        .CLKOUT0_DUTY_CYCLE (0.500),
-       .CLKOUT1_DIVIDE     (7), // 333/8 MHz
+       .CLKOUT1_DIVIDE     (3), // 333/8 MHz
        .CLKOUT1_PHASE      (90.000),
        .CLKOUT1_DUTY_CYCLE (0.500),
-       .CLKOUT2_DIVIDE     (7*8), // 333/8 MHz
+       .CLKOUT2_DIVIDE     (3*8), // 333/8 MHz
        .CLKOUT2_PHASE      (0.000),
        .CLKOUT2_DUTY_CYCLE (0.500),
        .CLKIN1_PERIOD      (20.000)  // 50 MHz
